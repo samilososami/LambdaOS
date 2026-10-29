@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.LambdaSetup" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">#080808</item>
+        <item name="android:colorBackground">#080808</item>
+        <item name="android:textColorPrimary">#f4f4f4</item>
+        <item name="android:textColorSecondary">#b4b4b4</item>
+        <item name="android:fontFamily">@font/lambda_regular</item>
+        <item name="fontFamily">@font/lambda_regular</item>
+        <item name="colorAccent">#d8d8d8</item>
+        <item name="android:colorAccent">#d8d8d8</item>
+        <item name="colorPrimary">#1c1c1c</item>
+        <item name="colorPrimaryDark">#101010</item>
+        <item name="android:statusBarColor">#101010</item>
+        <item name="android:navigationBarColor">#101010</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
+        <item name="android:windowActionModeOverlay">true</item>
+        <item name="android:windowSoftInputMode">adjustResize</item>
+        <item name="android:windowLayoutInDisplayCutoutMode">always</item>
+        <item name="android:windowOptOutEdgeToEdgeEnforcement">true</item>
+    </style>
+    <style name="Theme.LambdaSetup.Light" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">#f7f7f7</item>
+        <item name="android:colorBackground">#f7f7f7</item>
+        <item name="android:textColorPrimary">#151515</item>
+        <item name="android:textColorSecondary">#626262</item>
+        <item name="android:fontFamily">@font/lambda_regular</item>
+        <item name="fontFamily">@font/lambda_regular</item>
+        <item name="colorAccent">#252525</item>
+        <item name="android:colorAccent">#252525</item>
+        <item name="colorPrimary">#eeeeee</item>
+        <item name="colorPrimaryDark">#f7f7f7</item>
+        <item name="android:statusBarColor">#f7f7f7</item>
+        <item name="android:navigationBarColor">#f7f7f7</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar">true</item>
+        <item name="android:windowActionModeOverlay">true</item>
+        <item name="android:windowSoftInputMode">adjustResize</item>
+        <item name="android:windowLayoutInDisplayCutoutMode">always</item>
+        <item name="android:windowOptOutEdgeToEdgeEnforcement">true</item>
+    </style>
+</resources>

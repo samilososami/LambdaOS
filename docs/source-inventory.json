@@ -1,0 +1,1656 @@
+{
+  "schema": 1,
+  "snapshot": "2026-10-29",
+  "files": [
+    {
+      "path": "alpha/apps/Lambda/Android.bp",
+      "bytes": 276,
+      "sha256": "3acada6cf154bc26e33804b0039f385a9bd5cab5b0e4dd677a16d51d11e5f15a"
+    },
+    {
+      "path": "alpha/apps/Lambda/AndroidManifest.xml",
+      "bytes": 1227,
+      "sha256": "ff65911793502cc03cf45f5e6c8e5615d43555dafd2af95b525f9a83909de9af"
+    },
+    {
+      "path": "alpha/apps/Lambda/res/drawable/ic_launcher.xml",
+      "bytes": 409,
+      "sha256": "fc318fdc1640257ee395fdd2e780a298a8de713cd3b32457fe4772680e0c6104"
+    },
+    {
+      "path": "alpha/apps/Lambda/res/values/styles.xml",
+      "bytes": 614,
+      "sha256": "4c5703cfef8b455229bd2ef6bf4eb2e4d4d46f8973885eeb0e0c2d11674cd58f"
+    },
+    {
+      "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/Glyph.java",
+      "bytes": 4528,
+      "sha256": "509b3d81e4075fa3bf2157fd6e26da831d4a21972d6f5b8e89ecd75c6daab805"
+    },
+    {
+      "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/HardwareSnapshot.java",
+      "bytes": 4726,
+      "sha256": "65253fffd8bd8d85cc91b04ab54ae750ffca5841a0dcc8a4fb5cb9297f2e93c5"
+    },
+    {
+      "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/MainActivity.java",
+      "bytes": 23457,
+      "sha256": "e9e01499944500e6b2d75816ce63006b79bfed2176a0c874ec035996661154ac"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/Android.bp",
+      "bytes": 922,
+      "sha256": "8b0eb62d36bc2c433ba25f044666221d7a9ddb93949334f6eab18e0585c3ff88"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/AndroidManifest.xml",
+      "bytes": 14569,
+      "sha256": "fbd78edf920ce913b577f7505cfef931625f26ab312f6be7ffd12f428d2017af"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/exit_wizard.sh",
+      "bytes": 653,
+      "sha256": "000acf85dbf2530b7e26e7770bde2899ea9ce035a998edac8c7ebb4b56fe48e5"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/LICENSES/Apache-2.0.txt",
+      "bytes": 10280,
+      "sha256": "074e6e32c86a4c0ef8b3ed25b721ca23aca83df277cd88106ef7177c354615ff"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/privapp_whitelist_org.lineageos.setupwizard.xml",
+      "bytes": 1009,
+      "sha256": "1bc3e7045085c78fc42e6f02ce0a2f3f6ef552c1dcf4821551e9e2b50dd978fb"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/proguard.flags",
+      "bytes": 511,
+      "sha256": "e34f38bb2ae673875c89715e788e0840accdff2f5d328cc5f4c4432639795145"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/anim/translucent_enter.xml",
+      "bytes": 433,
+      "sha256": "3d0c66ec1b47014cc4886d2a78860b3e9464a425752556a4666fa83e63e79866"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/anim/translucent_exit.xml",
+      "bytes": 431,
+      "sha256": "756d62aeb10876ded53d7a6c9d3fe7b6504a522501b92864e7e5f2b42fe2c4ec"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/color/button_bar_text.xml",
+      "bytes": 380,
+      "sha256": "be5b6809c39cfd9953b6f3dcaccea0868f340697d26eea770aec99adb67d07fd"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable/background.xml",
+      "bytes": 281,
+      "sha256": "4a2cd829cd3f52ae32ec20ae422f44161fa9d6d56d5fdb4bd3c665d8cc61cb96"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable/divider.xml",
+      "bytes": 340,
+      "sha256": "a402c63c482fa19579ffb8768e390e6a617e37a2bf685967bd4af813b6dab0ea"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable/ic_datetime.xml",
+      "bytes": 615,
+      "sha256": "7bf459d3e13743669394bea8195866a9a7e73bf1b065ab326bd165d03d6ded71"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable/ic_dialer.xml",
+      "bytes": 866,
+      "sha256": "3838682d839baee3ccc060896a0f1055916c0503fddc42ac48b4dada2118fdf5"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable/ic_eye.xml",
+      "bytes": 737,
+      "sha256": "81eb164a5a09c8e26736b45f9219150c35f9986dbf3e1d89560850c276d3aab9"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable/ic_features.xml",
+      "bytes": 1071,
+      "sha256": "03f27617f3d4456a320161614ff8759688fce363148ca4e9037f9c953b62662f"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable/ic_launcher_background.xml",
+      "bytes": 437,
+      "sha256": "7110bfced2dbc94e670f995e686c166b445b3dc4e33a31872a7338503654ccfe"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable/ic_launcher_foreground.xml",
+      "bytes": 2758,
+      "sha256": "cf6097a068a6274057e852687a3d4e07eaf68630a2c998969d89e008702837a0"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable/ic_locale.xml",
+      "bytes": 781,
+      "sha256": "be588d8bfd7f44f9f5010e4f646bff3e450087e4b651f71efb2de4732cb546db"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable/ic_location.xml",
+      "bytes": 635,
+      "sha256": "31da5f22d26ed53c8ea488c5fd5df01ce89e97506b09e0636b3330756f14be29"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable/ic_navigation.xml",
+      "bytes": 1228,
+      "sha256": "b370a6aaca0ccf37d17b29c65f8b2f308545bff6dbd12757a3c7a2cc6e9ce621"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable/ic_restore.xml",
+      "bytes": 625,
+      "sha256": "e62ea7c6a34c08f57cd0680fc149238694fa8245675eaad6423051f82b3e2007"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable/ic_sim.xml",
+      "bytes": 613,
+      "sha256": "bbb5d1320548bd0532eb4648ff312d2ee083bc1762fcf762e37374b7df170466"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable/ic_system_update.xml",
+      "bytes": 599,
+      "sha256": "d132100f0a39e198e5aaf636b9d79f125de26ae6d941b64d49415fa7d144a90a"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable/ic_theme.xml",
+      "bytes": 685,
+      "sha256": "f1e19053e23d41a159ca147f3cc914b817eb5b3536013aff2af1c8e054e1335e"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable/lambda_accessibility.xml",
+      "bytes": 1322,
+      "sha256": "8298f145ea93e6a0c11f2d630942486dbef24e162b74b802b10c7659416520d6"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable/lambda_antenna.xml",
+      "bytes": 1446,
+      "sha256": "0978ce37283f1861b3c100fc8320924386903af61ab8c1f150d6ef448eba2420"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable/lambda_archive_restore.xml",
+      "bytes": 1315,
+      "sha256": "577a896741c59197e81e83b3718ab8eeee3da79375b81485b2487e2bdc7862e5"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable/lambda_archive_x.xml",
+      "bytes": 1116,
+      "sha256": "53982e8b0a20b0b6ff2864b2460b36891186e2b7bacd77376c19ea3a87446ad0"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable/lambda_battery_charging.xml",
+      "bytes": 1124,
+      "sha256": "ae3baa0ce977b94879e4dddddadb1b280b4f3517af4704da5523af9f77239b37"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable/lambda_card_sim.xml",
+      "bytes": 1193,
+      "sha256": "81438cdb44d78d0ea63b9fc738ce652da9124720d291db30a56a98d559cb01dc"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable/lambda_chevron_left.xml",
+      "bytes": 390,
+      "sha256": "23e66a3f5d9d4e5345aa87884bd01cbac2b1623df41c5df2438037483d7f1d8d"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable/lambda_chevron_right.xml",
+      "bytes": 389,
+      "sha256": "16dad712863385851a0f7d4e45ed9cc864b5703bf7d41084e4de2306481abfc6"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable/lambda_circle_alert.xml",
+      "bytes": 878,
+      "sha256": "9035358ea21b34784d6a5c171b4f95074ccc7958a41250b7cc0c2b956ab45e51"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable/lambda_circle_check.xml",
+      "bytes": 678,
+      "sha256": "5a8252125645fff0b575f108f17c9a82f122d1d97c98b8d0aed06124f94caf6c"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable/lambda_cloud_off.xml",
+      "bytes": 941,
+      "sha256": "06ffd105f7783550b0e37ef5d973bce954840308ce57d3c28cf2655ab793918b"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable/lambda_delete.xml",
+      "bytes": 429,
+      "sha256": "e3a7bfdc0037d70fa70b26f50222a304d40bdc95ad3632a50b30d8a1d2c72dc8"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable/lambda_fast_forward.xml",
+      "bytes": 760,
+      "sha256": "e8072987911eb4f1a84b8dc5f3c6e9f5e85dce7d2cfa39299d13f3db2cf47440"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable/lambda_file_x.xml",
+      "bytes": 1164,
+      "sha256": "40a3389d21f47cf21d12a61ea10cbadbd4bae0992ebf3f7b336614901642a465"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable/lambda_fingerprint_pattern.xml",
+      "bytes": 2220,
+      "sha256": "1f1cd97c7219e613b6d9a00e2c5bed8ff7b7635f47b7091c12e656836a85c7b5"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable/lambda_folder_search.xml",
+      "bytes": 968,
+      "sha256": "a016e7ac552aeb0427f5bd6a33f1281a47760f77e441359ed9b2731050898615"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable/lambda_globe_x.xml",
+      "bytes": 897,
+      "sha256": "87e64fc7877bf1f857d0fed6f36a82f8dde2928ecd4676d4fc11011976a3e07a"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable/lambda_globe.xml",
+      "bytes": 907,
+      "sha256": "a744cb6d00f89a3e4905f770ab08cc93e5c977874f7fec1047eec18308dee300"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable/lambda_hard_drive_download.xml",
+      "bytes": 1296,
+      "sha256": "6de8498dd486da6789fabd6016670adb538a79a2e3a4867901d494c58c540366"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable/lambda_hard_drive.xml",
+      "bytes": 1191,
+      "sha256": "21c5921d10b70d496e565ddfffd976cedb33675457f6e1cd09b28d471840657f"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable/lambda_languages.xml",
+      "bytes": 1446,
+      "sha256": "e7ee287a96fdcc7734ad7b1e8c4d49f1a03bc5089cd2cd653bd8aa2ded178481"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable/lambda_lock_keyhole.xml",
+      "bytes": 932,
+      "sha256": "08ea5e74b5485f686efcfa125129a6b07dce254ef4f8aa1fb17a6bd36c401a61"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable/lambda_map_pin.xml",
+      "bytes": 754,
+      "sha256": "5249134fa759d4e4d917a0120273aea27e6d0e6b4e7ea6a315d56e71464e77da"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable/lambda_phone.xml",
+      "bytes": 431,
+      "sha256": "28a82945c87b68141a234bdee92ce9e22f2bc3c7c8fd5b094eff97d2771d0efc"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable/lambda_plus.xml",
+      "bytes": 509,
+      "sha256": "606693d9c2ec3893588bd20f61d3b8fb85f565fb08a4f060bd52e5f8d59a5d78"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable/lambda_rotate_ccw.xml",
+      "bytes": 677,
+      "sha256": "252d708e97bb976d8b776d04306a45a748d582e63c883ec9fb0981f35beccc12"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable/lambda_search.xml",
+      "bytes": 393,
+      "sha256": "28ed9c7e3571d0fa8bf0ed905c07e5ce7e147ca475f0f149bd131437db40c337"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable/lambda_settings.xml",
+      "bytes": 981,
+      "sha256": "13367c894cd6ad124eed0573c07c9ff7c90e3e2612e734ca17cd134b1930939d"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable/lambda_shield_alert.xml",
+      "bytes": 991,
+      "sha256": "a6807dc29cb4c8835f3c360a6840bb9f87529859ed2635523ab4ae47f2d16aeb"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable/lambda_signal_zero.xml",
+      "bytes": 437,
+      "sha256": "afd8983523745c924e754f635a8bd7d1808464347e6a41ad9f8494c82d0bff5b"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable/lambda_signal.xml",
+      "bytes": 1238,
+      "sha256": "1863841b1e0f8c7ff615546a3b348a9d3f5c445d9abc11b07aa403ea7b2b9d60"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable/lambda_speech.xml",
+      "bytes": 1003,
+      "sha256": "4f573b48d75a17ca5d05f6c528559f1dfe7c4f343807df36ee709690b5381aea"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable/lambda_vibrate.xml",
+      "bytes": 664,
+      "sha256": "ae775ebba659e6d987598734f138f57d1bda3530d0e789e9e0ea5f3cce8cd340"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable/lambda_wifi_cog.xml",
+      "bytes": 2841,
+      "sha256": "9798ab720c240c269f3a1d4d34a4b2c6ebd26ba04835f347842eea15a85f0960"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable/lambda_wifi_off.xml",
+      "bytes": 1754,
+      "sha256": "8f6416e6ba9613eebbac60dca7a6c965c3193d6d409605961c4ac8b46783dc27"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable/lambda_wifi_zero.xml",
+      "bytes": 438,
+      "sha256": "8ad4fe602ca063ae8fbd63240af4bbd2f86f83cf31947de9af118aedacd96b4e"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable/lambda_wifi.xml",
+      "bytes": 1089,
+      "sha256": "31ec0427fe73165f740552813163b94e7bf0aafbb6da7d8be69fd9ff60729205"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable/logo.xml",
+      "bytes": 921,
+      "sha256": "4ac33b887b19a9b12c1aba2ee84319a7a9c67ab0671e841eed1411eeff91e689"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable-nodpi/lamb_finished.png",
+      "bytes": 1190802,
+      "sha256": "2f49a2f7cc60fcc8b448a403b30b473fa067093eff3189cea62f23ab5e6b88a5"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable-nodpi/lamb_welcome.png",
+      "bytes": 805749,
+      "sha256": "9c181e0b4eafbbd4df3ac4494cc5120ec0563635cb784f94333531321593c335"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable-nodpi/lambda_brand_source.png",
+      "bytes": 90712,
+      "sha256": "cbac5b0f70b88c37ecc8b65c4c80da5eaa5aa27002e6637348de5b90c1643069"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable-nodpi/lambda_wallpaper_dark.png",
+      "bytes": 1674239,
+      "sha256": "7774862a89a476c73aa37baae5b08ac21ae9e35135a92296cf7d8f9e6482a11f"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable-nodpi/lambda_wallpaper_light.png",
+      "bytes": 1628805,
+      "sha256": "8184ba2357a57ed5b32219052edae762e0907365f0039d7ae7b449bd89c409d4"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable-nodpi/lambda_wallpaper.png",
+      "bytes": 40391,
+      "sha256": "b86b1fcbfa05165af846e87863473c15e5877a994e1d1d5fc6ae55b301eee221"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/font/lambda_bold.otf",
+      "bytes": 83264,
+      "sha256": "7f33328e6b4d4cd21b45fa625791928c9407dc702db6780e56b09ca9a3ecaa67"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/font/lambda_regular.otf",
+      "bytes": 82264,
+      "sha256": "7c25be4d78155523080ab85b10277150657ff7dabbcad7037bdd536c9b6d0d08"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/layout/date_time_setup_custom_list_item_2.xml",
+      "bytes": 1085,
+      "sha256": "7f952fcfe89cc4dd98947b70bee3aad7147bc4a4ed9f497998d8e1d83151b4e1"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/layout/divider.xml",
+      "bytes": 371,
+      "sha256": "75e416fe0dbc7346411573b3499e5eee06be332806e72ae7d8a188a1e8ea01b2"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/layout/finish_activity.xml",
+      "bytes": 1707,
+      "sha256": "d9acdbebaf3f84fc8cf1e65b191865980962b742759ee9f0fac1a60b15781838"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/layout/intro_restore_activity.xml",
+      "bytes": 1162,
+      "sha256": "e4f202968b323bd7d2b7b2a9d8ecd5294f87e81b7deecfae7a70c63a016f041c"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/layout/locale_picker_item.xml",
+      "bytes": 744,
+      "sha256": "574ec85820952990e5961f026bb3ddacbd2f82466efd3d41f1433e6a45eae8c2"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/layout/locale_picker.xml",
+      "bytes": 1129,
+      "sha256": "7ecaa1db9ec9d7859161dee7044c9bc82a6f4c581adb997a629f6a5c5be92c91"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/layout/location_settings.xml",
+      "bytes": 4333,
+      "sha256": "3bb74d20b9e6ccc999aba739b1d8b6ba0dc6a2c7639451da34892101a252155f"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/layout/navigation_layout.xml",
+      "bytes": 906,
+      "sha256": "a2d6b3749f8444526f3bc7f51f519dc500213a21b43849b0719af028732170b4"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/layout/setup_datetime_page.xml",
+      "bytes": 4648,
+      "sha256": "67b9b9e461ca1d65a452ca7693fd4db0ce709eca02a3ee0b41e1eede11b37dee"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/layout/setup_device_specific.xml",
+      "bytes": 341,
+      "sha256": "875288455fd3b743bf86b9c7d8a11a89536eba9d4e23e932c87221c643445c98"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/layout/setup_lineage_settings.xml",
+      "bytes": 4520,
+      "sha256": "16a6326b22873f1196cb614ae434c5c426699458aaa368eddd8391ba0b207678"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/layout/setup_loading_page.xml",
+      "bytes": 1478,
+      "sha256": "08114309afe77d854c62e82591112d4d89b5a6ce75db772fb650f1909418cd95"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/layout/setup_locale.xml",
+      "bytes": 1589,
+      "sha256": "fa001e3cc15a6dfd928afd7824e6bde9f83671ba2f43e61daad29a09b7927a8c"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/layout/setup_navigation.xml",
+      "bytes": 3325,
+      "sha256": "a642578daa26e4b1cbe155412dd68d6b9f59747d91b857cfe98e6a2e17ffd39d"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/layout/setup_theme.xml",
+      "bytes": 1916,
+      "sha256": "cf47d4bb8121463f132656b8f89cdab60ac88ab19c95d30d278a211837283358"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/layout/sim_missing_page.xml",
+      "bytes": 1305,
+      "sha256": "a6d69380486fe5208f8c50d16de8fbb174b1304bc9467a06799af56555348bac"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/layout/update_recovery_page.xml",
+      "bytes": 2911,
+      "sha256": "f4cb9baf35522b217a6d31976c09851196d1f3b33c6cdef90160e92d37c9d6fa"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/layout/welcome_activity.xml",
+      "bytes": 5334,
+      "sha256": "a79af7a091362efba7ceaa04982e0c9d0c9ae9064617b4feb94b3faeded823f1"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/layout-sw600dp/welcome_activity.xml",
+      "bytes": 3373,
+      "sha256": "baec37e589744fae4db15d48cbeb1d31c0f1b7cf052e783d1e5ec99e43488892"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/layout-television/welcome_activity.xml",
+      "bytes": 3373,
+      "sha256": "baec37e589744fae4db15d48cbeb1d31c0f1b7cf052e783d1e5ec99e43488892"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/mipmap-anydpi/ic_launcher.xml",
+      "bytes": 379,
+      "sha256": "2bf5d18c2f161280a03146fe1f5aae41546d82eecedfdd6a354373f17781fd9f"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/raw/lambda_font_license.txt",
+      "bytes": 52517,
+      "sha256": "1315a62758a603a3e6e87a79b8389563789c59c1740b9db8bc2b20e2e2145458"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/raw/lambda_icons_license.txt",
+      "bytes": 3208,
+      "sha256": "b495047bd93a9b06913511076f504daba17d5bbeb3e0650f3bb53a4220329c57"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/raw/lineage_wizard_script_managed_profile.xml",
+      "bytes": 1221,
+      "sha256": "84acacd456906dcfd5eec87bba2c56c204eb137c7496ec387830265a9d2e818a"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/raw/lineage_wizard_script_user.xml",
+      "bytes": 2049,
+      "sha256": "f52222bedb346bdd83becce7c7bf0fd4166577549f06577ec42fba20a841b5d4"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/raw/lineage_wizard_script.xml",
+      "bytes": 3907,
+      "sha256": "4a63380a794d2b37aee32b22d13d7a0e586ad906840258f53bc1ebfd85535332"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/raw/lottie_system_nav_2_button.json",
+      "bytes": 118195,
+      "sha256": "7147c668a3d8ceeadb25ce1bf4f394f989ce4186dca993ea15ef3f9b27367d69"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/raw/lottie_system_nav_3_button.json",
+      "bytes": 119334,
+      "sha256": "78227a6d09401f284811ccf9ebfbcb6760c51d3a83fc365071505c53ef319baa"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/raw/lottie_system_nav_fully_gestural.json",
+      "bytes": 178956,
+      "sha256": "cb44deef3f2a1198fdecc8fba9cb1475b2b593083b198e7b5d22ea9d5704989b"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/raw/wizard_script_user.xml",
+      "bytes": 6190,
+      "sha256": "b99ec12bb44e064cfc4af771a02a5cf343ea65f9561bfd8864c46f27b6d861ff"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/raw/wizard_script.xml",
+      "bytes": 13805,
+      "sha256": "05257ad5388b5f0552fb9fa7022681676e04a0bf2242065f46c03b3f2e43dd42"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/raw-television/lineage_wizard_script.xml",
+      "bytes": 1939,
+      "sha256": "9ea8edb54d260e3b41e2836e946cbd5a8beb6732536d879e6106b029cb5a9c0d"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values/attrs.xml",
+      "bytes": 1203,
+      "sha256": "34c2ff33d4dfbe79f00223500820df491b8afd297141b85d39c6bc603c96469a"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values/colors.xml",
+      "bytes": 449,
+      "sha256": "15923f990c05f0d7a17f40b41408fd24b5b8b5a224e385c8590520cff861b6ff"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values/config_partner.xml",
+      "bytes": 378,
+      "sha256": "9e2b492d3fd776c9f5af4d1fc5d1abae2a6ab0e5df26ae531edb5b1ca6da4aef"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values/config.xml",
+      "bytes": 665,
+      "sha256": "425cb8b52614ca761ab6616598e26fa12d6bed20a8c44b14e332c5b1041548ca"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values/dimens.xml",
+      "bytes": 1047,
+      "sha256": "b34ac422b84f5e7bef2bc33d2658cf414036d7b21677dfafe954a2d6d78f92f9"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values/ids.xml",
+      "bytes": 309,
+      "sha256": "479499d26871df7f49f39bdc37dd56422204da0d353771dc83c18aec5ab6e069"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values/lambda.xml",
+      "bytes": 2478,
+      "sha256": "24326827c15270d4531631ff921f485e3d5d75d080b89db2d4cdf8ca3d874dda"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values/strings.xml",
+      "bytes": 6036,
+      "sha256": "b4b2ff5fa4498f1b300da25a3de7e97b0fbeb4ca27077e645bf13d2dcaf39465"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values/styles.xml",
+      "bytes": 2808,
+      "sha256": "d5adb3a94d3833643a52ac7d0c07e8447d0f7efa65da3a84ffc549934c8ce4c1"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-af/strings.xml",
+      "bytes": 1985,
+      "sha256": "2a03a7cc4c964ac7b994808b1ba158baadcbde45ce707cf4ab84bd62af7bc882"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-ar/strings.xml",
+      "bytes": 4720,
+      "sha256": "57480835b827e520f3154ea9537ae8c79aec2ae2a9e94b2836107ee584651cbd"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-as/strings.xml",
+      "bytes": 2797,
+      "sha256": "304bc43f8224aae2e30fc2df833b6b6781e4da612b0a68fea12f7f6d9e1a306c"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-ast-rES/strings.xml",
+      "bytes": 5082,
+      "sha256": "91bf5b1ffae42bb2f6c719cdbf089769be6613aa7b9dc73e181f28bcd626c9ff"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-az/strings.xml",
+      "bytes": 5534,
+      "sha256": "6106c9aded265e92ff2cd4fd5d5c520108de08f1ca3fadee339ed08aca058825"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-be/strings.xml",
+      "bytes": 2061,
+      "sha256": "48be0358ef5e258d14ab6410dd6222009914c60023b0d42a7fa4448b5aa6568d"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-bg/strings.xml",
+      "bytes": 7067,
+      "sha256": "047b2b7349a769c03a6b75508e8dc870a44eb61c53c94d327ad4607b2ef6a922"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-bn/strings.xml",
+      "bytes": 4764,
+      "sha256": "92fa853912f0a804f0f0c59d8afd06a7917d676435cc45bcbd7b11c1f6a4715e"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-bs/strings.xml",
+      "bytes": 416,
+      "sha256": "6d57a2a0b4370f8f808abda3406f4b3bd820f43601eff9c3af3db2e06add2254"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-ca/strings.xml",
+      "bytes": 5475,
+      "sha256": "345e178e342be2c914bb1663d73cdadbbec5cb10b39d40707ce2afb45fcad4ec"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-ckb/strings.xml",
+      "bytes": 6807,
+      "sha256": "b54504126282d67e4174be67cc5eeb1b5048ae701377e8392d936f31f85c2941"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-cs/strings.xml",
+      "bytes": 5242,
+      "sha256": "92ace36c42283d70eece4790b0ae7ba371863dcfcc119cb5ddf1ce8bea1e1dea"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-cy/strings.xml",
+      "bytes": 4711,
+      "sha256": "b56f03f92ea7feee4c5ea611a856dea544af81e1730d8e9e1ef87b3c14dd2288"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-da/strings.xml",
+      "bytes": 4730,
+      "sha256": "45f4d08d5c99b4c05b72b580835c686f27185b72895eab65d6498a4c6c957324"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-de/strings.xml",
+      "bytes": 5526,
+      "sha256": "61d8fd1591a73152cb530ba642002389232239ed62fa068433b03a5d435b5e9c"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-el/strings.xml",
+      "bytes": 7499,
+      "sha256": "b1c43ec7a8d3094b8a2a4ad90fc37ef0247cd2883ec082e1fa314e6bcd5c068f"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-en-rAU/strings.xml",
+      "bytes": 5033,
+      "sha256": "957b01ea8deb76e15898f99e449b3df203a4f2b9e280c2692b5552dbd07a36b8"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-en-rCA/strings.xml",
+      "bytes": 5033,
+      "sha256": "957b01ea8deb76e15898f99e449b3df203a4f2b9e280c2692b5552dbd07a36b8"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-en-rGB/strings.xml",
+      "bytes": 5033,
+      "sha256": "ba812f9c12739729949114fefcb53ccab21dc5a1005f7c6e8169024b0689e769"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-en-rIN/strings.xml",
+      "bytes": 5033,
+      "sha256": "957b01ea8deb76e15898f99e449b3df203a4f2b9e280c2692b5552dbd07a36b8"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-es/strings.xml",
+      "bytes": 5450,
+      "sha256": "c867c5b419c27fbf471d583db36d082dd7bfa48d49c06e8e4dbb9fe24d73c808"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-es-rMX/strings.xml",
+      "bytes": 356,
+      "sha256": "22400e9446ba0964de0d1117f259882b0e343ae1e4a1e80757526b67dd7074a2"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-es-rUS/strings.xml",
+      "bytes": 2254,
+      "sha256": "53470ca4ad4c586468d42a1f236cc7fad481bb4fb304207c9b77bef12f279096"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-et/strings.xml",
+      "bytes": 2169,
+      "sha256": "be4fda907021a48b98873e76f89f09bf4973217a4593f8a8ea97ef4d3c18d86e"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-eu/strings.xml",
+      "bytes": 2041,
+      "sha256": "b6dc28704e344adca6a5bd8ccbcd92059577ff7403e1caf5a0668df78d6ba1c9"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-fa/strings.xml",
+      "bytes": 6566,
+      "sha256": "a58b271e8bc10c6326f231e67178956326b649a83f41870e8d1b39a39e7995ba"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-fi/strings.xml",
+      "bytes": 2751,
+      "sha256": "5c09c090064d0ac869595eb1761d6cbcbdb5d41fad27b599553d92417c82c155"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-fr/strings.xml",
+      "bytes": 5715,
+      "sha256": "108a70cf95c28afbec628ab07fcd9fe199b29d2cf468a4263aca731bb3c7bf6b"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-fur-rIT/strings.xml",
+      "bytes": 5416,
+      "sha256": "44c139a324ab1ef7d71ef11ff6c1c7a03b85695a087d5a4c9a0e6b7138e4d668"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-fy-rNL/strings.xml",
+      "bytes": 2127,
+      "sha256": "e38cd1da589177747f03527195c824a3b650d301f2d938c891642224ef3bdcbe"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-ga-rIE/strings.xml",
+      "bytes": 5480,
+      "sha256": "f5876d3571480f26cf45f296d90bbf10651ecd6023f9a77e2ca4b57c2ec85ec1"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-gd/strings.xml",
+      "bytes": 4006,
+      "sha256": "a208834b18ab89965d6fecd95e92936cbe19e91b61889d9c76bfd05ba48d99a3"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-gl/strings.xml",
+      "bytes": 3770,
+      "sha256": "74e19a7fda024ec00513fe25ea41753a17fe839dab6d5d3b177de4bf64aed41e"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-gu/strings.xml",
+      "bytes": 2654,
+      "sha256": "433d42effc1344a5cbe95b450f9b8482beeb3f7860d69c8b0ec6ea66389a0ff5"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-hi/strings.xml",
+      "bytes": 2847,
+      "sha256": "3cd20a8f60c67e1a56de2af0adf488d95d312a9a2d6d899b6c7097c57f0baca4"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-hr/strings.xml",
+      "bytes": 2723,
+      "sha256": "4e4cf8e069f6010607c4d6710b3098fff5df57dc8de62011af068b43c6c76b2d"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-hu/strings.xml",
+      "bytes": 5612,
+      "sha256": "1d53e06f0ddcb333578c68707ab1387a991019b63dc9292b3cf405a7b3ac0829"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-in/strings.xml",
+      "bytes": 4719,
+      "sha256": "d3a71aef10f453626ad4cbb24e715243de5226a251c7fde963e2592a96ca0915"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-is/strings.xml",
+      "bytes": 5537,
+      "sha256": "6e2e66046e8e21ea4cb8b8268c8f546184da3433e8940f04ae963322fbfcbc8a"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-it/strings.xml",
+      "bytes": 5433,
+      "sha256": "b8c9ea304bb9b2f0c1bbead437e4338cda5e0d3c27368468f6cb90742cb40fd7"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-iw/strings.xml",
+      "bytes": 5940,
+      "sha256": "76b9501526ac59ad78c86263ddd541a2b4feddcdcb8c2be0042e4b44b6995df1"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-ja/strings.xml",
+      "bytes": 5886,
+      "sha256": "1730477ead716098316b3d9dbebd568a4e7357d183804f1003482b991f747835"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-ka/strings.xml",
+      "bytes": 8921,
+      "sha256": "9f8a0e55cfda17283a733fcddb2271a222109507231638d3adfdb206d7dbe07b"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-kab-rDZ/strings.xml",
+      "bytes": 1210,
+      "sha256": "fd3a7c106390673191797bd9055cab61e7162c4d4e9dbd37b8ff1c477ce80edb"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-kn/strings.xml",
+      "bytes": 3191,
+      "sha256": "b8a7bbb985af7de2bec5f54e7c4e87968348de7a189001728ab2d63afb84fb41"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-ko/strings.xml",
+      "bytes": 5458,
+      "sha256": "87f4bdb2b5d44d2010db08397c5ed33fc581b560ae9025df2e628a486e3541af"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-lb/strings.xml",
+      "bytes": 1799,
+      "sha256": "212deb6738e59e5f8b33ece9f2a9b6cf5e319e089087ae62573fe3588e64f4bf"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-lt/strings.xml",
+      "bytes": 1873,
+      "sha256": "5905dd6ec34045531a20dba72d6a6b90eb7d2bdf7634677e0e4b41ff342cd5ce"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-lv/strings.xml",
+      "bytes": 1840,
+      "sha256": "918dc0b0f6272b25f875870e6237af853b60ed90af8a123892c33a5246719c49"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-ml/strings.xml",
+      "bytes": 3251,
+      "sha256": "165161ce7aa9f1876a585104f88fa248c4a8130b676eb2ebf21681ba050c15c6"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-mr/strings.xml",
+      "bytes": 2825,
+      "sha256": "58d81a5c9720111e64e130218200b718c94db66a7aaaae2d31a40477c247055d"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-my/strings.xml",
+      "bytes": 6015,
+      "sha256": "395c5749b2f0f4ec3ed6308ba224b68a6432824990b2974e9c5e5e3e7f951bda"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-nb/strings.xml",
+      "bytes": 1962,
+      "sha256": "0b456e71b36082ccd6023c80a4e80d2eed73fe221d2190753efd13bb29b24fcb"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-night/colors.xml",
+      "bytes": 219,
+      "sha256": "82c130adb72b94d80a432c4b1e0f569aac1f7b0d482201858fc7b01317976d35"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-nl/strings.xml",
+      "bytes": 5289,
+      "sha256": "29fe42e3969856f2b68cab879447c658bd0c6313e145c8e1cc1d79ac335367ea"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-nn-rNO/strings.xml",
+      "bytes": 5030,
+      "sha256": "dc35ce69a85f20cec008ecb7bb51c87f99e527aaeefa8bdb2e30a649a4af5f6c"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-or/strings.xml",
+      "bytes": 3164,
+      "sha256": "e0ba9e3f87d2c4da8a858e7d743b1cf20a6e3fb34a8570d8611d1b3131096f60"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-pl/strings.xml",
+      "bytes": 5454,
+      "sha256": "ee2be3848928cdbd3aba3f60038c8441a416f976452c41eed8ebe42dd6e01189"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-pt-rBR/strings.xml",
+      "bytes": 5479,
+      "sha256": "fe08c4272ebd59022c2497c82e9ccfc0b731120e156a3c9a9ffa77260e4f6053"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-pt-rPT/strings.xml",
+      "bytes": 5551,
+      "sha256": "929ad78c7abdf2d9ff721e94f13ac416a275455a3074a3e2eb84859647c2af91"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-ro/strings.xml",
+      "bytes": 5510,
+      "sha256": "0b0fb40d1493bf58d7ffc9ebfcdfa384a070e8ccb38be0c2b443031960bf6f8b"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-ru/strings.xml",
+      "bytes": 6963,
+      "sha256": "63b1ce86d58fd0cc16b4e50864654ff4f308b9f10f636aa24fc72346a80f47e2"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-sc-rIT/strings.xml",
+      "bytes": 4118,
+      "sha256": "4043cd9184d52368dbb1efad3926b153fe79a8a7bae97fb2344149289c87b69b"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-sk/strings.xml",
+      "bytes": 2827,
+      "sha256": "2ec18cc96eea3f1871ca62699c5a2a04f22eb35fd7b7710d9f66aa372d747966"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-sl/strings.xml",
+      "bytes": 5229,
+      "sha256": "bd300a5457f07332f1dd26ec00790ad8c0426c1c07aa072048ecc1078f214c4f"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-sq/strings.xml",
+      "bytes": 5593,
+      "sha256": "2d3a6806c49c6025baf627238c38411f6e5d6593f57a8f40f76fed6b25b47107"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-sr/strings.xml",
+      "bytes": 2693,
+      "sha256": "b5a586a58fba4e86ded222d76306f4c72970e36ca6cb331ddcb2eac26221a8b3"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-sv/strings.xml",
+      "bytes": 2668,
+      "sha256": "f49219c1983f43a7700cdb96815ff1e8aa84576ddff854caa5513f7dc7b5cef2"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-ta/strings.xml",
+      "bytes": 9198,
+      "sha256": "b7f069c78763588212cbc14b80f8d216d917b619ee76466fe9f5ef4dd13eb2b8"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-te/strings.xml",
+      "bytes": 2997,
+      "sha256": "64c02d0eee54ec2c820c96ede271157422590e47080e4312905b0bd6e2010545"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-television/config.xml",
+      "bytes": 221,
+      "sha256": "9ecd1ff7c4d7c3cdaf83b4dae3ea4eeb567eeb942440b08011522df2ce8aa6fc"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-television/dimens.xml",
+      "bytes": 328,
+      "sha256": "34c1c698b996f7876e47318eb10853a3ed13989465ad6b6c1b8c190c492bea7a"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-television/styles.xml",
+      "bytes": 253,
+      "sha256": "3af67ca8175e8f088354673a5a06b4f6a9404cd9aa7db1fd4fdd7d6efa25b5ac"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-th/strings.xml",
+      "bytes": 3096,
+      "sha256": "4fb45a8164871dd9ee0c0bc39ce2c068153cfef41d026b2c2461f719bad1d3b3"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-tr/strings.xml",
+      "bytes": 5251,
+      "sha256": "bd41e05aa630c487fc2c6c319de56bc874e07077c9fd557ac925a5297a8d844e"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-ug/strings.xml",
+      "bytes": 6903,
+      "sha256": "44d606b627549a62c823d0a16e16e64c84c431119dfbfac6ab366afb742c3ce6"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-uk/strings.xml",
+      "bytes": 5140,
+      "sha256": "14b5f6e6f4b2ccaeb1b6445589ccf261a13e9d880afd4ba922ef8b56296e55a1"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-vi/strings.xml",
+      "bytes": 5859,
+      "sha256": "53b6380128efa799f79052c54b2832f4b478bf5160eb096b6fa086c7ce0ad50f"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-zh-rCN/strings.xml",
+      "bytes": 4871,
+      "sha256": "a2432593364fbe7ec76b5ef1a496b5a842580da8d29e9a98616b574072df1b14"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-zh-rHK/strings.xml",
+      "bytes": 1577,
+      "sha256": "018d43bdb0864b1990cfb7c0ccc075cf88866c44088446ad522929fd3bd1d537"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-zh-rTW/strings.xml",
+      "bytes": 4893,
+      "sha256": "4793666ce3330fea4a030918e2400fac680b88512560a30b98881591d2125255"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/REUSE.toml",
+      "bytes": 568,
+      "sha256": "65d1232a1f8e0f1c23f124a475d87bc983c0543ce015426125c76c269cbc01f5"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/src/org/lineageos/setupwizard/backup/RestoreIntroActivity.java",
+      "bytes": 2020,
+      "sha256": "a2b0e619cc4b25cd0a9a02c2d4a9fead32481fec05b048a9ee61e5704169ec5b"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/src/org/lineageos/setupwizard/BaseSetupWizardActivity.java",
+      "bytes": 11104,
+      "sha256": "af185a6fb77d4d91c81fd8fc36e952432ba8e05bed78d2e8b18eced339dd24dd"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/src/org/lineageos/setupwizard/BiometricActivity.java",
+      "bytes": 918,
+      "sha256": "05bb7bb785f9e8a1585b1bb93af93576f2cbfa056fe1bc39a7174a2eec9c671c"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/src/org/lineageos/setupwizard/BluetoothSetupActivity.java",
+      "bytes": 1913,
+      "sha256": "2c437332d93586a81b85b2dbb059dc88e99e91021a44c3de1ddb07460558a600"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/src/org/lineageos/setupwizard/DateTimeActivity.java",
+      "bytes": 11792,
+      "sha256": "781bf380fa1ac054d3a6b6a7a6d14b524c8786a08f7d50a02dde3100ef6db998"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/src/org/lineageos/setupwizard/DeviceSpecificActivity.java",
+      "bytes": 827,
+      "sha256": "cff83c5dd1bbed34be2362a7ce2c70c47e390e8a05e7781e989cbcbc97733200"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/src/org/lineageos/setupwizard/FinishActivity.java",
+      "bytes": 8352,
+      "sha256": "eac7182499aa6adab0ec1c5eeaa04a355fdba08322edbb5cea452884146235a8"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/src/org/lineageos/setupwizard/LambdaAppGlyph.java",
+      "bytes": 4622,
+      "sha256": "e32227e83963c8342f8050697bb8326af35cba572bc22b8d373a3d24c34edcd2"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/src/org/lineageos/setupwizard/LambdaBackground.java",
+      "bytes": 2990,
+      "sha256": "93c444efd0cdd69377b0c09cf2129d7db8ea435f03f4ce27f1562c04a8119051"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/src/org/lineageos/setupwizard/LambdaInitialWallpaper.java",
+      "bytes": 2221,
+      "sha256": "6142e9832d09f6b0cd33f05a5aec9fdd41438a4a2be87e0444aa47e754ee4a5d"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/src/org/lineageos/setupwizard/LambdaLanguageWheel.java",
+      "bytes": 1960,
+      "sha256": "1514e33e39c5baa354b7cad832df1f0f2d529d81df5c2bbf7c7466566a0a617f"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/src/org/lineageos/setupwizard/LambdaNetworkOptions.java",
+      "bytes": 4702,
+      "sha256": "18873bb68738a6ba1349d8b4eaa9aa095003b25f6675312bf1082a910c6b982d"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/src/org/lineageos/setupwizard/LambdaSetupActivity.java",
+      "bytes": 65147,
+      "sha256": "067515f18e9f2629b5e91384fbe19bec0a631d9289cbf54e1285ac4e0e0718ab"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/src/org/lineageos/setupwizard/LambdaUi.java",
+      "bytes": 24407,
+      "sha256": "039aaa813711e2de3af3ad817d00b2b9d36889566f4a82b83d104045741626ce"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/src/org/lineageos/setupwizard/LambdaWallpaperPolicy.java",
+      "bytes": 544,
+      "sha256": "6c2ce6b0aa0f0c6082ef5003ede741ae5d296c133bfbe19909c7e9e2244be6c8"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/src/org/lineageos/setupwizard/LambdaWifiInput.java",
+      "bytes": 622,
+      "sha256": "b8a49d5eaed6975b5baa3bd27251b5a72d00bd188c4f14434c46c4313cdfb23e"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/src/org/lineageos/setupwizard/LambdaWindow.java",
+      "bytes": 2440,
+      "sha256": "ae24a89bcab087e1710073b7110044c347319f6fd3006a17aaa0037032d5e0de"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/src/org/lineageos/setupwizard/LineageSettingsActivity.java",
+      "bytes": 5290,
+      "sha256": "90fd7079c93f00a3c01d6482f3490448c0a273358f45e5c25fdfab48732ec071"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/src/org/lineageos/setupwizard/LocaleActivity.java",
+      "bytes": 9122,
+      "sha256": "5731bf72cb706ec691315a7af525f75b5f28c696dba54d6a03d7b2b440f48ded"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/src/org/lineageos/setupwizard/LocationSettingsActivity.java",
+      "bytes": 2796,
+      "sha256": "8497fb211485f6b98edcf54ffe47435c80c0687212e4b417e97da585c944c42c"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/src/org/lineageos/setupwizard/NavigationLayout.java",
+      "bytes": 2073,
+      "sha256": "378b427c0680a77b185d8bf90e91b4fb657fd02c95ca28403549d0300630fc09"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/src/org/lineageos/setupwizard/NavigationSettingsActivity.java",
+      "bytes": 5615,
+      "sha256": "b557ce01f664468fe1ec2215e62a8bc8f0ba476fc7ea4ae61a1428be8fd24fdf"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/src/org/lineageos/setupwizard/NetworkSetupActivity.java",
+      "bytes": 1712,
+      "sha256": "32e28c54506ace90c07c3b188d98c31cc6b13dbe6cee6ec01ecb5b3e2f806a5d"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/src/org/lineageos/setupwizard/PartnerReceiver.java",
+      "bytes": 407,
+      "sha256": "4bf67a70b172e9ddb8f21b2e04571457bbe47c332d7cb0be5e06967df815deb1"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/src/org/lineageos/setupwizard/ScreenLockActivity.java",
+      "bytes": 549,
+      "sha256": "2931ff264270500d6f79ae0b7f596fe3ddedb8a33aaef8fea7384b990ded22b3"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/src/org/lineageos/setupwizard/SetupWizardActivity.java",
+      "bytes": 2253,
+      "sha256": "5ad2cb1a3873b7dec0f602df27dcf3e31a71df94f5e6eea895806c1e6eefe6cd"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/src/org/lineageos/setupwizard/SetupWizardApp.java",
+      "bytes": 3475,
+      "sha256": "b6b104811f95ae99f67e00a814e44c192e933af83aeb61fba19f1598cbef406f"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/src/org/lineageos/setupwizard/SimMissingActivity.java",
+      "bytes": 2036,
+      "sha256": "4a4e19a029ebc5dd126a04008a49dba6776f8f8e4198ca8ef3c10ed1dc16ce6a"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/src/org/lineageos/setupwizard/SubBaseActivity.java",
+      "bytes": 3852,
+      "sha256": "151e02aac900b8480dc04c7d154a42bdf2837efb8622545f67ff8752ac770141"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/src/org/lineageos/setupwizard/ThemeSettingsActivity.java",
+      "bytes": 1632,
+      "sha256": "f819ecf19a30a4eed66a969f547a71d51959bb90e6ccd048ed6d667346fac8f1"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/src/org/lineageos/setupwizard/UpdateRecoveryActivity.java",
+      "bytes": 2826,
+      "sha256": "10a3625d4b3caeb445cb202ab5cfa786a02096037f46629e3ebe4bbc44dcfe27"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/src/org/lineageos/setupwizard/util/SetupWizardUtils.java",
+      "bytes": 15522,
+      "sha256": "ee1df8cd049107ce4e38a8c8a23964b2cdb9c4d11ae91afd84c96f9c4c493695"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/src/org/lineageos/setupwizard/WelcomeActivity.java",
+      "bytes": 2884,
+      "sha256": "c207a1c57759e212f64b648a5921b25956f8f51e5f3cd243d186a52ad114dbb4"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/src/org/lineageos/setupwizard/widget/LocalePicker.java",
+      "bytes": 94993,
+      "sha256": "80291c00e5f8705b2738dc8d514f45afb674ad41ff384b298845d7b6e0751ab6"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/src/org/lineageos/setupwizard/wizardmanager/WizardAction.java",
+      "bytes": 5551,
+      "sha256": "f3dc4afd02f4d8409b813e33f4b95f3277e41546da9dded8dca1c683f31e3d43"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/src/org/lineageos/setupwizard/wizardmanager/WizardManager.java",
+      "bytes": 6908,
+      "sha256": "20191a63b94147da7c8773b40ca3f01cc788be10444a643fdaec083e604de38d"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/src/org/lineageos/setupwizard/wizardmanager/WizardScript.java",
+      "bytes": 7501,
+      "sha256": "dce927ab19f30d0bc9adb32cf469aa9c319fd1c0228d2cf7bb860335c25a71c5"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/src/org/lineageos/setupwizard/wizardmanager/WizardTransitions.java",
+      "bytes": 2781,
+      "sha256": "4a4c05b38143e40b567c1637057253321c90c003de707a984cfac1211becb0bd"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/start_lineage_wizard_with_gms.sh",
+      "bytes": 563,
+      "sha256": "559c5accff65f80fdd332cc1a00a1c8aff1947f459fe097cd9af4d4667f2d03f"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/start_lineage_wizard.sh",
+      "bytes": 660,
+      "sha256": "16d49dbc11ce25367af3e6433f3aefb84af0c5c04b79a029b4926e268966e975"
+    },
+    {
+      "path": "alpha/manifests/beyond1lte.xml",
+      "bytes": 1773,
+      "sha256": "de70c673440d092a7349bdb324ce616f5e2368db3bc4db5b17cf2358c3d0d4cd"
+    },
+    {
+      "path": "alpha/patches/exynos9820-lambda-touch-vintf.patch",
+      "bytes": 510,
+      "sha256": "d97bb55324b5479999a771d5ce7405cd1765953b7c9f3839202802dd23b0344e"
+    },
+    {
+      "path": "alpha/patches/lineage-bootanimation-input.patch",
+      "bytes": 559,
+      "sha256": "6f49500cd317e74b363f6d3c43da6e1ce487acce87cf1e8f811a4405d0fac74e"
+    },
+    {
+      "path": "alpha/patches/lineage-build-manifest-repo-cache.patch",
+      "bytes": 637,
+      "sha256": "f7f118ebfd9e4eb41ad85d9da10e3e991f445d43015fa737ba34d3384c873cc3"
+    },
+    {
+      "path": "alpha/patches/lineage-build-manifest-xdg-cache.patch",
+      "bytes": 784,
+      "sha256": "0e45fa826a299c94a6a86b66ca94da1acb73cfcf8a5762946f6a7df395193447"
+    },
+    {
+      "path": "alpha/patches/seedvault-lambda-native.patch",
+      "bytes": 716,
+      "sha256": "17a2d8f788fadc00a0d68ec021fae06ab620be0484df38175c67907d4cc13d5a"
+    },
+    {
+      "path": "alpha/patches/settings-lambda-accessibility-dialog.patch",
+      "bytes": 647,
+      "sha256": "04395d6130fbf20230ff93eca08ed8b01a8018b4c00b616bfa350db13d3fe05f"
+    },
+    {
+      "path": "alpha/patches/settings-lambda-fingerprint-copy.patch",
+      "bytes": 1734,
+      "sha256": "626c9eff60e4da6f9178a07e7e4323514969e87f73eb9b8d7bba1687f0a2dea4"
+    },
+    {
+      "path": "alpha/patches/settings-lambda-fingerprint-decline.patch",
+      "bytes": 2266,
+      "sha256": "2b98bfada9a1750613669af88ec854eaa42b44e8117434bb52fe13c89575588d"
+    },
+    {
+      "path": "alpha/patches/settings-lambda-fingerprint-focus.patch",
+      "bytes": 1068,
+      "sha256": "611f2a2dc2d095c8e0bc7289b6d7266e2e2a03e4e7b9d11b192569851a4f231d"
+    },
+    {
+      "path": "alpha/patches/settings-lambda-native.patch",
+      "bytes": 5156,
+      "sha256": "dd8920f78948f6e6b99189333259a1e3934a63ea56474e21b6688d74f101078b"
+    },
+    {
+      "path": "alpha/patches/settings-lambda-no-lock.patch",
+      "bytes": 1473,
+      "sha256": "cdf1620f9cc9b63d227632a3c71b6b1a204274d2605fead8e118dbbf99bf698d"
+    },
+    {
+      "path": "alpha/patches/settings-lambda-setup.patch",
+      "bytes": 2346,
+      "sha256": "9d8df6e470c3b5c6f748f23a9afedb3355a71da090d36e78d152946fbea067fb"
+    },
+    {
+      "path": "alpha/patches/settings-lambda-wifi-picker.patch",
+      "bytes": 965,
+      "sha256": "83dd435ba287e680dca0654b8c671ecee2ec5ae6d64c7c5edd8503f7074554e1"
+    },
+    {
+      "path": "alpha/patches/systemui-lambda-keyguard.patch",
+      "bytes": 77451,
+      "sha256": "93ac49b62d3364dd98318cd4e50acc2e7ddde0dec890548ab7d7da5803203aba"
+    },
+    {
+      "path": "alpha/patches/telephony-lambda-native.patch",
+      "bytes": 723,
+      "sha256": "85beb536d47e3705780eb2ed0f1d3ab9a6a6568b5a7754784d06811a00033b88"
+    },
+    {
+      "path": "alpha/platform/common/lambda_native.xml",
+      "bytes": 1941,
+      "sha256": "fee1985475d1f9e63f3478722a3ddc9376a3da74464e9fd02a4e42c74d66813c"
+    },
+    {
+      "path": "alpha/platform/common/LambdaNativeUi.java.in",
+      "bytes": 20639,
+      "sha256": "ed59e9775316d0c338942bfa1dcba1d75721685d9a279b25be34c57bd34b5ec2"
+    },
+    {
+      "path": "alpha/platform/Seedvault/app/src/main/java/com/stevesoltys/seedvault/LambdaNativeUi.java",
+      "bytes": 20655,
+      "sha256": "197e94fb1b3c778cc11ad2689d1a7cc8776aed120b992af99683501be9824032"
+    },
+    {
+      "path": "alpha/platform/Seedvault/app/src/main/java/com/stevesoltys/seedvault/LambdaSetupBackground.java",
+      "bytes": 3005,
+      "sha256": "fc6dbde0c5736eecad4f5cc2a5b19e7209073e8baa24953099e704d6562678a3"
+    },
+    {
+      "path": "alpha/platform/Seedvault/app/src/main/res/font/lambda_bold.otf",
+      "bytes": 83264,
+      "sha256": "7f33328e6b4d4cd21b45fa625791928c9407dc702db6780e56b09ca9a3ecaa67"
+    },
+    {
+      "path": "alpha/platform/Seedvault/app/src/main/res/font/lambda_regular.otf",
+      "bytes": 82264,
+      "sha256": "7c25be4d78155523080ab85b10277150657ff7dabbcad7037bdd536c9b6d0d08"
+    },
+    {
+      "path": "alpha/platform/Seedvault/app/src/main/res/raw/lambda_font_license.txt",
+      "bytes": 52517,
+      "sha256": "1315a62758a603a3e6e87a79b8389563789c59c1740b9db8bc2b20e2e2145458"
+    },
+    {
+      "path": "alpha/platform/Seedvault/app/src/main/res/values/lambda_native.xml",
+      "bytes": 1941,
+      "sha256": "fee1985475d1f9e63f3478722a3ddc9376a3da74464e9fd02a4e42c74d66813c"
+    },
+    {
+      "path": "alpha/platform/Seedvault/app/src/main/res/values/lambda_restore.xml",
+      "bytes": 1273,
+      "sha256": "30081ce4cda3c149864d1b89abdfd79f3c82bd89cac29164ae3407998d8c7d6f"
+    },
+    {
+      "path": "alpha/platform/Settings/res/drawable/lambda_fingerprint_enroll_finish_light.xml",
+      "bytes": 4092,
+      "sha256": "f2074d2f8fe42d68a2be404134fa6a8c887ae4e77cb938d1aa8546ee19b5a1c9"
+    },
+    {
+      "path": "alpha/platform/Settings/res/drawable/lambda_fingerprint_enroll_finish.xml",
+      "bytes": 4092,
+      "sha256": "1bd4f6e4fc0543d3c138785576db14d241858b740c5bd0493df37f379fe991f2"
+    },
+    {
+      "path": "alpha/platform/Settings/res/drawable/lambda_setup_background.xml",
+      "bytes": 166,
+      "sha256": "0b7c70be9ae7d8b3a003fdd983d43abd3f6c39f0ab25e0a295dd9ff52cf2328f"
+    },
+    {
+      "path": "alpha/platform/Settings/res/font/lambda_bold.otf",
+      "bytes": 83264,
+      "sha256": "7f33328e6b4d4cd21b45fa625791928c9407dc702db6780e56b09ca9a3ecaa67"
+    },
+    {
+      "path": "alpha/platform/Settings/res/font/lambda_regular.otf",
+      "bytes": 82264,
+      "sha256": "7c25be4d78155523080ab85b10277150657ff7dabbcad7037bdd536c9b6d0d08"
+    },
+    {
+      "path": "alpha/platform/Settings/res/raw/lambda_font_license.txt",
+      "bytes": 52517,
+      "sha256": "1315a62758a603a3e6e87a79b8389563789c59c1740b9db8bc2b20e2e2145458"
+    },
+    {
+      "path": "alpha/platform/Settings/res/values/lambda_fingerprint.xml",
+      "bytes": 753,
+      "sha256": "79eb17fac4c4734e5bc6afa1a9f1e644d2cc5483cf4614f0a30c1a9dd18a787f"
+    },
+    {
+      "path": "alpha/platform/Settings/res/values/lambda_native.xml",
+      "bytes": 1941,
+      "sha256": "fee1985475d1f9e63f3478722a3ddc9376a3da74464e9fd02a4e42c74d66813c"
+    },
+    {
+      "path": "alpha/platform/Settings/res/values/lambda_setup.xml",
+      "bytes": 6480,
+      "sha256": "f6426650eb037eec9d8ecaf2f0883d78e38aaee2f50b6990b0bd53079b183493"
+    },
+    {
+      "path": "alpha/platform/Settings/res/values-es/lambda_fingerprint.xml",
+      "bytes": 775,
+      "sha256": "a45736859a28238d6f73019baa21fd0f72de61cd0c5e51d20393340cbef42d41"
+    },
+    {
+      "path": "alpha/platform/Settings/res/values-es/lambda_setup.xml",
+      "bytes": 125,
+      "sha256": "10ed96146a8e69ea6a3a76be0701e7121d6ec35debd7ad686f372327378822f2"
+    },
+    {
+      "path": "alpha/platform/Settings/src/com/android/settings/LambdaAccessibilityUi.java",
+      "bytes": 4566,
+      "sha256": "6452c96a807d2fe37f4b6ff3effd3ee5c3d46fda67ce9cc35a6d576db2d5e9dd"
+    },
+    {
+      "path": "alpha/platform/Settings/src/com/android/settings/LambdaNativeUi.java",
+      "bytes": 20650,
+      "sha256": "83802c48083ff94b3202346eb32a51e06a6973a2bf8ec997c274c59eabcd7187"
+    },
+    {
+      "path": "alpha/platform/Settings/src/com/android/settings/LambdaSetupBackground.java",
+      "bytes": 3026,
+      "sha256": "b834dafaedf6d539b614cd9a855bef29162b78f352c588837c7cc4f9ee7442f4"
+    },
+    {
+      "path": "alpha/platform/SystemUI/customization/res/drawable/lambda_clock_analog_thumbnail.xml",
+      "bytes": 490,
+      "sha256": "ad9ad8f86588e7b7f1d7d67b99bc0c39110cd16ff0de680baed6ed7611b605f1"
+    },
+    {
+      "path": "alpha/platform/SystemUI/customization/res/drawable/lambda_clock_stacked_thumbnail.xml",
+      "bytes": 428,
+      "sha256": "caf4787150a02d97a6d5d44d3e431f7c9a5cd6cf07a98b26edcef6be13ebdca5"
+    },
+    {
+      "path": "alpha/platform/SystemUI/customization/res/font/lambda_clock_display.ttf",
+      "bytes": 359680,
+      "sha256": "f50dda4cea2a6407730ed2a12c9190e065666c409efb95f15d0d0baf10cd47bd"
+    },
+    {
+      "path": "alpha/platform/SystemUI/customization/res/font/lambda_clock_regular.otf",
+      "bytes": 82264,
+      "sha256": "7c25be4d78155523080ab85b10277150657ff7dabbcad7037bdd536c9b6d0d08"
+    },
+    {
+      "path": "alpha/platform/SystemUI/customization/res/layout/lambda_clock_stacked.xml",
+      "bytes": 453,
+      "sha256": "ddad778748dd153fc9afa39213a07c391c03f9110fc67a370c195f2159948e56"
+    },
+    {
+      "path": "alpha/platform/SystemUI/customization/res/raw/lambda_clock_font_license.txt",
+      "bytes": 52517,
+      "sha256": "1315a62758a603a3e6e87a79b8389563789c59c1740b9db8bc2b20e2e2145458"
+    },
+    {
+      "path": "alpha/platform/SystemUI/customization/res/values/lambda_clocks.xml",
+      "bytes": 229,
+      "sha256": "b830fac8248215226e94c903033f3e169be42776e5d4e69bbaf266922ec0618d"
+    },
+    {
+      "path": "alpha/platform/SystemUI/customization/res/values-es/lambda_clocks.xml",
+      "bytes": 236,
+      "sha256": "e6c1af31d0e9c58f86c8a524cdc68d686c16cf31740ec1e4a6f292d720f55807"
+    },
+    {
+      "path": "alpha/platform/SystemUI/customization/src/com/android/systemui/shared/clocks/LambdaAnalogClockController.kt",
+      "bytes": 6677,
+      "sha256": "16e8db49784943f061439e1f0b50a05710beffba0f773425270e2809ce417ddb"
+    },
+    {
+      "path": "alpha/platform/SystemUI/licenses/fingerprint-recognition.txt",
+      "bytes": 399,
+      "sha256": "b748b7901819af8a27e4db1291b9889932e5ffb36b227c11e67411050883e574"
+    },
+    {
+      "path": "alpha/platform/SystemUI/licenses/Montserrat-LICENSE.txt",
+      "bytes": 4820,
+      "sha256": "053dc408fb2effa6fb9ba761edb76fd0d28a9a3d3c7dc7595ba861098fbcebb0"
+    },
+    {
+      "path": "alpha/platform/SystemUI/res/drawable/lambda_bouncer_background.xml",
+      "bytes": 398,
+      "sha256": "9ac57a179504d088772182a69db52a7c2c5d16c17cf3f39333533ae67f6c8e12"
+    },
+    {
+      "path": "alpha/platform/SystemUI/res/drawable/lambda_fingerprint_recognition.xml",
+      "bytes": 2057,
+      "sha256": "418209a21c32956a3220e2d7de7c70ebba668ed2fd70d95b68d0fbab646cf96e"
+    },
+    {
+      "path": "alpha/platform/SystemUI/res/drawable/lambda_keyguard_enter.xml",
+      "bytes": 381,
+      "sha256": "ffd88d067c3aec42c29efc4f57f6e29575b5e4858a2b9b04e3ce28ed02cb7404"
+    },
+    {
+      "path": "alpha/platform/SystemUI/res/drawable/lambda_keyguard_lock.xml",
+      "bytes": 359,
+      "sha256": "84f48f8909343deb151dd5dacf37c140dead534996067e4b23b043c274f76620"
+    },
+    {
+      "path": "alpha/platform/SystemUI/res/drawable/lambda_pin_empty_avd.xml",
+      "bytes": 803,
+      "sha256": "1b0bc761138810332aac89e04695bd7d36880901f2819adc74e06210aa6a45fb"
+    },
+    {
+      "path": "alpha/platform/SystemUI/res/drawable/lambda_pin_filled_avd.xml",
+      "bytes": 803,
+      "sha256": "5a33aa3acaa2a35723c3a5d66e685d416e6e64778eb661c9d39a7ce091e5b9c1"
+    },
+    {
+      "path": "alpha/platform/SystemUI/res/font/lambda_keyguard_regular.otf",
+      "bytes": 82264,
+      "sha256": "7c25be4d78155523080ab85b10277150657ff7dabbcad7037bdd536c9b6d0d08"
+    },
+    {
+      "path": "alpha/platform/SystemUI/res/layout/lambda_keyguard_heading.xml",
+      "bytes": 363,
+      "sha256": "6d23e17c6da08975bf8ae2cb2dc8d19d490f76efd6c35a26373fb3a9bc0e707e"
+    },
+    {
+      "path": "alpha/platform/SystemUI/res/raw/lambda_keyguard_font_license.txt",
+      "bytes": 52517,
+      "sha256": "1315a62758a603a3e6e87a79b8389563789c59c1740b9db8bc2b20e2e2145458"
+    },
+    {
+      "path": "alpha/platform/SystemUI/res/values/lambda_clock.xml",
+      "bytes": 362,
+      "sha256": "d9c85f0ec165a870187c2082ec84a86edef670ec67c8318447c91713ea1fcdda"
+    },
+    {
+      "path": "alpha/platform/SystemUI/res/values/lambda_keyguard.xml",
+      "bytes": 1451,
+      "sha256": "4823d9f906a2a59ef840a0e7ef5c7513c691f5bd4f3e92b5af906d52eaf4e240"
+    },
+    {
+      "path": "alpha/platform/SystemUI/res/values/lambda_shade.xml",
+      "bytes": 815,
+      "sha256": "7c3c3e12ad962eb16f34f09be0c9c7cdf8c468de0ef74aac88f9010d4fef3e9c"
+    },
+    {
+      "path": "alpha/platform/Telephony/res/font/lambda_bold.otf",
+      "bytes": 83264,
+      "sha256": "7f33328e6b4d4cd21b45fa625791928c9407dc702db6780e56b09ca9a3ecaa67"
+    },
+    {
+      "path": "alpha/platform/Telephony/res/font/lambda_regular.otf",
+      "bytes": 82264,
+      "sha256": "7c25be4d78155523080ab85b10277150657ff7dabbcad7037bdd536c9b6d0d08"
+    },
+    {
+      "path": "alpha/platform/Telephony/res/raw/lambda_font_license.txt",
+      "bytes": 52517,
+      "sha256": "1315a62758a603a3e6e87a79b8389563789c59c1740b9db8bc2b20e2e2145458"
+    },
+    {
+      "path": "alpha/platform/Telephony/res/values/lambda_native.xml",
+      "bytes": 1941,
+      "sha256": "fee1985475d1f9e63f3478722a3ddc9376a3da74464e9fd02a4e42c74d66813c"
+    },
+    {
+      "path": "alpha/platform/Telephony/src/com/android/phone/LambdaNativeUi.java",
+      "bytes": 20647,
+      "sha256": "ea609b274a41cc1f8d99fbd5b47c24fe4eaf05be12ffe91cdb9f070601451ef5"
+    },
+    {
+      "path": "alpha/platform/Telephony/src/com/android/phone/LambdaSetupBackground.java",
+      "bytes": 2997,
+      "sha256": "93ce1275d9a17138d4e5c2ffe27f5bf664a6c7e6e68d29ac7e2159f562c5c416"
+    },
+    {
+      "path": "alpha/retired/dialogs-ui16/alpha/platform/SystemUI/res/values/lambda_controls_strings.xml",
+      "bytes": 3218,
+      "sha256": "6204131e34098180b79e9f6aac7bab48dacda5489e26b66b3ca51f08a7cb272a"
+    },
+    {
+      "path": "alpha/retired/dialogs-ui16/alpha/platform/SystemUI/res/values/lambda_controls.xml",
+      "bytes": 1181,
+      "sha256": "9f6f0ea6aad218a07aec9b5bde19f7252882769f1f69d64c1c6944043185600c"
+    },
+    {
+      "path": "alpha/retired/dialogs-ui16/alpha/platform/SystemUI/res/values-es/lambda_controls_strings.xml",
+      "bytes": 3338,
+      "sha256": "1b6153b9fe727c190edd83f55bf5e72a3dbfe4ef468d1fd4f6d36640d4843d8b"
+    },
+    {
+      "path": "alpha/retired/dialogs-ui16/alpha/platform/SystemUI/src/com/android/systemui/qs/tiles/dialog/LambdaControlSheet.java",
+      "bytes": 14112,
+      "sha256": "f6a4de82ea1cd7630dabbd0eeb23684c110b93991469faff15c30e4928cb990e"
+    },
+    {
+      "path": "alpha/retired/dialogs-ui16/alpha/platform/SystemUI/src/com/android/systemui/qs/tiles/dialog/LambdaQuickControls.java",
+      "bytes": 23106,
+      "sha256": "d3de826b988382a4d35e4d4c574a012abfa8c0602ae669db6a354bbfcfe995ec"
+    },
+    {
+      "path": "alpha/scripts/build_lambda.py",
+      "bytes": 4011,
+      "sha256": "b2b4206707f685e42639bed929e8c5212031a0d2cca53b0bd9b2b3750324fd57"
+    },
+    {
+      "path": "alpha/scripts/compare_apk_payload.py",
+      "bytes": 1255,
+      "sha256": "7b931e13eb0574230168c1f2030f7f7aa4c36919c18c9f1fea5b6e42b949cb75"
+    },
+    {
+      "path": "alpha/scripts/stage_systemui.sh",
+      "bytes": 3963,
+      "sha256": "ca3ee57a84e6b485a20b1bfbf39113a1db62e26b9ac2f1fa97b25006cebf0257"
+    },
+    {
+      "path": "alpha/scripts/stage_touch_hal.sh",
+      "bytes": 1143,
+      "sha256": "4cf1acfa6df698a02c844eb6532335e84ea7e458e82d90292eb9bd344deaab0d"
+    },
+    {
+      "path": "alpha/scripts/verify_touch_manifest.py",
+      "bytes": 1509,
+      "sha256": "7b6c5cb7e7bcfe22f5dc776a2adfe8e05eb19e4de0e42ed74a3b1e3486325742"
+    },
+    {
+      "path": "alpha/vendor/lambda/Android.bp",
+      "bytes": 238,
+      "sha256": "83f9ec9abbbb9897fd5874f41b48e22e7ed0c5844b4cfef65193603b8b9bbc28"
+    },
+    {
+      "path": "alpha/vendor/lambda/AndroidProducts.mk",
+      "bytes": 206,
+      "sha256": "5280cfa6b73c8c545abfa2b15b7a2690a682245e5aac440c179faedbe4058760"
+    },
+    {
+      "path": "alpha/vendor/lambda/config/common.mk",
+      "bytes": 1393,
+      "sha256": "dc976e65446ae153b5916725a47f1b5a9f0a50cfe13d39a70d4e43bf946b5ff3"
+    },
+    {
+      "path": "alpha/vendor/lambda/config/init.lambda.adb.rc",
+      "bytes": 480,
+      "sha256": "cf74db8054f684e574f125efc66c39e0328fc2082d7220ade57ce2bf4a242087"
+    },
+    {
+      "path": "alpha/vendor/lambda/overlays/LambdaAccessibilityFramework/Android.bp",
+      "bytes": 156,
+      "sha256": "0908c61dea8f8a769ab8e40c3832c381f2f4a3d3c90a105ef6c1737ea1ccd3d0"
+    },
+    {
+      "path": "alpha/vendor/lambda/overlays/LambdaAccessibilityFramework/AndroidManifest.xml",
+      "bytes": 497,
+      "sha256": "540c7c78b34e15782c63a232d0111c5dee80a297aef2cedcb667e7b0ec777588"
+    },
+    {
+      "path": "alpha/vendor/lambda/overlays/LambdaAccessibilityFramework/res/values/colors.xml",
+      "bytes": 221,
+      "sha256": "0ee0c2996d22bb3ee169cbff87688860376365156f43c463ca6bd8f6e4660932"
+    },
+    {
+      "path": "alpha/vendor/lambda/overlays/LambdaAccessibilitySystemUI/Android.bp",
+      "bytes": 155,
+      "sha256": "aa1dc499686e6a114155ecb0d3251e0945dc9db2b8960f68fcc6a23adc3ce437"
+    },
+    {
+      "path": "alpha/vendor/lambda/overlays/LambdaAccessibilitySystemUI/AndroidManifest.xml",
+      "bytes": 510,
+      "sha256": "52ef01ef484b1e8c557f4cdd439e02a183ce3aa530c6bca740649eabac22647b"
+    },
+    {
+      "path": "alpha/vendor/lambda/overlays/LambdaAccessibilitySystemUI/res/values/colors.xml",
+      "bytes": 516,
+      "sha256": "f3520dcfc546b43abc958ceb8cd938866d3725a0469614833c2863ed1e2d2e25"
+    },
+    {
+      "path": "alpha/vendor/lambda/overlays/LambdaAccessibilitySystemUI/res/values-night/colors.xml",
+      "bytes": 376,
+      "sha256": "3c5b9c3ad46dbe12c9799dc3b7672920d1b05b104d37c96debfed72c1a01019e"
+    },
+    {
+      "path": "alpha/vendor/lambda/products/lineage_lambda_beyond1lte.mk",
+      "bytes": 708,
+      "sha256": "b7dd092620448d4468f9445fa3b280421b6bdfa5d5ebf2891a6011d10195c08c"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="lambda_fingerprint_intro">Desbloquea tu teléfono y confirma tu identidad en aplicaciones compatibles con tu huella digital.</string>
+    <string name="lambda_fingerprint_fallback">La huella complementa tu bloqueo de pantalla. Tras reiniciar, y cuando Android lo solicite, utiliza tu PIN, patrón o contraseña.</string>
+    <string name="lambda_fingerprint_control">Puedes añadir o eliminar huellas desde Ajustes. Registra solo tus propios dedos si quieres mantener el acceso personal.</string>
+    <string name="lambda_fingerprint_screen">Mantén limpios y secos el dedo y la pantalla. Si utilizas un protector, comprueba que sea compatible con el sensor de huella del Galaxy S10.</string>
+</resources>

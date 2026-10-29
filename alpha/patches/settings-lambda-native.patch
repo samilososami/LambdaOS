@@ -1,0 +1,89 @@
+diff --git a/src/com/android/settings/core/SettingsBaseActivity.java b/src/com/android/settings/core/SettingsBaseActivity.java
+--- a/src/com/android/settings/core/SettingsBaseActivity.java
++++ b/src/com/android/settings/core/SettingsBaseActivity.java
+@@ -84,6 +84,20 @@
+     @Override
++    protected void onApplyThemeResource(android.content.res.Resources.Theme theme, int resid, boolean first) {
++        super.onApplyThemeResource(theme, resid, first);
++        if (com.android.settings.LambdaNativeUi.isEnabled(this)) {
++            theme.applyStyle(R.style.LambdaNativeOverlay, true);
++        }
++    }
++
++    @Override
++    protected void onPostResume() {
++        super.onPostResume();
++        com.android.settings.LambdaNativeUi.install(this);
++    }
++
++    @Override
+     public CategoryMixin getCategoryMixin() {
+         return mCategoryMixin;
+     }
+diff --git a/src/com/android/settings/password/ChooseLockPattern.java b/src/com/android/settings/password/ChooseLockPattern.java
+--- a/src/com/android/settings/password/ChooseLockPattern.java
++++ b/src/com/android/settings/password/ChooseLockPattern.java
+@@ -171,7 +171,9 @@
+     protected void onCreate(Bundle savedInstanceState) {
+-        if (ThemeHelper.shouldApplyGlifExpressiveStyle(getApplicationContext())) {
++        if (com.android.settings.LambdaNativeUi.isEnabled(this)) {
++            setTheme(R.style.LambdaSetupTheme);
++        } else if (ThemeHelper.shouldApplyGlifExpressiveStyle(getApplicationContext())) {
+             if (!ThemeHelper.trySetSuwTheme(this)) {
+diff --git a/src/com/android/settings/password/ChooseLockPassword.java b/src/com/android/settings/password/ChooseLockPassword.java
+--- a/src/com/android/settings/password/ChooseLockPassword.java
++++ b/src/com/android/settings/password/ChooseLockPassword.java
+@@ -215,7 +215,9 @@
+     protected void onCreate(Bundle savedInstanceState) {
+-        if (ThemeHelper.shouldApplyGlifExpressiveStyle(getApplicationContext())) {
++        if (com.android.settings.LambdaNativeUi.isEnabled(this)) {
++            setTheme(R.style.LambdaSetupTheme);
++        } else if (ThemeHelper.shouldApplyGlifExpressiveStyle(getApplicationContext())) {
+             if (!ThemeHelper.trySetSuwTheme(this)) {
+diff --git a/src/com/android/settings/password/ConfirmDeviceCredentialBaseActivity.java b/src/com/android/settings/password/ConfirmDeviceCredentialBaseActivity.java
+--- a/src/com/android/settings/password/ConfirmDeviceCredentialBaseActivity.java
++++ b/src/com/android/settings/password/ConfirmDeviceCredentialBaseActivity.java
+@@ -82,7 +82,9 @@
+-        if (ThemeHelper.shouldApplyGlifExpressiveStyle(getApplicationContext())) {
++        if (com.android.settings.LambdaNativeUi.isEnabled(this)) {
++            setTheme(R.style.LambdaSetupTheme);
++        } else if (ThemeHelper.shouldApplyGlifExpressiveStyle(getApplicationContext())) {
+             if (!ThemeHelper.trySetSuwTheme(this)) {
+diff --git a/src/com/android/settings/password/ConfirmLockPassword.java b/src/com/android/settings/password/ConfirmLockPassword.java
+--- a/src/com/android/settings/password/ConfirmLockPassword.java
++++ b/src/com/android/settings/password/ConfirmLockPassword.java
+@@ -94,7 +94,9 @@
+         super.onCreate(savedInstanceState);
+-        if (ThemeHelper.shouldApplyGlifExpressiveStyle(getApplicationContext())) {
++        if (com.android.settings.LambdaNativeUi.isEnabled(this)) {
++            setTheme(R.style.LambdaSetupTheme);
++        } else if (ThemeHelper.shouldApplyGlifExpressiveStyle(getApplicationContext())) {
+             if (!ThemeHelper.trySetSuwTheme(this)) {
+diff --git a/src/com/android/settings/biometrics/BiometricEnrollBase.java b/src/com/android/settings/biometrics/BiometricEnrollBase.java
+--- a/src/com/android/settings/biometrics/BiometricEnrollBase.java
++++ b/src/com/android/settings/biometrics/BiometricEnrollBase.java
+@@ -152,7 +152,9 @@
+-        if (ThemeHelper.shouldApplyGlifExpressiveStyle(getApplicationContext())) {
++        if (com.android.settings.LambdaNativeUi.isEnabled(this)) {
++            setTheme(R.style.LambdaSetupTheme);
++        } else if (ThemeHelper.shouldApplyGlifExpressiveStyle(getApplicationContext())) {
+             if (!ThemeHelper.trySetSuwTheme(this)) {
+@@ -215,6 +217,12 @@
+     @Override
++    protected void onPostResume() {
++        super.onPostResume();
++        com.android.settings.LambdaNativeUi.install(this);
++    }
++
++    @Override
+     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+diff --git a/src/com/android/settings/accessibility/AccessibilitySettingsForSetupWizardActivity.java b/src/com/android/settings/accessibility/AccessibilitySettingsForSetupWizardActivity.java
+--- a/src/com/android/settings/accessibility/AccessibilitySettingsForSetupWizardActivity.java
++++ b/src/com/android/settings/accessibility/AccessibilitySettingsForSetupWizardActivity.java
+@@ -101,7 +101,9 @@
+             setTheme(R.style.SettingsPreferenceTheme_SetupWizard);
+-            ThemeHelper.trySetDynamicColor(this);
++            if (!com.android.settings.LambdaNativeUi.isEnabled(this)) {
++                ThemeHelper.trySetDynamicColor(this);
++            }
+         }

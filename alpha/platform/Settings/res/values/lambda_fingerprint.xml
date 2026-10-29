@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="lambda_fingerprint_intro">Unlock your phone and confirm your identity in compatible apps with your fingerprint.</string>
+    <string name="lambda_fingerprint_fallback">Your fingerprint complements your screen lock. After restarting, and whenever Android requires it, use your PIN, pattern or password.</string>
+    <string name="lambda_fingerprint_control">You can add or remove fingerprints in Settings. Only register your own fingers if you want to keep access personal.</string>
+    <string name="lambda_fingerprint_screen">Keep your finger and the screen clean and dry. If you use a screen protector, make sure it supports the Galaxy S10 fingerprint sensor.</string>
+</resources>

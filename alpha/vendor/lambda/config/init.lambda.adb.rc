@@ -1,0 +1,12 @@
+# LambdaOS alpha diagnostics bridge.
+# USB ADB is enabled from first boot while adbd authentication remains active.
+# Only public keys compiled into /product/etc/security/adb_keys are trusted.
+
+on post-fs-data
+    setprop persist.sys.usb.config mtp,adb
+    setprop sys.usb.config mtp,adb
+
+# Reassert the intended diagnostic transport after Android services initialize.
+on property:sys.boot_completed=1
+    setprop persist.sys.usb.config mtp,adb
+    setprop sys.usb.config mtp,adb

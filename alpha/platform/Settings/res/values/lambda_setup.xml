@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="lambda_os_version">LambdaOS version</string>
+    <!-- Only used by first-run Settings activities, never by third-party apps. -->
+    <style name="LambdaSetupTheme" parent="SudThemeGlifV4">
+        <!-- Keep setup dark even before the user chooses a system night mode. -->
+        <item name="alertDialogTheme">@style/LambdaSetupDialog</item>
+        <item name="*android:preferencePanelStyle">@*android:style/PreferencePanel.Dialog</item>
+        <item name="fingerprint_layout_theme">@style/FingerprintLayoutTheme</item>
+        <item name="face_layout_theme">@style/FaceLayoutTheme</item>
+        <item name="ic_menu_moreoverflow">@*android:drawable/ic_menu_moreoverflow_material</item>
+        <item name="side_margin">0dip</item>
+        <item name="wifi_signal_color">@color/setup_wizard_wifi_color_dark</item>
+        <item name="wifi_signal">@drawable/wifi_signal</item>
+        <item name="wifi_friction">@drawable/wifi_friction</item>
+        <item name="preferenceTheme">@style/PreferenceTheme.SetupWizard</item>
+        <item name="*android:lockPatternStyle">@style/LockPatternStyle</item>
+        <!-- BiometricEnrollBase reads this attribute as a ColorStateList before
+             onPostResume. Install the gradient drawable later via LambdaNativeUi. -->
+        <item name="android:windowBackground">#080808</item>
+        <item name="android:colorBackground">@android:color/transparent</item>
+        <item name="sudBackgroundBaseColor">@android:color/transparent</item>
+        <item name="sudBackgroundPatterned">false</item>
+        <item name="android:colorBackgroundFloating">#1c1c1c</item>
+        <item name="android:textColorPrimary">#f4f4f4</item>
+        <item name="android:textColorSecondary">#b4b4b4</item>
+        <item name="android:colorAccent">#dddddd</item>
+        <item name="colorAccent">#dddddd</item>
+        <item name="colorPrimary">#dddddd</item>
+        <item name="colorOnPrimary">#080808</item>
+        <item name="colorSurface">#1c1c1c</item>
+        <item name="colorOnSurface">#f4f4f4</item>
+        <item name="android:fontFamily">@font/lambda_regular</item>
+        <item name="fontFamily">@font/lambda_regular</item>
+        <item name="android:statusBarColor">#080808</item>
+        <item name="android:navigationBarColor">#080808</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
+        <item name="preferenceBackgroundColor">@android:color/transparent</item>
+    </style>
+    <style name="LambdaSetupTheme.Transparent" parent="LambdaSetupTheme">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+    <style name="LambdaNativeSettingsOverlay" parent="">
+        <item name="alertDialogTheme">@style/LambdaSetupDialog</item>
+        <item name="android:alertDialogTheme">@style/LambdaSetupPlatformDialog</item>
+    </style>
+    <style name="LambdaSetupDialog" parent="GlifV2ThemeAlertDialog">
+        <item name="android:colorBackground">#1c1c1c</item>
+        <item name="android:colorBackgroundFloating">#1c1c1c</item>
+        <item name="android:textColorPrimary">#f4f4f4</item>
+        <item name="android:textColorSecondary">#b4b4b4</item>
+        <item name="android:colorAccent">#dddddd</item>
+        <item name="colorAccent">#dddddd</item>
+        <item name="colorPrimary">#dddddd</item>
+        <item name="colorSurface">#1c1c1c</item>
+        <item name="colorOnSurface">#f4f4f4</item>
+        <item name="android:fontFamily">@font/lambda_regular</item>
+        <item name="fontFamily">@font/lambda_regular</item>
+        <item name="buttonBarButtonStyle">@style/LambdaSetupDialogButton</item>
+    </style>
+    <style name="LambdaSetupDialogButton" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <item name="android:fontFamily">@font/lambda_bold</item>
+        <item name="android:textColor">#f4f4f4</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+    <style name="LambdaSetupPlatformDialog" parent="@android:style/Theme.Material.Dialog.Alert">
+        <item name="android:colorBackground">#1c1c1c</item>
+        <item name="android:colorAccent">#dddddd</item>
+        <item name="android:textColorPrimary">#f4f4f4</item>
+        <item name="android:textColorSecondary">#b4b4b4</item>
+        <item name="android:fontFamily">@font/lambda_regular</item>
+    </style>
+    <style name="LambdaNativeSettingsLightOverlay" parent="">
+        <item name="alertDialogTheme">@style/LambdaSetupLightDialog</item>
+        <item name="android:alertDialogTheme">@style/LambdaSetupLightPlatformDialog</item>
+        <item name="colorAccent">#252525</item>
+        <item name="colorPrimary">#252525</item>
+        <item name="colorOnPrimary">#f7f7f7</item>
+        <item name="colorSurface">#eeeeee</item>
+        <item name="colorOnSurface">#151515</item>
+    </style>
+    <style name="LambdaSetupLightDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:colorBackground">#eeeeee</item>
+        <item name="android:colorBackgroundFloating">#eeeeee</item>
+        <item name="android:textColorPrimary">#151515</item>
+        <item name="android:textColorSecondary">#626262</item>
+        <item name="android:colorAccent">#252525</item>
+        <item name="colorAccent">#252525</item>
+        <item name="colorPrimary">#252525</item>
+        <item name="colorSurface">#eeeeee</item>
+        <item name="colorOnSurface">#151515</item>
+        <item name="android:fontFamily">@font/lambda_regular</item>
+        <item name="fontFamily">@font/lambda_regular</item>
+        <item name="buttonBarButtonStyle">@style/LambdaSetupLightDialogButton</item>
+    </style>
+    <style name="LambdaSetupLightDialogButton" parent="LambdaSetupDialogButton">
+        <item name="android:textColor">#151515</item>
+    </style>
+    <style name="LambdaSetupLightPlatformDialog" parent="@android:style/Theme.Material.Light.Dialog.Alert">
+        <item name="android:colorBackground">#eeeeee</item>
+        <item name="android:colorAccent">#252525</item>
+        <item name="android:textColorPrimary">#151515</item>
+        <item name="android:textColorSecondary">#626262</item>
+        <item name="android:fontFamily">@font/lambda_regular</item>
+    </style>
+</resources>

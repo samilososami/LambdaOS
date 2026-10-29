@@ -1,0 +1,21 @@
+diff --git a/src/com/android/settings/password/SetupChooseLockGeneric.java b/src/com/android/settings/password/SetupChooseLockGeneric.java
+--- a/src/com/android/settings/password/SetupChooseLockGeneric.java
++++ b/src/com/android/settings/password/SetupChooseLockGeneric.java
+@@ -171,4 +171,17 @@ public class SetupChooseLockGeneric extends ChooseLockGeneric {
+         @Override
++        void updateUnlockMethodAndFinish(int quality, boolean disabled, boolean chooseLockSkipped) {
++            // Lambda's explicit "No screen lock" choice selects None, not Swipe.
++            // Keep the native credential confirmation, admin/complexity checks,
++            // credential removal and biometric cleanup entirely in the superclass.
++            boolean lambdaNone = quality == android.app.admin.DevicePolicyManager
++                    .PASSWORD_QUALITY_UNSPECIFIED
++                    && com.android.settings.LambdaNativeUi.isEnabled(getActivity())
++                    && getIntent().getBooleanExtra(
++                            "org.lambdaproject.setup.DISABLE_LOCK_SCREEN", false);
++            super.updateUnlockMethodAndFinish(quality, disabled || lambdaNone, chooseLockSkipped);
++        }
++
++        @Override
+         protected boolean alwaysHideInsecureScreenLockTypes() {
+             // At this part of the flow, the user has already indicated they want to add a pin,
+             // pattern or password, so don't show "None" or "Slide". We disable them here.

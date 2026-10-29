@@ -1,0 +1,6 @@
+Fingerprint Recognition, SVG Repo asset 340307.
+Source: https://www.svgrepo.com/svg/340307/fingerprint-recognition
+Download: https://www.svgrepo.com/show/340307/fingerprint-recognition.svg
+License displayed by source: CC0. Retrieved 2026-10-26.
+Android vector retains all five original paths and the 32 x 32 viewport.
+Only fill color is white (tinted by native SystemUI for wallpaper/AOD contrast).

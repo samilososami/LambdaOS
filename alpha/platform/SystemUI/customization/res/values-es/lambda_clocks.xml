@@ -1,0 +1,5 @@
+<resources>
+    <string name="lambda_clock_stacked">Lambda apilado</string>
+    <string name="lambda_clock_analog">Lambda analógico</string>
+    <string name="lambda_clock_description">Reloj minimalista monocromo</string>
+</resources>

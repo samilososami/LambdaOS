@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SPDX-License-Identifier: Apache-2.0 -->
+<resources xmlns:androidprv="http://schemas.android.com/apk/prv/res/android">
+    <!-- Local to credential views. Never recolors notifications or applications. -->
+    <style name="Theme.Lambda.Keyguard" parent="Theme.SystemUI">
+        <item name="android:fontFamily">@font/lambda_keyguard_regular</item>
+        <item name="android:textColorPrimary">#F4F4F4</item>
+        <item name="android:textColorSecondary">#B4B4B4</item>
+        <item name="android:colorAccent">#E8E8E8</item>
+        <item name="android:colorControlNormal">#B4B4B4</item>
+        <item name="android:colorControlActivated">#F4F4F4</item>
+        <item name="android:colorControlHighlight">#30FFFFFF</item>
+        <item name="android:colorError">#FFFFFF</item>
+        <item name="androidprv:materialColorOnSurface">#F4F4F4</item>
+        <item name="androidprv:materialColorOnSurfaceVariant">#B4B4B4</item>
+        <item name="androidprv:materialColorSurfaceContainerHigh">#202020</item>
+        <item name="androidprv:materialColorPrimaryFixed">#404040</item>
+        <item name="androidprv:materialColorOnPrimaryFixed">#FFFFFF</item>
+        <item name="androidprv:materialColorOnSecondaryFixed">#F4F4F4</item>
+        <item name="androidprv:materialColorTertiaryFixed">#242424</item>
+        <item name="androidprv:materialColorOnTertiaryFixed">#F4F4F4</item>
+    </style>
+</resources>

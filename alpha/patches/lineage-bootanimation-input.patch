@@ -1,0 +1,13 @@
+diff --git a/bootanimation/Android.bp b/bootanimation/Android.bp
+--- a/bootanimation/Android.bp
++++ b/bootanimation/Android.bp
+@@ -7,3 +7,9 @@
+ genrule {
+     name: "gen-bootanimation.zip",
++    // Lambda's prebuilt must be tracked when its bytes change. The upstream
++    // prebuilt_file command alone is not an input dependency for Ninja.
++    srcs: select(soong_config_variable("lineage_bootanimation", "prebuilt_file"), {
++        "vendor/lambda/prebuilt/bootanimation.zip": [":lambda_bootanimation_source"],
++        default: [],
++    }),
+     tools: [

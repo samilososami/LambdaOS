@@ -1,0 +1,17 @@
+--- a/manifest.xml
++++ b/manifest.xml
+@@ -111,6 +111,14 @@
+             <name>IGloveMode</name>
+             <instance>default</instance>
+         </interface>
++        <interface>
++            <name>IHighTouchPollingRate</name>
++            <instance>default</instance>
++        </interface>
++        <interface>
++            <name>ITouchscreenGesture</name>
++            <instance>default</instance>
++        </interface>
+     </hal>
+     <hal format="hidl">
+         <name>vendor.lineage.livedisplay</name>

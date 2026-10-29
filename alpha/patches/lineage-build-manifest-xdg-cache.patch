@@ -1,0 +1,15 @@
+diff --git a/build/tasks/build-manifest_xml.mk b/build/tasks/build-manifest_xml.mk
+--- a/build/tasks/build-manifest_xml.mk
++++ b/build/tasks/build-manifest_xml.mk
+@@ -16,8 +16,9 @@ ifdef MANIFEST_EXCLUDES
+ endif
+ 
+ $(INSTALLED_BUILD_MANIFEST_XML_TARGET):
+-	mkdir -p $(dir $@) $(OUT_DIR)/repo-config
+-	REPO_CONFIG_DIR=$(OUT_DIR)/repo-config python3 .repo/repo/repo manifest -o - -r | grep -Ev "proprietary_$(MANIFEST_EXCLUDES)" > $@
++	mkdir -p $(dir $@) $(OUT_DIR)/repo-config/git
++	touch $(OUT_DIR)/repo-config/git/config
++	XDG_CONFIG_HOME=$(OUT_DIR)/repo-config REPO_CONFIG_DIR=$(OUT_DIR)/repo-config python3 .repo/repo/repo manifest -o - -r | grep -Ev "proprietary_$(MANIFEST_EXCLUDES)" > $@
+ 
+ .PHONY: build-manifest.xml
+ build-manifest.xml: $(INSTALLED_BUILD_MANIFEST_XML_TARGET)

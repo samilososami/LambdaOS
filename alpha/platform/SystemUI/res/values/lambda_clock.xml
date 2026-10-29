@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Portrait clock sits in the clear area above the approved wallpaper fold.
+         A constraint bias adapts to insets, text height and sensor position;
+         it does not translate the view outside its safe bounds. -->
+    <fraction name="lambda_large_clock_vertical_bias">20%</fraction>
+</resources>

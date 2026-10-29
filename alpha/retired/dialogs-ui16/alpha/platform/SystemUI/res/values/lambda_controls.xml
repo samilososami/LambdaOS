@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="LambdaControlsTheme" parent="Theme.SystemUI.BottomSheet">
+        <item name="android:colorAccent">#EEEEEE</item>
+        <item name="android:colorControlActivated">#EEEEEE</item>
+        <item name="android:colorControlNormal">#BDBDBD</item>
+        <item name="android:colorBackground">#202020</item>
+        <item name="android:textColorPrimary">#F0F0F0</item>
+        <item name="android:textColorSecondary">#BDBDBD</item>
+        <item name="android:textColorTertiary">#909090</item>
+        <item name="android:windowLightNavigationBar">false</item>
+        <item name="android:navigationBarColor">#202020</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:fontFamily">sans</item>
+        <item name="android:forceDarkAllowed">false</item>
+        <item name="android:colorEdgeEffect">#606060</item>
+        <item name="*android:materialColorOnPrimaryContainer">#F0F0F0</item>
+        <item name="*android:materialColorOnSurface">#F0F0F0</item>
+        <item name="*android:materialColorSurfaceBright">#242424</item>
+    </style>
+</resources>

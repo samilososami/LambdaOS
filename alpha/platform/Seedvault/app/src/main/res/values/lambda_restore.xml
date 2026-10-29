@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="LambdaRestoreTheme" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">#dddddd</item>
+        <item name="colorAccent">#dddddd</item>
+        <item name="colorOnPrimary">#080808</item>
+        <item name="colorPrimaryContainer">#292929</item>
+        <item name="colorOnPrimaryContainer">#f4f4f4</item>
+        <item name="colorSecondaryContainer">#292929</item>
+        <item name="colorOnSecondaryContainer">#f4f4f4</item>
+        <item name="colorSurface">#080808</item>
+        <item name="colorSurfaceContainer">#1c1c1c</item>
+        <item name="colorOnSurface">#f4f4f4</item>
+        <item name="android:colorBackground">#080808</item>
+        <item name="android:windowBackground">#080808</item>
+        <item name="android:textColorPrimary">#f4f4f4</item>
+        <item name="android:textColorSecondary">#b4b4b4</item>
+        <item name="fontFamily">@font/lambda_regular</item>
+        <item name="android:fontFamily">@font/lambda_regular</item>
+        <item name="preferenceTheme">@style/PreferenceTheme</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
+    </style>
+</resources>

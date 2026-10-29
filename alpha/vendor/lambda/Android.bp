@@ -1,0 +1,6 @@
+// The approved animation is a real Ninja input, not merely a path in a command.
+filegroup {
+    name: "lambda_bootanimation_source",
+    srcs: ["prebuilt/bootanimation.zip"],
+    visibility: ["//vendor/lineage/bootanimation:__pkg__"],
+}

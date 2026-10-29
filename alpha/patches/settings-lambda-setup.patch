@@ -1,0 +1,41 @@
+diff --git a/src/com/android/settings/SetupWizardUtils.java b/src/com/android/settings/SetupWizardUtils.java
+--- a/src/com/android/settings/SetupWizardUtils.java
++++ b/src/com/android/settings/SetupWizardUtils.java
+@@ -47,6 +47,11 @@ public class SetupWizardUtils {
+     public static int getTheme(Context context, Intent intent) {
++        if (WizardManagerHelper.isAnySetupWizard(intent)
++                && "LambdaOS".equals(android.os.SystemProperties.get("ro.lambda.name"))) {
++            return R.style.LambdaSetupTheme;
++        }
+         String theme = getThemeString(intent);
+@@ -117,6 +122,10 @@ public class SetupWizardUtils {
+     public static int getTransparentTheme(Context context, Intent intent) {
++        if (getTheme(context, intent) == R.style.LambdaSetupTheme) {
++            return R.style.LambdaSetupTheme_Transparent;
++        }
+         int transparentTheme;
+diff --git a/src/com/android/settings/deviceinfo/firmwareversion/LineageVersionDetailPreferenceController.java b/src/com/android/settings/deviceinfo/firmwareversion/LineageVersionDetailPreferenceController.java
+--- a/src/com/android/settings/deviceinfo/firmwareversion/LineageVersionDetailPreferenceController.java
++++ b/src/com/android/settings/deviceinfo/firmwareversion/LineageVersionDetailPreferenceController.java
+@@ -44,1 +44,1 @@
+-    private static final String KEY_LINEAGE_VERSION_PROP = "ro.lineage.version";
++    private static final String KEY_LINEAGE_VERSION_PROP = "ro.lambda.version";
+@@ -92,6 +92,9 @@
+         if (Utils.isMonkeyRunning()) {
+             return false;
+         }
++        // Preserve upstream legal notices, but do not launch a different OS's easter egg.
++        if ("LambdaOS".equals(SystemProperties.get("ro.lambda.name"))) return true;
+         arrayCopy();
+diff --git a/res/xml/my_device_info.xml b/res/xml/my_device_info.xml
+--- a/res/xml/my_device_info.xml
++++ b/res/xml/my_device_info.xml
+@@ -153,1 +153,1 @@
+-            android:title="@*lineageos.platform:string/lineage_version"
++            android:title="@string/lambda_os_version"
+diff --git a/res/xml/firmware_version.xml b/res/xml/firmware_version.xml
+--- a/res/xml/firmware_version.xml
++++ b/res/xml/firmware_version.xml
+@@ -36,1 +36,1 @@
+-        android:title="@*lineageos.platform:string/lineage_version"
++        android:title="@string/lambda_os_version"

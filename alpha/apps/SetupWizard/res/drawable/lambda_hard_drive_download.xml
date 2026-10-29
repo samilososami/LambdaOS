@@ -1,0 +1,8 @@
+<!-- Lucide, ISC; see res/raw/lambda_icons_license.txt. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="24dp" android:height="24dp" android:viewportWidth="24" android:viewportHeight="24">
+<path android:pathData="M12 2v8" android:fillColor="@android:color/transparent" android:strokeColor="#f4f4f4" android:strokeWidth="1.5" android:strokeLineCap="round" android:strokeLineJoin="round"/>
+<path android:pathData="m16 6-4 4-4-4" android:fillColor="@android:color/transparent" android:strokeColor="#f4f4f4" android:strokeWidth="1.5" android:strokeLineCap="round" android:strokeLineJoin="round"/>
+<path android:pathData="M4,14H20Q22,14 22,16V20Q22,22 20,22H4Q2,22 2,20V16Q2,14 4,14Z" android:fillColor="@android:color/transparent" android:strokeColor="#f4f4f4" android:strokeWidth="1.5" android:strokeLineCap="round" android:strokeLineJoin="round"/>
+<path android:pathData="M6 18h.01" android:fillColor="@android:color/transparent" android:strokeColor="#f4f4f4" android:strokeWidth="1.5" android:strokeLineCap="round" android:strokeLineJoin="round"/>
+<path android:pathData="M10 18h.01" android:fillColor="@android:color/transparent" android:strokeColor="#f4f4f4" android:strokeWidth="1.5" android:strokeLineCap="round" android:strokeLineJoin="round"/>
+</vector>

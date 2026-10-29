@@ -1,0 +1,17 @@
+diff --git a/app/src/main/java/com/stevesoltys/seedvault/ui/BackupActivity.kt b/app/src/main/java/com/stevesoltys/seedvault/ui/BackupActivity.kt
+--- a/app/src/main/java/com/stevesoltys/seedvault/ui/BackupActivity.kt
++++ b/app/src/main/java/com/stevesoltys/seedvault/ui/BackupActivity.kt
+@@ -14,9 +14,20 @@
+     override fun onCreate(savedInstanceState: Bundle?) {
++        if (com.stevesoltys.seedvault.LambdaNativeUi.isEnabled(this)) {
++            setTheme(R.style.LambdaRestoreTheme)
++        }
+         setupEdgeToEdge()
+         super.onCreate(savedInstanceState)
+     }
++
++    override fun onPostResume() {
++        super.onPostResume()
++        com.stevesoltys.seedvault.LambdaNativeUi.install(this)
++    }
+ 

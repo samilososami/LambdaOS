@@ -1,0 +1,14 @@
+diff --git a/src/com/android/settings/biometrics/fingerprint/FingerprintEnrollIntroduction.java b/src/com/android/settings/biometrics/fingerprint/FingerprintEnrollIntroduction.java
+--- a/src/com/android/settings/biometrics/fingerprint/FingerprintEnrollIntroduction.java
++++ b/src/com/android/settings/biometrics/fingerprint/FingerprintEnrollIntroduction.java
+@@ -139,3 +139,10 @@
+         final ScrollView scrollView =
+                 findViewById(com.google.android.setupdesign.R.id.sud_scroll_view);
++        if (com.android.settings.LambdaNativeUi.isEnabled(this)) {
++            // Set before the first focus event. View's setter only flips a flag;
++            // calling it in onPostResume leaves an already-created whole-viewport
++            // highlight alive until focus changes (e.g. the first touch scroll).
++            // Keep keyboard scrolling, accessibility and consent handlers intact.
++            scrollView.setDefaultFocusHighlightEnabled(false);
++        }
+         scrollView.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_YES);

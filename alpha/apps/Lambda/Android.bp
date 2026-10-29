@@ -1,0 +1,11 @@
+android_app {
+    name: "Lambda",
+    manifest: "AndroidManifest.xml",
+    srcs: ["src/**/*.java"],
+    resource_dirs: ["res"],
+    sdk_version: "current",
+    min_sdk_version: "29",
+    target_sdk_version: "35",
+    product_specific: true,
+    optimize: { enabled: true },
+}

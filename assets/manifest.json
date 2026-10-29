@@ -1,0 +1,2969 @@
+{
+  "schema": 1,
+  "snapshot": "2026-10-29",
+  "images": 434,
+  "unique_sha256": 400,
+  "bytes": 289485441,
+  "entries": [
+    {
+      "path": "assets/brand/lambdaos-banner.png",
+      "bytes": 25659,
+      "sha256": "454c50cbab45a7a7e665f0d463477ba55a68e92a705ac680640d843454ab3bef",
+      "width": 1280,
+      "height": 340
+    },
+    {
+      "path": "assets/brand/lambdaos-social-preview.png",
+      "bytes": 26600,
+      "sha256": "b198c6ab206186bb8b1f6c05c6bed26526add1f5add3b1ec8d23795f1323853a",
+      "width": 1280,
+      "height": 640
+    },
+    {
+      "path": "assets/design/concepts/logo-overview.jpg",
+      "bytes": 264371,
+      "sha256": "850641a0420326177c6510dd0b87ab1e2fcf0564e020f48477b3774c67fec8d7"
+    },
+    {
+      "path": "assets/design/concepts/logos/01-convergent-lambda.png",
+      "bytes": 1329283,
+      "sha256": "2b798c80c70f098a9c25b4ee22b1d6422a52988cc0a3d1866e489fc11efe0ee6",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/concepts/logos/02-split-lambda.png",
+      "bytes": 1298216,
+      "sha256": "271ac787183f896778e9da5d04540e778b71d616e77f67394568dac8707d32ca",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/concepts/logos/03-lambda-route.png",
+      "bytes": 1299209,
+      "sha256": "cfa1b81f0361f8de5b950b50bd533844c39f989091952b1939bdf5b3aa738bd6",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/concepts/logos/04-lambda-cursor.png",
+      "bytes": 1328329,
+      "sha256": "46e0fd61e4cc3a47c99caac3e5a071e009dee7b9dfb9d1352c6b728f0864c464",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/concepts/logos/05-negative-l-lambda.png",
+      "bytes": 1279116,
+      "sha256": "6443d1251f4e2c53946230a472465c1e7ac35920016edad73486d726a110b28c",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/concepts/logos/06-kernel-strata.png",
+      "bytes": 1273185,
+      "sha256": "287ba573c5b0635af6ba1ea216edd60e7c69003e7147657339fd9e1f741d5ef1",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/concepts/logos/07-open-apex.png",
+      "bytes": 1278175,
+      "sha256": "695cec3a91ea6c87250069f5a8bff65ad9131b5ecb6442d3e895ff6ec504457e",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/concepts/logos/08-node-lambda.png",
+      "bytes": 1307220,
+      "sha256": "1d65b10ea3658f7d7334670baf56b3d2ded3fc0337f44dceee33abbc357bb53f",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/concepts/logos/09-lambda-tile.png",
+      "bytes": 1304504,
+      "sha256": "b4749764e6746278360fc952f16d662a145e64cb3f90d7e56513c5f99436d6a7",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/concepts/logos/10-custom-wordmark.png",
+      "bytes": 1350841,
+      "sha256": "0e4bc5dfdfe164dce172602f579af7690f7611314afb7e74654823d5759f1172",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/concepts/system/01-boot-integrity.png",
+      "bytes": 1129357,
+      "sha256": "ea859579ef89e78bdef401525860c36d1d16b6a5665ab495866211781b95b479",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/concepts/system/02-lock-security-posture.png",
+      "bytes": 1441844,
+      "sha256": "3ccf770198434b330e5ced4c42989b76d6e5bfeb55d54d70c5418d8d8e64dc80",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/concepts/system/03-launcher-home.png",
+      "bytes": 1302162,
+      "sha256": "571485d1569ce62a0da9b17a356f82146ff0f4e69ad43cad9049b105a3fea7aa",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/concepts/system/04-quick-controls.png",
+      "bytes": 1272524,
+      "sha256": "40fe93885af92c7b63e393321833a7aaf3304866ab7d7dc4af21340362e1d2a5",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/concepts/system/05-lambdacc-overview.png",
+      "bytes": 1284801,
+      "sha256": "b1c581cc637b12b6cc22af36ec70d583cdf8a03bcab76507f3f27a4754c7a6b6",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/concepts/system/06-wifi-workspace.png",
+      "bytes": 1373318,
+      "sha256": "62ffcb0fc750727021e08ab388f198f4776196e0a915aeeb88d1e86fd119bae7",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/concepts/system/07-bluetooth-workspace.png",
+      "bytes": 1396562,
+      "sha256": "1df7ea9dfc78ce5081d3467074c7987c66edf2b6dd384a163f2b67878bfd9ab3",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/concepts/system/08-usb-workspace.png",
+      "bytes": 1302165,
+      "sha256": "06f45e75d61b2dfa4951edc7b38a2cb3e83f92946409b4a2d0d4efedd88106a5",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/concepts/system/09-can-workspace.png",
+      "bytes": 1472201,
+      "sha256": "092080809a2d9386b1275f40dab6d1e23a6b0368e2d258d64e9370a3ae263760",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/concepts/system/10-network-workspace.png",
+      "bytes": 1339827,
+      "sha256": "0f1684964f98e02d7498d40c8c6aab85ff3fccf3d5f5144322e4d4b3da19e7d0",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/concepts/system/11-adapter-manager.png",
+      "bytes": 1405148,
+      "sha256": "8a6a9e57ec122dfb071d2612a460bcc85b6a64ebefc6381aac20ce2ad4e86397",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/concepts/system/12-operation-builder.png",
+      "bytes": 1329870,
+      "sha256": "1e8a1315cf0bf4972a4594a53fdb667b5298151c06376cf104352e29ff01bda8",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/concepts/system/13-terminal.png",
+      "bytes": 1254300,
+      "sha256": "fe59d632a8145cd6dcf02c758d8176da9ee60f2eec02ffb1b7afb4ba3106d41a",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/concepts/system/14-assistant-root-sheet.png",
+      "bytes": 1356815,
+      "sha256": "d4f2f8225c198dd34800fb6f162050eb2109342c9367d4927dfc84d17dc338f1",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/concepts/system/15-assistant-action-chat.png",
+      "bytes": 1370600,
+      "sha256": "8342020c64be30168d488abc4fbbb4e6a76e43fc9195c1096853e3dee0cae5fd",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/concepts/system/16-storage-maintenance.png",
+      "bytes": 1373636,
+      "sha256": "785894352d13cc8033d4c2a550c870ebd667241a5ee2810c330057616f013cfa",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/concepts/system/17-jobs-monitor.png",
+      "bytes": 1393743,
+      "sha256": "ed01d9e4920e8bbb0597eacee87078dfbb2ee62b44da66d5823da4ef859713c3",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/concepts/system/18-evidence-reports.png",
+      "bytes": 1400502,
+      "sha256": "b7fc0dc0d463abc4a5767b960bc0c3cbc08ca4c16f5b74ac9bd3e1e44876e158",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/concepts/system/19-root-permissions.png",
+      "bytes": 1432414,
+      "sha256": "d7408e01dbd0775845cdd7588178bc6fca433498a7d7ca2465afe55a58fad261",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/concepts/system/20-kernel-system.png",
+      "bytes": 1399749,
+      "sha256": "3633a22a4f22f16e7182a3e49fff3ed78c4e59fb445c093cef55f0eea2d51b51",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/concepts/system-overview.jpg",
+      "bytes": 421261,
+      "sha256": "91626ffd85d8f6c160dca0b7c1b643cc5da26f685c9127354d1bab54b4312104"
+    },
+    {
+      "path": "assets/design/dialogs-v1/01-wifi.png",
+      "bytes": 1293336,
+      "sha256": "bf64230df72002116fc9c67c19aac7c56c2dd357cc4efcbbb58df041e3de06d6",
+      "width": 863,
+      "height": 1823
+    },
+    {
+      "path": "assets/design/dialogs-v1/02-bluetooth.png",
+      "bytes": 1255730,
+      "sha256": "6b7a307fc070935b4c83619937a89a0cb4d42b28a058caa5be3423c231f0f875",
+      "width": 864,
+      "height": 1821
+    },
+    {
+      "path": "assets/design/dialogs-v1/03-linterna-estados.png",
+      "bytes": 1432631,
+      "sha256": "64f103c7defbbbfbbb7abc4694c094bf3a7fa6b40814bfac58486f1432aaf58e",
+      "width": 1774,
+      "height": 887
+    },
+    {
+      "path": "assets/design/dialogs-v1/03-linterna-v2.png",
+      "bytes": 1429072,
+      "sha256": "b12bd317b1f8461998f8f33686e0c1188faaaedfe4e1c718ec6b7838d14951c0",
+      "width": 863,
+      "height": 1822
+    },
+    {
+      "path": "assets/design/dialogs-v1/03-linterna.png",
+      "bytes": 1284068,
+      "sha256": "102082f882a5c7cd62ce7958c9285ff3d46eeded8a301a76e04d6d8fc4ded2cf",
+      "width": 863,
+      "height": 1822
+    },
+    {
+      "path": "assets/design/dialogs-v1/04-compartir-bateria.png",
+      "bytes": 1405123,
+      "sha256": "980ce8b05cedf19aece12c675bac4565176f48e1b5d4ff14da2f37a506bdb19c",
+      "width": 863,
+      "height": 1822
+    },
+    {
+      "path": "assets/design/dialogs-v1/05-punto-de-acceso.png",
+      "bytes": 1289305,
+      "sha256": "38cab7079dcdaf2d8288acdef2eece486c162130ccecf5ad8300caede3a585b8",
+      "width": 864,
+      "height": 1821
+    },
+    {
+      "path": "assets/design/dialogs-v1/06-sonido.png",
+      "bytes": 1238837,
+      "sha256": "30cf5fb4ff2b88ea7e7b4ca77a81b7164d51f91a0e296d75be05702e83f05719",
+      "width": 864,
+      "height": 1821
+    },
+    {
+      "path": "assets/design/lamb/evil-laugh-v1/frames/frame-01.png",
+      "bytes": 701963,
+      "sha256": "1177ce0e0b02aef3dd7608f7eb951d8c39ddb0b3ac8150ff931ad801d47a8f81",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "path": "assets/design/lamb/evil-laugh-v1/frames/frame-02.png",
+      "bytes": 682959,
+      "sha256": "eaf8dcc4208d66aa1847e205a15b32651101e0d9c3b117e30dbbed555571448d",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "path": "assets/design/lamb/evil-laugh-v1/frames/frame-03.png",
+      "bytes": 757452,
+      "sha256": "4756cc1f1374dc074713eec3217992ccd446bad4aadfed169bf954ad717d335f",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "path": "assets/design/lamb/evil-laugh-v1/frames/frame-04.png",
+      "bytes": 733354,
+      "sha256": "fa4963a9f60141526da81ea309b6df9d979553d960a65f5a409e7fcf251a46c3",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "path": "assets/design/lamb/evil-laugh-v1/frames/frame-05.png",
+      "bytes": 772733,
+      "sha256": "df98797adad30864c69bc335315608a719ee22881184446bb84b4c454107050a",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "path": "assets/design/lamb/evil-laugh-v1/frames/frame-06.png",
+      "bytes": 856719,
+      "sha256": "5f4c5a086f8659bb132aad521a63fb5db5167d7681b22c99816d473b9becba48",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "path": "assets/design/lamb/evil-laugh-v1/frames/frame-07.png",
+      "bytes": 711956,
+      "sha256": "26b787508b96a7ab442211e817d40edb8a2e80722232f4d568b59eea6ed05be0",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "path": "assets/design/lamb/evil-laugh-v1/frames/frame-08.png",
+      "bytes": 760211,
+      "sha256": "606f034d7f48213c216de1332c1f6be668e8f3b0b24fed0bb9ae0184bb475347",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "path": "assets/design/lamb/evil-laugh-v1/frames/frame-09.png",
+      "bytes": 772787,
+      "sha256": "a9d5c661a8acecdad4d29aa6f8fa99ddca35f5d574f3e92ba5b4f8e995c83ad0",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "path": "assets/design/lamb/evil-laugh-v1/frames/frame-10.png",
+      "bytes": 774093,
+      "sha256": "016ce46ece85514b8e74fead0f29111bec810fa15bf34bc47ee752a7d1d2f7f0",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "path": "assets/design/lamb/evil-laugh-v1/lamb-evil-laugh-10fps.gif",
+      "bytes": 2468875,
+      "sha256": "f174cccdf3d4cd5c6eabe2b47950e3c98347f674cf262ddaeef3854c01eaee66"
+    },
+    {
+      "path": "assets/design/lamb/evil-laugh-v1/lamb-evil-laugh-10fps.webp",
+      "bytes": 3706324,
+      "sha256": "0a31b7b18c9219bc9908debc066e20f7bd6d5655c6d31ef12731efde3f0cf6ee"
+    },
+    {
+      "path": "assets/design/lamb/evil-laugh-v1/storyboard.png",
+      "bytes": 2296771,
+      "sha256": "b19fafb1a4e86bd9ba43e92ea7a83173dcb4f61c6e3cb672707b33dd95dc6c41",
+      "width": 1330,
+      "height": 532
+    },
+    {
+      "path": "assets/design/round-02/lambdaC2-overview.jpg",
+      "bytes": 443168,
+      "sha256": "ee64d22c081bbb3b4a2c17838ae20f469b0d6ae7e8719cbbe13cfb4f1cba2e71"
+    },
+    {
+      "path": "assets/design/round-02/logos/01-cursor-compact.png",
+      "bytes": 1165534,
+      "sha256": "2157934b66a6cc426f0345d92b6894a0d6a574ab94407407ab4912d5d55d91a7",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-02/logos/02-wordmark-humanist.png",
+      "bytes": 1139349,
+      "sha256": "156d7ea0c597101277383a118018afd83b245891d53166bee8756ab622388ca2",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-02/logos/03-terminal-underscore.png",
+      "bytes": 1156175,
+      "sha256": "a794c6abe4a19443e7886cbc7b178ebe1cedfef50af6297457bc125ccbf56194",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-02/logos/04-joined-lambda.png",
+      "bytes": 1115581,
+      "sha256": "bd4f56040336425b1cf5896a9f380b19ac6aa008d6654525333bff8952ad397a",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-02/logos/05-cursor-cut.png",
+      "bytes": 1187479,
+      "sha256": "dfbcbf4b6003c65190ec3b2f520c7025755b251f2cec687a21ff9bee1e9a35ee",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-02/logos/06-mono-wordmark.png",
+      "bytes": 1174733,
+      "sha256": "d6146537045f299dc9e609d57925b5bb7219db8a23f7246da5a9972c55ac6df1",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-02/logos/07-soft-terminal.png",
+      "bytes": 1111071,
+      "sha256": "ac79034459887f1841e85074f7c602c7c3136e8677538ce900895dea8a6dacbf",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-02/logos/08-condensed-wordmark.png",
+      "bytes": 1161755,
+      "sha256": "ffeaf18fdf4b0d8d9a84a51216f51e4fce4ed6739b646fab6b8b5b90b4c55707",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-02/logos/09-inline-cursor.png",
+      "bytes": 1136724,
+      "sha256": "53a10c7acccfdaca1e6b3a259b906be8bc240752c7203d6b19318cc04b3e9e34",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-02/logos/10-balanced-family.png",
+      "bytes": 1127655,
+      "sha256": "f5a14ed02223f7df87c34123009be2ce5b16286249ba14c4fb9191332ba34bc6",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-02/logos-overview.jpg",
+      "bytes": 200378,
+      "sha256": "7a57ca13af151f188574980c59d4544efeb6f45ed9d505c4829cc2c20bc24691"
+    },
+    {
+      "path": "assets/design/round-02/references/cursor.png",
+      "bytes": 1306436,
+      "sha256": "bc385f029e6789b62688b6030fd5eded29538f75e6d93c2aa0d6635299c7505a",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-02/references/wordmark.png",
+      "bytes": 1328948,
+      "sha256": "e6723f4bc1a0e9b7a4a94b6321fc4a443ce222d9061900ce4634def1a4fb5db8",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-02/ui/01-swiss-light.png",
+      "bytes": 1226288,
+      "sha256": "21119515a56cad7ce7f44e3cfe69e996e61064eae15d1b673090b30824231049",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-02/ui/02-unix-modern.png",
+      "bytes": 1246475,
+      "sha256": "0fec4a67f4434ed411280c104d5e3d66c3e2a514ea6679e10ff3ec5d43714c02",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-02/ui/03-instrument-panel.png",
+      "bytes": 1356364,
+      "sha256": "897eb1aca40af51f32fc7b12a78f3bb41ffde3fcb0ce48b48555f37e33a1f825",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-02/ui/04-editorial-dark.png",
+      "bytes": 1222227,
+      "sha256": "8cc5122604ee88350e75b44bf084675c56344765cb64045920261995bc26c84a",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-02/ui/05-pictogram-grid.png",
+      "bytes": 1181700,
+      "sha256": "ed334ce53f7f21f0f81ff7b4911eebb67a8d1997827d2c2e23ce04cbcc2eda91",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-02/ui/06-project-first.png",
+      "bytes": 1346852,
+      "sha256": "281004094e6acbeb1b3a2365b616b605d0e53e583cffeae4f8fdc7528d7e2f7b",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-02/ui/07-device-first.png",
+      "bytes": 1335645,
+      "sha256": "61d4203e4606b652984c330a75a1b9b8a1de36a4f3c6621b7066502fec599b2f",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-02/ui/08-lab-notebook.png",
+      "bytes": 1186383,
+      "sha256": "504407ec3c2e86fc01292ccd0d0dc9a9aae5e307dfc39ce33fb0c85cdf08dfe6",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-02/ui/09-asymmetric-rail.png",
+      "bytes": 1524806,
+      "sha256": "093eda33fe403507c110e820e5c006791b44329cb80dec988fd3c43e1cecb521",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-02/ui/10-thumb-reach.png",
+      "bytes": 1338306,
+      "sha256": "7643ae9250eaa28effb08c1437cb76e61ea99ea5e7664caa58e734c24c0f806a",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-02/ui/11-technical-table.png",
+      "bytes": 1213388,
+      "sha256": "10368fee86bf3357aaeab0938ffc1ccaf204e16be44493ef537c79c775d3f0fb",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-02/ui/12-modular-control.png",
+      "bytes": 1320618,
+      "sha256": "302a18ddc771d1c9e8d205474185dcf7269f1595715b7ca0e3b0fe0a43642654",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-02/ui/13-topology-workspace.png",
+      "bytes": 1259177,
+      "sha256": "d690d86d3c71cf1391fedc97a3d23e578842884a85620941226d6d6d577e713f",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-02/ui/14-search-driven.png",
+      "bytes": 1327511,
+      "sha256": "9ea4b9702272c6ba7302ba7d5cce53e20cc57800e74f7c7f54c2d18c2c663be6",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-02/ui/15-horizontal-bands.png",
+      "bytes": 1287827,
+      "sha256": "b1ca0f1efc2fbaf1b7ea8569164ec38d2d882e47d0b3952fd45974a579e88149",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-02/ui/16-dual-tone.png",
+      "bytes": 1298016,
+      "sha256": "7b11cfdd68d8cce385c9ff0eb3bc29f511627ba73f7ca86ae2be55d41aac315a",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-02/ui/17-compact-rail.png",
+      "bytes": 1274169,
+      "sha256": "651e8998eb1236f2036a0185081a99211da658081c6df1ee38711084db6c9545",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-02/ui/18-warm-humanist.png",
+      "bytes": 1374325,
+      "sha256": "3f72a33eb5f0a9537e3f072770b121c6f4d2c29fc314a31660339a7c61e5f1fd",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-02/ui/19-rectilinear-tiles.png",
+      "bytes": 1370728,
+      "sha256": "d4fc10cb7cf80d58c8c0a3da967fb72bdb9bc71264ae8282e587616e9ee125ce",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-02/ui/20-type-only.png",
+      "bytes": 1234029,
+      "sha256": "88ddb96270b4a5366da20dce3c57f9abad2e80f2099c59c5390e66ed185d281a",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-03/drafts/U01-texto-oscuro.png",
+      "bytes": 1210857,
+      "sha256": "616c9ecf5994e712a4e5998ff7d7bcac4d0565545021ab28b9c8f4b28f718900",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-03/drafts/U02-texto-claro.png",
+      "bytes": 1075551,
+      "sha256": "dc010872f94e375d509826f97a4150b71a0112550059e92ae7d42722c9306d99",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-03/drafts/U03-iconos-oscuro.png",
+      "bytes": 1209569,
+      "sha256": "0b0224d90dfd0e208d3fc4ad85ca17d0fbbba0bfa87e212d3c3529483a158416",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-03/drafts/U04-iconos-claro.png",
+      "bytes": 1169974,
+      "sha256": "51f21485bff7cddafd4a6a5d41882e103c1b7a4d47e00d8c50df2504ec27da35",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-03/logos/L01-lambda-geometrica.png",
+      "bytes": 1164789,
+      "sha256": "7c490b3b7de5ccfa0b2a7da03cdc0f23ddbf3daf5453260433d2e2c98ebc32c0",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "path": "assets/design/round-03/logos/L02-lambda-geometrica-cursor.png",
+      "bytes": 1171760,
+      "sha256": "e61a911e553e9af2d4436195366dac7b240a25ca3960403c9ae7b387a25299a5",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "path": "assets/design/round-03/logos-comparison.jpg",
+      "bytes": 42548,
+      "sha256": "a73709666b6b5bee1fec25bf1a8382c148804d3b08137a5652127915d1f69767"
+    },
+    {
+      "path": "assets/design/round-03/references/bandas.png",
+      "bytes": 1499510,
+      "sha256": "9b6adda0b2a4155d5e6782b0ad2e8d8fb2ef04d1de0b9e3fce0e28f6c147e509",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-03/references/iconos.png",
+      "bytes": 1576395,
+      "sha256": "47ce29b16ae830b84c5f6f782adc311988b28030e3f23ecca55321b75eea5c6a",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-03/references/logo.png",
+      "bytes": 1335331,
+      "sha256": "459f0bdb4c3cbd334b3561de1301c9e5e966a65077b8e1329f204477e3562553",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-03/references/texto-claro.png",
+      "bytes": 1455745,
+      "sha256": "99d949a2c1b870e5a5531ff7edb6ecd94c2639d1016eb7ddeb2a3255f67e9e4f",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-03/references/texto-oscuro.png",
+      "bytes": 1429444,
+      "sha256": "1f05acf24ddf91e3a2f7800da3abfa4b881dd13f56124e049dafa849441480e2",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-03/ui/U01-texto-oscuro.png",
+      "bytes": 1410733,
+      "sha256": "2703dedd93eaa8e8961a6e50dce6d2ff388010b164ee37313f07148df7106f5f",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-03/ui/U02-texto-claro.png",
+      "bytes": 1378684,
+      "sha256": "9c719d8b51196494b96b9aaf65eacbcf3768b5da5bbf3b86ffecbc8a366aaff1",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-03/ui/U03-iconos-oscuro.png",
+      "bytes": 1447975,
+      "sha256": "035ab559609d68ad7a7a061598315fb0f5c0c03c4cee2f52eba4338e57dac7d7",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-03/ui/U04-iconos-claro.png",
+      "bytes": 1404816,
+      "sha256": "c986aabf43675a3d619c859f667679740fbadebbff81a720a2e509722faf49b4",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-03/ui-comparison.jpg",
+      "bytes": 118282,
+      "sha256": "6a04040e406e0ff6dcee5edbf42814f6be76780bfe3ea8584c19a0f37e5d7f9d"
+    },
+    {
+      "path": "assets/design/round-04/bootscreen/B01-lambdaos-slogan.png",
+      "bytes": 1054662,
+      "sha256": "27aef65623e4726bfe4ea80f75ebb3b710be4f52ea3631ca87b3ea50c0175ec7",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-04/bootscreen/B02-lambdaos-powered-by-rosser.png",
+      "bytes": 88224,
+      "sha256": "0164c438340e898ce829ddf9af73e2bc8a6b90ce5d8a359314c52f802d476459",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-04/bootscreen/B03-lambdaos-powered-by-local-ai.png",
+      "bytes": 89810,
+      "sha256": "4a010048b565a3758a16ce29fb37fd2e40f5ed8360c71652590196253a11f228",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-04/bootscreen/B04-lambdaos-powered-by-lambda-agent.png",
+      "bytes": 94226,
+      "sha256": "7edc32c6b1eb91b4b407155021aa992066ada1cfd0c629b76c0bb9f28e0135aa",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-04/bootscreen/B05-lambdaos-balanced-final.png",
+      "bytes": 81549,
+      "sha256": "ce642ff6eeee18d72d3f67f510fe6e1acdb2b17ad8493a28eed07e367bafeed6",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-04/bootscreen/B06-lambdaos-balanced-final-v2.png",
+      "bytes": 90712,
+      "sha256": "cbac5b0f70b88c37ecc8b65c4c80da5eaa5aa27002e6637348de5b90c1643069",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-04/bootscreen/bootscreen-symbol-v1-large.png",
+      "bytes": 81131,
+      "sha256": "211f2ba721f34180f28da3175c99162f238427998982bffeef46d18c72ece8fd",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-04/bootscreen/bootscreen-symbol-v2-medium.png",
+      "bytes": 55360,
+      "sha256": "5bba28d073c179cb6c21cc3a6a62e6bd3d1389233defbff898487ba796a7d456",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-04/bootscreen/bootscreen-symbol-v3-small.png",
+      "bytes": 43214,
+      "sha256": "704dee6a1cc6654fc68d0e5cfe7a95640f4cdd6b0e81a3eb82dc6ff9e29524a3",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-04/bootscreen/bootscreen-symbol-v4-half.png",
+      "bytes": 18869,
+      "sha256": "8c02f45de98e0a3b3e5d0ef92b71c946068642d6ae9b9cb5cb36b51424d3ce69",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-04/bootscreen/bootscreen-symbol.png",
+      "bytes": 24308,
+      "sha256": "e98c77a747e0242a63007446f0acab24264717086a5bab99c3e34e73adc047a1",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-04/bootscreen/bootscreen.png",
+      "bytes": 90712,
+      "sha256": "cbac5b0f70b88c37ecc8b65c4c80da5eaa5aa27002e6637348de5b90c1643069",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/bootscreen-lamb-s10-v8.png",
+      "bytes": 219226,
+      "sha256": "fdf01a70bfad51531d8dec6acc80b5d598d35cbf781ca711831d108700b6f0f4",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/bootscreen-lamb-s10-v9-status.png",
+      "bytes": 216122,
+      "sha256": "f6270a27e6368007288753445b4104b473bd1b9a1f76211f1cdefe3ec5ab79ce",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/bootscreen-lamb.png",
+      "bytes": 93540,
+      "sha256": "2eaeb4e9afd374ac3d60793066bd5c8a4f2b694f7ed9999f2caff75ef3152115",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/review-v2/01-symbol.png",
+      "bytes": 23245,
+      "sha256": "5dae24e7364e5b1b5a85909acdbb7e64fa87afdfa8c538b5fff18bd930a96254",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/review-v2/02-wordmark.png",
+      "bytes": 95540,
+      "sha256": "2c0863c4bb6780deb5316eae8ccdf71f2c2bd68c2ad60feac5a1a103e19a27ea",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/review-v2/03-ascii.png",
+      "bytes": 11528,
+      "sha256": "1bfd9e9ab04ac37e3fdd2ec6d7b2a761a1da92aea8833e099f2b2f5c9b34b9f2",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/review-v2/04-logs.png",
+      "bytes": 91824,
+      "sha256": "55ec57859bea8efdb031dab0c7e70ca6aff9711dfec9815c6ef69dd61e2c7c9e",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/review-v2/05-scrolling.png",
+      "bytes": 299635,
+      "sha256": "51dd17b77c3705462152fa7cb15a9e60a5fbf50096aa70c230df1226615bccb8",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/review-v2/transition-detail.png",
+      "bytes": 84792,
+      "sha256": "eecc5396249a7229d02e0a84261fab15278c188f2b7b605c4db076af3279acf1",
+      "width": 1600,
+      "height": 600
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/review-v3/01-symbol.png",
+      "bytes": 23245,
+      "sha256": "5dae24e7364e5b1b5a85909acdbb7e64fa87afdfa8c538b5fff18bd930a96254",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/review-v3/02-wordmark.png",
+      "bytes": 95845,
+      "sha256": "b952430f48f40b8369f7064707ed1363deede3764892b4fd9b306d572a715ebc",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/review-v3/03-ascii.png",
+      "bytes": 69412,
+      "sha256": "46d173cb89a51465357865f795846626a350d905f2227a6212b3cbc537d158d9",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/review-v3/04-logs.png",
+      "bytes": 366097,
+      "sha256": "afd9b91576731b04c127d311bde1dcde2275fcd15a55abbdd2aff19a467a363b",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/review-v3/05-scrolling.png",
+      "bytes": 355725,
+      "sha256": "06160d9ab0b2325a4f46236748cc6fba5ae8f3381fa0a9a1f312ed74effacd74",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/review-v3/06-last-log.png",
+      "bytes": 367623,
+      "sha256": "cd6b1a0da11ff5af1921671135c4bd387b22994ec462edc23bfcf22506c6e8ee",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/review-v3/transition-detail.png",
+      "bytes": 85829,
+      "sha256": "bf2a4dcfbe2a49d6303f8643d0f4f2774a4f86a0b1394b3c714b634369e34e63",
+      "width": 1600,
+      "height": 600
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/review-v4/01-symbol.png",
+      "bytes": 23245,
+      "sha256": "5dae24e7364e5b1b5a85909acdbb7e64fa87afdfa8c538b5fff18bd930a96254",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/review-v4/02-wordmark.png",
+      "bytes": 95845,
+      "sha256": "b952430f48f40b8369f7064707ed1363deede3764892b4fd9b306d572a715ebc",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/review-v4/03-ascii.png",
+      "bytes": 69412,
+      "sha256": "46d173cb89a51465357865f795846626a350d905f2227a6212b3cbc537d158d9",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/review-v4/04-logs.png",
+      "bytes": 366097,
+      "sha256": "afd9b91576731b04c127d311bde1dcde2275fcd15a55abbdd2aff19a467a363b",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/review-v4/05-scrolling.png",
+      "bytes": 355725,
+      "sha256": "06160d9ab0b2325a4f46236748cc6fba5ae8f3381fa0a9a1f312ed74effacd74",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/review-v4/06-last-log.png",
+      "bytes": 367623,
+      "sha256": "cd6b1a0da11ff5af1921671135c4bd387b22994ec462edc23bfcf22506c6e8ee",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/review-v4/transition-detail.png",
+      "bytes": 85974,
+      "sha256": "9b155d2bfb621e234d0105c9daf9b551b310802faef2bc9033b80e0ee76ddbe2",
+      "width": 1600,
+      "height": 600
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/review-v5/01-symbol.png",
+      "bytes": 23245,
+      "sha256": "5dae24e7364e5b1b5a85909acdbb7e64fa87afdfa8c538b5fff18bd930a96254",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/review-v5/02-wordmark.png",
+      "bytes": 95845,
+      "sha256": "b952430f48f40b8369f7064707ed1363deede3764892b4fd9b306d572a715ebc",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/review-v5/03-ascii.png",
+      "bytes": 69412,
+      "sha256": "46d173cb89a51465357865f795846626a350d905f2227a6212b3cbc537d158d9",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/review-v5/04-logs.png",
+      "bytes": 366097,
+      "sha256": "afd9b91576731b04c127d311bde1dcde2275fcd15a55abbdd2aff19a467a363b",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/review-v5/05-scrolling.png",
+      "bytes": 355725,
+      "sha256": "06160d9ab0b2325a4f46236748cc6fba5ae8f3381fa0a9a1f312ed74effacd74",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/review-v5/06-last-log.png",
+      "bytes": 367623,
+      "sha256": "cd6b1a0da11ff5af1921671135c4bd387b22994ec462edc23bfcf22506c6e8ee",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/review-v5/07-settled-symbol.png",
+      "bytes": 14380,
+      "sha256": "86e7058a93ab9decd4a90adb238ccd817dc8068a3e3ae147ac899f9051e84498",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/review-v5/08-half-fade.png",
+      "bytes": 77474,
+      "sha256": "90753575ab4860e368312d92c13be7d5ca5a08f77ce7ebde6f72a03fdde4c96c",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/review-v5/transition-detail.png",
+      "bytes": 86962,
+      "sha256": "d4d9ad050ca709846a9506c18434d616ecca66bf28897d17a8ac76c6e54fa0da",
+      "width": 1600,
+      "height": 600
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/review-v6/01-symbol.png",
+      "bytes": 23245,
+      "sha256": "5dae24e7364e5b1b5a85909acdbb7e64fa87afdfa8c538b5fff18bd930a96254",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/review-v6/02-wordmark.png",
+      "bytes": 93540,
+      "sha256": "2eaeb4e9afd374ac3d60793066bd5c8a4f2b694f7ed9999f2caff75ef3152115",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/review-v6/03-ascii.png",
+      "bytes": 69412,
+      "sha256": "46d173cb89a51465357865f795846626a350d905f2227a6212b3cbc537d158d9",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/review-v6/04-logs.png",
+      "bytes": 366097,
+      "sha256": "afd9b91576731b04c127d311bde1dcde2275fcd15a55abbdd2aff19a467a363b",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/review-v6/05-scrolling.png",
+      "bytes": 355725,
+      "sha256": "06160d9ab0b2325a4f46236748cc6fba5ae8f3381fa0a9a1f312ed74effacd74",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/review-v6/06-last-log.png",
+      "bytes": 367623,
+      "sha256": "cd6b1a0da11ff5af1921671135c4bd387b22994ec462edc23bfcf22506c6e8ee",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/review-v6/07-settled-symbol.png",
+      "bytes": 14380,
+      "sha256": "86e7058a93ab9decd4a90adb238ccd817dc8068a3e3ae147ac899f9051e84498",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/review-v6/08-half-fade.png",
+      "bytes": 76951,
+      "sha256": "b9ebd8bc7a2f02f70cc94ad723d81b4b056a4e8435758c427718627cc3600da1",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/review-v6/transition-detail.png",
+      "bytes": 86962,
+      "sha256": "d4d9ad050ca709846a9506c18434d616ecca66bf28897d17a8ac76c6e54fa0da",
+      "width": 1600,
+      "height": 600
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/review-v7/01-symbol.png",
+      "bytes": 23245,
+      "sha256": "5dae24e7364e5b1b5a85909acdbb7e64fa87afdfa8c538b5fff18bd930a96254",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/review-v7/02-wordmark.png",
+      "bytes": 93540,
+      "sha256": "2eaeb4e9afd374ac3d60793066bd5c8a4f2b694f7ed9999f2caff75ef3152115",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/review-v7/03-ascii.png",
+      "bytes": 69412,
+      "sha256": "46d173cb89a51465357865f795846626a350d905f2227a6212b3cbc537d158d9",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/review-v7/04-logs.png",
+      "bytes": 366097,
+      "sha256": "afd9b91576731b04c127d311bde1dcde2275fcd15a55abbdd2aff19a467a363b",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/review-v7/05-scrolling.png",
+      "bytes": 355725,
+      "sha256": "06160d9ab0b2325a4f46236748cc6fba5ae8f3381fa0a9a1f312ed74effacd74",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/review-v7/06-last-log.png",
+      "bytes": 367623,
+      "sha256": "cd6b1a0da11ff5af1921671135c4bd387b22994ec462edc23bfcf22506c6e8ee",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/review-v7/07-settled-symbol.png",
+      "bytes": 14380,
+      "sha256": "86e7058a93ab9decd4a90adb238ccd817dc8068a3e3ae147ac899f9051e84498",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/review-v7/08-half-fade.png",
+      "bytes": 76951,
+      "sha256": "b9ebd8bc7a2f02f70cc94ad723d81b4b056a4e8435758c427718627cc3600da1",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/review-v7/transition-detail.png",
+      "bytes": 98232,
+      "sha256": "cf4af69f8d96f71274c9f4eefb02ad1e700c5945c3efbf1c4153f393353e2aef",
+      "width": 1600,
+      "height": 600
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/review-v8/01-symbol.png",
+      "bytes": 39605,
+      "sha256": "205e50653d9a2eb1ac184cd9de0252dab591178cd2e1910b14aba2cffd5b337a",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/review-v8/02-wordmark.png",
+      "bytes": 219226,
+      "sha256": "fdf01a70bfad51531d8dec6acc80b5d598d35cbf781ca711831d108700b6f0f4",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/review-v8/03-ascii.png",
+      "bytes": 106427,
+      "sha256": "6135f8db7342f5bd1d554b27f29eaade91af6f043b00da538af8dcd2316780d0",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/review-v8/04-logs.png",
+      "bytes": 630744,
+      "sha256": "1f4b9d047d59d8a3935463759e6716cca79ee68c34ea552edf20789cdb9985fa",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/review-v8/05-scrolling.png",
+      "bytes": 618969,
+      "sha256": "a9f79170b04f2990a3981c57d243576d36c708c2b57e6f78d54b8078cd2d639d",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/review-v8/06-last-log.png",
+      "bytes": 631811,
+      "sha256": "7db0c547fa24df2f24fee9ad78d1734ce440a2ee9d2a9920b7b1f65d150cf474",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/review-v8/07-settled-symbol.png",
+      "bytes": 29674,
+      "sha256": "25a75e7369dd703a63d39ce755ceff9ddbe148970a0d97b5c61a4756ceb20d4d",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/review-v8/08-half-fade.png",
+      "bytes": 165546,
+      "sha256": "eeacc696157e47605c8b6dcef6e32b1488858f27a44da33c9c475a838022dc52",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/review-v8/09-encoded-wordmark.png",
+      "bytes": 199435,
+      "sha256": "cd71ab9b2c773cd3c8266f888c774f85e7e945e2e1ac9a1c509a7d86d6e328ea",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/storyboard-v1.png",
+      "bytes": 100223,
+      "sha256": "46792e142f699dfe350cbaeb7b1f26e2681a771b27ecfdf9b811583418ddd9f6",
+      "width": 1080,
+      "height": 1048
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/storyboard-v2.png",
+      "bytes": 369450,
+      "sha256": "1818d8011e829865e6c673e7d0f6719afd77fc3b0b7699935f33dbab9da14718",
+      "width": 1440,
+      "height": 1352
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/storyboard-v3.png",
+      "bytes": 593666,
+      "sha256": "7c5cbcc9c976efc497c18abbf3e520c53f466e823680ac44f7dfc13676af9b8d",
+      "width": 1440,
+      "height": 1352
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/storyboard-v4.png",
+      "bytes": 593887,
+      "sha256": "c022ce0a2f4b9c9d6cb2586b0a312565982d23f757664640f391783559db66c0",
+      "width": 1440,
+      "height": 1352
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/storyboard-v5.png",
+      "bytes": 586404,
+      "sha256": "df34e54ead0219827dc11a39560be1ef49ddcd67488ac283e70f4cfd62e15594",
+      "width": 1440,
+      "height": 1352
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/storyboard-v6.png",
+      "bytes": 586812,
+      "sha256": "cc312bdeafd0f928be67041ffac1004fea737abd90b1ced8d077551b95b2a09b",
+      "width": 1440,
+      "height": 1352
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/storyboard-v7.png",
+      "bytes": 586812,
+      "sha256": "cc312bdeafd0f928be67041ffac1004fea737abd90b1ced8d077551b95b2a09b",
+      "width": 1440,
+      "height": 1352
+    },
+    {
+      "path": "assets/design/round-05/boot-animation/storyboard-v8.png",
+      "bytes": 505117,
+      "sha256": "522c9ed98bbffe0a1b3485afac55de15c9060e2bbd0ffb819879235f0ba40aab",
+      "width": 1152,
+      "height": 1296
+    },
+    {
+      "path": "assets/design/round-05/bootloader-power-hint/type-exploration/01-swiss-neo-grotesk.png",
+      "bytes": 1102335,
+      "sha256": "84d777b9b6f4c993838fa36a0bcde065e7454c3c45825bc339bf8a23921c224b",
+      "width": 863,
+      "height": 1823
+    },
+    {
+      "path": "assets/design/round-05/bootloader-power-hint/type-exploration/02-din-condensed.png",
+      "bytes": 1191434,
+      "sha256": "75b0d987cd9494a87582255e75002c9f14f7c9b9ce836004b42c35c6ee943853",
+      "width": 863,
+      "height": 1823
+    },
+    {
+      "path": "assets/design/round-05/bootloader-power-hint/type-exploration/03-geometric-sans.png",
+      "bytes": 982556,
+      "sha256": "ce0fb26018052bcfc19c931a664300a9a8d8a91c73c1a0f6792da8836dbc1eef",
+      "width": 863,
+      "height": 1823
+    },
+    {
+      "path": "assets/design/round-05/bootloader-power-hint/type-exploration/04-humanist-sans.png",
+      "bytes": 1143544,
+      "sha256": "7ac73fa0f815a23b109aa037b947d3522c7453ab26c6b8168adaf2245d75fb19",
+      "width": 863,
+      "height": 1823
+    },
+    {
+      "path": "assets/design/round-05/bootloader-power-hint/type-exploration/05-technical-mono.png",
+      "bytes": 1163563,
+      "sha256": "dc2c853e59d2896fee81e15582d0e5f82cf37d94fb93b984ef919921e4da6e77",
+      "width": 863,
+      "height": 1823
+    },
+    {
+      "path": "assets/design/round-05/bootloader-power-hint/type-exploration/06-squared-technical.png",
+      "bytes": 1138389,
+      "sha256": "b1e773bf3674c8bfb36e3612d99ada255702597acb16a4bdad41315fe8dac4d1",
+      "width": 863,
+      "height": 1823
+    },
+    {
+      "path": "assets/design/round-05/bootloader-power-hint/type-exploration/07-contemporary-ui.png",
+      "bytes": 890422,
+      "sha256": "5f3ccfe20b5d55e767b3ef994d6be0932aebbc1ce0479ac35a87f12828769a50",
+      "width": 863,
+      "height": 1823
+    },
+    {
+      "path": "assets/design/round-05/bootloader-power-hint/type-exploration/08-rounded-grotesk.png",
+      "bytes": 1200421,
+      "sha256": "e643e837977eacaab74492945b7f94b6dfa7d556de36a8a7e1f1e0e6c028f545",
+      "width": 863,
+      "height": 1823
+    },
+    {
+      "path": "assets/design/round-05/bootloader-power-hint/type-exploration/09-ocr-technical.png",
+      "bytes": 428361,
+      "sha256": "7109294d58868b000756013037fc73382dce76e1c0a6d793ad85114518c31034",
+      "width": 863,
+      "height": 1823
+    },
+    {
+      "path": "assets/design/round-05/bootloader-power-hint/type-exploration/10-extended-light.png",
+      "bytes": 1154063,
+      "sha256": "6cca4cb59fefab5bdef6e9b3480510b0711a8871f120a74d2c65d0222ca6df5d",
+      "width": 863,
+      "height": 1823
+    },
+    {
+      "path": "assets/design/round-06/bootscreen/bootscreen-lamb-icon-preview-v2.png",
+      "bytes": 1080143,
+      "sha256": "1abbf16bca26370047a0447d663775d26de0f44ee5a65675661b893cbd00e56e",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-06/bootscreen/bootscreen-lamb-icon-preview.png",
+      "bytes": 443540,
+      "sha256": "b64119d7dc73d0fddaa08515373828353624ffdef3981e606194e5b42bfbba39",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/design/round-06/bootscreen/bootscreen-lamb-s10-1440x3040-v3.png",
+      "bytes": 553491,
+      "sha256": "9af858be1a71330f027b636e8b6e6e4bf16f7665c2b8fd8bf429f6228c4f0e12",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-06/lamb/01-frontal.png",
+      "bytes": 608237,
+      "sha256": "e43370e4188f57951409b6acbca776ff7ae013d582b1551582549f8aa370940c",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "path": "assets/design/round-06/lamb/02-curioso.png",
+      "bytes": 506481,
+      "sha256": "98a3c1af578f4a2a08c90520ce35602e516455fb233085e3256b7b7adc8fcdd0",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "path": "assets/design/round-06/lamb/03-sereno.png",
+      "bytes": 505418,
+      "sha256": "2258986f237f1a6afb36253098d02de18dbd91d1c76d042d83da0f3f69c59ee4",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "path": "assets/design/round-06/lamb/04-perfil.png",
+      "bytes": 591560,
+      "sha256": "3ed7181c577a3b994ae4fdc2a67c1c2169cc6ed8f13a3b288cd98fec4651b9dd",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "path": "assets/design/round-06/lamb/05-tres-cuartos.png",
+      "bytes": 674087,
+      "sha256": "af669cfff32192cebe2e570be27532f01818298d95e7478d07b54c8d9f34c088",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "path": "assets/design/round-06/lamb/06-compacto.png",
+      "bytes": 603963,
+      "sha256": "4e7d9cfa9cdf5aa2533b319a460e9a643be8ab811d048918a4f3e920dc98b21e",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "path": "assets/design/round-06/lamb/07-sentado.png",
+      "bytes": 634852,
+      "sha256": "5960a445e66ab795879a315f8d4888168506b41b6c7062993e6e8f95487a37c4",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "path": "assets/design/round-06/lamb/08-de-pie.png",
+      "bytes": 557954,
+      "sha256": "84c801fc51d360261441da254e8c842f7915c24a58294f06cdd9577b93a5f666",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "path": "assets/design/round-06/lamb/09-paso.png",
+      "bytes": 600374,
+      "sha256": "3090c23b907d4ed637024e3c484fee5cc1fed63567bc46743711865f41fffa45",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "path": "assets/design/round-06/lamb/10-reposo.png",
+      "bytes": 647774,
+      "sha256": "386860544abf6d9a1e489437c27941698616b1e0023bdcbdcb233f995438ed59",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "path": "assets/design/round-06/lamb/11-asomado.png",
+      "bytes": 617941,
+      "sha256": "81adbba4ea2a214eceaaf6f8c61aa2b7cf4c098dbfe1b47645cc709d23d49cc3",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "path": "assets/design/round-06/lamb/12-guino.png",
+      "bytes": 589066,
+      "sha256": "f17892c2c11beea104e3656877e8d3a6f11df0ade2f2e671e6d5fb8f90ffa284",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "path": "assets/design/round-06/lamb/13-cult-inspired.png",
+      "bytes": 641606,
+      "sha256": "99469089f8d88fe4ebeef192b9f98c64494c470adb3ca84097adee50573a0fb1",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "path": "assets/design/round-06/lamb/13-selected-no-mark.png",
+      "bytes": 805749,
+      "sha256": "9c181e0b4eafbbd4df3ac4494cc5120ec0563635cb784f94333531321593c335",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "path": "assets/design/round-06/lamb/13b-lambda-tuft.png",
+      "bytes": 1085851,
+      "sha256": "1e455911cd8e499879c795af052c6a4f81d20db671d5d773e6883c148d22ca91",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "path": "assets/design/round-06/lamb/13c-black-lambda.png",
+      "bytes": 686504,
+      "sha256": "977bb93d3cea5abf7bbe1bd5a00871181136e569b2943af785a901c0b03b816d",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "path": "assets/design/round-06/lamb/comparativa.png",
+      "bytes": 281544,
+      "sha256": "2f408a8ba5897e8f5050ec77aa1aab9bdc186ff7353965c5210c5591526bcbb9",
+      "width": 1440,
+      "height": 1340
+    },
+    {
+      "path": "assets/design/round-06/lamb/references/13c-user-base.png",
+      "bytes": 39901,
+      "sha256": "38910e4c3e1abb8fa0307a8a49e7390d69896afb1ffefd9d899db0f309c14a61"
+    },
+    {
+      "path": "assets/design/round-06/lamb/references/ollama-style-reference.png",
+      "bytes": 4782,
+      "sha256": "ab2a93aa7f3756a87c9429e4056e6405ce9f94d5cb0aa188c19d3e4ca2d04b68",
+      "width": 96,
+      "height": 112
+    },
+    {
+      "path": "assets/design/round-07-setup/assets/face-curious-v2.png",
+      "bytes": 1174343,
+      "sha256": "faf303888da372321406cbadd2bd09c9ee1c1f5e194ec8c10ecec9e199b2fca8",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "path": "assets/design/round-07-setup/assets/face-focused-v2.png",
+      "bytes": 1188981,
+      "sha256": "79cd81ef186cf3310273fc5da3e3979c48392d4ec2eb387956cc6ce5e296c51d",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "path": "assets/design/round-07-setup/assets/face-reassuring-v2.png",
+      "bytes": 1192732,
+      "sha256": "64ae34ed794573cd4b24b299b673272a298f841e2e04dbd4b43f6bf969f8f899",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "path": "assets/design/round-07-setup/assets/face-success-v2.png",
+      "bytes": 1190802,
+      "sha256": "2f49a2f7cc60fcc8b448a403b30b473fa067093eff3189cea62f23ab5e6b88a5",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "path": "assets/design/round-07-setup/assets/face-waiting-v2.png",
+      "bytes": 1160183,
+      "sha256": "5a2d48d4808e3c7a44457332aaef963925b9114d143169c53024cecfc37c2d0c",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "path": "assets/design/round-07-setup/assets/lucide/accessibility.svg",
+      "bytes": 398,
+      "sha256": "114a9b6983ee20c43d76556bbb5633085a0e082b19464dfa36f1e27768c8f3ea"
+    },
+    {
+      "path": "assets/design/round-07-setup/assets/lucide/antenna.svg",
+      "bytes": 362,
+      "sha256": "fbdef0e0e80b7dbe1524697da30926ffbe31f4583f4ed5181fe961af5abb7039"
+    },
+    {
+      "path": "assets/design/round-07-setup/assets/lucide/archive-restore.svg",
+      "bytes": 393,
+      "sha256": "7b589719d9c539dcb77844ea02b7c548f354a74b2931734f57b041d4e9de8ff8"
+    },
+    {
+      "path": "assets/design/round-07-setup/assets/lucide/archive-x.svg",
+      "bytes": 370,
+      "sha256": "36ff19d5f84f9cbabc2ad2789931dd652f872a40daef14618447c163fd5eedfa"
+    },
+    {
+      "path": "assets/design/round-07-setup/assets/lucide/battery-charging.svg",
+      "bytes": 392,
+      "sha256": "6a95bf102235d7070121bb8eb21a4836fa7ea9f0dbe8327eadbdf94253acdcbd"
+    },
+    {
+      "path": "assets/design/round-07-setup/assets/lucide/card-sim.svg",
+      "bytes": 433,
+      "sha256": "e036a2a0b7bd2bee2e031cabcd85bb320b121189ebb20f4575a0c3aa8e70c6f3"
+    },
+    {
+      "path": "assets/design/round-07-setup/assets/lucide/circle-alert.svg",
+      "bytes": 332,
+      "sha256": "ce3e98b7a03b78c0071131df42466e4e1ff5187fccad30e739ec9ce951cf685a"
+    },
+    {
+      "path": "assets/design/round-07-setup/assets/lucide/circle-check.svg",
+      "bytes": 278,
+      "sha256": "9711e045a5999f8a3b0782eb88e09b04e0559bc7b379dcc0a4ae645223e10345"
+    },
+    {
+      "path": "assets/design/round-07-setup/assets/lucide/cloud-off.svg",
+      "bytes": 385,
+      "sha256": "f1fa323fe513c96400971a5dac55823d88e41cc2c8cc9219c3ca4c62d46ebe62"
+    },
+    {
+      "path": "assets/design/round-07-setup/assets/lucide/fast-forward.svg",
+      "bytes": 380,
+      "sha256": "c98610ef43162ca32661429bbee8c263049a8277cefbceed932be46e986f682c"
+    },
+    {
+      "path": "assets/design/round-07-setup/assets/lucide/file-x.svg",
+      "bytes": 432,
+      "sha256": "dd234d8b00858df8dbc3dc89849f961e89151bdb54576a0f54f5e9c823d25445"
+    },
+    {
+      "path": "assets/design/round-07-setup/assets/lucide/fingerprint-pattern.svg",
+      "bytes": 608,
+      "sha256": "26a4e5756ca8fb809c7cf488a1b6b44f6921d4a34a37ca9be8facf53d362ad9b"
+    },
+    {
+      "path": "assets/design/round-07-setup/assets/lucide/folder-search.svg",
+      "bytes": 396,
+      "sha256": "ddcdf0c312320d13a9e327793e73c3a056309e91da1ca630fe1531db81aed247"
+    },
+    {
+      "path": "assets/design/round-07-setup/assets/lucide/globe-x.svg",
+      "bytes": 341,
+      "sha256": "b29950c2a8270c9b6fcb831cc72d52f84dfe97015b0826e61ff1956e60c68e66"
+    },
+    {
+      "path": "assets/design/round-07-setup/assets/lucide/globe.svg",
+      "bytes": 331,
+      "sha256": "82c6b8fa0b8e8d775ec9becd86f74a4e50bff7bee4c81f7362de45348504f14d"
+    },
+    {
+      "path": "assets/design/round-07-setup/assets/lucide/hard-drive-download.svg",
+      "bytes": 364,
+      "sha256": "4bbb0e0da04dee454a87dd037abce74d9380abb250f509487a85bd5b2a318be1"
+    },
+    {
+      "path": "assets/design/round-07-setup/assets/lucide/hard-drive.svg",
+      "bytes": 459,
+      "sha256": "324363c40f54e4ca843de0ad1d023b063b70a26a83bb2e0a9e9f4aad9af37378"
+    },
+    {
+      "path": "assets/design/round-07-setup/assets/lucide/languages.svg",
+      "bytes": 362,
+      "sha256": "ae9048feb2c7b19855da9a8f5414f68125573039777a89b9c253cceed5dc5075"
+    },
+    {
+      "path": "assets/design/round-07-setup/assets/lucide/lock-keyhole.svg",
+      "bytes": 337,
+      "sha256": "fc0b8b7590d1d9e9bb0112c5c2e15a78ade0bfeca6d6f8c79fbbe149236d74be"
+    },
+    {
+      "path": "assets/design/round-07-setup/assets/lucide/map-pin.svg",
+      "bytes": 359,
+      "sha256": "16f1042a62f1bda20ebab8bfc1cb79c0be285c980dea6c2c733a17902631405b"
+    },
+    {
+      "path": "assets/design/round-07-setup/assets/lucide/rotate-ccw.svg",
+      "bytes": 297,
+      "sha256": "622685386ab4017eabfde01cd74550a20b1924df233b353f73b6b155371f2afd"
+    },
+    {
+      "path": "assets/design/round-07-setup/assets/lucide/settings.svg",
+      "bytes": 586,
+      "sha256": "0ae27fd0f81999229e3127ac96c5b32edfea448e291d509e76212b917551d66b"
+    },
+    {
+      "path": "assets/design/round-07-setup/assets/lucide/shield-alert.svg",
+      "bytes": 435,
+      "sha256": "803008bc82bc53984204730f0bfc1ef5b20c8a7c588b9779948c691e03158c5c"
+    },
+    {
+      "path": "assets/design/round-07-setup/assets/lucide/signal-zero.svg",
+      "bytes": 233,
+      "sha256": "fd5f55397ebad1b3ab7c8d28ccc59b405239b857a39e95984cb3bb498ee99dae"
+    },
+    {
+      "path": "assets/design/round-07-setup/assets/lucide/signal.svg",
+      "bytes": 330,
+      "sha256": "81f455a4004fd5c9faf5637f15f9b0dbaeed87274c8f46af60e57a9dbb0b6f71"
+    },
+    {
+      "path": "assets/design/round-07-setup/assets/lucide/speech.svg",
+      "bytes": 447,
+      "sha256": "1395395c66b64ef09ffb4051c0d6ee0344b6fed0b688f0215353b064242424ac"
+    },
+    {
+      "path": "assets/design/round-07-setup/assets/lucide/wifi-cog.svg",
+      "bytes": 685,
+      "sha256": "8582107f8d58885cde24059a32026eb80a1fbe3bbe5b929501351b9a07c78867"
+    },
+    {
+      "path": "assets/design/round-07-setup/assets/lucide/wifi-off.svg",
+      "bytes": 494,
+      "sha256": "318b290106e55c3505933f434d3663524206c7a44165a89508774fba4fdbaadd"
+    },
+    {
+      "path": "assets/design/round-07-setup/assets/lucide/wifi-zero.svg",
+      "bytes": 234,
+      "sha256": "39456e4aa313a296e689b5fe6715cbe4e33a6420728988c40896bd446eb46950"
+    },
+    {
+      "path": "assets/design/round-07-setup/assets/lucide/wifi.svg",
+      "bytes": 357,
+      "sha256": "5c4c795d014fa95d1e1038362df44a0f0f32ded9cb08c833ae72419ebadc9a91"
+    },
+    {
+      "path": "assets/design/round-07-setup/originals/concept-emergency.png",
+      "bytes": 1129788,
+      "sha256": "838a6632398fbffc6ce4d97bf4d583637b00ed54d310595380b277d95df982bb",
+      "width": 864,
+      "height": 1821
+    },
+    {
+      "path": "assets/design/round-07-setup/originals/concept-pin.png",
+      "bytes": 1178821,
+      "sha256": "7365b3a5219d5a9ff62d89d8f04e8d4528b0cd36909e89766320e44129419647",
+      "width": 864,
+      "height": 1821
+    },
+    {
+      "path": "assets/design/round-07-setup/originals/welcome-gradient-top-left-approved.png",
+      "bytes": 1463271,
+      "sha256": "c9898258a1789a557ffdf20711ef16e268f832d3ac69c89833a5c3dc7c290392",
+      "width": 863,
+      "height": 1823
+    },
+    {
+      "path": "assets/design/round-07-setup/originals/welcome-v3-emergency.png",
+      "bytes": 1354910,
+      "sha256": "41e7c23bff401af9ed8f6a6d8dc09d94ef78f9483ec0e5c1da400fa635c16efa",
+      "width": 864,
+      "height": 1821
+    },
+    {
+      "path": "assets/design/round-07-setup/originals/welcome-v4-skip.png",
+      "bytes": 1416493,
+      "sha256": "aff233004f4d7ce095e5816523ddf7a53d00bd949c237745da55764a7ee78ea1",
+      "width": 864,
+      "height": 1821
+    },
+    {
+      "path": "assets/design/round-07-setup/originals/wifi-approved-v2.png",
+      "bytes": 1470029,
+      "sha256": "a4df8b32bcfc4df3198731f6e2225da069d1619bc1438b20b7bbffb533d6e196",
+      "width": 864,
+      "height": 1821
+    },
+    {
+      "path": "assets/design/round-07-setup/originals/wifi-v3-icon.png",
+      "bytes": 1443958,
+      "sha256": "da72167599300d946c0ec52e935bb075b5a325c91d0633c28d7b6297efa69b73",
+      "width": 864,
+      "height": 1821
+    },
+    {
+      "path": "assets/design/round-07-setup/review-sheets/changes-v08.png",
+      "bytes": 196552,
+      "sha256": "5b94b1f384d4afc1721762ecefb2084005ec585383ccd7e9e7f6f40e58f5d856",
+      "width": 880,
+      "height": 1000
+    },
+    {
+      "path": "assets/design/round-07-setup/review-sheets/overview.png",
+      "bytes": 188297,
+      "sha256": "7f2e60272d947c73d9a80145b701cfccc6a439906a92c6264523603b80f1a0ec",
+      "width": 880,
+      "height": 1000
+    },
+    {
+      "path": "assets/design/round-07-setup/review-sheets/sheet-01.png",
+      "bytes": 128620,
+      "sha256": "443e1293c8cd2a0f182a72c4e20c5ee9787e9f62bb4ae7e0745d17ddb6781deb",
+      "width": 880,
+      "height": 1000
+    },
+    {
+      "path": "assets/design/round-07-setup/review-sheets/sheet-02.png",
+      "bytes": 129864,
+      "sha256": "e13ae41e5b05aa1e7798f9b79b8a6f7abe273b5474a1d8a6dd53f15077595770",
+      "width": 880,
+      "height": 1000
+    },
+    {
+      "path": "assets/design/round-07-setup/review-sheets/sheet-03.png",
+      "bytes": 82775,
+      "sha256": "4a448f2348b587884e1f6410617b0db1679b7b92453405e4460e1bcbe2030d41",
+      "width": 880,
+      "height": 1000
+    },
+    {
+      "path": "assets/design/round-07-setup/review-sheets/sheet-04.png",
+      "bytes": 79729,
+      "sha256": "01483fba9fbf09f7249513c0b8e96c0d6dc8acdfb57cfc053773a27c26ac9f27",
+      "width": 880,
+      "height": 1000
+    },
+    {
+      "path": "assets/design/round-07-setup/review-sheets/sheet-05.png",
+      "bytes": 85628,
+      "sha256": "95874a4b49f2abc716d509d26ec0864ce20d1cd947407e17b6dec5613f3057af",
+      "width": 880,
+      "height": 1000
+    },
+    {
+      "path": "assets/design/round-07-setup/review-sheets/sheet-06.png",
+      "bytes": 67009,
+      "sha256": "cfd8281d96a5946ec6c05f01bf9a7389bdb504499c4320da6d518e32d5e453fb",
+      "width": 880,
+      "height": 1000
+    },
+    {
+      "path": "assets/design/round-07-setup/review-sheets/sheet-07.png",
+      "bytes": 80406,
+      "sha256": "3af2be65e46870c47511ca914691d4424ac3e9de71d5ff2887839abf6d939719",
+      "width": 880,
+      "height": 1000
+    },
+    {
+      "path": "assets/design/round-07-setup/review-sheets/sheet-08.png",
+      "bytes": 82480,
+      "sha256": "06604ed9ff9397d1b11c48b8baf18e5cea018b02f70d05e39de226dc1880f51e",
+      "width": 880,
+      "height": 1000
+    },
+    {
+      "path": "assets/design/round-07-setup/review-sheets/sheet-09.png",
+      "bytes": 71580,
+      "sha256": "6e0d26db16e0199bcf00279120898abe1b35785c7c091051af05fb094947544b",
+      "width": 880,
+      "height": 1000
+    },
+    {
+      "path": "assets/design/round-07-setup/review-sheets/sheet-10.png",
+      "bytes": 73264,
+      "sha256": "5a93127bcb2d525a1c5891c79164f915bd27ccdb8f279b4a3b82f2f692461002",
+      "width": 880,
+      "height": 1000
+    },
+    {
+      "path": "assets/design/round-07-setup/review-sheets/sheet-11.png",
+      "bytes": 29133,
+      "sha256": "6fbaa0751cf93cce797a6d9de70bde0f0af7d955caa4662f6f618693340fbaf0",
+      "width": 880,
+      "height": 1000
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/01-welcome.png",
+      "bytes": 1417279,
+      "sha256": "e7ba4201a1d84cf51a2a499dc369e4432b22b4230c7b03f75a7cac2edab46af1",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/02-language.png",
+      "bytes": 104945,
+      "sha256": "9329b84071c71102479f2cf2a23ae313b46eb6e0bee93d21bd3b8c98005a13f1",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/03-language-search.png",
+      "bytes": 77140,
+      "sha256": "3f89c42148ad689646a49f474f3bc8275903847cfab7be939475293881c76c35",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/04-language-empty.png",
+      "bytes": 75895,
+      "sha256": "15d874d44a3d781b0ab11d4d3c54ad033bdcf3589eda4099437abb58e16d4073",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/05-accessibility.png",
+      "bytes": 81970,
+      "sha256": "3d1672b4d4c1be7292df29f50216ce68904166006bbbb34b0b545fd8e212729c",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/06-text-size.png",
+      "bytes": 76228,
+      "sha256": "e6f47c3692803b33ad5240841609c87b8ed6509b8c95a3f9c92a6dc21596d698",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/07-talkback.png",
+      "bytes": 90693,
+      "sha256": "b0f9c8202d9444c14ad93054a449a567ac60d2b7565bedbb2e753e118b374a6a",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/08-no-sim.png",
+      "bytes": 80825,
+      "sha256": "27f47a6b27dd34370b580d85a2f3600905bd2ea4e3d42d48263fdb5605cc410d",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/09-sim-ready.png",
+      "bytes": 61001,
+      "sha256": "fa4cda73ebf4ec5eada642ccafe26b570ce40653dead78d57f710b8bbbc61e21",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/10-sim-pin.png",
+      "bytes": 97078,
+      "sha256": "3f40e3efde5559b1a82fbbe61ed9c96e8a3505f0cbaa43e52c8224d652515fba",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/11-sim-pin-error.png",
+      "bytes": 90113,
+      "sha256": "d49ce14c5610622588b2607e2ff5c2b5b25ed2fb04ef1a4bbd97c4858140b45c",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/12-sim-puk.png",
+      "bytes": 100753,
+      "sha256": "26eb547bfb7b730aae7ad7593398d19c93343ab13213ced0cc3c97520148d7a1",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/13-dual-sim.png",
+      "bytes": 78966,
+      "sha256": "edbd14540f1fd9e6a488070ff08aa89d9b34b60fbf19b7b8d3dc74cedfa9c7f5",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/14-mobile-no-service.png",
+      "bytes": 79392,
+      "sha256": "c59ce67922ff33681386c025649b4239db9297d4a7165aea1cc0d12433368d87",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/15-wifi.png",
+      "bytes": 1579034,
+      "sha256": "5c652af3df2e5714d56aa8e81a57baa2365d34d2b7306a6e7de981ad77af7c8f",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/16-wifi-scanning.png",
+      "bytes": 69589,
+      "sha256": "811012efb225dba84ca149ffd018c7df55a9fa0bc7f61f902a62f8d2a6b9eab5",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/17-wifi-empty.png",
+      "bytes": 98883,
+      "sha256": "45ce6b7b1db574f96546903f8d93879d4dd30682d565c275b62376726bfe2431",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/18-wifi-password.png",
+      "bytes": 104561,
+      "sha256": "0e2e580ac4dff77d2d1b76c67910d6b0f021c3abd3567537f20cdba45d64c658",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/19-wifi-wrong-password.png",
+      "bytes": 108583,
+      "sha256": "b961564b0d8751f75207684a8ab572f61d86f7c601a44f0a81f8d08399a3720d",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/20-wifi-connecting.png",
+      "bytes": 58671,
+      "sha256": "2d8a2d67c70ff50f400d2bf6878355869411f15ce8737cb37e8939b6b8481c6b",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/21-wifi-no-internet.png",
+      "bytes": 99425,
+      "sha256": "0a022f913ee2aa1d12089584ca658858aef2a664ecd63b272e2831511951da19",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/22-captive-portal.png",
+      "bytes": 107342,
+      "sha256": "764882110f5a3a5663903c0712b0e76716aa3282e2190fcf693f7131451139ae",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/23-add-wifi.png",
+      "bytes": 92993,
+      "sha256": "c2ee8b844763d861491bb6f85640bd21d294fe8af6e4c367c5f60b9f1d688e3e",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/24-enterprise-wifi.png",
+      "bytes": 104034,
+      "sha256": "62bdab36e6fb7181bf315050b411b7abe00712d324e639d1c23dceeff388da54",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/25-wifi-advanced.png",
+      "bytes": 86008,
+      "sha256": "1c2f8a28743a30e8bf78d7bbb87c169d927a40bafe4309aa8d1af573a432bdec",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/26-wifi-offline.png",
+      "bytes": 98022,
+      "sha256": "292d3a76fb0219ed695e52279a2c13b71d287aec2e6c21e348e7ff3dae26bee0",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/27-time.png",
+      "bytes": 90885,
+      "sha256": "08807691c44244f46c90eadcfbc966cd39faa5169f1512126e5314435f452b1a",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/28-time-manual.png",
+      "bytes": 73443,
+      "sha256": "9bf72fa4c3e52d91eb832f5c7052cb75b71a23552fa10f3f93e824b790a103f2",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/29-timezone.png",
+      "bytes": 66268,
+      "sha256": "67df3742226d855681f96134be1f5e2d88714de07ef6c6fa5aca9b18e6591ec0",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/30-restore-choice.png",
+      "bytes": 92382,
+      "sha256": "641aeb9be51fc6854f0103377402536b127f609eca9f9651f327ea247e5f9640",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/31-backup-location.png",
+      "bytes": 82323,
+      "sha256": "06da781acb42a41e00495e36dbb5cea369e265806d312d3ae5919b7cbb565639",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/32-backup-empty.png",
+      "bytes": 93966,
+      "sha256": "2aa2708c3e22a1ebe7bafcdf05e1bca8805197abf9ca26b5863f7ad8afcc594e",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/33-backup-key.png",
+      "bytes": 123157,
+      "sha256": "df8a9e23e7f88d99258c7db55acc76f57f045fd81a70b1a2f43f27a426312496",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/34-backup-key-error.png",
+      "bytes": 112600,
+      "sha256": "f48b6363497af508955867953ab3e3dc167c41e5a3477674e092fde56249df3d",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/35-backup-select.png",
+      "bytes": 83712,
+      "sha256": "7e946376d92d3ed7ecb5a3342b33a1e3ced9d51fe49a7b4c6464ada770bf20cb",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/36-restore-data.png",
+      "bytes": 121241,
+      "sha256": "2859740d5ca113775bdc517bbf12ab384a08baf1bdd72a5dde469a9ad7281d2b",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/37-restore-progress.png",
+      "bytes": 75841,
+      "sha256": "e77ce02897b643b7d56506b5f356eefc2fc03e32a476c0786689e0b113e4a679",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/38-restore-done.png",
+      "bytes": 74303,
+      "sha256": "79235c186ec1781164db665b116653db6345c5452a8220d15c8fca2cfa3eabfd",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/39-restore-space.png",
+      "bytes": 86943,
+      "sha256": "32a00b761b8b2a6573c3f5e7429900fc6f36fb2b46d29d2034b83518f916d867",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/40-restore-damaged.png",
+      "bytes": 98472,
+      "sha256": "347b418aae372a464235f68a94b5353461e84619de08bc91d5e92f645b87a855",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/41-location.png",
+      "bytes": 118018,
+      "sha256": "b08a69ba6f6f6859a3f9583695e5575ac52e4b77987430e025bab0339aa31233",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/42-lock-choice.png",
+      "bytes": 86733,
+      "sha256": "7e551d823faf5eab0e0c1479d4a27d8b328ab53d326e55c9ac73f0d725a14fad",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/43-pin-create.png",
+      "bytes": 83468,
+      "sha256": "030dd3f332724adc7f1f2ce7b3f27c97f1c12070205c1cf1c5b9293c4fde5709",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/44-pin-confirm.png",
+      "bytes": 81568,
+      "sha256": "c4f9cf5165c020cc8fab94ba9d0c63de4ae06aa50850b53e96de15e4fe4e6b42",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/45-pin-error.png",
+      "bytes": 80649,
+      "sha256": "b76ccfc911a2f9943275541ff98f60ea4fec0b859782020e0a0f8908b84e36ef",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/46-pattern.png",
+      "bytes": 58821,
+      "sha256": "a6120669b39355f47eec73c47cb58f1dec024480341217199daabe2b6627c1d8",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/47-pattern-confirm.png",
+      "bytes": 59042,
+      "sha256": "8cde50032a3a83dc78e3cf2f6ec00ab905fe8900ef92929d8bd1a4a2d1c897ef",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/48-pattern-error.png",
+      "bytes": 60031,
+      "sha256": "f70737f0c262a86cccfb7728dde829c8fded11b25a0b88a8cb56412e06a9ae44",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/49-password.png",
+      "bytes": 111482,
+      "sha256": "cceeb34f98562c7b6948d296f69a027d5ab7ae21788b05c80b45dcf5109fbdc7",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/50-password-confirm.png",
+      "bytes": 101511,
+      "sha256": "22069f6b98320708ba69ceaad75a01fa7283e29d11cb4e14a32bf9b1f42fc450",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/51-password-error.png",
+      "bytes": 102291,
+      "sha256": "f00872a274358efd900c46af89c5499c7e1177841597988845c311a865e344d1",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/52-lock-skip.png",
+      "bytes": 99733,
+      "sha256": "ffd515369874c77036347d3a99873e44f7b629bf0fa424af22c501408194cf3d",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/53-fingerprint-intro.png",
+      "bytes": 102939,
+      "sha256": "331e3bb52419249c4c44894762cb5879e52f3e442184eb176fab3524ab258347",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/54-fingerprint-enroll.png",
+      "bytes": 84538,
+      "sha256": "f511c04ad098aac002ce37d1391d7c93e4e288b4c40f02531b810500dd359983",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/55-fingerprint-reposition.png",
+      "bytes": 96196,
+      "sha256": "cf95687d27033c9bcca3a68b2f3ac8291a31d1dda5ca42ee98d1dcdb0b3b3e97",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/56-fingerprint-done.png",
+      "bytes": 86113,
+      "sha256": "68ef4c41f82af033dc842e3728637c690bb8d149dddf0b5f541b9fc8c23931d7",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/57-fingerprint-unavailable.png",
+      "bytes": 103459,
+      "sha256": "5a335e6e77892cbfb7d83eb18ad6e07d737e7bc08b22885c2ee63ba9372b5bb7",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/58-theme.png",
+      "bytes": 89927,
+      "sha256": "49c28594cc17ee429eeb7b2a23776ce4f01717d2d6f4007973da9731c6164691",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/59-lambda-layout.png",
+      "bytes": 101491,
+      "sha256": "00e96dff2fe9e36eca7a9dd8266feca1e2d7bd8b0114498a3f82eb1b07d36eeb",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/60-navigation.png",
+      "bytes": 82716,
+      "sha256": "857c27de829792c2dd1b7425aa7a01f20378b2c48f3a0204b1c316f56d683a58",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/61-gesture-help.png",
+      "bytes": 75281,
+      "sha256": "11c7eb01b621aaa592c5adc0e6a696440d11daf713026a41989ccb37affbd261",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/62-haptics.png",
+      "bytes": 86590,
+      "sha256": "25e3acab5e57eddd58f1fb8536332d039411b670694e337b7b6a46add21e99fc",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/63-summary.png",
+      "bytes": 105504,
+      "sha256": "9151fab2f386baaa84037faa5b2b9d35a1fdec1308e010a2fbf27301e9a1c7ce",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/64-applying.png",
+      "bytes": 70840,
+      "sha256": "7c29df73928b1dc8575a6e00239fab9e4a6762fb9951a0759ba05373411dc6bf",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/65-setup-error.png",
+      "bytes": 99607,
+      "sha256": "82932b5352cad81be9711881770d2eb159877724bbff45e766536ea1a00f2f1b",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/66-finished.png",
+      "bytes": 155799,
+      "sha256": "de5d15695cb86317995fdf82aad5dfad5bf9ee86f95de76fbe9671df68023d60",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/67-resume.png",
+      "bytes": 85515,
+      "sha256": "b66973dfe0a01dc11f00c663bbd504c88966ec266041bafd8f2862d1c7164bb0",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/68-battery-low.png",
+      "bytes": 81649,
+      "sha256": "65a3329e21babe14d45b354df4741f712ac60bd8c317dad98018d37684445851",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/69-emergency-empty.png",
+      "bytes": 110020,
+      "sha256": "6e8c6b17633009126494f866f9fb9cc5be4efd8fc4ee31842b4bc0dc61a4c15b",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/70-emergency-number.png",
+      "bytes": 113576,
+      "sha256": "f40134db0f5df897785038306035832352f020c65d078918ef442c6987490a10",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/71-emergency-invalid.png",
+      "bytes": 121396,
+      "sha256": "9090ee10d7616bcabed8c8f4201ca5e4a96febe9aa0750b54abb1a2fa1d3c785",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/72-emergency-calling.png",
+      "bytes": 52882,
+      "sha256": "b27ee6458aaed949cd0aa98f02992689d6d88940d865871c5a2be4213ff0b818",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/73-emergency-active.png",
+      "bytes": 67464,
+      "sha256": "c075c92bc4dcd610625db086a29131807b8e57b26c16ef423f10c54f487d15fd",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/74-emergency-ended.png",
+      "bytes": 53355,
+      "sha256": "2ccc9cb5fd274797d3cbba58ffceaf0c6deb4657555eda6aa20a1cdae1d56cec",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/75-emergency-no-network.png",
+      "bytes": 68370,
+      "sha256": "4a6d805abf34beeed969afb7002d62050afb6ed8bf7bb3e2d5ba633cf62a7a8c",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/76-emergency-info.png",
+      "bytes": 65892,
+      "sha256": "adcb9712eeebe6bcb47c82220a83f5da2bfca428774bc902430155bd8260d60e",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/77-about.png",
+      "bytes": 117757,
+      "sha256": "b895acad83092d1c1a5b787005c07150f510483c7e8c8f68de8d615ea768221d",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/78-software.png",
+      "bytes": 116242,
+      "sha256": "8d5d7a43410cb4db58aae789965ce1c8c98244f484767b3cce646eaf5e51cedd",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/79-legal.png",
+      "bytes": 111883,
+      "sha256": "99ddafa5db94f002b82b5568696123cb106ac5ebfb7ab886ef700ec211a354de",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/80-wallpaper.png",
+      "bytes": 40391,
+      "sha256": "b86b1fcbfa05165af846e87863473c15e5877a994e1d1d5fc6ae55b301eee221",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-07-setup/screens/81-skip-setup.png",
+      "bytes": 136551,
+      "sha256": "fbc696b64f2eb3ccda574e93bd820d94c742c8c3bd5669194e78004e32d207d7",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/design/round-08-lockscreen/screens/01-bloqueo-oscuro.png",
+      "bytes": 1472387,
+      "sha256": "aa07e90efe384a33ea758caaec741d7c0a8913de6b3409f6e0c58ce9e1aefc2c",
+      "width": 863,
+      "height": 1823
+    },
+    {
+      "path": "assets/design/round-08-lockscreen/screens/02-bloqueo-claro.png",
+      "bytes": 1326750,
+      "sha256": "63033833224a150f9033028956a2382c6ca58e4d3dd981104ff77bf4fcdf978f",
+      "width": 863,
+      "height": 1823
+    },
+    {
+      "path": "assets/design/round-08-lockscreen/screens/03-notificaciones.png",
+      "bytes": 1495682,
+      "sha256": "99cdfc6d73a2c7f955b9832337b3016ac1ad757b3fdf128766ed35dc7a91b323",
+      "width": 864,
+      "height": 1821
+    },
+    {
+      "path": "assets/design/round-08-lockscreen/screens/04-privacidad.png",
+      "bytes": 1485820,
+      "sha256": "26e706884e43d59490c376ec53ef9f879e203b966aa33a538762f3d3d9d03a74",
+      "width": 864,
+      "height": 1821
+    },
+    {
+      "path": "assets/design/round-08-lockscreen/screens/05-no-molestar.png",
+      "bytes": 1512740,
+      "sha256": "dfcfdb77e1262d68408e0e6b355f3e2cbb4b433cf238d96a492772ad0640b90d",
+      "width": 864,
+      "height": 1821
+    },
+    {
+      "path": "assets/design/round-08-lockscreen/screens/06-musica.png",
+      "bytes": 1491395,
+      "sha256": "35723ed207c410fd25d5c4032a3639a9e3800046835b10531bb1895d0964af59",
+      "width": 864,
+      "height": 1821
+    },
+    {
+      "path": "assets/design/round-08-lockscreen/screens/07-carga.png",
+      "bytes": 1539373,
+      "sha256": "1e0f0c26de6fec006eec53184bdfa085f82f15248eabe21e135956d63f5fc446",
+      "width": 864,
+      "height": 1821
+    },
+    {
+      "path": "assets/design/round-08-lockscreen/screens/08-bateria-baja.png",
+      "bytes": 1524465,
+      "sha256": "1b1ec1eea3408ec9cb8c445c7d8579188605841c6073bf196e407666a97218c5",
+      "width": 864,
+      "height": 1821
+    },
+    {
+      "path": "assets/design/round-08-lockscreen/screens/09-always-on.png",
+      "bytes": 353903,
+      "sha256": "9b2fd96f2ba1b8b73ecb289b6e57de5883aa1b9d64379638f9a90d104b764827",
+      "width": 864,
+      "height": 1821
+    },
+    {
+      "path": "assets/design/round-08-lockscreen/screens/10-pin.png",
+      "bytes": 1472195,
+      "sha256": "fafae62ed3418f3ce8c915209060c1b5b3ff76dbf98354ec411cafc8a994826e",
+      "width": 864,
+      "height": 1821
+    },
+    {
+      "path": "assets/design/round-08-lockscreen/screens/11-pin-introducido.png",
+      "bytes": 1458009,
+      "sha256": "4fbbcdf8595a6190ca4b8430167ec4655f4ad7b91b9d59e668ba199fd48d4706",
+      "width": 864,
+      "height": 1821
+    },
+    {
+      "path": "assets/design/round-08-lockscreen/screens/12-pin-error.png",
+      "bytes": 1477783,
+      "sha256": "4a264ab12009c007701f53c78e969f86fbb81099166621af36704a73b2b04170",
+      "width": 864,
+      "height": 1821
+    },
+    {
+      "path": "assets/design/round-08-lockscreen/screens/13-patron.png",
+      "bytes": 1485316,
+      "sha256": "7f61febdab0b5b2275049b7f15ee95555940323e61f477f91efa3e8cf9928c7d",
+      "width": 864,
+      "height": 1821
+    },
+    {
+      "path": "assets/design/round-08-lockscreen/screens/14-patron-trazo.png",
+      "bytes": 1491867,
+      "sha256": "e440de2b91cd47d32b9f7ace14d697d067787a91fd840d36a6bd5da6ff6410d3",
+      "width": 864,
+      "height": 1821
+    },
+    {
+      "path": "assets/design/round-08-lockscreen/screens/15-patron-error.png",
+      "bytes": 1487660,
+      "sha256": "00e31250a4ac6879798dde5fd32c4462f47c1734fd041aafaebbd3f2a70cd547",
+      "width": 864,
+      "height": 1821
+    },
+    {
+      "path": "assets/design/round-08-lockscreen/screens/16-contrasena.png",
+      "bytes": 1470819,
+      "sha256": "a769359394d0c6d8aa6f70487078f637331f53ca9200c7ec46c90678b8de18dc",
+      "width": 864,
+      "height": 1821
+    },
+    {
+      "path": "assets/design/round-08-lockscreen/screens/17-huella-leyendo.png",
+      "bytes": 1481402,
+      "sha256": "bbc6685fef7f152fd7f92a7e2cbf71be8b7202f88c636f3fcf0fe8411f112256",
+      "width": 863,
+      "height": 1822
+    },
+    {
+      "path": "assets/design/round-08-lockscreen/screens/18-huella-error.png",
+      "bytes": 1543315,
+      "sha256": "d3cd519c4cad61ca7be1276d1d5aa22b8893088ba69dfc738c357b384d3f1c08",
+      "width": 863,
+      "height": 1823
+    },
+    {
+      "path": "assets/design/round-08-lockscreen/screens/19-desbloqueado.png",
+      "bytes": 1516705,
+      "sha256": "a42b93970136b103084523a5596d9c3af6f6bd5530cd900fa9106c1a60852828",
+      "width": 864,
+      "height": 1821
+    },
+    {
+      "path": "assets/design/round-08-lockscreen/screens/20-pin-reinicio-v2.png",
+      "bytes": 1468226,
+      "sha256": "0f3c0c3710567d0b93e97046750e3e2a0f491cf16c32186e2bc9252307d9d14b",
+      "width": 864,
+      "height": 1821
+    },
+    {
+      "path": "assets/design/round-08-lockscreen/screens/20-pin-reinicio.png",
+      "bytes": 1479169,
+      "sha256": "84319d077cdd71bb9ba02333bd892bfc4065054796b694f29af0daf3922c81e7",
+      "width": 864,
+      "height": 1821
+    },
+    {
+      "path": "assets/design/round-08-lockscreen/screens/21-espera-intentos.png",
+      "bytes": 1460790,
+      "sha256": "95b1a0069b3284abe47d514b57a612d1ca5621ad6ff4a73ddc1d406182f7e42a",
+      "width": 864,
+      "height": 1821
+    },
+    {
+      "path": "assets/design/round-08-lockscreen/screens/22-emergencia-teclado.png",
+      "bytes": 1404268,
+      "sha256": "fecb6b372b88e695510578fa2859f6343c73d6aaddf608ff391a7112a9eb7796",
+      "width": 864,
+      "height": 1821
+    },
+    {
+      "path": "assets/design/round-08-lockscreen/screens/23-emergencia-informacion.png",
+      "bytes": 1519186,
+      "sha256": "8d244b8255b4c97ffef2c9a652cefba498a4eebf89d405fe3191341eaf19bcfb",
+      "width": 864,
+      "height": 1821
+    },
+    {
+      "path": "assets/design/round-08-lockscreen/screens/24-sim-pin-v2.png",
+      "bytes": 1455919,
+      "sha256": "3a23a4d47486b87ec132570de4c91c9890f56624496184831aecfbd9d6294d30",
+      "width": 864,
+      "height": 1821
+    },
+    {
+      "path": "assets/design/round-08-lockscreen/screens/24-sim-pin.png",
+      "bytes": 1464521,
+      "sha256": "e34febef1c9e7b58aacc73233d6448ea6c4c31d141454b92511f205e3fa5b4f6",
+      "width": 864,
+      "height": 1821
+    },
+    {
+      "path": "assets/design/round-08-lockscreen/screens/25-sim-puk-v2.png",
+      "bytes": 1462403,
+      "sha256": "873acaa46ac020058f95712d3226e4ce2ccd37f489cb4aebf1ececb048451132",
+      "width": 864,
+      "height": 1821
+    },
+    {
+      "path": "assets/design/round-08-lockscreen/screens/25-sim-puk.png",
+      "bytes": 1473937,
+      "sha256": "a366918a6d72c9c0bc48713f5cc8ba71a4a413b95ff83c6831c1885882b69eb1",
+      "width": 864,
+      "height": 1821
+    },
+    {
+      "path": "assets/design/round-08-lockscreen/screens/26-sin-credencial.png",
+      "bytes": 1519259,
+      "sha256": "c35aa821afdebfe676df1a80f4ace8433a4dee056e7b1acc9d9f6954eb5acd2c",
+      "width": 863,
+      "height": 1823
+    },
+    {
+      "path": "assets/design/round-08-lockscreen/screens/27-reloj-apilado.png",
+      "bytes": 1533204,
+      "sha256": "b05a82a2d5fb1d659fc207a2fb4bc662ff8193609f7e718c1a92ca9ea80726d2",
+      "width": 864,
+      "height": 1821
+    },
+    {
+      "path": "assets/design/round-08-lockscreen/screens/28-reloj-analogico.png",
+      "bytes": 1509384,
+      "sha256": "433025a36f9be7463a2fed53bc8b6c3f7b6982c960d3900b41233fef021c716b",
+      "width": 864,
+      "height": 1820
+    },
+    {
+      "path": "assets/design/round-08-lockscreen/selected-arista-lambda/arista-lambda-claro.png",
+      "bytes": 1628805,
+      "sha256": "8184ba2357a57ed5b32219052edae762e0907365f0039d7ae7b449bd89c409d4",
+      "width": 865,
+      "height": 1819
+    },
+    {
+      "path": "assets/design/round-08-lockscreen/selected-arista-lambda/arista-lambda-oscuro.png",
+      "bytes": 1674239,
+      "sha256": "7774862a89a476c73aa37baae5b08ac21ae9e35135a92296cf7d8f9e6482a11f",
+      "width": 864,
+      "height": 1821
+    },
+    {
+      "path": "assets/design/round-08-lockscreen/wallpapers/01-pliegue-claro.png",
+      "bytes": 1696410,
+      "sha256": "05ef221930e3886ef69956f39329a54a91e8c8a4fee6aaadbbf33f8f42f35409",
+      "width": 863,
+      "height": 1823
+    },
+    {
+      "path": "assets/design/round-08-lockscreen/wallpapers/01-pliegue-oscuro.png",
+      "bytes": 1606825,
+      "sha256": "33259e43388c13ecdd66bd5c87b4e0417fbdfc81b503d84769f60f597409fa96",
+      "width": 863,
+      "height": 1823
+    },
+    {
+      "path": "assets/design/round-08-lockscreen/wallpapers/02-orbita-claro.png",
+      "bytes": 1821319,
+      "sha256": "662dac1f3fc011418bbf14fe6b662e9eefe9ba37407bd7783e1135ef48efbb16",
+      "width": 864,
+      "height": 1821
+    },
+    {
+      "path": "assets/design/round-08-lockscreen/wallpapers/02-orbita-oscuro.png",
+      "bytes": 1763166,
+      "sha256": "e3c99552a8015c38bd0a9ee85664356c3a297d4a7e1f78c0f348bfe639c2161e",
+      "width": 864,
+      "height": 1821
+    },
+    {
+      "path": "assets/design/round-08-lockscreen/wallpapers/03-contorno-claro.png",
+      "bytes": 1197595,
+      "sha256": "4635a37a3374db679668be2b985bb680696a9df10c4f5eb46f0f9c37f8265bfc",
+      "width": 864,
+      "height": 1821
+    },
+    {
+      "path": "assets/design/round-08-lockscreen/wallpapers/03-contorno-oscuro.png",
+      "bytes": 1700857,
+      "sha256": "2ae0c082eb0a4c7e07a398fd9eb5fb3e97dd86fae83a89f1eb482465c8c6f762",
+      "width": 863,
+      "height": 1822
+    },
+    {
+      "path": "assets/design/round-08-lockscreen/wallpapers/04-arista-claro.png",
+      "bytes": 1928631,
+      "sha256": "ea3e9285e495b51419f7230fcd31357af80fc68774be75719aa78c0fa8a01592",
+      "width": 865,
+      "height": 1819
+    },
+    {
+      "path": "assets/design/round-08-lockscreen/wallpapers/04-arista-oscuro.png",
+      "bytes": 1826379,
+      "sha256": "e9768424a89cdc8531b6722dbffbd5d0dfd2074449241efc230a5661b03aba39",
+      "width": 864,
+      "height": 1821
+    },
+    {
+      "path": "assets/design/round-08-lockscreen/wallpapers/05-campo-claro.png",
+      "bytes": 1695794,
+      "sha256": "f2c70c46eba84fdb3d9fe92c5a010eda22039ca9ccd4b300e43f066ac362178d",
+      "width": 864,
+      "height": 1821
+    },
+    {
+      "path": "assets/design/round-08-lockscreen/wallpapers/05-campo-oscuro.png",
+      "bytes": 1768338,
+      "sha256": "30611ce4dfa6239b5dd64f472f8c1efd5264a7e6aa8df31327c4757a22c42d4f",
+      "width": 863,
+      "height": 1822
+    },
+    {
+      "path": "assets/generated/exec-01daf55c-fc8c-45f4-9b24-04d8566be749.png",
+      "bytes": 1523850,
+      "sha256": "71b44ba839f5303097759ae17e0d1490807294bc32f920cc107f0f1cd1f5ab78",
+      "width": 864,
+      "height": 1821
+    },
+    {
+      "path": "assets/generated/exec-051e41c6-a402-446d-892d-955b70a41d6b.png",
+      "bytes": 568280,
+      "sha256": "2eadbd69d240c1992acd2e0b280cae342cc1e89f84cb51078f8c5f8aecdac6e5",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "path": "assets/generated/exec-0a25a6d8-40c9-4554-8d72-cea01565dc65.png",
+      "bytes": 381819,
+      "sha256": "3f7acd9ff523ebe2a4345e3ad9afde60a34a61752895be1767365c26162d91a4",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/generated/exec-10f9ff2f-eb2a-4bd9-9a2b-f2456d833ca7.png",
+      "bytes": 364613,
+      "sha256": "5bbf86b7af0898a2db092914c2f85933e0d5810f3c0ebc2b3856c57843d50e76",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/generated/exec-15b60756-ee4d-4805-9357-0165ce40df56.png",
+      "bytes": 1049721,
+      "sha256": "7b3853b243f64e767b93864e4be1654e7a04963e8966441f2be9a051577e20d1",
+      "width": 863,
+      "height": 1823
+    },
+    {
+      "path": "assets/generated/exec-1ed639b6-7862-4228-b344-81ec86ec20e5.png",
+      "bytes": 579090,
+      "sha256": "31a5a6d9710fba7c1729321be934fe6d08e6aee4ea06edaa045d5a4462bcf196",
+      "width": 863,
+      "height": 1823
+    },
+    {
+      "path": "assets/generated/exec-3384a778-ebc7-4ecd-9469-98ae2a1e01d4.png",
+      "bytes": 1178959,
+      "sha256": "796fd334486237f46c61daedebbe5897e973d3f5d35192e39c6d08190f73377a",
+      "width": 863,
+      "height": 1822
+    },
+    {
+      "path": "assets/generated/exec-39f85356-2162-4a73-87d4-28c7f4ac92fd.png",
+      "bytes": 1366105,
+      "sha256": "80f65601453a9fd62138a0f1f3aeaa3ec0059e27ee332703279653203e350ec2",
+      "width": 863,
+      "height": 1823
+    },
+    {
+      "path": "assets/generated/exec-3a779b97-0ff7-4f72-a1a6-085e63c7a817.png",
+      "bytes": 304030,
+      "sha256": "9f811cb52994e200da8c80adde3840e668f2ee16157d6ac5fd950fc8a45f10b1",
+      "width": 863,
+      "height": 1823
+    },
+    {
+      "path": "assets/generated/exec-3b0174b3-d075-4198-9179-11b81a276fd9.png",
+      "bytes": 581544,
+      "sha256": "2c705f3640ada1372a08d47554d4da9ed734c60fbc29e499f7ea2e9c5238e918",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "path": "assets/generated/exec-4d844dd6-1e71-4d77-b708-bd9c352f2ac7.png",
+      "bytes": 543836,
+      "sha256": "a22ec1d082ea40cf49499b8e19b411e639ba3dd3451609b6a427029b3c58ca5f",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "path": "assets/generated/exec-4e76c76e-f98d-4c7f-9ba6-92cdb2aedcd8.png",
+      "bytes": 379287,
+      "sha256": "22502da68de6d933719d58a6844720a175f91047cad2c54e75d94bf42fba1be1",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/generated/exec-535ed995-c01b-4e8f-a567-968275291aa1.png",
+      "bytes": 312412,
+      "sha256": "5c24213c137593d966bab06a1ec75f0ddf3fe1eb60b6eb7d32c7c3cbcacc4e93",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/generated/exec-6729849b-a09b-4b4e-87e5-0f0543143698.png",
+      "bytes": 324268,
+      "sha256": "98c8bd3c0960334b25b3cb66a63cc84c44b257fed161854381f86bc54c849f74",
+      "width": 940,
+      "height": 1672
+    },
+    {
+      "path": "assets/generated/exec-7050d1bd-9c2b-4cdd-8800-a99c3a931a1d.png",
+      "bytes": 385212,
+      "sha256": "9f6a595daa8eee2294bfeff844ae86df1f384ae1b2ff918aaec96e18fa5462c5",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/generated/exec-72c49ab1-0df2-42e0-934b-121dda53ae08.png",
+      "bytes": 374788,
+      "sha256": "c38a1650ac657a7bf11535cb893dfb92483c81c1ff7a6d36e70755e219ee61ae",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/generated/exec-86c533d9-acf9-469b-963c-de2a4719316f.png",
+      "bytes": 529823,
+      "sha256": "977d2704376c764b4de0b597a908e48c05354ce1e3572eb4819a7a8a6f812d75",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "path": "assets/generated/exec-8af2442f-999a-4bde-aaf5-c02998280bfa.png",
+      "bytes": 1154160,
+      "sha256": "ba07c7ee3cfbb8dd4a31ac364a33ed40121c202be343f2bbe44bc3afc45a0588",
+      "width": 864,
+      "height": 1821
+    },
+    {
+      "path": "assets/generated/exec-8b4d45d0-e3f7-4386-b4f2-5b3540f875e2.png",
+      "bytes": 309612,
+      "sha256": "96dbe7dc5981933f0ea1558a2480accab2bdce038b197eea99c5b6fcb7035a36",
+      "width": 863,
+      "height": 1823
+    },
+    {
+      "path": "assets/generated/exec-8f19a387-2295-4132-81c3-158eb0d821a6.png",
+      "bytes": 299859,
+      "sha256": "f768602159c2d6be221395dfecb7ac319396aa86bcba77c49852dae34998c78b",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/generated/exec-9d560e9a-725a-40a2-a88f-611f180794e8.png",
+      "bytes": 299484,
+      "sha256": "644bd9f8c84e9d5e9397f1353fb8beb01f0fa5756d9a57b9b2abf12a9c3779d0",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/generated/exec-b59da69d-be05-406b-84a7-524aaff4d915.png",
+      "bytes": 537527,
+      "sha256": "5296ac56da9b9f4f95ff8fe7b6b1c3a5326315219e2676a68e0f91496883a9db",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "path": "assets/generated/exec-b95d0d4e-40a4-4ed1-b55b-e653673db1ad.png",
+      "bytes": 1374139,
+      "sha256": "be87ee6bb3ecf990ec9df9de396110c91c5aee90df9b50c9203a90898357cb1f",
+      "width": 863,
+      "height": 1823
+    },
+    {
+      "path": "assets/generated/exec-c8dd5617-1b22-4055-b9bd-22211e09593f.png",
+      "bytes": 271763,
+      "sha256": "b298a140d819166f0ab54d299d3f86b9ac0cb1c999c2142a50307802f9790637",
+      "width": 941,
+      "height": 1672
+    },
+    {
+      "path": "assets/generated/exec-ccb5bce0-a69e-49e6-88de-0001e93accfa.png",
+      "bytes": 1422846,
+      "sha256": "461c8bd8f39acd2d8e25fff6c427ccace447200cb7df07e65008902cb3970946",
+      "width": 863,
+      "height": 1823
+    },
+    {
+      "path": "assets/generated/exec-d9ee19f7-62f0-497a-a66f-dea3a3a6afe3.png",
+      "bytes": 1090360,
+      "sha256": "94fd5f02e8f44684fff27b2089fbfe9b04b18f3f454e6448d868ef044a3c533e",
+      "width": 864,
+      "height": 1821
+    },
+    {
+      "path": "assets/generated/exec-e2e60348-2cfa-448e-9b8e-93381a184596.png",
+      "bytes": 514465,
+      "sha256": "bd718ad78ef3c52af25d2e43cae6196d20451207cbe1691d782471e504f8df2c",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "path": "assets/generated/exec-e4224cf5-1f95-4d03-b228-bba536e5a2fc.png",
+      "bytes": 1409817,
+      "sha256": "f63d34676a0be02448899e1f0fb1be6d07b18b6c3ab5664516a61a5785e668a8",
+      "width": 863,
+      "height": 1823
+    },
+    {
+      "path": "assets/generated/exec-ec97106b-bbaa-4395-bd75-a9ac6c2beae0.png",
+      "bytes": 378337,
+      "sha256": "19ec7ff78187a00d91a279305ccc78f8104bbaa8c9d7ddbc66e6b7eebe84f5dc",
+      "width": 864,
+      "height": 1821
+    },
+    {
+      "path": "assets/generated/exec-f0dde3b3-83b9-4dfb-9701-8b96b6f1caf8.png",
+      "bytes": 1718682,
+      "sha256": "678946e27f70abfd0970f2f28d44100587357cd7233601a6271dbf52c8e1fad0",
+      "width": 865,
+      "height": 1819
+    },
+    {
+      "path": "assets/generated/exec-f50da2b8-b274-403d-90af-b697cf1cb986.png",
+      "bytes": 1078439,
+      "sha256": "aba182041120c3ebeed561eaa87866835209370808048373b9008b36b2ee9995",
+      "width": 864,
+      "height": 1821
+    },
+    {
+      "path": "assets/screenshots/lockscreen.png",
+      "bytes": 2744009,
+      "sha256": "e575b97ef698150921a96ebc314cf81a624df78536b056248bca15503c5bd696",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/screenshots/quick-settings.png",
+      "bytes": 186881,
+      "sha256": "473793695f2edd359e63f1828191b04b8be556330dfbb92c5081813390b2be76",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/screenshots/settings.png",
+      "bytes": 233981,
+      "sha256": "a9b57e5a9a80050e7d4b5584c4f1f6bc826aa96fb8d4a726a33573689a51bf33",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/screenshots/setup-operator-layout.png",
+      "bytes": 172760,
+      "sha256": "3d0a15e5e5df7b354e3a12da7bb12c91b73cc46b33d252f899ff3fef1610e721",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/screenshots/setup-welcome.png",
+      "bytes": 302590,
+      "sha256": "fd9a4ae2557f8ea15b3af46ed36415b79ef7a4e60fb20039cb59776dd904043a",
+      "width": 1440,
+      "height": 3040
+    },
+    {
+      "path": "assets/wallpapers/lambda-dark-s10.png",
+      "bytes": 1674239,
+      "sha256": "7774862a89a476c73aa37baae5b08ac21ae9e35135a92296cf7d8f9e6482a11f",
+      "width": 864,
+      "height": 1821
+    },
+    {
+      "path": "assets/wallpapers/lambda-light-s10.png",
+      "bytes": 1628805,
+      "sha256": "8184ba2357a57ed5b32219052edae762e0907365f0039d7ae7b449bd89c409d4",
+      "width": 865,
+      "height": 1819
+    }
+  ]
+}

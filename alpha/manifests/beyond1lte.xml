@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <!-- Device repositories required by beyond1lte and exynos9820-common. -->
+  <project path="device/samsung/beyond1lte"
+           name="LineageOS/android_device_samsung_beyond1lte"
+           remote="github" />
+  <project path="device/samsung/exynos9820-common"
+           name="LineageOS/android_device_samsung_exynos9820-common"
+           remote="github" />
+  <project path="device/samsung_slsi/sepolicy"
+           name="LineageOS/android_device_samsung_slsi_sepolicy"
+           remote="github" />
+  <project path="hardware/samsung"
+           name="LineageOS/android_hardware_samsung"
+           remote="github" />
+  <project path="hardware/samsung_slsi-linaro/config"
+           name="LineageOS/android_hardware_samsung_slsi-linaro_config"
+           remote="github" />
+  <project path="hardware/samsung_slsi-linaro/exynos"
+           name="LineageOS/android_hardware_samsung_slsi-linaro_exynos"
+           remote="github" />
+  <project path="hardware/samsung_slsi-linaro/exynos5"
+           name="LineageOS/android_hardware_samsung_slsi-linaro_exynos5"
+           remote="github" />
+  <project path="hardware/samsung_slsi-linaro/graphics"
+           name="LineageOS/android_hardware_samsung_slsi-linaro_graphics"
+           remote="github" />
+  <project path="hardware/samsung_slsi-linaro/interfaces"
+           name="LineageOS/android_hardware_samsung_slsi-linaro_interfaces"
+           remote="github" />
+  <project path="hardware/samsung_slsi-linaro/openmax"
+           name="LineageOS/android_hardware_samsung_slsi-linaro_openmax"
+           remote="github" />
+  <project path="kernel/samsung/exynos9820"
+           name="LineageOS/android_kernel_samsung_exynos9820"
+           remote="github" />
+</manifest>

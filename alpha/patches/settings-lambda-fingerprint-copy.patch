@@ -1,0 +1,26 @@
+diff --git a/src/com/android/settings/biometrics/fingerprint/FingerprintEnrollIntroduction.java b/src/com/android/settings/biometrics/fingerprint/FingerprintEnrollIntroduction.java
+--- a/src/com/android/settings/biometrics/fingerprint/FingerprintEnrollIntroduction.java
++++ b/src/com/android/settings/biometrics/fingerprint/FingerprintEnrollIntroduction.java
+@@ -183,6 +183,8 @@
+                 isPrivateProfile()
+                         ? R.string.private_space_fingerprint_enroll_introduction_message
+-                        : R.string.security_settings_fingerprint_enroll_introduction_v3_message,
++                        : (com.android.settings.LambdaNativeUi.isEnabled(this)
++                                ? R.string.lambda_fingerprint_intro
++                                : R.string.security_settings_fingerprint_enroll_introduction_v3_message),
+                 DeviceHelper.getDeviceName(this)));
+@@ -260,6 +262,7 @@
+     protected int getFooterMessage3() {
++        if (com.android.settings.LambdaNativeUi.isEnabled(this)) return R.string.lambda_fingerprint_fallback;
+         return R.string.security_settings_fingerprint_v2_enroll_introduction_footer_message_3;
+     }
+@@ -265,6 +268,7 @@
+     protected int getFooterMessage4() {
++        if (com.android.settings.LambdaNativeUi.isEnabled(this)) return R.string.lambda_fingerprint_control;
+         return R.string.security_settings_fingerprint_v2_enroll_introduction_footer_message_4;
+     }
+@@ -278,6 +282,7 @@
+     protected int getFooterMessage6() {
++        if (com.android.settings.LambdaNativeUi.isEnabled(this)) return R.string.lambda_fingerprint_screen;
+         return R.string.security_settings_fingerprint_v2_enroll_introduction_footer_message_6;
+     }

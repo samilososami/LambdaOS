@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.lambdaproject.overlay.accessibility.framework"
+    android:versionCode="1" android:versionName="0.1">
+    <uses-sdk android:minSdkVersion="29" android:targetSdkVersion="35" />
+    <overlay android:targetPackage="android" android:isStatic="true" android:priority="800" />
+    <application android:hasCode="false" android:label="Lambda accessibility palette" />
+</manifest>

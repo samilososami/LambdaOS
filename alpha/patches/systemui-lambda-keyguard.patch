@@ -1,0 +1,1445 @@
+diff --git a/packages/SystemUI/compose/features/src/com/android/systemui/qs/footer/ui/compose/FooterActions.kt b/packages/SystemUI/compose/features/src/com/android/systemui/qs/footer/ui/compose/FooterActions.kt
+index f7ce215..4bf1193 100644
+--- a/packages/SystemUI/compose/features/src/com/android/systemui/qs/footer/ui/compose/FooterActions.kt
++++ b/packages/SystemUI/compose/features/src/com/android/systemui/qs/footer/ui/compose/FooterActions.kt
+@@ -164,7 +164,7 @@ fun FooterActions(
+     }
+ 
+     val backgroundColor = colorAttr(R.attr.underSurface)
+-    val contentColor = MaterialTheme.colorScheme.onSurface
++    val contentColor = colorAttr(R.attr.onSurface)
+     val backgroundTopRadius = dimensionResource(R.dimen.qs_corner_radius)
+     val backgroundModifier =
+         remember(backgroundColor, backgroundAlpha, backgroundTopRadius) {
+@@ -268,7 +268,7 @@ fun IconButton(model: FooterActionsButtonViewModel, modifier: Modifier = Modifie
+         onClick = model.onClick,
+         modifier =
+             modifier.borderOnFocus(
+-                color = MaterialTheme.colorScheme.secondary,
++                color = colorAttr(R.attr.shadeActive),
+                 CornerSize(percent = 50),
+             ),
+     ) {
+@@ -299,7 +299,7 @@ private fun NumberButton(
+         interactionSource = interactionSource,
+         modifier =
+             modifier.borderOnFocus(
+-                color = MaterialTheme.colorScheme.secondary,
++                color = colorAttr(R.attr.shadeActive),
+                 CornerSize(percent = 50),
+             ),
+     ) {
+@@ -331,7 +331,7 @@ private fun NumberButton(
+ @Composable
+ private fun NewChangesDot(modifier: Modifier = Modifier) {
+     val contentDescription = stringResource(R.string.fgs_dot_content_description)
+-    val color = MaterialTheme.colorScheme.tertiary
++    val color = colorAttr(R.attr.shadeActive)
+ 
+     Canvas(modifier.size(12.dp).semantics { this.contentDescription = contentDescription }) {
+         drawCircle(color)
+@@ -350,12 +350,12 @@ private fun TextButton(
+     Expandable(
+         shape = CircleShape,
+         color = colorAttr(R.attr.underSurface),
+-        contentColor = MaterialTheme.colorScheme.onSurfaceVariant,
++        contentColor = colorAttr(R.attr.onSurfaceVariant),
+         borderStroke = BorderStroke(1.dp, colorAttr(R.attr.shadeInactive)),
+         modifier =
+             modifier
+                 .padding(horizontal = 4.dp)
+-                .borderOnFocus(color = MaterialTheme.colorScheme.secondary, CornerSize(50)),
++                .borderOnFocus(color = colorAttr(R.attr.shadeActive), CornerSize(50)),
+         onClick = onClick,
+     ) {
+         Row(
+diff --git a/packages/SystemUI/customization/res/layout/clock_default_large.xml b/packages/SystemUI/customization/res/layout/clock_default_large.xml
+index 0139d50..65a6494 100644
+--- a/packages/SystemUI/customization/res/layout/clock_default_large.xml
++++ b/packages/SystemUI/customization/res/layout/clock_default_large.xml
+@@ -18,14 +18,15 @@
+ -->
+ <com.android.systemui.shared.clocks.AnimatableClockView
+     xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_gravity="center"
+     android:gravity="center_horizontal"
+     android:textSize="@dimen/large_clock_text_size"
+-    android:fontFamily="@*android:string/config_clockFontFamily"
+-    android:typeface="monospace"
++    android:fontFamily="@font/lambda_clock_display"
++    android:singleLine="true"
+     android:elegantTextHeight="false"
+     chargeAnimationDelay="200"
+-    dozeWeight="200"
+-    lockScreenWeight="400" />
++    app:dozeWeight="400"
++    app:lockScreenWeight="600" />
+diff --git a/packages/SystemUI/customization/res/layout/clock_default_small.xml b/packages/SystemUI/customization/res/layout/clock_default_small.xml
+index ff6d7f9..9bdb022 100644
+--- a/packages/SystemUI/customization/res/layout/clock_default_small.xml
++++ b/packages/SystemUI/customization/res/layout/clock_default_small.xml
+@@ -18,16 +18,17 @@
+ -->
+ <com.android.systemui.shared.clocks.AnimatableClockView
+     xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+-    android:layout_gravity="start"
+-    android:gravity="start"
++    android:layout_gravity="center"
++    android:gravity="center"
+     android:textSize="@dimen/small_clock_text_size"
+-    android:fontFamily="@*android:string/config_clockFontFamily"
++    android:fontFamily="@font/lambda_clock_display"
+     android:elegantTextHeight="false"
+     android:ellipsize="none"
+     android:singleLine="true"
+-    android:fontFeatureSettings="pnum"
++    android:fontFeatureSettings="tnum"
+     chargeAnimationDelay="350"
+-    dozeWeight="200"
+-    lockScreenWeight="400" />
++    app:dozeWeight="400"
++    app:lockScreenWeight="600" />
+diff --git a/packages/SystemUI/customization/res/values-h700dp/dimens.xml b/packages/SystemUI/customization/res/values-h700dp/dimens.xml
+index 2a15981..8828ba9 100644
+--- a/packages/SystemUI/customization/res/values-h700dp/dimens.xml
++++ b/packages/SystemUI/customization/res/values-h700dp/dimens.xml
+@@ -16,5 +16,5 @@
+ 
+ <resources>
+     <!-- Large clock maximum font size (dp is intentional, to prevent any further scaling) -->
+-    <dimen name="large_clock_text_size">170dp</dimen>
+-</resources>
+\ No newline at end of file
++    <dimen name="large_clock_text_size">88dp</dimen>
++</resources>
+diff --git a/packages/SystemUI/customization/res/values-h800dp/dimens.xml b/packages/SystemUI/customization/res/values-h800dp/dimens.xml
+index cb49945..065f177 100644
+--- a/packages/SystemUI/customization/res/values-h800dp/dimens.xml
++++ b/packages/SystemUI/customization/res/values-h800dp/dimens.xml
+@@ -16,7 +16,7 @@
+ 
+ <resources>
+     <!-- Large clock maximum font size (dp is intentional, to prevent any further scaling) -->
+-    <dimen name="large_clock_text_size">200dp</dimen>
++    <dimen name="large_clock_text_size">88dp</dimen>
+ 
+     <!-- With the large clock, move up slightly from the center -->
+     <dimen name="keyguard_large_clock_top_margin">-112dp</dimen>
+diff --git a/packages/SystemUI/customization/res/values/dimens.xml b/packages/SystemUI/customization/res/values/dimens.xml
+index 2bb5541..9469fea 100644
+--- a/packages/SystemUI/customization/res/values/dimens.xml
++++ b/packages/SystemUI/customization/res/values/dimens.xml
+@@ -18,8 +18,8 @@
+ <resources>
+     <!-- Clock maximum font size (dp is intentional, to prevent any further scaling) -->
+     <dimen name="presentation_clock_text_size">50dp</dimen>
+-    <dimen name="large_clock_text_size">150dp</dimen>
+-    <dimen name="small_clock_text_size">86dp</dimen>
++    <dimen name="large_clock_text_size">88dp</dimen>
++    <dimen name="small_clock_text_size">56dp</dimen>
+ 
+     <!-- Default line spacing multiplier between hours and minutes of the keyguard clock -->
+     <item name="keyguard_clock_line_spacing_scale" type="dimen" format="float">.7</item>
+@@ -30,8 +30,8 @@
+     <dimen name="keyguard_large_clock_top_margin">-60dp</dimen>
+ 
+     <!-- additional offset for clock switch area items -->
+-    <dimen name="small_clock_height">114dp</dimen>
+-    <dimen name="small_clock_padding_top">28dp</dimen>
++    <dimen name="small_clock_height">84dp</dimen>
++    <dimen name="small_clock_padding_top">40dp</dimen>
+     <dimen name="clock_padding_start">28dp</dimen>
+     <dimen name="weather_date_icon_padding">28dp</dimen>
+ 
+@@ -42,4 +42,4 @@
+     <dimen name="enhanced_smartspace_height">104dp</dimen>
+     <dimen name="status_view_margin_horizontal">0dp</dimen>
+     <dimen name="lock_icon_margin_bottom">74dp</dimen>
+-</resources>
+\ No newline at end of file
++</resources>
+diff --git a/packages/SystemUI/customization/src/com/android/systemui/shared/clocks/AnimatableClockView.kt b/packages/SystemUI/customization/src/com/android/systemui/shared/clocks/AnimatableClockView.kt
+index 801a2d6..9c5c7d0 100644
+--- a/packages/SystemUI/customization/src/com/android/systemui/shared/clocks/AnimatableClockView.kt
++++ b/packages/SystemUI/customization/src/com/android/systemui/shared/clocks/AnimatableClockView.kt
+@@ -29,6 +29,7 @@ import android.util.MathUtils.constrainedMap
+ import android.util.TypedValue.COMPLEX_UNIT_PX
+ import android.view.View
+ import android.view.View.MeasureSpec.EXACTLY
++import android.view.View.MeasureSpec.UNSPECIFIED
+ import android.widget.TextView
+ import com.android.app.animation.Interpolators
+ import com.android.internal.annotations.VisibleForTesting
+@@ -238,6 +239,17 @@ constructor(
+             super.setTextSize(COMPLEX_UNIT_PX, size)
+         }
+ 
++        // A single-line clock must fit the available width, including 12-hour
++        // suffixes and localized digits. Never inherit the stacked clock's size.
++        if (isSingleLineInternal && MeasureSpec.getMode(widthMeasureSpec) != UNSPECIFIED) {
++            super.setTextSize(COMPLEX_UNIT_PX, lastUnconstrainedTextSize)
++            val available = MeasureSpec.getSize(widthMeasureSpec) - paddingLeft - paddingRight
++            val required = paint.measureText(text.toString())
++            if (available > 0 && required > available) {
++                super.setTextSize(COMPLEX_UNIT_PX,
++                    lastUnconstrainedTextSize * available / required)
++            }
++        }
+         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+         textAnimator?.let { animator -> animator.updateLayout(layout, textSize) }
+             ?: run {
+diff --git a/packages/SystemUI/customization/src/com/android/systemui/shared/clocks/DefaultClockController.kt b/packages/SystemUI/customization/src/com/android/systemui/shared/clocks/DefaultClockController.kt
+index ad9eba8..13dee36 100644
+--- a/packages/SystemUI/customization/src/com/android/systemui/shared/clocks/DefaultClockController.kt
++++ b/packages/SystemUI/customization/src/com/android/systemui/shared/clocks/DefaultClockController.kt
+@@ -72,7 +72,7 @@ class DefaultClockController(
+     override val events: DefaultClockEvents
+     override val config: ClockConfig by lazy {
+         ClockConfig(
+-            DEFAULT_CLOCK_ID,
++            settings?.clockId ?: DEFAULT_CLOCK_ID,
+             resources.getString(R.string.clock_default_name),
+             resources.getString(R.string.clock_default_description),
+         )
+@@ -89,7 +89,9 @@ class DefaultClockController(
+             )
+         largeClock =
+             LargeClockFaceController(
+-                layoutInflater.inflate(R.layout.clock_default_large, parent, false)
++                layoutInflater.inflate(
++                    if (settings?.clockId == "LAMBDA_STACKED") R.layout.lambda_clock_stacked
++                    else R.layout.clock_default_large, parent, false)
+                     as AnimatableClockView,
+                 settings?.seedColor,
+                 messageBuffers?.largeClockMessageBuffer,
+@@ -149,9 +151,8 @@ class DefaultClockController(
+                     val color =
+                         when {
+                             theme.seedColor != null -> theme.seedColor!!
+-                            theme.isDarkTheme ->
+-                                resources.getColor(android.R.color.system_accent1_100)
+-                            else -> resources.getColor(android.R.color.system_accent2_600)
++                            theme.isDarkTheme -> Color.rgb(244, 244, 244)
++                            else -> Color.rgb(32, 32, 32)
+                         }
+ 
+                     if (currentColor == color) {
+@@ -171,7 +172,9 @@ class DefaultClockController(
+                 }
+ 
+                 override fun onFontSettingChanged(fontSizePx: Float) {
+-                    view.setTextSize(TypedValue.COMPLEX_UNIT_PX, fontSizePx)
++                    val scale = if (settings?.clockId == "LAMBDA_STACKED"
++                        && view === largeClock.view) 112f / 88f else 1f
++                    view.setTextSize(TypedValue.COMPLEX_UNIT_PX, fontSizePx * scale)
+                     recomputePadding(targetRegion)
+                 }
+ 
+@@ -194,11 +197,12 @@ class DefaultClockController(
+                 views[0].id =
+                     resources.getIdentifier("lockscreen_clock_view_large", "id", ctx.packageName)
+             }
+-        override val config = ClockFaceConfig(hasCustomPositionUpdatedAnimation = true)
++        override val config = ClockFaceConfig(
++            hasCustomPositionUpdatedAnimation = settings?.clockId == "LAMBDA_STACKED")
+ 
+         init {
+             view.migratedClocks = migratedClocks
+-            view.hasCustomPositionUpdatedAnimation = true
++            view.hasCustomPositionUpdatedAnimation = settings?.clockId == "LAMBDA_STACKED"
+             animations = LargeClockAnimations(view, 0f, 0f)
+         }
+ 
+@@ -226,11 +230,15 @@ class DefaultClockController(
+ 
+         /** See documentation at [AnimatableClockView.offsetGlyphsForStepClockAnimation]. */
+         fun offsetGlyphsForStepClockAnimation(fromLeft: Int, direction: Int, fraction: Float) {
+-            view.offsetGlyphsForStepClockAnimation(fromLeft, direction, fraction)
++            if (view.hasCustomPositionUpdatedAnimation) {
++                view.offsetGlyphsForStepClockAnimation(fromLeft, direction, fraction)
++            }
+         }
+ 
+         fun offsetGlyphsForStepClockAnimation(distance: Float, fraction: Float) {
+-            view.offsetGlyphsForStepClockAnimation(distance, fraction)
++            if (view.hasCustomPositionUpdatedAnimation) {
++                view.offsetGlyphsForStepClockAnimation(distance, fraction)
++            }
+         }
+     }
+ 
+diff --git a/packages/SystemUI/customization/src/com/android/systemui/shared/clocks/DefaultClockProvider.kt b/packages/SystemUI/customization/src/com/android/systemui/shared/clocks/DefaultClockProvider.kt
+index e898725..1ad84f5 100644
+--- a/packages/SystemUI/customization/src/com/android/systemui/shared/clocks/DefaultClockProvider.kt
++++ b/packages/SystemUI/customization/src/com/android/systemui/shared/clocks/DefaultClockProvider.kt
+@@ -56,9 +56,21 @@ class DefaultClockProvider(
+         messageBuffers = buffers
+     }
+ 
+-    override fun getClocks(): List<ClockMetadata> = listOf(ClockMetadata(DEFAULT_CLOCK_ID))
++    override fun getClocks(): List<ClockMetadata> = listOf(
++        ClockMetadata(DEFAULT_CLOCK_ID), ClockMetadata("LAMBDA_STACKED"),
++        ClockMetadata("LAMBDA_ANALOG"),
++    )
+ 
+     override fun createClock(settings: ClockSettings): ClockController {
++        if (settings.clockId == "LAMBDA_STACKED") {
++            return DefaultClockController(ctx, layoutInflater, resources, settings,
++                migratedClocks, messageBuffers)
++        }
++        if (settings.clockId == "LAMBDA_ANALOG") {
++            return LambdaAnalogClockController(ctx,
++                DefaultClockController(ctx, layoutInflater, resources,
++                    settings.copy(clockId = DEFAULT_CLOCK_ID), migratedClocks, messageBuffers))
++        }
+         if (settings.clockId != DEFAULT_CLOCK_ID) {
+             throw IllegalArgumentException("${settings.clockId} is unsupported by $TAG")
+         }
+@@ -95,6 +107,15 @@ class DefaultClockProvider(
+     }
+ 
+     override fun getClockPickerConfig(settings: ClockSettings): ClockPickerConfig {
++        if (settings.clockId == "LAMBDA_STACKED" || settings.clockId == "LAMBDA_ANALOG") {
++            val analog = settings.clockId == "LAMBDA_ANALOG"
++            return ClockPickerConfig(settings.clockId!!,
++                resources.getString(if (analog) R.string.lambda_clock_analog else R.string.lambda_clock_stacked),
++                resources.getString(R.string.lambda_clock_description),
++                resources.getDrawable(if (analog) R.drawable.lambda_clock_analog_thumbnail
++                    else R.drawable.lambda_clock_stacked_thumbnail, null),
++                isReactiveToTone = true, axes = listOf())
++        }
+         if (settings.clockId != DEFAULT_CLOCK_ID) {
+             throw IllegalArgumentException("${settings.clockId} is unsupported by $TAG")
+         }
+diff --git a/packages/SystemUI/plugin/src/com/android/systemui/plugins/clocks/ClockFaceLayout.kt b/packages/SystemUI/plugin/src/com/android/systemui/plugins/clocks/ClockFaceLayout.kt
+index fb5ef02..8a87824 100644
+--- a/packages/SystemUI/plugin/src/com/android/systemui/plugins/clocks/ClockFaceLayout.kt
++++ b/packages/SystemUI/plugin/src/com/android/systemui/plugins/clocks/ClockFaceLayout.kt
+@@ -123,6 +123,18 @@ class DefaultClockFaceLayout(val view: View) : ClockFaceLayout {
+                 val clockBottomMargin = bottomPaddingPx + 2 * lockIconRadiusPx
+ 
+                 connect(lockscreenClockViewLargeId, BOTTOM, PARENT_ID, BOTTOM, clockBottomMargin)
++                // Match the real portrait layout; retain stock placement for
++                // landscape, tablets and hosts without Lambda resources.
++                val portraitPhone = context.resources.configuration.let {
++                    it.orientation == android.content.res.Configuration.ORIENTATION_PORTRAIT &&
++                        it.smallestScreenWidthDp < 600
++                }
++                val biasId = context.resources.getIdentifier(
++                    "lambda_large_clock_vertical_bias", "fraction", context.packageName)
++                setVerticalBias(lockscreenClockViewLargeId,
++                    if (portraitPhone && biasId != 0) {
++                        context.resources.getFraction(biasId, 1, 1)
++                    } else 0.5f)
+                 val smallClockViewId = getId(context, "lockscreen_clock_view")
+                 constrainWidth(smallClockViewId, WRAP_CONTENT)
+                 constrainHeight(smallClockViewId, getDimen(context, "small_clock_height"))
+diff --git a/packages/SystemUI/res-keyguard/drawable/num_pad_key_background.xml b/packages/SystemUI/res-keyguard/drawable/num_pad_key_background.xml
+index 7455ad2..a972567 100644
+--- a/packages/SystemUI/res-keyguard/drawable/num_pad_key_background.xml
++++ b/packages/SystemUI/res-keyguard/drawable/num_pad_key_background.xml
+@@ -18,5 +18,6 @@
+ -->
+ <shape xmlns:android="http://schemas.android.com/apk/res/android" >
+   <solid android:color="?android:attr/colorControlNormal" />
+-  <corners android:radius="10dp" />
++  <corners android:radius="64dp" />
++  <stroke android:width="0.5dp" android:color="#303030" />
+ </shape>
+diff --git a/packages/SystemUI/res-keyguard/layout/bouncer_message_view.xml b/packages/SystemUI/res-keyguard/layout/bouncer_message_view.xml
+index f7dac13..7cb55dd 100644
+--- a/packages/SystemUI/res-keyguard/layout/bouncer_message_view.xml
++++ b/packages/SystemUI/res-keyguard/layout/bouncer_message_view.xml
+@@ -21,6 +21,9 @@
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_marginTop="@dimen/keyguard_lock_padding"
++        android:paddingHorizontal="24dp"
++        android:singleLine="false"
++        android:maxLines="3"
+         android:focusable="true"
+          />
+ 
+@@ -30,6 +33,9 @@
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_marginTop="@dimen/secondary_message_padding"
++        android:paddingHorizontal="24dp"
++        android:singleLine="false"
++        android:maxLines="3"
+         android:focusable="true" />
+ 
+ </merge>
+diff --git a/packages/SystemUI/res-keyguard/layout/keyguard_num_pad_key.xml b/packages/SystemUI/res-keyguard/layout/keyguard_num_pad_key.xml
+index 073f090..600ab54 100644
+--- a/packages/SystemUI/res-keyguard/layout/keyguard_num_pad_key.xml
++++ b/packages/SystemUI/res-keyguard/layout/keyguard_num_pad_key.xml
+@@ -28,7 +28,7 @@
+         style="@style/Widget.TextView.NumPadKey.Klondike"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+-        android:visibility="gone"
++        android:visibility="visible"
+         />
+ </merge>
+ 
+diff --git a/packages/SystemUI/res-keyguard/layout/keyguard_password_motion_layout.xml b/packages/SystemUI/res-keyguard/layout/keyguard_password_motion_layout.xml
+index 2a8f1b5..a01ec3f 100644
+--- a/packages/SystemUI/res-keyguard/layout/keyguard_password_motion_layout.xml
++++ b/packages/SystemUI/res-keyguard/layout/keyguard_password_motion_layout.xml
+@@ -23,6 +23,7 @@
+     xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:androidprv="http://schemas.android.com/apk/res-auto"
+     android:id="@+id/keyguard_password_view"
++    android:theme="@style/Theme.Lambda.Keyguard"
+     android:orientation="vertical"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+diff --git a/packages/SystemUI/res-keyguard/layout/keyguard_password_view.xml b/packages/SystemUI/res-keyguard/layout/keyguard_password_view.xml
+index 76f6f59..f9b6277 100644
+--- a/packages/SystemUI/res-keyguard/layout/keyguard_password_view.xml
++++ b/packages/SystemUI/res-keyguard/layout/keyguard_password_view.xml
+@@ -20,6 +20,7 @@
+     xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:androidprv="http://schemas.android.com/apk/res-auto"
+     android:id="@+id/keyguard_password_view"
++    android:theme="@style/Theme.Lambda.Keyguard"
+     android:orientation="vertical"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+@@ -27,6 +28,7 @@
+     android:layout_gravity="center_horizontal|bottom"
+     android:gravity="bottom"
+     >
++    <include layout="@layout/lambda_keyguard_heading"/>
+     <include layout="@layout/keyguard_bouncer_message_area"/>
+ 
+     <com.android.systemui.bouncer.ui.BouncerMessageView
+diff --git a/packages/SystemUI/res-keyguard/layout/keyguard_pattern_motion_layout.xml b/packages/SystemUI/res-keyguard/layout/keyguard_pattern_motion_layout.xml
+index 5879c11..a7bf515 100644
+--- a/packages/SystemUI/res-keyguard/layout/keyguard_pattern_motion_layout.xml
++++ b/packages/SystemUI/res-keyguard/layout/keyguard_pattern_motion_layout.xml
+@@ -23,6 +23,7 @@
+     xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:androidprv="http://schemas.android.com/apk/res-auto"
+     android:id="@+id/keyguard_pattern_view"
++    android:theme="@style/Theme.Lambda.Keyguard"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     android:layout_gravity="center_horizontal|bottom"
+diff --git a/packages/SystemUI/res-keyguard/layout/keyguard_pattern_view.xml b/packages/SystemUI/res-keyguard/layout/keyguard_pattern_view.xml
+index 3f7b028..3685acb 100644
+--- a/packages/SystemUI/res-keyguard/layout/keyguard_pattern_view.xml
++++ b/packages/SystemUI/res-keyguard/layout/keyguard_pattern_view.xml
+@@ -24,6 +24,7 @@
+     xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:androidprv="http://schemas.android.com/apk/res-auto"
+     android:id="@+id/keyguard_pattern_view"
++    android:theme="@style/Theme.Lambda.Keyguard"
+     android:orientation="vertical"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+@@ -31,6 +32,7 @@
+     android:layout_gravity="center_horizontal|bottom"
+     android:clipChildren="false"
+     android:clipToPadding="false">
++    <include layout="@layout/lambda_keyguard_heading"/>
+     <include layout="@layout/keyguard_bouncer_message_area"/>
+ 
+     <com.android.systemui.bouncer.ui.BouncerMessageView
+diff --git a/packages/SystemUI/res-keyguard/layout/keyguard_pin_motion_layout.xml b/packages/SystemUI/res-keyguard/layout/keyguard_pin_motion_layout.xml
+index b464fb3..6a2550a 100644
+--- a/packages/SystemUI/res-keyguard/layout/keyguard_pin_motion_layout.xml
++++ b/packages/SystemUI/res-keyguard/layout/keyguard_pin_motion_layout.xml
+@@ -21,6 +21,7 @@
+ <com.android.keyguard.KeyguardPINView xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:androidprv="http://schemas.android.com/apk/res-auto"
+     android:id="@+id/keyguard_pin_view"
++    android:theme="@style/Theme.Lambda.Keyguard"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     android:layout_gravity="center_horizontal|bottom"
+diff --git a/packages/SystemUI/res-keyguard/layout/keyguard_pin_view.xml b/packages/SystemUI/res-keyguard/layout/keyguard_pin_view.xml
+index 2158073..760d907 100644
+--- a/packages/SystemUI/res-keyguard/layout/keyguard_pin_view.xml
++++ b/packages/SystemUI/res-keyguard/layout/keyguard_pin_view.xml
+@@ -20,6 +20,7 @@
+ <com.android.keyguard.KeyguardPINView xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:androidprv="http://schemas.android.com/apk/res-auto"
+     android:id="@+id/keyguard_pin_view"
++    android:theme="@style/Theme.Lambda.Keyguard"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     android:layout_gravity="center_horizontal|bottom"
+@@ -28,6 +29,7 @@
+     android:orientation="vertical"
+     androidprv:layout_maxWidth="@dimen/keyguard_security_width">
+ 
++    <include layout="@layout/lambda_keyguard_heading"/>
+     <include layout="@layout/keyguard_bouncer_message_area"/>
+ 
+     <com.android.systemui.bouncer.ui.BouncerMessageView
+@@ -70,7 +72,6 @@
+                 android:layout_width="@dimen/keyguard_security_width"
+                 android:layout_height="@dimen/keyguard_password_height"
+                 android:layout_centerHorizontal="true"
+-                android:layout_marginRight="72dp"
+                 android:contentDescription="@string/keyguard_accessibility_pin_area"
+                 androidprv:scaledTextSize="@integer/scaled_password_text_size" />
+         </com.android.keyguard.AlphaOptimizedRelativeLayout>
+@@ -93,6 +94,7 @@
+             android:clipToPadding="false"
+ 
+             androidprv:constraint_referenced_ids="key1,key2,key3,key4,key5,key6,key7,key8,key9,delete_button,key0,key_enter"
++            android:layout_marginBottom="56dp"
+ 
+             androidprv:flow_horizontalGap="@dimen/num_pad_key_margin_end"
+ 
+@@ -204,16 +206,13 @@
+             android:layout_width="0dp"
+             android:layout_height="0dp"
+             android:contentDescription="@string/keyboardview_keycode_enter" />
+-    </androidx.constraintlayout.widget.ConstraintLayout>
+ 
+-    <include layout="@layout/keyguard_eca"
+-        android:id="@+id/keyguard_selector_fade_container"
+-        android:layout_width="match_parent"
+-        android:layout_height="wrap_content"
+-        android:orientation="vertical"
+-        android:layout_gravity="bottom|center_horizontal"
+-        android:layout_marginTop="@dimen/keyguard_eca_top_margin"
+-        android:layout_marginBottom="@dimen/keyguard_eca_bottom_margin"
+-        android:gravity="center_horizontal"/>
++        <include layout="@layout/keyguard_eca"
++            android:id="@+id/keyguard_selector_fade_container"
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            androidprv:layout_constraintBottom_toBottomOf="parent"
++            androidprv:layout_constraintStart_toStartOf="parent"/>
++    </androidx.constraintlayout.widget.ConstraintLayout>
+ 
+ </com.android.keyguard.KeyguardPINView>
+diff --git a/packages/SystemUI/res-keyguard/layout/keyguard_sim_pin_view.xml b/packages/SystemUI/res-keyguard/layout/keyguard_sim_pin_view.xml
+index 728d861..f61f767 100644
+--- a/packages/SystemUI/res-keyguard/layout/keyguard_sim_pin_view.xml
++++ b/packages/SystemUI/res-keyguard/layout/keyguard_sim_pin_view.xml
+@@ -20,6 +20,7 @@
+     xmlns:androidprv="http://schemas.android.com/apk/res-auto"
+     xmlns:app="http://schemas.android.com/apk/res-auto"
+     android:id="@+id/keyguard_sim_pin_view"
++    android:theme="@style/Theme.Lambda.Keyguard"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     android:orientation="vertical"
+diff --git a/packages/SystemUI/res-keyguard/layout/keyguard_sim_puk_view.xml b/packages/SystemUI/res-keyguard/layout/keyguard_sim_puk_view.xml
+index 7e24d12..e82df2e 100644
+--- a/packages/SystemUI/res-keyguard/layout/keyguard_sim_puk_view.xml
++++ b/packages/SystemUI/res-keyguard/layout/keyguard_sim_puk_view.xml
+@@ -23,6 +23,7 @@
+         xmlns:androidprv="http://schemas.android.com/apk/res-auto"
+         xmlns:app="http://schemas.android.com/apk/res-auto"
+         android:id="@+id/keyguard_sim_puk_view"
++    android:theme="@style/Theme.Lambda.Keyguard"
+         android:orientation="vertical"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+diff --git a/packages/SystemUI/res-keyguard/values/arrays.xml b/packages/SystemUI/res-keyguard/values/arrays.xml
+index 26bc865..bf56775 100644
+--- a/packages/SystemUI/res-keyguard/values/arrays.xml
++++ b/packages/SystemUI/res-keyguard/values/arrays.xml
+@@ -34,11 +34,6 @@
+     </string-array>
+ 
+     <integer-array name="bouncer_pin_shapes">
+-        <item>@drawable/pin_dot_shape_1_avd</item>
+-        <item>@drawable/pin_dot_shape_2_avd</item>
+-        <item>@drawable/pin_dot_shape_3_avd</item>
+-        <item>@drawable/pin_dot_shape_4_avd</item>
+-        <item>@drawable/pin_dot_shape_5_avd</item>
+-        <item>@drawable/pin_dot_shape_6_avd</item>
++        <item>@drawable/lambda_pin_filled_avd</item>
+     </integer-array>
+ </resources>
+diff --git a/packages/SystemUI/res-keyguard/values/dimens.xml b/packages/SystemUI/res-keyguard/values/dimens.xml
+index bfb37a0..96d641d 100644
+--- a/packages/SystemUI/res-keyguard/values/dimens.xml
++++ b/packages/SystemUI/res-keyguard/values/dimens.xml
+@@ -23,7 +23,7 @@
+     <dimen name="kg_status_line_font_size">14sp</dimen>
+ 
+     <!-- Maximum width of the sliding KeyguardSecurityContainer -->
+-    <dimen name="keyguard_security_width">420dp</dimen>
++    <dimen name="keyguard_security_width">372dp</dimen>
+ 
+     <!-- Width for the keyguard pin input field -->
+     <dimen name="keyguard_pin_field_width">292dp</dimen>
+@@ -101,10 +101,10 @@
+     <dimen name="pin_view_trans_y_entry_offset">10dp</dimen>
+ 
+     <!-- Spacing around each button used for PIN view -->
+-    <dimen name="num_pad_key_width">72dp</dimen>
+-    <dimen name="num_pad_entry_row_margin_bottom">12dp</dimen>
++    <dimen name="num_pad_key_width">84dp</dimen>
++    <dimen name="num_pad_entry_row_margin_bottom">16dp</dimen>
+     <dimen name="num_pad_row_margin_bottom">6dp</dimen>
+-    <dimen name="num_pad_key_margin_end">12dp</dimen>
++    <dimen name="num_pad_key_margin_end">28dp</dimen>
+ 
+     <!-- additional offset for clock switch area items -->
+     <dimen name="below_clock_padding_start">32dp</dimen>
+diff --git a/packages/SystemUI/res-keyguard/values/styles.xml b/packages/SystemUI/res-keyguard/values/styles.xml
+index da12dd7..bc4102d 100644
+--- a/packages/SystemUI/res-keyguard/values/styles.xml
++++ b/packages/SystemUI/res-keyguard/values/styles.xml
+@@ -22,32 +22,32 @@
+     <!-- Keyguard PIN pad styles -->
+     <style name="Keyguard.TextView" parent="@android:style/Widget.DeviceDefault.TextView">
+         <item name="android:textSize">@dimen/kg_status_line_font_size</item>
+-        <item name="android:fontFamily">@*android:string/config_bodyFontFamily</item>
++        <item name="android:fontFamily">@font/lambda_keyguard_regular</item>
+         <item name="android:textColor">?androidprv:attr/materialColorOnSurface</item>
+     </style>
+     <style name="Keyguard.Bouncer.PrimaryMessage" parent="Theme.SystemUI">
+-        <item name="android:textSize">18sp</item>
+-        <item name="android:lineHeight">24dp</item>
+-        <item name="android:fontFamily">@*android:string/config_headlineFontFamily</item>
++        <item name="android:textSize">24sp</item>
++        <item name="android:lineHeight">30sp</item>
++        <item name="android:fontFamily">@font/lambda_keyguard_regular</item>
+         <item name="android:textColor">?androidprv:attr/materialColorOnSurface</item>
+-        <item name="android:singleLine">true</item>
++        <item name="android:maxLines">2</item>
+         <item name="android:textAlignment">center</item>
+-        <item name="android:ellipsize">marquee</item>
++        <item name="android:ellipsize">end</item>
+     </style>
+     <style name="Keyguard.Bouncer.SecondaryMessage" parent="Theme.SystemUI">
+         <item name="android:textSize">14sp</item>
+         <item name="android:maxLines">@integer/bouncer_secondary_message_lines</item>
+         <item name="android:lines">@integer/bouncer_secondary_message_lines</item>
+         <item name="android:textAlignment">center</item>
+-        <item name="android:fontFamily">@*android:string/config_bodyFontFamily</item>
++        <item name="android:fontFamily">@font/lambda_keyguard_regular</item>
+         <item name="android:ellipsize">end</item>
+         <item name="android:textColor">?androidprv:attr/materialColorOnSurfaceVariant</item>
+     </style>
+     <style name="Keyguard.TextView.EmergencyButton" parent="Theme.SystemUI">
+         <item name="android:textColor">?androidprv:attr/materialColorOnTertiaryFixed</item>
+         <item name="android:textSize">16sp</item>
+-        <item name="android:background">@drawable/kg_emergency_button_background</item>
+-        <item name="android:fontFamily">@*android:string/config_headlineFontFamily</item>
++        <item name="android:background">?android:attr/selectableItemBackgroundBorderless</item>
++        <item name="android:fontFamily">@font/lambda_keyguard_regular</item>
+         <item name="android:paddingLeft">26dp</item>
+         <item name="android:paddingRight">26dp</item>
+         <item name="android:stateListAnimator">@null</item>
+@@ -68,30 +68,30 @@
+         <item name="android:singleLine">true</item>
+         <item name="android:gravity">center_horizontal|center_vertical</item>
+         <item name="android:background">@null</item>
+-        <item name="android:textSize">32dp</item>
++        <item name="android:textSize">36sp</item>
+         <item name="android:textColor">?android:attr/textColorPrimary</item>
+-        <item name="android:fontFamily">@*android:string/config_bodyFontFamily</item>
+-        <item name="android:paddingBottom">-16dp</item>
++        <item name="android:fontFamily">@font/lambda_keyguard_regular</item>
++        <item name="android:paddingBottom">0dp</item>
+     </style>
+     <style name="Widget.TextView.Password" parent="@android:style/Widget.TextView">
+-        <item name="android:fontFamily">@*android:string/config_headlineFontFamily</item>
++        <item name="android:fontFamily">@font/lambda_keyguard_regular</item>
+         <item name="android:background">@drawable/bouncer_pin_view_focused_background</item>
+         <item name="android:gravity">center</item>
+         <item name="android:textColor">?android:attr/textColorPrimary</item>
+     </style>
+     <style name="NumPadKey.Delete">
+-        <item name="android:colorControlNormal">@color/numpad_key_color_secondary</item>
++        <item name="android:colorControlNormal">#202020</item>
+         <item name="android:src">@drawable/ic_backspace_24dp</item>
+     </style>
+     <style name="NumPadKey.Enter">
+-        <item name="android:colorControlNormal">@color/numpad_key_color_secondary</item>
+-        <item name="android:src">@drawable/ic_keyboard_tab_36dp</item>
++        <item name="android:colorControlNormal">#202020</item>
++        <item name="android:src">@drawable/lambda_keyguard_enter</item>
+     </style>
+     <style name="Widget.TextView.NumPadKey.Klondike"
+            parent="@android:style/Widget.DeviceDefault.TextView">
+         <item name="android:textSize">12sp</item>
+         <item name="android:background">@null</item>
+-        <item name="android:fontFamily">@*android:string/config_bodyFontFamily</item>
++        <item name="android:fontFamily">@font/lambda_keyguard_regular</item>
+         <item name="android:textColor">?android:attr/textColorSecondary</item>
+         <item name="android:paddingBottom">0dp</item>
+     </style>
+@@ -100,7 +100,7 @@
+     <style name="widget_big">
+         <item name="android:textSize">@dimen/widget_big_font_size</item>
+         <item name="android:paddingBottom">@dimen/bottom_text_spacing_digital</item>
+-        <item name="android:fontFamily">@*android:string/config_headlineFontFamily</item>
++        <item name="android:fontFamily">@font/lambda_keyguard_regular</item>
+         <item name="android:fontFeatureSettings">@*android:string/config_headlineFontFeatureSettings</item>
+         <item name="android:ellipsize">none</item>
+         <item name="android:shadowColor">@color/keyguard_shadow_color</item>
+@@ -111,7 +111,7 @@
+         <item name="android:textStyle">bold</item>
+         <item name="android:textSize">@dimen/widget_small_font_size</item>
+         <item name="android:paddingBottom">@dimen/bottom_text_spacing_digital</item>
+-        <item name="android:fontFamily">@*android:string/config_headlineFontFamily</item>
++        <item name="android:fontFamily">@font/lambda_keyguard_regular</item>
+         <item name="android:ellipsize">none</item>
+         <item name="android:shadowColor">@color/keyguard_shadow_color</item>
+         <item name="android:shadowRadius">?attr/shadowRadius</item>
+@@ -137,7 +137,7 @@
+         <item name="android:gravity">start</item>
+         <item name="android:ellipsize">end</item>
+         <item name="android:maxLines">2</item>
+-        <item name="android:fontFamily">@*android:string/config_headlineFontFamily</item>
++        <item name="android:fontFamily">@font/lambda_keyguard_regular</item>
+         <item name="android:shadowColor">@color/keyguard_shadow_color</item>
+         <item name="android:shadowRadius">?attr/shadowRadius</item>
+     </style>
+diff --git a/packages/SystemUI/res/drawable/brightness_bar.xml b/packages/SystemUI/res/drawable/brightness_bar.xml
+index 3d1c1fb..2b9963e 100644
+--- a/packages/SystemUI/res/drawable/brightness_bar.xml
++++ b/packages/SystemUI/res/drawable/brightness_bar.xml
+@@ -21,13 +21,13 @@
+         android:viewportHeight="48">
+ <path
+     android:pathData="M2,22L302,22A2,2 0,0 1,304 24L304,24A2,2 0,0 1,302 26L2,26A2,2 0,0 1,0 24L0,24A2,2 0,0 1,2 22z"
+-    android:fillColor="?androidprv:attr/customColorShadeInactive"/>
++    android:fillColor="?attr/shadeInactive"/>
+ <path
+     android:pathData="M24,0L205.71,0A24,24 0,0 1,229.71 24L229.71,24A24,24 0,0 1,205.71 48L24,48A24,24 0,0 1,0 24L0,24A24,24 0,0 1,24 0z"
+     android:fillColor="?attr/shadeActive"/>
+ <path
+     android:pathData="M0,24C0,10.75 10.75,0 24,0H63.85V48H24C10.75,48 0,37.25 0,24Z"
+-    android:fillColor="?androidprv:attr/colorAccentPrimaryVariant"/>
++    android:fillColor="@color/lambda_shade_on_inactive_secondary"/>
+ <path
+     android:pathData="M208.98,21.26V17.37H205.09L202.34,14.62L199.6,17.37H195.71V21.26L192.96,24L195.71,26.75V30.63H199.6L202.34,33.38L205.09,30.63H208.98V26.75L211.72,24L208.98,21.26ZM207.32,26.06V28.98H204.4L202.34,31.03L200.29,28.98H197.37V26.06L195.31,24L197.37,21.94V19.02H200.29L202.34,16.97L204.4,19.02H207.32V21.94L209.37,24L207.32,26.06ZM206.49,24C206.49,26.29 204.63,28.15 202.34,28.15V19.85C204.63,19.85 206.49,21.71 206.49,24Z"
+     android:fillColor="?attr/onShadeActive"
+diff --git a/packages/SystemUI/res/drawable/brightness_progress_drawable.xml b/packages/SystemUI/res/drawable/brightness_progress_drawable.xml
+index ec15b10..b990d14 100644
+--- a/packages/SystemUI/res/drawable/brightness_progress_drawable.xml
++++ b/packages/SystemUI/res/drawable/brightness_progress_drawable.xml
+@@ -25,7 +25,7 @@
+             <shape>
+                 <size android:height="@dimen/rounded_slider_track_width" />
+                 <corners android:radius="@dimen/rounded_slider_track_corner_radius" />
+-                <solid android:color="?androidprv:attr/customColorShadeInactive" />
++                <solid android:color="?attr/shadeInactive" />
+             </shape>
+         </inset>
+     </item>
+@@ -35,4 +35,4 @@
+                 android:drawable="@drawable/brightness_progress_full_drawable"
+             />
+     </item>
+-</layer-list>
+\ No newline at end of file
++</layer-list>
+diff --git a/packages/SystemUI/res/drawable/brightness_slider_focus_bg.xml b/packages/SystemUI/res/drawable/brightness_slider_focus_bg.xml
+index 22406ec..61fcec5 100644
+--- a/packages/SystemUI/res/drawable/brightness_slider_focus_bg.xml
++++ b/packages/SystemUI/res/drawable/brightness_slider_focus_bg.xml
+@@ -22,8 +22,8 @@
+         <inset android:inset="-5dp">
+             <shape>
+                 <corners android:radius="16dp"/>
+-                <stroke android:width="3dp" android:color="?androidprv:attr/materialColorSecondaryFixed"/>
++                <stroke android:width="3dp" android:color="?attr/shadeActive"/>
+             </shape>
+         </inset>
+     </item>
+-</selector>
+\ No newline at end of file
++</selector>
+diff --git a/packages/SystemUI/res/drawable/qs_tile_focused_background.xml b/packages/SystemUI/res/drawable/qs_tile_focused_background.xml
+index 33f0d02..c1869cc 100644
+--- a/packages/SystemUI/res/drawable/qs_tile_focused_background.xml
++++ b/packages/SystemUI/res/drawable/qs_tile_focused_background.xml
+@@ -21,6 +21,6 @@
+         <corners android:radius="30dp" />
+         <stroke
+             android:width="3dp"
+-            android:color="?androidprv:attr/materialColorSecondaryFixed" />
++            android:color="?attr/shadeActive" />
+     </shape>
+-</inset>
+\ No newline at end of file
++</inset>
+diff --git a/packages/SystemUI/res/layout/super_notification_shade.xml b/packages/SystemUI/res/layout/super_notification_shade.xml
+index fbb07be..e53b1dc 100644
+--- a/packages/SystemUI/res/layout/super_notification_shade.xml
++++ b/packages/SystemUI/res/layout/super_notification_shade.xml
+@@ -110,7 +110,7 @@
+         android:layout_height="match_parent"
+         android:layout_width="match_parent"
+         android:layout_weight="1"
+-        android:background="@android:color/transparent"
++        android:background="@drawable/lambda_bouncer_background"
+         android:visibility="invisible"
+         android:clipChildren="false"
+         android:clipToPadding="false" />
+diff --git a/packages/SystemUI/res/values/dimens.xml b/packages/SystemUI/res/values/dimens.xml
+index e9ee1e8..5af0e3b 100644
+--- a/packages/SystemUI/res/values/dimens.xml
++++ b/packages/SystemUI/res/values/dimens.xml
+@@ -833,7 +833,7 @@
+     <!-- The margin between the status view and the notifications on Keyguard.-->
+     <dimen name="keyguard_status_view_bottom_margin">20dp</dimen>
+     <!-- Minimum margin between clock and status bar -->
+-    <dimen name="keyguard_clock_top_margin">18dp</dimen>
++    <dimen name="keyguard_clock_top_margin">30dp</dimen>
+     <!-- The amount to shift the clocks during a small/large transition -->
+     <dimen name="keyguard_clock_switch_y_shift">14dp</dimen>
+ 
+diff --git a/packages/SystemUI/res/values/styles.xml b/packages/SystemUI/res/values/styles.xml
+index 46d89f4..c63c743 100644
+--- a/packages/SystemUI/res/values/styles.xml
++++ b/packages/SystemUI/res/values/styles.xml
+@@ -489,23 +489,30 @@
+         <item name="android:windowIsFloating">true</item>
+         <item name="android:homeAsUpIndicator">@drawable/ic_arrow_back</item>
+ 
+-        <item name="surfaceBright">?androidprv:attr/materialColorSurfaceBright</item>
++        <!-- Lambda QS: neutral colors without changing the tile state machine/layout. -->
++        <item name="android:colorAccent">@color/lambda_shade_active</item>
++        <item name="android:textColorPrimary">@color/lambda_shade_on_inactive</item>
++        <item name="android:textColorSecondary">@color/lambda_shade_on_inactive_secondary</item>
++        <item name="android:textColorPrimaryInverse">@color/lambda_shade_on_active</item>
++        <item name="android:colorControlNormal">@color/lambda_shade_on_inactive_secondary</item>
++        <item name="android:colorControlActivated">@color/lambda_shade_active</item>
++        <item name="surfaceBright">@color/lambda_shade_surface</item>
+         <item name="android:colorBackground">?attr/surfaceBright</item>
+-        <item name="scHigh">?androidprv:attr/materialColorSurfaceContainerHigh</item>
+-        <item name="primary">?androidprv:attr/materialColorPrimary</item>
+-        <item name="tertiary">?androidprv:attr/materialColorTertiary</item>
+-        <item name="onSurface">?androidprv:attr/materialColorOnSurface</item>
+-        <item name="onSurfaceVariant">?androidprv:attr/materialColorOnSurfaceVariant</item>
+-        <item name="outline">?androidprv:attr/materialColorOutline</item>
+-
+-        <item name="shadeActive">?androidprv:attr/customColorShadeActive</item>
+-        <item name="onShadeActive">?androidprv:attr/customColorOnShadeActive</item>
+-        <item name="onShadeActiveVariant">?androidprv:attr/customColorOnShadeActiveVariant</item>
+-        <item name="shadeInactive">?androidprv:attr/customColorShadeInactive</item>
+-        <item name="onShadeInactive">?androidprv:attr/customColorOnShadeInactive</item>
+-        <item name="onShadeInactiveVariant">?androidprv:attr/customColorOnShadeInactiveVariant</item>
+-        <item name="shadeDisabled">?androidprv:attr/customColorShadeDisabled</item>
+-        <item name="underSurface">?androidprv:attr/customColorUnderSurface</item>
++        <item name="scHigh">@color/lambda_shade_inactive</item>
++        <item name="primary">@color/lambda_shade_active</item>
++        <item name="tertiary">@color/lambda_shade_active</item>
++        <item name="onSurface">@color/lambda_shade_on_inactive</item>
++        <item name="onSurfaceVariant">@color/lambda_shade_on_inactive_secondary</item>
++        <item name="outline">@color/lambda_shade_outline</item>
++
++        <item name="shadeActive">@color/lambda_shade_active</item>
++        <item name="onShadeActive">@color/lambda_shade_on_active</item>
++        <item name="onShadeActiveVariant">@color/lambda_shade_on_active_secondary</item>
++        <item name="shadeInactive">@color/lambda_shade_inactive</item>
++        <item name="onShadeInactive">@color/lambda_shade_on_inactive</item>
++        <item name="onShadeInactiveVariant">@color/lambda_shade_on_inactive_secondary</item>
++        <item name="shadeDisabled">@color/lambda_shade_disabled</item>
++        <item name="underSurface">@color/lambda_shade_background</item>
+         <item name="android:itemTextAppearance">@style/Control.MenuItem</item>
+     </style>
+ 
+diff --git a/packages/SystemUI/src/com/android/keyguard/KeyguardPINView.java b/packages/SystemUI/src/com/android/keyguard/KeyguardPINView.java
+index ca387a9..5aba07d 100644
+--- a/packages/SystemUI/src/com/android/keyguard/KeyguardPINView.java
++++ b/packages/SystemUI/src/com/android/keyguard/KeyguardPINView.java
+@@ -162,6 +162,21 @@ public class KeyguardPINView extends KeyguardPinBasedInputView {
+                 ConstraintLayout.LayoutParams lp =
+                         (ConstraintLayout.LayoutParams) key.getLayoutParams();
+ 
++                // Flow owns all gaps; the last row is delete, zero, enter in both
++                // the visual layout and the native animation/accessibility matrix.
++                if (!mIsSmallLockScreenLandscapeEnabled
++                        && getResources().getConfiguration().orientation
++                                == ORIENTATION_PORTRAIT) {
++                    lp.dimensionRatio = ratio;
++                    lp.matchConstraintMaxWidth = getResources().getDimensionPixelSize(
++                            R.dimen.num_pad_key_width);
++                    lp.matchConstraintMaxHeight = lp.matchConstraintMaxWidth;
++                    lp.rightMargin = 0;
++                    lp.bottomMargin = 0;
++                    key.setLayoutParams(lp);
++                    continue;
++                }
++
+                 lp.dimensionRatio = ratio;
+ 
+                 // Don't set any margins on the last row of buttons.
+diff --git a/packages/SystemUI/src/com/android/keyguard/KeyguardPatternView.java b/packages/SystemUI/src/com/android/keyguard/KeyguardPatternView.java
+index 5d63c2a..fc9cf5f 100644
+--- a/packages/SystemUI/src/com/android/keyguard/KeyguardPatternView.java
++++ b/packages/SystemUI/src/com/android/keyguard/KeyguardPatternView.java
+@@ -227,6 +227,8 @@ public class KeyguardPatternView extends KeyguardInputView
+         super.onFinishInflate();
+ 
+         mLockPatternView = findViewById(R.id.lockPatternView);
++        // Only presentation: matching, stealth mode and lockout remain native.
++        mLockPatternView.setColors(0xff888888, 0xffb4b4b4, 0xfff4f4f4);
+ 
+         mEcaView = findViewById(R.id.keyguard_selector_fade_container);
+     }
+diff --git a/packages/SystemUI/src/com/android/keyguard/KeyguardSecurityContainer.java b/packages/SystemUI/src/com/android/keyguard/KeyguardSecurityContainer.java
+index fcaccd2..92862eb 100644
+--- a/packages/SystemUI/src/com/android/keyguard/KeyguardSecurityContainer.java
++++ b/packages/SystemUI/src/com/android/keyguard/KeyguardSecurityContainer.java
+@@ -51,6 +51,7 @@ import android.content.res.Resources;
+ import android.graphics.Bitmap;
+ import android.graphics.BlendMode;
+ import android.graphics.Canvas;
++import android.graphics.Color;
+ import android.graphics.Rect;
+ import android.graphics.Typeface;
+ import android.graphics.drawable.BitmapDrawable;
+@@ -346,8 +347,9 @@ public class KeyguardSecurityContainer extends ConstraintLayout {
+         setPadding(getPaddingLeft(), getPaddingTop() + getResources().getDimensionPixelSize(
+                         R.dimen.keyguard_security_container_padding_top), getPaddingRight(),
+                 getPaddingBottom());
+-        setBackgroundColor(Utils.getColorAttrDefaultColor(getContext(),
+-                com.android.internal.R.attr.materialColorSurfaceDim));
++        // The full-screen parent owns Lambda's gradient, including the insets.
++        // An opaque Material surface here would conceal it behind PIN/pattern.
++        setBackgroundColor(Color.TRANSPARENT);
+     }
+ 
+     void onResume(SecurityMode securityMode, boolean faceAuthEnabled) {
+@@ -814,8 +816,7 @@ public class KeyguardSecurityContainer extends ConstraintLayout {
+ 
+     void reloadColors() {
+         mViewMode.reloadColors();
+-        setBackgroundColor(Utils.getColorAttrDefaultColor(getContext(),
+-                com.android.internal.R.attr.materialColorSurfaceDim));
++        setBackgroundColor(Color.TRANSPARENT);
+     }
+ 
+     /** Handles density or font scale changes. */
+diff --git a/packages/SystemUI/src/com/android/keyguard/NumPadAnimator.java b/packages/SystemUI/src/com/android/keyguard/NumPadAnimator.java
+index e773416..4706df0 100644
+--- a/packages/SystemUI/src/com/android/keyguard/NumPadAnimator.java
++++ b/packages/SystemUI/src/com/android/keyguard/NumPadAnimator.java
+@@ -62,8 +62,8 @@ class NumPadAnimator {
+ 
+     private static final int EXPAND_ANIMATION_MS = 100;
+     private static final int EXPAND_COLOR_ANIMATION_MS = 50;
+-    private static final int CONTRACT_ANIMATION_DELAY_MS = 33;
+-    private static final int CONTRACT_ANIMATION_MS = 417;
++    private static final int CONTRACT_ANIMATION_DELAY_MS = 0;
++    private static final int CONTRACT_ANIMATION_MS = 140;
+ 
+     NumPadAnimator(Context context, final Drawable drawable,
+             @StyleRes int style, Drawable buttonImage) {
+@@ -109,7 +109,8 @@ class NumPadAnimator {
+         mWidth = width;
+         mHeight = height;
+         mStartRadius = height / 2f;
+-        mEndRadius = height / 4f;
++        // Lambda's keys stay circular; feedback is a short change of tone.
++        mEndRadius = mStartRadius;
+         mExpandAnimator.setFloatValues(mStartRadius, mEndRadius);
+         mContractAnimator.setFloatValues(mEndRadius, mStartRadius);
+         // Set initial corner radius.
+@@ -138,6 +139,12 @@ class NumPadAnimator {
+         mTextColorPrimary = isNumPadKey
+                 ? getColorAttrDefaultColor(context, NUM_PAD_KEY)
+                 : getColorAttrDefaultColor(context, NUM_PAD_BUTTON);
++        // Scope the approved matte palette to the native keyguard keypad.
++        mNormalBackgroundColor = 0xff202020;
++        mPressedBackgroundColor = 0xff404040;
++        mTextColorPrimary = 0xfff4f4f4;
++        mTextColorPressed = 0xffffffff;
++        mBackground.setColor(mNormalBackgroundColor);
+         createAnimators();
+     }
+ 
+diff --git a/packages/SystemUI/src/com/android/keyguard/NumPadButton.java b/packages/SystemUI/src/com/android/keyguard/NumPadButton.java
+index a81c1b0..8280555 100644
+--- a/packages/SystemUI/src/com/android/keyguard/NumPadButton.java
++++ b/packages/SystemUI/src/com/android/keyguard/NumPadButton.java
+@@ -101,7 +101,7 @@ public class NumPadButton extends AlphaOptimizedImageButton implements NumPadAni
+         if (mAnimator != null) mAnimator.reloadColors(getContext());
+ 
+         int textColorResId = mIsTransparentMode ? NUM_PAD_KEY : NUM_PAD_BUTTON;
+-        int imageColor = Utils.getColorAttrDefaultColor(getContext(), textColorResId);
++        int imageColor = 0xfff4f4f4;
+         ((VectorDrawable) getDrawable()).setTintList(ColorStateList.valueOf(imageColor));
+     }
+ 
+diff --git a/packages/SystemUI/src/com/android/keyguard/NumPadKey.java b/packages/SystemUI/src/com/android/keyguard/NumPadKey.java
+index ac45499..a80d2d5 100644
+--- a/packages/SystemUI/src/com/android/keyguard/NumPadKey.java
++++ b/packages/SystemUI/src/com/android/keyguard/NumPadKey.java
+@@ -164,10 +164,8 @@ public class NumPadKey extends ViewGroup implements NumPadAnimationListener {
+      * Reload colors from resources.
+      **/
+     public void reloadColors() {
+-        int textColor = Utils.getColorAttr(getContext(), NUM_PAD_KEY)
+-                .getDefaultColor();
+-        int klondikeColor = Utils.getColorAttr(getContext(), android.R.attr.textColorSecondary)
+-                .getDefaultColor();
++        int textColor = 0xfff4f4f4;
++        int klondikeColor = 0xffb4b4b4;
+         mDigitText.setTextColor(textColor);
+         if (gsfBouncer()) {
+             mDigitText.setTypeface(Typeface.create("gsf-label-large-emphasized", Typeface.NORMAL));
+diff --git a/packages/SystemUI/src/com/android/keyguard/PinShapeHintingView.java b/packages/SystemUI/src/com/android/keyguard/PinShapeHintingView.java
+index 5e9eed9..73251a1 100644
+--- a/packages/SystemUI/src/com/android/keyguard/PinShapeHintingView.java
++++ b/packages/SystemUI/src/com/android/keyguard/PinShapeHintingView.java
+@@ -55,7 +55,7 @@ public class PinShapeHintingView extends LinearLayout implements PinShapeInput {
+             ImageView pinDot = new ImageView(context, attrs);
+             LayoutParams layoutParams = new LayoutParams(mDotDiameter, mDotDiameter);
+             pinDot.setLayoutParams(layoutParams);
+-            pinDot.setImageResource(R.drawable.pin_dot_avd);
++            pinDot.setImageResource(R.drawable.lambda_pin_empty_avd);
+             if (pinDot.getDrawable() != null) {
+                 Drawable drawable = DrawableCompat.wrap(pinDot.getDrawable());
+                 DrawableCompat.setTint(drawable, mColor);
+@@ -79,7 +79,7 @@ public class PinShapeHintingView extends LinearLayout implements PinShapeInput {
+             return;
+         }
+         mPosition--;
+-        setAnimatedDrawable(mPosition, R.drawable.pin_dot_delete_avd);
++        setAnimatedDrawable(mPosition, R.drawable.lambda_pin_empty_avd);
+     }
+ 
+     @Override
+diff --git a/packages/SystemUI/src/com/android/keyguard/PinShapeNonHintingView.java b/packages/SystemUI/src/com/android/keyguard/PinShapeNonHintingView.java
+index ee70de3..35a46c8 100644
+--- a/packages/SystemUI/src/com/android/keyguard/PinShapeNonHintingView.java
++++ b/packages/SystemUI/src/com/android/keyguard/PinShapeNonHintingView.java
+@@ -80,9 +80,7 @@ public class PinShapeNonHintingView extends LinearLayout implements PinShapeInpu
+ 
+     @Override
+     public void append() {
+-        if (mIsAnimatingReset) {
+-            return;
+-        }
++        if (mValueAnimator.isRunning()) mValueAnimator.end();
+         int size = getResources().getDimensionPixelSize(R.dimen.password_shape_size);
+         ImageView pinDot = new ImageView(getContext());
+         pinDot.setLayoutParams(new LayoutParams(size, size));
+@@ -91,11 +89,16 @@ public class PinShapeNonHintingView extends LinearLayout implements PinShapeInpu
+             Drawable wrappedDrawable = DrawableCompat.wrap(pinDot.getDrawable());
+             DrawableCompat.setTint(wrappedDrawable, mColor);
+         }
++        TransitionManager.beginDelayedTransition(this, new PinShapeViewTransition());
++        addView(pinDot);
++        pinDot.setScaleX(0.65f);
++        pinDot.setScaleY(0.65f);
++        pinDot.setAlpha(0f);
++        pinDot.animate().scaleX(1f).scaleY(1f).alpha(1f).setDuration(140)
++                .setInterpolator(Interpolators.LINEAR_OUT_SLOW_IN).start();
+         if (pinDot.getDrawable() instanceof AnimatedVectorDrawable) {
+             ((AnimatedVectorDrawable) pinDot.getDrawable()).start();
+         }
+-        TransitionManager.beginDelayedTransition(this, new PinShapeViewTransition());
+-        addView(pinDot);
+         mPosition++;
+     }
+ 
+@@ -108,8 +111,12 @@ public class PinShapeNonHintingView extends LinearLayout implements PinShapeInpu
+         if (mValueAnimator.isRunning()) {
+             mValueAnimator.end();
+         }
++        // A reused animator must not keep callbacks for already removed dots.
++        mValueAnimator.removeAllUpdateListeners();
++        mValueAnimator.removeAllListeners();
+         mPosition--;
+         ImageView pinDot = (ImageView) getChildAt(mPosition);
++        pinDot.animate().cancel();
+         mValueAnimator.addUpdateListener(valueAnimator -> {
+             float value = (float) valueAnimator.getAnimatedValue();
+             pinDot.setScaleX(value);
+@@ -125,7 +132,7 @@ public class PinShapeNonHintingView extends LinearLayout implements PinShapeInpu
+                 removeView(pinDot);
+             }
+         });
+-        mValueAnimator.setDuration(PasswordTextView.DISAPPEAR_DURATION);
++        mValueAnimator.setDuration(100);
+         mValueAnimator.start();
+     }
+ 
+@@ -136,21 +143,14 @@ public class PinShapeNonHintingView extends LinearLayout implements PinShapeInpu
+ 
+     @Override
+     public void reset() {
+-        if (mPosition == 0) {
+-            return;
+-        }
+-        final int position = mPosition;
+-        float baseDelay = Math.min(RESET_MAX_DELAY / position, RESET_STAGGER_DELAY);
+-        mIsAnimatingReset = true;
+-        for (int i = 0; i < position; i++) {
+-            int delayMillis = (int) (baseDelay * i);
+-            postDelayed(this::delete, delayMillis);
+-            // When we reach the last index, we want to send a signal that the animation is
+-            // complete.
+-            if (i == position - 1) {
+-                postDelayed(() -> mIsAnimatingReset = false, delayMillis);
+-            }
+-        }
++        // Clear synchronously with PasswordTextView. Delayed deletes used to
++        // remove newly typed dots after a failed attempt or a quick clear/retype.
++        if (mValueAnimator.isRunning()) mValueAnimator.end();
++        TransitionManager.endTransitions(this);
++        for (int i = 0; i < getChildCount(); i++) getChildAt(i).animate().cancel();
++        removeAllViews();
++        mPosition = 0;
++        mIsAnimatingReset = false;
+     }
+ 
+     @Override
+@@ -200,7 +200,7 @@ public class PinShapeNonHintingView extends LinearLayout implements PinShapeInpu
+             Rect endRect = (Rect) endValues.values.get(PROP_BOUNDS);
+             View v = startValues.view;
+             ValueAnimator animator = ValueAnimator.ofFloat(0f, 1f);
+-            animator.setDuration(PasswordTextView.APPEAR_DURATION);
++            animator.setDuration(140);
+             animator.setInterpolator(Interpolators.LINEAR_OUT_SLOW_IN);
+             animator.addUpdateListener(valueAnimator -> {
+                 float value = (float) valueAnimator.getAnimatedValue();
+diff --git a/packages/SystemUI/src/com/android/systemui/bouncer/ui/binder/BouncerMessageViewBinder.kt b/packages/SystemUI/src/com/android/systemui/bouncer/ui/binder/BouncerMessageViewBinder.kt
+index 0c36d0a..1c5a3bc 100644
+--- a/packages/SystemUI/src/com/android/systemui/bouncer/ui/binder/BouncerMessageViewBinder.kt
++++ b/packages/SystemUI/src/com/android/systemui/bouncer/ui/binder/BouncerMessageViewBinder.kt
+@@ -99,7 +99,10 @@ object BouncerMessageViewBinder {
+             controller.setMessage(0)
+         }
+         message?.colorState?.let { controller.setNextMessageColor(it) }
+-        view.ellipsize =
+-            if (allowTruncation) TextUtils.TruncateAt.END else TextUtils.TruncateAt.MARQUEE
++        // Credential errors and native lockout countdowns must remain readable,
++        // including at larger accessibility font sizes; never marquee them away.
++        view.ellipsize = null
++        view.setSingleLine(false)
++        view.maxLines = 3
+     }
+ }
+diff --git a/packages/SystemUI/src/com/android/systemui/keyguard/ui/view/DeviceEntryIconView.kt b/packages/SystemUI/src/com/android/systemui/keyguard/ui/view/DeviceEntryIconView.kt
+index 8d2e939..0fdaec0 100644
+--- a/packages/SystemUI/src/com/android/systemui/keyguard/ui/view/DeviceEntryIconView.kt
++++ b/packages/SystemUI/src/com/android/systemui/keyguard/ui/view/DeviceEntryIconView.kt
+@@ -29,7 +29,6 @@ import android.view.accessibility.AccessibilityNodeInfo
+ import android.widget.FrameLayout
+ import android.widget.ImageView
+ import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
+-import com.airbnb.lottie.LottieCompositionFactory
+ import com.airbnb.lottie.LottieDrawable
+ import com.android.systemui.common.ui.view.LongPressHandlingView
+ import com.android.systemui.log.LongPressHandlingViewLogger
+@@ -122,7 +121,7 @@ constructor(
+         // FINGERPRINT
+         animatedIconDrawable.addState(
+             getIconState(IconType.FINGERPRINT, false),
+-            context.getDrawable(R.drawable.ic_fingerprint)!!,
++            context.getDrawable(R.drawable.lambda_fingerprint_recognition)!!,
+             R.id.locked_fp,
+         )
+ 
+@@ -140,12 +139,9 @@ constructor(
+             R.id.unlocked_aod,
+         )
+         // FINGERPRINT
+-        LottieCompositionFactory.fromRawRes(mContext, R.raw.udfps_aod_fp).addListener { result ->
+-            aodFpDrawable.setComposition(result)
+-        }
+         animatedIconDrawable.addState(
+             getIconState(IconType.FINGERPRINT, true),
+-            aodFpDrawable,
++            context.getDrawable(R.drawable.lambda_fingerprint_recognition)!!,
+             R.id.udfps_aod_fp,
+         )
+ 
+@@ -159,19 +155,10 @@ constructor(
+     }
+ 
+     private fun setupIconTransitions() {
+-        // LockscreenFp <=> LockscreenUnlocked
+-        animatedIconDrawable.addTransition(
+-            R.id.locked_fp,
+-            R.id.unlocked,
+-            context.getDrawable(R.drawable.fp_to_unlock) as AnimatedVectorDrawable,
+-            /* reversible */ false,
+-        )
+-        animatedIconDrawable.addTransition(
+-            R.id.unlocked,
+-            R.id.locked_fp,
+-            context.getDrawable(R.drawable.unlock_to_fp) as AnimatedVectorDrawable,
+-            /* reversible */ false,
+-        )
++        // Native morphs contain a different fingerprint glyph. Crossfade the
++        // supplied symbol instead, without changing auth or sensor geometry.
++        animatedIconDrawable.setEnterFadeDuration(120)
++        animatedIconDrawable.setExitFadeDuration(100)
+ 
+         // LockscreenLocked <=> AodLocked
+         animatedIconDrawable.addTransition(
+@@ -215,14 +202,6 @@ constructor(
+             /* reversible */ false,
+         )
+ 
+-        // LockscreenFingerprint => LockscreenLocked
+-        animatedIconDrawable.addTransition(
+-            R.id.locked_fp,
+-            R.id.locked,
+-            context.getDrawable(R.drawable.fp_to_locked) as AnimatedVectorDrawable,
+-            /* reversible */ false,
+-        )
+-
+         // LockscreenUnlocked <=> AodLocked
+         animatedIconDrawable.addTransition(
+             R.id.unlocked,
+diff --git a/packages/SystemUI/src/com/android/systemui/keyguard/ui/view/layout/sections/ClockSection.kt b/packages/SystemUI/src/com/android/systemui/keyguard/ui/view/layout/sections/ClockSection.kt
+index 70bf8bc..bcbdab7 100644
+--- a/packages/SystemUI/src/com/android/systemui/keyguard/ui/view/layout/sections/ClockSection.kt
++++ b/packages/SystemUI/src/com/android/systemui/keyguard/ui/view/layout/sections/ClockSection.kt
+@@ -18,6 +18,7 @@
+ package com.android.systemui.keyguard.ui.view.layout.sections
+ 
+ import android.content.Context
++import android.content.res.Configuration
+ import android.view.View
+ import androidx.constraintlayout.widget.Barrier
+ import androidx.constraintlayout.widget.ConstraintLayout
+@@ -210,6 +211,18 @@ constructor(
+             // height when it goes beyond constraints; otherwise, it use WRAP_CONTENT
+             constrainHeight(customR.id.lockscreen_clock_view_large, WRAP_CONTENT)
+             constrainMaxHeight(customR.id.lockscreen_clock_view_large, 0)
++            // Keep the clock above the wallpaper fold on portrait phones while
++            // preserving native constraints, UDFPS clearance and burn-in motion.
++            val portraitPhone = context.resources.configuration.let {
++                it.orientation == Configuration.ORIENTATION_PORTRAIT &&
++                    it.smallestScreenWidthDp < 600
++            }
++            setVerticalBias(
++                customR.id.lockscreen_clock_view_large,
++                if (portraitPhone) {
++                    context.resources.getFraction(R.fraction.lambda_large_clock_vertical_bias, 1, 1)
++                } else 0.5f,
++            )
+             constrainWidth(customR.id.lockscreen_clock_view, WRAP_CONTENT)
+             constrainHeight(
+                 customR.id.lockscreen_clock_view,
+@@ -220,11 +233,11 @@ constructor(
+                 START,
+                 PARENT_ID,
+                 START,
+-                context.resources.getDimensionPixelSize(customR.dimen.clock_padding_start) +
+-                    context.resources.getDimensionPixelSize(
+-                        customR.dimen.status_view_margin_horizontal
+-                    ),
++                context.resources.getDimensionPixelSize(customR.dimen.clock_padding_start),
+             )
++            connect(customR.id.lockscreen_clock_view, END, guideline, END,
++                context.resources.getDimensionPixelSize(customR.dimen.clock_padding_start))
++            setHorizontalBias(customR.id.lockscreen_clock_view, 0.5f)
+             val smallClockTopMargin = keyguardClockViewModel.getSmallClockTopMargin()
+             create(R.id.small_clock_guideline_top, ConstraintSet.HORIZONTAL_GUIDELINE)
+             setGuidelineBegin(R.id.small_clock_guideline_top, smallClockTopMargin)
+diff --git a/packages/SystemUI/src/com/android/systemui/keyguard/ui/viewmodel/DeviceEntryBackgroundViewModel.kt b/packages/SystemUI/src/com/android/systemui/keyguard/ui/viewmodel/DeviceEntryBackgroundViewModel.kt
+index 29ae4b9..e596cdd 100644
+--- a/packages/SystemUI/src/com/android/systemui/keyguard/ui/viewmodel/DeviceEntryBackgroundViewModel.kt
++++ b/packages/SystemUI/src/com/android/systemui/keyguard/ui/viewmodel/DeviceEntryBackgroundViewModel.kt
+@@ -68,17 +68,11 @@ constructor(
+             if (useBackground) {
+                 configurationInteractor.onAnyConfigurationChange
+                     .map {
+-                        Utils.getColorAttrDefaultColor(
+-                            context,
+-                            com.android.internal.R.attr.colorSurface,
+-                        )
++                        android.graphics.Color.TRANSPARENT
+                     }
+                     .onStart {
+                         emit(
+-                            Utils.getColorAttrDefaultColor(
+-                                context,
+-                                com.android.internal.R.attr.colorSurface,
+-                            )
++                            android.graphics.Color.TRANSPARENT
+                         )
+                     }
+             } else {
+diff --git a/packages/SystemUI/src/com/android/systemui/keyguard/ui/viewmodel/DeviceEntryForegroundViewModel.kt b/packages/SystemUI/src/com/android/systemui/keyguard/ui/viewmodel/DeviceEntryForegroundViewModel.kt
+index 1965252..6b924a3 100644
+--- a/packages/SystemUI/src/com/android/systemui/keyguard/ui/viewmodel/DeviceEntryForegroundViewModel.kt
++++ b/packages/SystemUI/src/com/android/systemui/keyguard/ui/viewmodel/DeviceEntryForegroundViewModel.kt
+@@ -64,11 +64,8 @@ constructor(
+         }
+ 
+     private fun getColor(usingBackgroundProtection: Boolean): Int {
+-        return if (usingBackgroundProtection) {
+-            Utils.getColorAttrDefaultColor(context, android.R.attr.textColorPrimary)
+-        } else {
+-            Utils.getColorAttrDefaultColor(context, R.attr.wallpaperTextColorAccent)
+-        }
++        // The decorative plate is transparent; derive contrast from wallpaper.
++        return Utils.getColorAttrDefaultColor(context, R.attr.wallpaperTextColor)
+     }
+ 
+     // While dozing, the display can show the AOD UI; show the AOD udfps when dozing
+diff --git a/packages/SystemUI/src/com/android/systemui/statusbar/phone/ScrimController.java b/packages/SystemUI/src/com/android/systemui/statusbar/phone/ScrimController.java
+index e7c6fb4..d33e6e0 100644
+--- a/packages/SystemUI/src/com/android/systemui/statusbar/phone/ScrimController.java
++++ b/packages/SystemUI/src/com/android/systemui/statusbar/phone/ScrimController.java
+@@ -1004,7 +1004,10 @@ public class ScrimController implements ViewTreeObserver.OnPreDrawListener, Dump
+                 mNotificationsAlpha = behindAlpha;
+                 mNotificationsTint = behindTint;
+                 mBehindAlpha = 1;
+-                mBehindTint = Color.BLACK;
++                // Follow the native QS expansion; never recolor an idle lock screen or AOD.
++                mBehindTint = ColorUtils.blendARGB(Color.BLACK,
++                        mScrimBehind.getContext().getColor(R.color.lambda_shade_background),
++                        mState == ScrimState.SHADE_LOCKED ? 1f : mQsExpansion);
+             } else {
+                 mBehindAlpha = behindAlpha;
+                 if (mState == ScrimState.KEYGUARD && mTransitionToFullShadeProgress > 0.0f) {
+diff --git a/packages/SystemUI/src/com/android/systemui/statusbar/phone/ScrimState.java b/packages/SystemUI/src/com/android/systemui/statusbar/phone/ScrimState.java
+index 198859a..b6b1b3e 100644
+--- a/packages/SystemUI/src/com/android/systemui/statusbar/phone/ScrimState.java
++++ b/packages/SystemUI/src/com/android/systemui/statusbar/phone/ScrimState.java
+@@ -127,7 +127,8 @@ public enum ScrimState {
+         @Override
+         public void prepare(ScrimState previousState) {
+             mBehindAlpha = mClipQsScrim ? 1 : mDefaultScrimAlpha;
+-            mBehindTint = mClipQsScrim ? mBackgroundColor : mSurfaceColor;
++            // Credential controls use the monochrome dark palette on either wallpaper.
++            mBehindTint = Color.BLACK;
+             mNotifAlpha = mClipQsScrim ? mDefaultScrimAlpha : 0;
+             mNotifTint = Color.TRANSPARENT;
+             mFrontAlpha = 0f;
+@@ -137,7 +138,7 @@ public enum ScrimState {
+         public void setSurfaceColor(int surfaceColor) {
+             super.setSurfaceColor(surfaceColor);
+             if (!mClipQsScrim) {
+-                mBehindTint = mSurfaceColor;
++                mBehindTint = Color.BLACK;
+             }
+         }
+     },
+@@ -159,10 +160,11 @@ public enum ScrimState {
+             mBehindAlpha = mClipQsScrim ? 1 : mDefaultScrimAlpha;
+             mNotifAlpha = 1f;
+             mFrontAlpha = 0f;
+-            mBehindTint = mClipQsScrim ? Color.TRANSPARENT : mBackgroundColor;
++            mBehindTint = mClipQsScrim ? Color.TRANSPARENT : mShadeBackgroundColor;
++            mNotifTint = mShadeBackgroundColor;
+ 
+             if (mClipQsScrim) {
+-                updateScrimColor(mScrimBehind, 1f /* alpha */, mBackgroundColor);
++                updateScrimColor(mScrimBehind, 1f /* alpha */, mShadeBackgroundColor);
+             }
+         }
+     },
+@@ -257,7 +259,8 @@ public enum ScrimState {
+                     && !fromAod;
+ 
+             mFrontTint = Color.TRANSPARENT;
+-            mBehindTint = mBackgroundColor;
++            mBehindTint = mShadeBackgroundColor;
++            mNotifTint = mShadeBackgroundColor;
+             mBlankScreen = false;
+ 
+             if (mDisplayRequiresBlanking && previousState == ScrimState.AOD) {
+@@ -272,7 +275,8 @@ public enum ScrimState {
+             }
+ 
+             if (mClipQsScrim) {
+-                updateScrimColor(mScrimBehind, 1f /* alpha */, mBackgroundColor);
++                updateScrimColor(mScrimBehind, 1f /* alpha */,
++                        mBlankScreen ? mBackgroundColor : mShadeBackgroundColor);
+             }
+         }
+     },
+@@ -365,10 +369,13 @@ public enum ScrimState {
+     long mKeyguardFadingAwayDuration;
+     boolean mClipQsScrim;
+     int mBackgroundColor;
++    int mShadeBackgroundColor;
+ 
+     public void init(ScrimView scrimInFront, ScrimView scrimBehind, DozeParameters dozeParameters,
+             DockManager dockManager) {
+         mBackgroundColor = scrimBehind.getContext().getColor(R.color.shade_scrim_background_dark);
++        // Only interactive shade surfaces use charcoal. OFF/AOD blanking stays black.
++        mShadeBackgroundColor = scrimBehind.getContext().getColor(R.color.lambda_shade_background);
+         mScrimInFront = scrimInFront;
+         mScrimBehind = scrimBehind;
+ 
+diff --git a/packages/SystemUI/src/com/android/systemui/statusbar/phone/StatusBarKeyguardViewManager.java b/packages/SystemUI/src/com/android/systemui/statusbar/phone/StatusBarKeyguardViewManager.java
+index bd1360f..ff42b86 100644
+--- a/packages/SystemUI/src/com/android/systemui/statusbar/phone/StatusBarKeyguardViewManager.java
++++ b/packages/SystemUI/src/com/android/systemui/statusbar/phone/StatusBarKeyguardViewManager.java
+@@ -1535,13 +1535,12 @@ public class StatusBarKeyguardViewManager implements RemoteInputController.Callb
+                 && mBiometricUnlockController.getMode() == MODE_WAKE_AND_UNLOCK_PULSING;
+         boolean keyguardVisible = mKeyguardStateController.isVisible();
+         boolean hideWhileDozing = mDozing && !isWakeAndUnlockPulsing;
+-        boolean keyguardWithGestureNav = (keyguardVisible && !mDozing && !mScreenOffAnimationPlaying
+-                || mPulsing && !mIsDocked)
+-                && mGesturalNav;
+-        return (!keyguardVisible && !hideWhileDozing && !mScreenOffAnimationPlaying
+-                || primaryBouncerIsShowing()
++        // No navigation chrome over the lockscreen or credential keypad.
++        // Occluding activities (including emergency dialer), remote input and
++        // global actions retain their normal navigation/accessibility controls.
++        return (!keyguardVisible && !primaryBouncerIsShowing()
++                && !hideWhileDozing && !mScreenOffAnimationPlaying
+                 || mRemoteInputActive
+-                || keyguardWithGestureNav
+                 || mGlobalActionsVisible);
+     }
+ 
+@@ -1551,11 +1550,9 @@ public class StatusBarKeyguardViewManager implements RemoteInputController.Callb
+     protected boolean getLastNavBarVisible() {
+         boolean keyguardShowing = mLastShowing && !mLastOccluded;
+         boolean hideWhileDozing = mLastDozing && mLastBiometricMode != MODE_WAKE_AND_UNLOCK_PULSING;
+-        boolean keyguardWithGestureNav = (keyguardShowing && !mLastDozing
+-                && !mLastScreenOffAnimationPlaying || mLastPulsing && !mLastIsDocked)
+-                && mLastGesturalNav;
+-        return (!keyguardShowing && !hideWhileDozing && !mLastScreenOffAnimationPlaying
+-                || mLastPrimaryBouncerShowing || mLastRemoteInputActive || keyguardWithGestureNav
++        return (!keyguardShowing && !mLastPrimaryBouncerShowing
++                && !hideWhileDozing && !mLastScreenOffAnimationPlaying
++                || mLastRemoteInputActive
+                 || mLastGlobalActionsVisible);
+     }
+ 
+diff --git a/packages/SystemUI/src/com/android/systemui/theme/ThemeOverlayController.java b/packages/SystemUI/src/com/android/systemui/theme/ThemeOverlayController.java
+index f8db9ee..4247618 100644
+--- a/packages/SystemUI/src/com/android/systemui/theme/ThemeOverlayController.java
++++ b/packages/SystemUI/src/com/android/systemui/theme/ThemeOverlayController.java
+@@ -154,7 +154,8 @@ public class ThemeOverlayController implements CoreStartable, Dumpable {
+     // Theme variant: Vibrant, Tonal, Expressive, etc
+     @VisibleForTesting
+     @Style.Type
+-    protected int mThemeStyle = Style.TONAL_SPOT;
++    // Lambda defaults to neutral system colors, shared by Settings and dynamic-color apps.
++    protected int mThemeStyle = Style.MONOCHROMATIC;
+     // Accent colors overlay
+     private FabricatedOverlay mSecondaryOverlay;
+     // Neutral system colors overlay
+@@ -902,11 +903,11 @@ public class ThemeOverlayController implements CoreStartable, Dumpable {
+                 style = Style.valueOf(
+                         object.getString(ThemeOverlayApplier.OVERLAY_CATEGORY_THEME_STYLE));
+                 if (!validStyles.contains(style)) {
+-                    style = Style.TONAL_SPOT;
++                    style = Style.MONOCHROMATIC;
+                 }
+             } catch (JSONException | IllegalArgumentException e) {
+                 Log.i(TAG, "Failed to parse THEME_CUSTOMIZATION_OVERLAY_PACKAGES.", e);
+-                style = Style.TONAL_SPOT;
++                style = Style.MONOCHROMATIC;
+             }
+         }
+         return style;

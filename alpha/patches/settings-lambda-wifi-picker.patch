@@ -1,0 +1,15 @@
+diff --git a/src/com/android/settings/network/NetworkProviderSettings.java b/src/com/android/settings/network/NetworkProviderSettings.java
+--- a/src/com/android/settings/network/NetworkProviderSettings.java
++++ b/src/com/android/settings/network/NetworkProviderSettings.java
+@@ -297,7 +297,7 @@
+-        if (mIsInSetupWizard) {
++        if (mIsInSetupWizard && view instanceof GlifPreferenceLayout) {
+             GlifPreferenceLayout layout = (GlifPreferenceLayout) view;
+             final Drawable icon = getContext().getDrawable(R.drawable.ic_network_setup);
+             final String title = getContext().getString(R.string.provider_internet_settings);
+@@ -405,7 +405,7 @@
+-        if (mIsInSetupWizard) {
++        if (mIsInSetupWizard && parent instanceof GlifPreferenceLayout) {
+             GlifPreferenceLayout layout = (GlifPreferenceLayout) parent;
+             return layout.onCreateRecyclerView(inflater, parent, savedInstanceState);
+         } else {

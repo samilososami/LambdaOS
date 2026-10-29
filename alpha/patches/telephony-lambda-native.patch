@@ -1,0 +1,20 @@
+diff --git a/src/com/android/phone/EmergencyDialer.java b/src/com/android/phone/EmergencyDialer.java
+--- a/src/com/android/phone/EmergencyDialer.java
++++ b/src/com/android/phone/EmergencyDialer.java
+@@ -257,6 +257,12 @@
+     @Override
++    protected void onPostResume() {
++        super.onPostResume();
++        LambdaNativeUi.install(this);
++    }
++
++    @Override
+     protected void onCreate(Bundle icicle) {
+@@ -685,6 +691,10 @@
+     private void updateTheme(boolean supportsDarkText) {
++        if (LambdaNativeUi.isEnabled(this)) {
++            setTheme(R.style.EmergencyDialerTheme);
++            LambdaNativeUi.applyTheme(this);
++            return;
++        }
+         if (mSupportsDarkText == supportsDarkText) {

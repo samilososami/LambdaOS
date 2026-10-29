@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="lambda_native_style" type="id"/>
+    <!-- Overlay, not a replacement parent: retain each native component's contract. -->
+    <style name="LambdaNativeOverlay" parent="">
+        <item name="android:windowBackground">#080808</item>
+        <item name="android:colorBackground">#080808</item>
+        <item name="android:colorBackgroundFloating">#1c1c1c</item>
+        <item name="android:textColorPrimary">#f4f4f4</item>
+        <item name="android:textColorSecondary">#b4b4b4</item>
+        <item name="android:colorAccent">#dddddd</item>
+        <item name="android:colorControlActivated">#dddddd</item>
+        <item name="android:colorControlNormal">#b4b4b4</item>
+        <item name="android:fontFamily">@font/lambda_regular</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">#080808</item>
+        <item name="android:windowActionModeOverlay">true</item>
+    </style>
+    <style name="LambdaNativeLightOverlay" parent="LambdaNativeOverlay">
+        <item name="android:windowBackground">#f7f7f7</item>
+        <item name="android:colorBackground">#f7f7f7</item>
+        <item name="android:colorBackgroundFloating">#eeeeee</item>
+        <item name="android:textColorPrimary">#151515</item>
+        <item name="android:textColorSecondary">#626262</item>
+        <item name="android:colorAccent">#252525</item>
+        <item name="android:colorControlActivated">#252525</item>
+        <item name="android:colorControlNormal">#626262</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar">true</item>
+        <item name="android:navigationBarColor">#f7f7f7</item>
+    </style>
+</resources>

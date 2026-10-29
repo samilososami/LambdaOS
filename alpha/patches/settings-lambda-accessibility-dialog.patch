@@ -1,0 +1,11 @@
+diff --git a/src/com/android/settings/accessibility/AccessibilityShortcutsTutorial.java b/src/com/android/settings/accessibility/AccessibilityShortcutsTutorial.java
+--- a/src/com/android/settings/accessibility/AccessibilityShortcutsTutorial.java
++++ b/src/com/android/settings/accessibility/AccessibilityShortcutsTutorial.java
+@@ -214,6 +214,7 @@
+                 /* errorMessage= */ "Unexpected tutorial pages size");
+ 
+         alertDialog.setView(createShortcutNavigationContentView(context, tutorialPages, null));
++        com.android.settings.LambdaAccessibilityUi.prepareTutorial(context, alertDialog);
+ 
+         return alertDialog;
+     }

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Override the target's night-specific translucent black variant too. -->
+    <color name="accessibility_floating_menu_background">#F01C1C1C</color>
+    <color name="accessibility_floating_menu_message_background">#1C1C1C</color>
+    <color name="accessibility_floating_menu_message_text">#F4F4F4</color>
+</resources>

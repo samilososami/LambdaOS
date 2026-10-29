@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Fixed monochrome QS palette, independent of wallpaper-derived Monet.
+         Error/privacy indicators and application-provided art keep their meaning. -->
+    <color name="lambda_shade_background">#141414</color>
+    <color name="lambda_shade_surface">#242424</color>
+    <color name="lambda_shade_active">#F0F0F0</color>
+    <color name="lambda_shade_on_active">#202020</color>
+    <color name="lambda_shade_on_active_secondary">#505050</color>
+    <color name="lambda_shade_inactive">#303030</color>
+    <color name="lambda_shade_on_inactive">#EEEEEE</color>
+    <color name="lambda_shade_on_inactive_secondary">#BDBDBD</color>
+    <color name="lambda_shade_disabled">#202020</color>
+    <color name="lambda_shade_outline">#909090</color>
+</resources>

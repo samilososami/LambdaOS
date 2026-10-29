@@ -1,0 +1,5 @@
+<resources>
+    <string name="lambda_clock_stacked">Lambda stacked</string>
+    <string name="lambda_clock_analog">Lambda analog</string>
+    <string name="lambda_clock_description">Minimal monochrome clock</string>
+</resources>

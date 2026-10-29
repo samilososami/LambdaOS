@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Keep the native white magnification glyph, replace only its pink disc. -->
+    <color name="accessibility_magnification_background">#303030</color>
+</resources>

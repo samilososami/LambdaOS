@@ -1,0 +1,37 @@
+diff --git a/src/com/android/settings/biometrics/BiometricEnrollIntroduction.java b/src/com/android/settings/biometrics/BiometricEnrollIntroduction.java
+--- a/src/com/android/settings/biometrics/BiometricEnrollIntroduction.java
++++ b/src/com/android/settings/biometrics/BiometricEnrollIntroduction.java
+@@ -216,7 +216,7 @@
+         mFooterBarMixin.setPrimaryButton(getPrimaryFooterButton());
+         mFooterBarMixin.setSecondaryButton(getSecondaryFooterButton(), true /* usePrimaryStyle */);
+         mFooterBarMixin.getSecondaryButton().setVisibility(
+-                mHasScrolledToBottom ? View.VISIBLE : View.INVISIBLE);
++                (lambdaShowDeclineImmediately() || mHasScrolledToBottom) ? View.VISIBLE : View.INVISIBLE);
+ 
+         final RequireScrollMixin requireScrollMixin = layout.getMixin(RequireScrollMixin.class);
+         requireScrollMixin.requireScrollWithButton(this, getPrimaryFooterButton(),
+@@ -234,7 +234,7 @@
+ 
+                     // Show secondary button once scroll is completed.
+                     getSecondaryFooterButton().setVisibility(
+-                            !scrollNeeded && !enrollmentCompleted ? View.VISIBLE : View.INVISIBLE);
++                            (lambdaShowDeclineImmediately() || !scrollNeeded) && !enrollmentCompleted ? View.VISIBLE : View.INVISIBLE);
+                     mHasScrolledToBottom = !scrollNeeded;
+                 });
+ 
+@@ -241,7 +241,14 @@
+         final boolean isScrollNeeded = requireScrollMixin.isScrollingRequired();
+         final boolean enrollmentCompleted = checkMaxEnrolled() != 0;
+         getSecondaryFooterButton().setVisibility(
+-                !isScrollNeeded && !enrollmentCompleted ? View.VISIBLE : View.INVISIBLE);
++                (lambdaShowDeclineImmediately() || !isScrollNeeded) && !enrollmentCompleted ? View.VISIBLE : View.INVISIBLE);
++    }
++
++    private boolean lambdaShowDeclineImmediately() {
++        // Declining remains available before scrolling. Keep the native More /
++        // Agree gate, credential checks, admin policy and all listeners intact.
++        return this instanceof com.android.settings.biometrics.fingerprint.FingerprintEnrollIntroduction
++                && com.android.settings.LambdaNativeUi.isEnabled(this);
+     }
+ 
+     @Override
