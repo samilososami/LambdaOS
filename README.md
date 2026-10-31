@@ -57,6 +57,13 @@ earlier explorations and proposed features; those are labeled separately in the
 - **Lambda Operator.** The included Lambda application is the starting point
   for a unified interface to device information and future security workflows.
   Its Wi-Fi, Bluetooth, USB, CAN, network and radio categories are under development.
+- **S10-tuned WPA/PMKID cracking.** A native ARM64 CPU engine, tuned and tested
+  on the Exynos 9820 to make effective use of the Galaxy S10's hardware while
+  retaining thermal and memory safeguards. Eight-thread tests reached a median
+  of **3,506 password attempts/s**; a complete 4,800-candidate WPA2 batch took
+  **1.87 s**. These are short, synthetic tests in the development APK, not
+  sustained-performance guarantees or a feature in a published ROM. GPU
+  acceleration remains experimental and has not passed correctness validation.
 - **Hardware-first development.** Kernel, driver and external-adapter support
   will be documented against capabilities actually verified on the device.
 
