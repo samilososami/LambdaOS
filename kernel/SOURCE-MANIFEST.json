@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "snapshot": "2026-11-22",
+  "upstream": {
+    "url": "https://github.com/V0lk3n/nethunter_kernel_samsung_exynos9820.git",
+    "revision": "b238f0ee9c9f68350cc6d7a60964d640e29ec334"
+  },
+  "development_branch": "lambdaos/kernel-capabilities-v1",
+  "submodules": {
+    "drivers/net/can/can-isotp": "a5574c8da76dd758b723063d596d67341d2ff781",
+    "drivers/net/can/elmcan": "90076235a8c4229f9e9347ee8165fd13e47a1e07",
+    "drivers/net/can/usb-can-2-module": "f62b3785f9bfd36d9a1dbd489bead9a0d18fb1ce",
+    "drivers/net/wireless/mediatek/mt76": "6d4d562a411b59c625874e23edcff8c598b4ce2f",
+    "drivers/net/wireless/realtek/rtl8188eus": "b58e2511487356fe80813d9953678fb1dd9c2270",
+    "drivers/net/wireless/realtek/rtl8812au": "5311b57aed14f0fbbd0e97e556f724d5704c3fe9",
+    "drivers/net/wireless/realtek/rtl88x2bu": "79e9fe54c846ba6b796b7168cfd9748c7ceb53b5"
+  },
+  "sha256": {
+    "patches/lambdaos-kernel-capabilities-v1.patch": "3f2fac682ec3b8fff4b79d151c904ece13377b42ab4e59c73f170d5a5d61178e",
+    "configs/lambdaos_beyond1lte_defconfig": "5c66c537e76039fcaf5c02b8d1f991a2d225d4dc747ef946773573e35825d1fe",
+    "configs/lambdaos_beyond1lte_pentest.config": "ba40a97b3410e8b26a78cc8c5847185c0049d45af82e0b2a31508e25caea249a"
+  }
+}

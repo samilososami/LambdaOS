@@ -18,6 +18,16 @@ does not replace the licenses of those components.
   and [source list](assets/design/round-07-setup/assets/lucide/SOURCES.md) accompany
   the SVG files.
 - **Fingerprint artwork:** see the [source and license record](alpha/platform/SystemUI/licenses/fingerprint-recognition.txt).
+- **OneShot-Extended / Pixiewps:** LambdaOS publishes a GPL-2.0-or-later WPS
+  integration adapter and pins the independent upstream repositories in
+  [`alpha/vendor/DEPENDENCIES.md`](alpha/vendor/DEPENDENCIES.md). Their complete
+  source histories and license files are obtained from the named upstreams.
+- **Aircrack-ng and wireless-tools:** development radio helpers retain their
+  upstream GPL license obligations and pinned input hashes. This repository
+  publishes the Lambda guards/integration source, not downloaded executables.
+- **Probable-Wordlists:** the optional WPA dictionaries are downloaded from the
+  pinned upstream and normalized by the published scripts. The generated lists
+  are not committed; upstream attribution is CC-BY-SA-4.0.
 
 The `assets/design/**/references` folders contain design reference material;
 third-party marks shown there are not LambdaOS branding or endorsements.

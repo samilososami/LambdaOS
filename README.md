@@ -10,120 +10,164 @@
   <img alt="Stage: alpha" src="https://img.shields.io/badge/stage-alpha-333333?style=flat-square">
   <img alt="Android 15" src="https://img.shields.io/badge/Android-15-333333?style=flat-square">
   <img alt="Device: beyond1lte" src="https://img.shields.io/badge/device-beyond1lte-333333?style=flat-square">
+  <img alt="Kernel 4.14.356" src="https://img.shields.io/badge/kernel-4.14.356--lambdaos-333333?style=flat-square">
   <img alt="Google apps not bundled" src="https://img.shields.io/badge/GApps-not_bundled-333333?style=flat-square">
 </p>
 
 <p align="center">
-  <a href="https://github.com/samilososami/LambdaOS/releases">Releases</a> ·
+  <a href="https://lambdaos.samilososami.com/">Website</a> ·
   <a href="ROADMAP.md">Roadmap</a> ·
   <a href="docs/DEVELOPMENT.md">Development</a> ·
-  <a href="assets/README.md">Asset library</a>
+  <a href="docs/ARCHITECTURE.md">Architecture</a> ·
+  <a href="assets/README.md">Assets</a>
 </p>
 
-LambdaOS is an Android system built around one device and one direction: a
-purpose-built mobile environment for penetration testing and security research.
-It combines a restrained monochrome interface with device-specific development
-for the Exynos Samsung Galaxy S10.
+LambdaOS is an Android system built around a single reference device and a
+clear purpose: make security work on a phone coherent, inspectable and usable.
+It combines a restrained native interface with a device-specific kernel,
+structured privileged operations and workflows for supported radio hardware.
 
-The project is currently in **alpha**, based on **LineageOS 22.2 / Android 15**.
-The system boots on the reference device, with a custom setup experience,
-wallpapers and system styling already implemented. Kernel capabilities, shared
-system commands and the operational toolset are the next focus.
+The project is in **alpha**, based on **LineageOS 22.2 / Android 15** for the
+Exynos Samsung Galaxy S10. The current repository is a reviewed, project-specific
+source snapshot. It does not contain the complete Android tree, proprietary
+Samsung blobs, private signing material, model weights or flashable ROM images.
 
 ## On the device
 
 <table>
   <tr>
-    <td align="center" width="33%"><img src="assets/screenshots/setup-welcome.png" alt="LambdaOS welcome screen with Lamb and the custom dark setup design" width="260"><br><sub>First-run setup</sub></td>
-    <td align="center" width="33%"><img src="assets/screenshots/lockscreen.png" alt="LambdaOS lock screen with the centered clock, dark folded wallpaper and fingerprint icon" width="260"><br><sub>Lock screen</sub></td>
-    <td align="center" width="33%"><img src="assets/screenshots/quick-settings.png" alt="Native quick settings with the LambdaOS monochrome palette" width="260"><br><sub>Quick settings</sub></td>
+    <td align="center" width="33%"><img src="assets/screenshots/setup-welcome.png" alt="LambdaOS first-run setup" width="260"><br><sub>First-run setup</sub></td>
+    <td align="center" width="33%"><img src="assets/screenshots/lockscreen.png" alt="LambdaOS lock screen" width="260"><br><sub>Lock screen</sub></td>
+    <td align="center" width="33%"><img src="assets/screenshots/quick-settings.png" alt="LambdaOS quick settings" width="260"><br><sub>Quick settings</sub></td>
   </tr>
 </table>
 
-These are captures from running development builds on the S10, rather than
-concept renders. Some screens are in Spanish. The wider design archive includes
-earlier explorations and proposed features; those are labeled separately in the
-[asset library](assets/README.md).
+These are captures from development builds running on the reference S10. The
+larger visual archive also contains concepts and earlier iterations; those are
+identified as design material rather than implemented screens.
 
-## What is taking shape
+## Current components
 
-- **A custom first run.** A dedicated setup flow with language and region,
-  connectivity, accessibility, security, appearance, navigation and haptics.
-- **A consistent visual identity.** Near-black surfaces, off-white text, quiet
-  gradients, original wallpapers and a custom boot animation. Dark and light
-  appearance can select the initial wallpaper during setup.
-- **Native Android foundations.** System styling extends into Settings and
-  compatible apps while authentication and biometrics use platform services.
-- **Lambda Operator.** The included Lambda application is the starting point
-  for a unified interface to device information and future security workflows.
-  Its Wi-Fi, Bluetooth, USB, CAN, network and radio categories are under development.
-- **S10-tuned WPA/PMKID cracking.** A native ARM64 CPU engine, tuned and tested
-  on the Exynos 9820 to make effective use of the Galaxy S10's hardware while
-  retaining thermal and memory safeguards. Eight-thread tests reached a median
-  of **3,506 password attempts/s**; a complete 4,800-candidate WPA2 batch took
-  **1.87 s**. These are short, synthetic tests in the development APK, not
-  sustained-performance guarantees or a feature in a published ROM. GPU
-  acceleration remains experimental and has not passed correctness validation.
-- **Hardware-first development.** Kernel, driver and external-adapter support
-  will be documented against capabilities actually verified on the device.
+### Lambda Base
 
-Lamb, the local AI assistant, has a preserved research checkpoint. Model work
-is paused while the operating system and its command interfaces are defined.
-The ROM does not currently bundle an AI model. See the [roadmap](ROADMAP.md).
+- Android 15 / LineageOS 22.2 product configuration for `beyond1lte`.
+- Lambda first-run assistant, boot artwork, wallpapers and monochrome system
+  styling.
+- Platform integrations for Settings, SystemUI, Telephony and Seedvault.
+- A no-GApps development line using the stable LambdaOS signing identity.
 
-## Device and project status
+### Lambda Kernel
 
-| | Current scope |
+- Kernel line `4.14.356-lambdaos+` with a published configuration, patch set and
+  reproducible helper scripts.
+- External wireless-driver work for selected Realtek and MediaTek families,
+  SocketCAN, USB serial/networking, USB gadget/HID and SDR-oriented options.
+- Physically verified monitor reception with the internal BCM4375B1 path and an
+  ALFA AWUS036ACH on 2.4 GHz. Injection, 5 GHz and sustained capture are separate
+  validation gates and are not claimed here.
+- USB/IP VHCI remains disabled: a runtime failure was observed and the prepared
+  source guard has not yet passed a flashed-device retest.
+
+See the [kernel source snapshot](kernel/README.md) and
+[capability matrix](kernel/CAPABILITY-MATRIX.md).
+
+### Lambda Operator and Core
+
+The native `org.lambdaproject.lambda` application is the current control centre.
+The published `0.2.0-operator.4` development source includes:
+
+- hardware-aware Wi-Fi discovery and internal/external adapter selection;
+- bounded capture sessions with durable receipts and explicit target state;
+- separately confirmed active assistance, never implicit in passive capture;
+- WPS workflows backed by a pinned OneShot-Extended integration;
+- quick and dedicated offline WPA/WPA2 candidate verification;
+- ARM64 CPU and CPU + Mali hybrid PMK research paths with thermal guards;
+- connect/save/autojoin only from an independently verified result;
+- a persistent foreground Core process with typed Binder/provider boundaries.
+
+These components are intended for systems and networks the operator owns or is
+authorized to assess. The privileged worker is still a development deployment:
+the APK alone does not make every backend ROM-persistent. See
+[Operator status](docs/OPERATOR.md), [architecture](docs/ARCHITECTURE.md) and
+[security model](docs/SECURITY-MODEL.md).
+
+### Lamb
+
+The local assistant has a preserved research checkpoint based on the Gemma 4
+E2B mobile line. Fine-tuning and ROM integration are paused while Core and
+Operator contracts stabilize. No model weights are stored in this repository
+and the current ROM does not bundle Lamb. See [the checkpoint](docs/LAMB-CHECKPOINT.md).
+
+## Verified development status
+
+| Area | Current boundary |
 |---|---|
 | Reference device | Samsung Galaxy S10 **SM-G973F** |
 | Codename / platform | `beyond1lte` / Exynos 9820 |
 | Base | Android 15, LineageOS 22.2 |
-| Development line | `0.1.0-alpha.2` |
+| ROM line | `0.1.0-alpha.2` |
+| Operator source | `0.2.0-operator.4` (`versionCode 24`) |
+| Kernel line | `4.14.356-lambdaos+` |
 | Google apps | Not bundled |
-| Other S10 variants | Not validated by this project |
-| Public ROM downloads | Pending preparation of the first public release |
+| Other device variants | Not validated |
+| Public flashable release | Not yet published |
 
-This repository contains the project-specific source snapshot, documentation
-and artwork. It is not the complete Android source tree. A finished pentesting
-toolset, a custom NetHunter kernel and compatibility with other devices are
-roadmap items, not claims about the current alpha.
+Build, package, installation and physical verification are tracked separately.
+A passing host build is not presented as proof of a radio or device capability.
 
-## Downloads
-
-Flashable ROMs will be distributed through [GitHub Releases](https://github.com/samilososami/LambdaOS/releases),
-with the exact device target, SHA-256 checksums, installation notes and known
-issues. No public flashable ZIP is attached to this initial repository snapshot.
-
-The automatic **Source code** archives on GitHub are source snapshots, not ROMs.
-Read the [release policy](releases/README.md) before using a future build.
-
-## Explore the repository
+## Repository map
 
 | Path | Contents |
 |---|---|
-| [`alpha/apps`](alpha/apps) | Lambda app and the Lambda-modified LineageOS setup wizard |
-| [`alpha/platform`](alpha/platform) | Settings, SystemUI, Telephony and Seedvault integration resources |
-| [`alpha/patches`](alpha/patches) | Platform changes and build integration patches |
-| [`alpha/vendor`](alpha/vendor) | Lambda product configuration and resource overlays |
-| [`alpha/manifests`](alpha/manifests) | Device source manifest |
-| [`alpha/scripts`](alpha/scripts) | Selected build, staging and verification helpers |
-| [`assets`](assets) | Branding, wallpapers, screenshots, mockups and design iterations |
-| [`docs`](docs) | Development notes, source scope and checkpoint information |
-| [`releases`](releases) | Public release requirements and packaging conventions |
+| [`alpha/apps/Lambda`](alpha/apps/Lambda) | Lambda Operator and Core source |
+| [`alpha/apps/SetupWizard`](alpha/apps/SetupWizard) | Lambda-modified setup assistant |
+| [`alpha/platform`](alpha/platform) | Selected platform integration source |
+| [`alpha/patches`](alpha/patches) | Android build and platform patches |
+| [`alpha/vendor`](alpha/vendor) | Product configuration and overlays |
+| [`alpha/tests`](alpha/tests) | Reviewed synthetic contract tests |
+| [`kernel`](kernel) | Kernel configs, patch, scripts and capability matrix |
+| [`assets`](assets) | Branding, screenshots, wallpapers and design archive |
+| [`docs`](docs) | Architecture, development and status documentation |
+| [`releases`](releases) | Release policy and packaging requirements |
 
-## Development
+The exact implementation inventory and SHA-256 hashes are recorded in
+[`docs/source-inventory.json`](docs/source-inventory.json).
 
-Start with the [development guide](docs/DEVELOPMENT.md) and
-[current roadmap](ROADMAP.md). This is an early, actively changing project;
-clear bug reports with the device variant, build identifier and reproduction
-steps are useful. Keep private device data and credentials out of public reports.
+## Building the standalone Operator APK
+
+Prerequisites: Python 3, JDK 21, Android SDK Platform 35 and Build Tools 35.0.0.
+
+```sh
+export LAMBDA_ANDROID_SDK=/path/to/android-sdk
+export LAMBDA_JAVA_HOME=/path/to/jdk-21
+python3 alpha/scripts/build_lambda.py
+```
+
+The script creates a local development key under ignored `alpha/private/` and
+writes the APK to ignored `alpha/out/`. This is an APK build check, not a ROM
+build or a complete privileged-runtime installation. Commands in this repository
+are written to work when invoked as the normal `kali` user or through root on the
+maintainer's development host; root build entry points drop privileges before
+creating user-owned output.
+
+Full ROM build requirements and publication boundaries are documented in the
+[development guide](docs/DEVELOPMENT.md). There is no supported public install
+procedure until a reviewed ZIP, checksum and release note are attached to a
+GitHub Release.
+
+## Responsible use
+
+LambdaOS is developed for authorized security testing, research and defensive
+validation. Radio discovery is not authorization. Active operations must be
+scoped to an explicitly authorized target and should comply with applicable law.
+The project does not treat a tool exit code, generated text or visible SSID as
+proof of success or permission.
 
 ## Credits
 
 Created by **Sami González Kamel** — [@samilososami](https://github.com/samilososami)
 · [samilososami.com](https://samilososami.com).
 
-Built on the work of the Android Open Source Project, LineageOS and the
-maintainers of the Samsung Exynos device platform. Existing license notices
-and third-party asset credits are preserved; see [NOTICE.md](NOTICE.md).
-LambdaOS is an independent project and is not affiliated with Samsung or LineageOS.
+Built on Android Open Source Project, LineageOS, the Samsung Exynos community
+and the upstream projects named in [NOTICE.md](NOTICE.md). LambdaOS is independent
+and is not affiliated with Samsung or LineageOS.

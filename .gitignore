@@ -13,6 +13,15 @@
 **/__pycache__/
 **/*.pyc
 **/*.log
+**/*.pcap
+**/*.pcapng
+**/*.cap
+**/*.hccapx
+**/*.22000
+**/*.hc22000
+**/*.sqlite
+**/*.sqlite3
+**/*.db
 **/local.properties
 **/adb_keys
 **/authorized_keys
@@ -39,4 +48,7 @@
 *.litertlm
 *.bundle
 *.vhdx
+alpha/vendor/oneshot/
+alpha/vendor/oneshot-extended/
+alpha/vendor/pixiewps/
 .DS_Store

@@ -4,6 +4,7 @@
 *.mjs text eol=lf
 *.java text eol=lf
 *.xml text eol=lf
+*.patch text eol=lf -whitespace
 *.png binary
 *.jpg binary
 *.jpeg binary

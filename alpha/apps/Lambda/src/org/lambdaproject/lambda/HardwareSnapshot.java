@@ -22,7 +22,7 @@ final class HardwareSnapshot {
         JSONObject result = new JSONObject();
         result.put("schema", 1);
         result.put("capturedAtEpochMs", System.currentTimeMillis());
-        result.put("appVersion", "0.1.0-alpha.1");
+        result.put("appVersion", "0.2.0-operator.1");
         result.put("model", Build.MODEL);
         result.put("device", Build.DEVICE);
         result.put("android", Build.VERSION.RELEASE);

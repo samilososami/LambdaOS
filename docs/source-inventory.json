@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "snapshot": "2026-10-29",
+  "snapshot": "2026-11-22",
   "files": [
     {
       "path": "alpha/apps/Lambda/Android.bp",
@@ -9,8 +9,83 @@
     },
     {
       "path": "alpha/apps/Lambda/AndroidManifest.xml",
-      "bytes": 1227,
-      "sha256": "ff65911793502cc03cf45f5e6c8e5615d43555dafd2af95b525f9a83909de9af"
+      "bytes": 3135,
+      "sha256": "5d1c153d976c5b855bb9b0fb40d4eddba889cb68f93eff3edd4227f053012750"
+    },
+    {
+      "path": "alpha/apps/Lambda/HANDSHAKE-DESIGN.md",
+      "bytes": 6235,
+      "sha256": "8410ae6eb295eacad8e60fa8d8dec9588ee9270038ca02b7ce2d93c1b61eef42"
+    },
+    {
+      "path": "alpha/apps/Lambda/native/benchmark-guard.c",
+      "bytes": 4895,
+      "sha256": "9f74dfd3246977f582e48b5d3d8d3232b8952aecf6611f6aef9a38afb993ab6c"
+    },
+    {
+      "path": "alpha/apps/Lambda/native/opencl-probe.c",
+      "bytes": 2469,
+      "sha256": "39f355e2056f7e196eff4ad2d9c9ba3e4aa01c2e8c30681a3ff63bede27bea78"
+    },
+    {
+      "path": "alpha/apps/Lambda/native/pmk-cache.h",
+      "bytes": 3018,
+      "sha256": "3d89262332c597e9c0e3db31ce899a25b9ee2f38b69b3034ad29be67a0756755"
+    },
+    {
+      "path": "alpha/apps/Lambda/native/pmk-cpu-probe.c",
+      "bytes": 3375,
+      "sha256": "715f3f4e136ac359159fc6bdfc8de879644c24df996bc1c2949a39026b1be146"
+    },
+    {
+      "path": "alpha/apps/Lambda/native/pmk-gpu-probe.c",
+      "bytes": 5456,
+      "sha256": "334820b2769f736a69a046b3179f8c65c416d952ca748c7c3bfc668bb454f131"
+    },
+    {
+      "path": "alpha/apps/Lambda/native/pmk-gpu-probe.cl",
+      "bytes": 2176,
+      "sha256": "2922272367c7ce4e7168b7a0016d855ff97a157d658312c36d3a2c8c29892727"
+    },
+    {
+      "path": "alpha/apps/Lambda/native/pmk-hybrid-worker.c",
+      "bytes": 7397,
+      "sha256": "a372beb01243d922df5295332e4c2f5e3a730afa86104f8c39244d86ce90ab8f"
+    },
+    {
+      "path": "alpha/apps/Lambda/native/pmk-hybrid.cl",
+      "bytes": 2141,
+      "sha256": "d46e4a6fed2c2c54dfdbd933e92d5a3805928c8cd374ffcc17369848b45a9b6f"
+    },
+    {
+      "path": "alpha/apps/Lambda/native/pmk-sha1.h",
+      "bytes": 1679,
+      "sha256": "69952c4bfc853024a8c4e3792340c3d0f730c86f2517ba2aab84e4b75b443378"
+    },
+    {
+      "path": "alpha/apps/Lambda/native/radio-guard.c",
+      "bytes": 2454,
+      "sha256": "bca21ad9a909681e66d55651c9dc22db10bfc3e5cd24b8981ebedae59082b5a9"
+    },
+    {
+      "path": "alpha/apps/Lambda/native/wps-guard.c",
+      "bytes": 1854,
+      "sha256": "7d0efaae63bd9ff6a7eba7fad07616e7ea12a8698212b106f6e0b52fbe866122"
+    },
+    {
+      "path": "alpha/apps/Lambda/README.md",
+      "bytes": 2134,
+      "sha256": "0104dc891203f58f421f795191de6d6c0463c399768a03831120db2f5db086fb"
+    },
+    {
+      "path": "alpha/apps/Lambda/res/drawable/ic_core.xml",
+      "bytes": 292,
+      "sha256": "5609937a39c37f4b3ead38ca9315dce2e8c094afbaaabfaa7da59fb268293d27"
+    },
+    {
+      "path": "alpha/apps/Lambda/res/drawable/ic_handshake.xml",
+      "bytes": 686,
+      "sha256": "8810c658a2bdcd283b808e640669af42aaf49ccc5913ae5d212fe083b533dc15"
     },
     {
       "path": "alpha/apps/Lambda/res/drawable/ic_launcher.xml",
@@ -20,7 +95,67 @@
     {
       "path": "alpha/apps/Lambda/res/values/styles.xml",
       "bytes": 614,
-      "sha256": "4c5703cfef8b455229bd2ef6bf4eb2e4d4d46f8973885eeb0e0c2d11674cd58f"
+      "sha256": "dad24a3877deb28d024a0a82937c07fc08a3c7947fc099a3228e3e2929e4f5f4"
+    },
+    {
+      "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/AirodumpStatus.java",
+      "bytes": 2256,
+      "sha256": "b79f43992d2493a40ddc76f6896206949f26c6e806a7c2ae23cfa390a879ef15"
+    },
+    {
+      "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/AuditAnalysis.java",
+      "bytes": 5269,
+      "sha256": "29f5c791df95ffa1eb8ed25094a189132435aeec54ef372b05d70a125378bc27"
+    },
+    {
+      "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/AuditTools.java",
+      "bytes": 24946,
+      "sha256": "b85365174247db5efbb26b26634174e7b7edefde74824459cd01dff01b107001"
+    },
+    {
+      "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/BenchmarkUi.java",
+      "bytes": 15872,
+      "sha256": "79ceccae25db47122edc4c16aa0293eee334d890144bed85c8258c475583be46"
+    },
+    {
+      "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/CoreBootReceiver.java",
+      "bytes": 367,
+      "sha256": "18f99596d288dee8ca3b3c5faf7704d887c44e47fb5d9989bd93fe4cd273eb65"
+    },
+    {
+      "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/CoreEngine.java",
+      "bytes": 26233,
+      "sha256": "4ce9728d47e6224ac3af5ac3dadf7933e510d6ca8e14580c16fe3e4e72ba247e"
+    },
+    {
+      "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/CoreProvider.java",
+      "bytes": 2322,
+      "sha256": "cabf5debee012118e297c751dc28457ee535bf8684742923a308b2f9e68fd441"
+    },
+    {
+      "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/CoreService.java",
+      "bytes": 2352,
+      "sha256": "be3dcc0c1eb34e2a700619e63410531688d9002a9f57da1756292b00eda5a694"
+    },
+    {
+      "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/CrackBenchmark.java",
+      "bytes": 13858,
+      "sha256": "848330d48d15119a35ebf22bf876b07285eaedd1e3b1f89dd7480f9d8c4e1024"
+    },
+    {
+      "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/CrackJob.java",
+      "bytes": 11326,
+      "sha256": "732de8f558d7d41be50fc627ddb3aa83457d7398a525ff5ece877ec4df76be76"
+    },
+    {
+      "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/CrackStore.java",
+      "bytes": 5324,
+      "sha256": "29c47e44d59e07585f696ee19b8a918631ff0ce8bec16f7cec2da72c7c7de82a"
+    },
+    {
+      "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/CrackUi.java",
+      "bytes": 14937,
+      "sha256": "84ea2cb5a8e3b2733d479e2ad3452adf684297211aadf133a52474ebace95179"
     },
     {
       "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/Glyph.java",
@@ -28,14 +163,79 @@
       "sha256": "509b3d81e4075fa3bf2157fd6e26da831d4a21972d6f5b8e89ecd75c6daab805"
     },
     {
+      "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/HandshakeUi.java",
+      "bytes": 35323,
+      "sha256": "74ca2983587239d021d6f5f4d76f60a3601d5c4cbb1a159d1581435b873774c4"
+    },
+    {
       "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/HardwareSnapshot.java",
-      "bytes": 4726,
-      "sha256": "65253fffd8bd8d85cc91b04ab54ae750ffca5841a0dcc8a4fb5cb9297f2e93c5"
+      "bytes": 4729,
+      "sha256": "fa2c6029088938e25fa61235c543b8b66363c229e21f8976588223034804d883"
+    },
+    {
+      "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/HybridPmk.java",
+      "bytes": 2943,
+      "sha256": "0bd7dfac1a98f2f00cbae08865e94da1323ad7ae1e51698e01c03cb55f88812f"
     },
     {
       "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/MainActivity.java",
-      "bytes": 23457,
-      "sha256": "e9e01499944500e6b2d75816ce63006b79bfed2176a0c874ec035996661154ac"
+      "bytes": 27618,
+      "sha256": "2e4b3c246a5c624798d37ca4ad964751b89c5d77c72cfb0a37525f492b262fd9"
+    },
+    {
+      "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/OperatorUi.java",
+      "bytes": 34321,
+      "sha256": "40925b61bd47c90bcb3a93fde8ead67ec3c29f2b099574c8872704be3578d8b8"
+    },
+    {
+      "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/RadioBridge.java",
+      "bytes": 6741,
+      "sha256": "205086434d6dcae67af4f86739624d2f0d5b58f7a76cd897a4ff92c40ac40caa"
+    },
+    {
+      "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/RadioIllustration.java",
+      "bytes": 4575,
+      "sha256": "75a75605b877b35325e900d7a2e3aae521247af5c94c015d279f28641c84e399"
+    },
+    {
+      "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/RadioWorker.java",
+      "bytes": 35649,
+      "sha256": "040e20573b13adbc93b554b017508ed259ff6219b72b34f79ad183f45276373e"
+    },
+    {
+      "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/VerifiedWifiUi.java",
+      "bytes": 4545,
+      "sha256": "2677eecbac6ff2e38ac50ab5cfa7ba51f433c122c559668644025c7f7e0f2c84"
+    },
+    {
+      "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/WifiFrames.java",
+      "bytes": 6511,
+      "sha256": "eedb88a87bac3c9b42ba2c8ef61e8a4ab4578ca0a258f5407cb1b2dcba957cf6"
+    },
+    {
+      "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/WpsJob.java",
+      "bytes": 10467,
+      "sha256": "ab409395b27709b11a45278bc675c31e9de80b77c39f1336fcdd2ee8d2668a44"
+    },
+    {
+      "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/WpsSteps.java",
+      "bytes": 1303,
+      "sha256": "a07d641e22507d28bf4d6b01566914ec737c988aaacb83c789a6019a0090715e"
+    },
+    {
+      "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/WpsUi.java",
+      "bytes": 24504,
+      "sha256": "db67ac9beef663f8e8f1d8e3af2b4cdf670037e0968b11faf521d50c9970bcde"
+    },
+    {
+      "path": "alpha/apps/Lambda/THIRD_PARTY_RADIO.md",
+      "bytes": 2590,
+      "sha256": "f6173d2a6bcbf7d6792274bf7528d8a171475c70f7323b1f7bcde82e2129fb00"
+    },
+    {
+      "path": "alpha/apps/Lambda/wps/adapter.py",
+      "bytes": 16188,
+      "sha256": "1c4b598c500a82de2b722cd62456235c21ffe2ba5d07c1505739b21b82913045"
     },
     {
       "path": "alpha/apps/SetupWizard/Android.bp",
@@ -81,6 +281,36 @@
       "path": "alpha/apps/SetupWizard/res/color/button_bar_text.xml",
       "bytes": 380,
       "sha256": "be5b6809c39cfd9953b6f3dcaccea0868f340697d26eea770aec99adb67d07fd"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable-nodpi/lamb_finished.png",
+      "bytes": 1190802,
+      "sha256": "2f49a2f7cc60fcc8b448a403b30b473fa067093eff3189cea62f23ab5e6b88a5"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable-nodpi/lamb_welcome.png",
+      "bytes": 805749,
+      "sha256": "9c181e0b4eafbbd4df3ac4494cc5120ec0563635cb784f94333531321593c335"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable-nodpi/lambda_brand_source.png",
+      "bytes": 90712,
+      "sha256": "cbac5b0f70b88c37ecc8b65c4c80da5eaa5aa27002e6637348de5b90c1643069"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable-nodpi/lambda_wallpaper_dark.png",
+      "bytes": 1674239,
+      "sha256": "7774862a89a476c73aa37baae5b08ac21ae9e35135a92296cf7d8f9e6482a11f"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable-nodpi/lambda_wallpaper_light.png",
+      "bytes": 1628805,
+      "sha256": "8184ba2357a57ed5b32219052edae762e0907365f0039d7ae7b449bd89c409d4"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/drawable-nodpi/lambda_wallpaper.png",
+      "bytes": 40391,
+      "sha256": "b86b1fcbfa05165af846e87863473c15e5877a994e1d1d5fc6ae55b301eee221"
     },
     {
       "path": "alpha/apps/SetupWizard/res/drawable/background.xml",
@@ -348,36 +578,6 @@
       "sha256": "4ac33b887b19a9b12c1aba2ee84319a7a9c67ab0671e841eed1411eeff91e689"
     },
     {
-      "path": "alpha/apps/SetupWizard/res/drawable-nodpi/lamb_finished.png",
-      "bytes": 1190802,
-      "sha256": "2f49a2f7cc60fcc8b448a403b30b473fa067093eff3189cea62f23ab5e6b88a5"
-    },
-    {
-      "path": "alpha/apps/SetupWizard/res/drawable-nodpi/lamb_welcome.png",
-      "bytes": 805749,
-      "sha256": "9c181e0b4eafbbd4df3ac4494cc5120ec0563635cb784f94333531321593c335"
-    },
-    {
-      "path": "alpha/apps/SetupWizard/res/drawable-nodpi/lambda_brand_source.png",
-      "bytes": 90712,
-      "sha256": "cbac5b0f70b88c37ecc8b65c4c80da5eaa5aa27002e6637348de5b90c1643069"
-    },
-    {
-      "path": "alpha/apps/SetupWizard/res/drawable-nodpi/lambda_wallpaper_dark.png",
-      "bytes": 1674239,
-      "sha256": "7774862a89a476c73aa37baae5b08ac21ae9e35135a92296cf7d8f9e6482a11f"
-    },
-    {
-      "path": "alpha/apps/SetupWizard/res/drawable-nodpi/lambda_wallpaper_light.png",
-      "bytes": 1628805,
-      "sha256": "8184ba2357a57ed5b32219052edae762e0907365f0039d7ae7b449bd89c409d4"
-    },
-    {
-      "path": "alpha/apps/SetupWizard/res/drawable-nodpi/lambda_wallpaper.png",
-      "bytes": 40391,
-      "sha256": "b86b1fcbfa05165af846e87863473c15e5877a994e1d1d5fc6ae55b301eee221"
-    },
-    {
       "path": "alpha/apps/SetupWizard/res/font/lambda_bold.otf",
       "bytes": 83264,
       "sha256": "7f33328e6b4d4cd21b45fa625791928c9407dc702db6780e56b09ca9a3ecaa67"
@@ -386,6 +586,16 @@
       "path": "alpha/apps/SetupWizard/res/font/lambda_regular.otf",
       "bytes": 82264,
       "sha256": "7c25be4d78155523080ab85b10277150657ff7dabbcad7037bdd536c9b6d0d08"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/layout-sw600dp/welcome_activity.xml",
+      "bytes": 3373,
+      "sha256": "baec37e589744fae4db15d48cbeb1d31c0f1b7cf052e783d1e5ec99e43488892"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/layout-television/welcome_activity.xml",
+      "bytes": 3373,
+      "sha256": "baec37e589744fae4db15d48cbeb1d31c0f1b7cf052e783d1e5ec99e43488892"
     },
     {
       "path": "alpha/apps/SetupWizard/res/layout/date_time_setup_custom_list_item_2.xml",
@@ -478,19 +688,14 @@
       "sha256": "a79af7a091362efba7ceaa04982e0c9d0c9ae9064617b4feb94b3faeded823f1"
     },
     {
-      "path": "alpha/apps/SetupWizard/res/layout-sw600dp/welcome_activity.xml",
-      "bytes": 3373,
-      "sha256": "baec37e589744fae4db15d48cbeb1d31c0f1b7cf052e783d1e5ec99e43488892"
-    },
-    {
-      "path": "alpha/apps/SetupWizard/res/layout-television/welcome_activity.xml",
-      "bytes": 3373,
-      "sha256": "baec37e589744fae4db15d48cbeb1d31c0f1b7cf052e783d1e5ec99e43488892"
-    },
-    {
       "path": "alpha/apps/SetupWizard/res/mipmap-anydpi/ic_launcher.xml",
       "bytes": 379,
       "sha256": "2bf5d18c2f161280a03146fe1f5aae41546d82eecedfdd6a354373f17781fd9f"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/raw-television/lineage_wizard_script.xml",
+      "bytes": 1939,
+      "sha256": "9ea8edb54d260e3b41e2836e946cbd5a8beb6732536d879e6106b029cb5a9c0d"
     },
     {
       "path": "alpha/apps/SetupWizard/res/raw/lambda_font_license.txt",
@@ -541,56 +746,6 @@
       "path": "alpha/apps/SetupWizard/res/raw/wizard_script.xml",
       "bytes": 13805,
       "sha256": "05257ad5388b5f0552fb9fa7022681676e04a0bf2242065f46c03b3f2e43dd42"
-    },
-    {
-      "path": "alpha/apps/SetupWizard/res/raw-television/lineage_wizard_script.xml",
-      "bytes": 1939,
-      "sha256": "9ea8edb54d260e3b41e2836e946cbd5a8beb6732536d879e6106b029cb5a9c0d"
-    },
-    {
-      "path": "alpha/apps/SetupWizard/res/values/attrs.xml",
-      "bytes": 1203,
-      "sha256": "34c2ff33d4dfbe79f00223500820df491b8afd297141b85d39c6bc603c96469a"
-    },
-    {
-      "path": "alpha/apps/SetupWizard/res/values/colors.xml",
-      "bytes": 449,
-      "sha256": "15923f990c05f0d7a17f40b41408fd24b5b8b5a224e385c8590520cff861b6ff"
-    },
-    {
-      "path": "alpha/apps/SetupWizard/res/values/config_partner.xml",
-      "bytes": 378,
-      "sha256": "9e2b492d3fd776c9f5af4d1fc5d1abae2a6ab0e5df26ae531edb5b1ca6da4aef"
-    },
-    {
-      "path": "alpha/apps/SetupWizard/res/values/config.xml",
-      "bytes": 665,
-      "sha256": "425cb8b52614ca761ab6616598e26fa12d6bed20a8c44b14e332c5b1041548ca"
-    },
-    {
-      "path": "alpha/apps/SetupWizard/res/values/dimens.xml",
-      "bytes": 1047,
-      "sha256": "b34ac422b84f5e7bef2bc33d2658cf414036d7b21677dfafe954a2d6d78f92f9"
-    },
-    {
-      "path": "alpha/apps/SetupWizard/res/values/ids.xml",
-      "bytes": 309,
-      "sha256": "479499d26871df7f49f39bdc37dd56422204da0d353771dc83c18aec5ab6e069"
-    },
-    {
-      "path": "alpha/apps/SetupWizard/res/values/lambda.xml",
-      "bytes": 2478,
-      "sha256": "24326827c15270d4531631ff921f485e3d5d75d080b89db2d4cdf8ca3d874dda"
-    },
-    {
-      "path": "alpha/apps/SetupWizard/res/values/strings.xml",
-      "bytes": 6036,
-      "sha256": "b4b2ff5fa4498f1b300da25a3de7e97b0fbeb4ca27077e645bf13d2dcaf39465"
-    },
-    {
-      "path": "alpha/apps/SetupWizard/res/values/styles.xml",
-      "bytes": 2808,
-      "sha256": "d5adb3a94d3833643a52ac7d0c07e8447d0f7efa65da3a84ffc549934c8ce4c1"
     },
     {
       "path": "alpha/apps/SetupWizard/res/values-af/strings.xml",
@@ -693,11 +848,6 @@
       "sha256": "957b01ea8deb76e15898f99e449b3df203a4f2b9e280c2692b5552dbd07a36b8"
     },
     {
-      "path": "alpha/apps/SetupWizard/res/values-es/strings.xml",
-      "bytes": 5450,
-      "sha256": "c867c5b419c27fbf471d583db36d082dd7bfa48d49c06e8e4dbb9fe24d73c808"
-    },
-    {
       "path": "alpha/apps/SetupWizard/res/values-es-rMX/strings.xml",
       "bytes": 356,
       "sha256": "22400e9446ba0964de0d1117f259882b0e343ae1e4a1e80757526b67dd7074a2"
@@ -706,6 +856,11 @@
       "path": "alpha/apps/SetupWizard/res/values-es-rUS/strings.xml",
       "bytes": 2254,
       "sha256": "53470ca4ad4c586468d42a1f236cc7fad481bb4fb304207c9b77bef12f279096"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values-es/strings.xml",
+      "bytes": 5450,
+      "sha256": "c867c5b419c27fbf471d583db36d082dd7bfa48d49c06e8e4dbb9fe24d73c808"
     },
     {
       "path": "alpha/apps/SetupWizard/res/values-et/strings.xml",
@@ -996,6 +1151,51 @@
       "path": "alpha/apps/SetupWizard/res/values-zh-rTW/strings.xml",
       "bytes": 4893,
       "sha256": "4793666ce3330fea4a030918e2400fac680b88512560a30b98881591d2125255"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values/attrs.xml",
+      "bytes": 1203,
+      "sha256": "34c2ff33d4dfbe79f00223500820df491b8afd297141b85d39c6bc603c96469a"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values/colors.xml",
+      "bytes": 449,
+      "sha256": "15923f990c05f0d7a17f40b41408fd24b5b8b5a224e385c8590520cff861b6ff"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values/config_partner.xml",
+      "bytes": 378,
+      "sha256": "9e2b492d3fd776c9f5af4d1fc5d1abae2a6ab0e5df26ae531edb5b1ca6da4aef"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values/config.xml",
+      "bytes": 665,
+      "sha256": "425cb8b52614ca761ab6616598e26fa12d6bed20a8c44b14e332c5b1041548ca"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values/dimens.xml",
+      "bytes": 1047,
+      "sha256": "b34ac422b84f5e7bef2bc33d2658cf414036d7b21677dfafe954a2d6d78f92f9"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values/ids.xml",
+      "bytes": 309,
+      "sha256": "479499d26871df7f49f39bdc37dd56422204da0d353771dc83c18aec5ab6e069"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values/lambda.xml",
+      "bytes": 2478,
+      "sha256": "24326827c15270d4531631ff921f485e3d5d75d080b89db2d4cdf8ca3d874dda"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values/strings.xml",
+      "bytes": 6036,
+      "sha256": "b4b2ff5fa4498f1b300da25a3de7e97b0fbeb4ca27077e645bf13d2dcaf39465"
+    },
+    {
+      "path": "alpha/apps/SetupWizard/res/values/styles.xml",
+      "bytes": 2808,
+      "sha256": "d5adb3a94d3833643a52ac7d0c07e8447d0f7efa65da3a84ffc549934c8ce4c1"
     },
     {
       "path": "alpha/apps/SetupWizard/REUSE.toml",
@@ -1358,6 +1558,16 @@
       "sha256": "1315a62758a603a3e6e87a79b8389563789c59c1740b9db8bc2b20e2e2145458"
     },
     {
+      "path": "alpha/platform/Settings/res/values-es/lambda_fingerprint.xml",
+      "bytes": 775,
+      "sha256": "a45736859a28238d6f73019baa21fd0f72de61cd0c5e51d20393340cbef42d41"
+    },
+    {
+      "path": "alpha/platform/Settings/res/values-es/lambda_setup.xml",
+      "bytes": 125,
+      "sha256": "10ed96146a8e69ea6a3a76be0701e7121d6ec35debd7ad686f372327378822f2"
+    },
+    {
       "path": "alpha/platform/Settings/res/values/lambda_fingerprint.xml",
       "bytes": 753,
       "sha256": "79eb17fac4c4734e5bc6afa1a9f1e644d2cc5483cf4614f0a30c1a9dd18a787f"
@@ -1371,16 +1581,6 @@
       "path": "alpha/platform/Settings/res/values/lambda_setup.xml",
       "bytes": 6480,
       "sha256": "f6426650eb037eec9d8ecaf2f0883d78e38aaee2f50b6990b0bd53079b183493"
-    },
-    {
-      "path": "alpha/platform/Settings/res/values-es/lambda_fingerprint.xml",
-      "bytes": 775,
-      "sha256": "a45736859a28238d6f73019baa21fd0f72de61cd0c5e51d20393340cbef42d41"
-    },
-    {
-      "path": "alpha/platform/Settings/res/values-es/lambda_setup.xml",
-      "bytes": 125,
-      "sha256": "10ed96146a8e69ea6a3a76be0701e7121d6ec35debd7ad686f372327378822f2"
     },
     {
       "path": "alpha/platform/Settings/src/com/android/settings/LambdaAccessibilityUi.java",
@@ -1428,14 +1628,14 @@
       "sha256": "1315a62758a603a3e6e87a79b8389563789c59c1740b9db8bc2b20e2e2145458"
     },
     {
-      "path": "alpha/platform/SystemUI/customization/res/values/lambda_clocks.xml",
-      "bytes": 229,
-      "sha256": "b830fac8248215226e94c903033f3e169be42776e5d4e69bbaf266922ec0618d"
-    },
-    {
       "path": "alpha/platform/SystemUI/customization/res/values-es/lambda_clocks.xml",
       "bytes": 236,
       "sha256": "e6c1af31d0e9c58f86c8a524cdc68d686c16cf31740ec1e4a6f292d720f55807"
+    },
+    {
+      "path": "alpha/platform/SystemUI/customization/res/values/lambda_clocks.xml",
+      "bytes": 229,
+      "sha256": "b830fac8248215226e94c903033f3e169be42776e5d4e69bbaf266922ec0618d"
     },
     {
       "path": "alpha/platform/SystemUI/customization/src/com/android/systemui/shared/clocks/LambdaAnalogClockController.kt",
@@ -1543,6 +1743,11 @@
       "sha256": "93ce1275d9a17138d4e5c2ffe27f5bf664a6c7e6e68d29ac7e2159f562c5c416"
     },
     {
+      "path": "alpha/retired/dialogs-ui16/alpha/platform/SystemUI/res/values-es/lambda_controls_strings.xml",
+      "bytes": 3338,
+      "sha256": "1b6153b9fe727c190edd83f55bf5e72a3dbfe4ef468d1fd4f6d36640d4843d8b"
+    },
+    {
       "path": "alpha/retired/dialogs-ui16/alpha/platform/SystemUI/res/values/lambda_controls_strings.xml",
       "bytes": 3218,
       "sha256": "6204131e34098180b79e9f6aac7bab48dacda5489e26b66b3ca51f08a7cb272a"
@@ -1551,11 +1756,6 @@
       "path": "alpha/retired/dialogs-ui16/alpha/platform/SystemUI/res/values/lambda_controls.xml",
       "bytes": 1181,
       "sha256": "9f6f0ea6aad218a07aec9b5bde19f7252882769f1f69d64c1c6944043185600c"
-    },
-    {
-      "path": "alpha/retired/dialogs-ui16/alpha/platform/SystemUI/res/values-es/lambda_controls_strings.xml",
-      "bytes": 3338,
-      "sha256": "1b6153b9fe727c190edd83f55bf5e72a3dbfe4ef468d1fd4f6d36640d4843d8b"
     },
     {
       "path": "alpha/retired/dialogs-ui16/alpha/platform/SystemUI/src/com/android/systemui/qs/tiles/dialog/LambdaControlSheet.java",
@@ -1568,14 +1768,49 @@
       "sha256": "d3de826b988382a4d35e4d4c574a012abfa8c0602ae669db6a354bbfcfe995ec"
     },
     {
+      "path": "alpha/scripts/build_cracking_bench.py",
+      "bytes": 3904,
+      "sha256": "fd5e6bc44155c5bdd1b4af5b17df8dc8c222e2eaa681c7f3fc83e79ac63d5029"
+    },
+    {
+      "path": "alpha/scripts/build_cracking_hybrid.py",
+      "bytes": 2083,
+      "sha256": "90fb8dbfe19cbaf7056643e05ff7ce07de5fc667b9ebf858f0804a0bdf789c2d"
+    },
+    {
+      "path": "alpha/scripts/build_cracking_research.py",
+      "bytes": 5278,
+      "sha256": "b3f346f3291b3803f959520fe610098c319a5d5d5fc82b683eb54f270f6e3659"
+    },
+    {
       "path": "alpha/scripts/build_lambda.py",
-      "bytes": 4011,
-      "sha256": "b2b4206707f685e42639bed929e8c5212031a0d2cca53b0bd9b2b3750324fd57"
+      "bytes": 4160,
+      "sha256": "0d18bc2d7e4a58bafa35b18984648ace3690e2907e5cc2cefd41a00330d4cb01"
+    },
+    {
+      "path": "alpha/scripts/build_radio_helpers.py",
+      "bytes": 3753,
+      "sha256": "4addc770c208584a18d923f5edfd0187176ac0bf321d4a2cffa438c9d4b8e5c3"
     },
     {
       "path": "alpha/scripts/compare_apk_payload.py",
       "bytes": 1255,
       "sha256": "7b931e13eb0574230168c1f2030f7f7aa4c36919c18c9f1fea5b6e42b949cb75"
+    },
+    {
+      "path": "alpha/scripts/prepare_cracking_fixtures.py",
+      "bytes": 3964,
+      "sha256": "a412d7d5354b63f28a9f4e26bdcc03c426a1716df92f3ec7d6834288f9a0e80c"
+    },
+    {
+      "path": "alpha/scripts/prepare_dedicated_dictionary.py",
+      "bytes": 1847,
+      "sha256": "9f9311802644332f1193e3f4c502f1c09eef01b08943d83afd4642538aaa74a7"
+    },
+    {
+      "path": "alpha/scripts/prepare_wps_runtime.py",
+      "bytes": 3718,
+      "sha256": "3f40c8818806e37eda522d2537c7bb633bc0fbf1011f706773b02230fe164a56"
     },
     {
       "path": "alpha/scripts/stage_systemui.sh",
@@ -1588,9 +1823,39 @@
       "sha256": "4cf1acfa6df698a02c844eb6532335e84ea7e458e82d90292eb9bd344deaab0d"
     },
     {
+      "path": "alpha/scripts/test_wps_adapter.py",
+      "bytes": 8740,
+      "sha256": "777520ec0209e34402ef2a1527519a4a1e9b977a038921e64988fcad7e21bf1b"
+    },
+    {
       "path": "alpha/scripts/verify_touch_manifest.py",
       "bytes": 1509,
       "sha256": "7b6c5cb7e7bcfe22f5dc776a2adfe8e05eb19e4de0e42ed74a3b1e3486325742"
+    },
+    {
+      "path": "alpha/tests/wps_guard_device.py",
+      "bytes": 3531,
+      "sha256": "491572545fe85a05452a9f99df455fd886c61faaf6d0f8aac140b55b31fb1c5e"
+    },
+    {
+      "path": "alpha/tests/wps-ui-manifest.xml",
+      "bytes": 472,
+      "sha256": "613e877919b15c797b25cddcbd30e1dbf5271c37eab2c66fe36de2a2acdb9a15"
+    },
+    {
+      "path": "alpha/tests/WpsContractTest.java",
+      "bytes": 4111,
+      "sha256": "bb8acd4ff76c8afb3e9c15a45ed11afa8f1b660eee1a3de27be8e00034900909"
+    },
+    {
+      "path": "alpha/tests/WpsUiPreview.java",
+      "bytes": 4284,
+      "sha256": "3742b3b959dc4ad8d7cdcfb3160cc87cd696ce4a3d69433f03051bc15d1580c3"
+    },
+    {
+      "path": "alpha/vendor/DEPENDENCIES.md",
+      "bytes": 786,
+      "sha256": "5b6ec3a10259aee475796a1cbf83df0731442f5d4abf5d29b63d0345f30c067a"
     },
     {
       "path": "alpha/vendor/lambda/Android.bp",
@@ -1638,19 +1903,84 @@
       "sha256": "52ef01ef484b1e8c557f4cdd439e02a183ce3aa530c6bca740649eabac22647b"
     },
     {
-      "path": "alpha/vendor/lambda/overlays/LambdaAccessibilitySystemUI/res/values/colors.xml",
-      "bytes": 516,
-      "sha256": "f3520dcfc546b43abc958ceb8cd938866d3725a0469614833c2863ed1e2d2e25"
-    },
-    {
       "path": "alpha/vendor/lambda/overlays/LambdaAccessibilitySystemUI/res/values-night/colors.xml",
       "bytes": 376,
       "sha256": "3c5b9c3ad46dbe12c9799dc3b7672920d1b05b104d37c96debfed72c1a01019e"
     },
     {
+      "path": "alpha/vendor/lambda/overlays/LambdaAccessibilitySystemUI/res/values/colors.xml",
+      "bytes": 516,
+      "sha256": "f3520dcfc546b43abc958ceb8cd938866d3725a0469614833c2863ed1e2d2e25"
+    },
+    {
       "path": "alpha/vendor/lambda/products/lineage_lambda_beyond1lte.mk",
       "bytes": 708,
       "sha256": "b7dd092620448d4468f9445fa3b280421b6bdfa5d5ebf2891a6011d10195c08c"
+    },
+    {
+      "path": "kernel/CAPABILITY-MATRIX.md",
+      "bytes": 4824,
+      "sha256": "8bc48e4ddbb8aeaac6f7d6effa36f493f866cd757257273fe1e1a98a9bba8161"
+    },
+    {
+      "path": "kernel/configs/lambdaos_beyond1lte_defconfig",
+      "bytes": 24785,
+      "sha256": "5c66c537e76039fcaf5c02b8d1f991a2d225d4dc747ef946773573e35825d1fe"
+    },
+    {
+      "path": "kernel/configs/lambdaos_beyond1lte_pentest.config",
+      "bytes": 5239,
+      "sha256": "ba40a97b3410e8b26a78cc8c5847185c0049d45af82e0b2a31508e25caea249a"
+    },
+    {
+      "path": "kernel/patches/lambdaos-kernel-capabilities-v1.patch",
+      "bytes": 4545,
+      "sha256": "3f2fac682ec3b8fff4b79d151c904ece13377b42ab4e59c73f170d5a5d61178e"
+    },
+    {
+      "path": "kernel/README.md",
+      "bytes": 2616,
+      "sha256": "bfca722d002e1ca9fa581db81452eba309b2e530b45dbc2da4f1a9cc56a5e92a"
+    },
+    {
+      "path": "kernel/scripts/apply_vendor_fixes.sh",
+      "bytes": 1151,
+      "sha256": "5328047541d23f431328214cf48d2045f21c45d772e258500dc0e055dedb8173"
+    },
+    {
+      "path": "kernel/scripts/build_kernel.sh",
+      "bytes": 5884,
+      "sha256": "91b50f2f4efb7cf2629aeea93be79949d71dda5df5914a5f163ba01448ca5e55"
+    },
+    {
+      "path": "kernel/scripts/package_reference_firmware.sh",
+      "bytes": 1792,
+      "sha256": "26e95c80ab4630576418c804d2fe40b1d34bcd065be7b0b40b31cbeb52605898"
+    },
+    {
+      "path": "kernel/scripts/prepare_config.sh",
+      "bytes": 1685,
+      "sha256": "7e8f5919f4ea34d237e6ba7d0fc2504d988c1432d9607d64edaea51409660327"
+    },
+    {
+      "path": "kernel/scripts/validate_build.sh",
+      "bytes": 2916,
+      "sha256": "033d946fb68d4a13c48de383534afea571e93b771aa4bf4e531b97995009b1e0"
+    },
+    {
+      "path": "kernel/scripts/vendor-fixes/rtl8812au-clang10.diff",
+      "bytes": 500,
+      "sha256": "d0c78a94704771f9c02e21319fd488417afd9c50a3fb2103ea42bdccb2731c87"
+    },
+    {
+      "path": "kernel/scripts/vendor-fixes/rtl88x2bu-clang10.diff",
+      "bytes": 480,
+      "sha256": "8da1aacd890144f8094b6989ad021b38bc3ef63f24e3fb70e0d78576388f50f4"
+    },
+    {
+      "path": "kernel/SOURCE-MANIFEST.json",
+      "bytes": 1249,
+      "sha256": "854ccbf8089a1bdfbd08d01ef7bc3cc4e9c97299e4167ce5ee487d2cbab0b680"
     }
   ]
 }

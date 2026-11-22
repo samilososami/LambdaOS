@@ -1,24 +1,38 @@
-# Source snapshot — 29 October 2026
+# Source snapshot — 22 November 2026
 
-The initial publication contains the Lambda and SetupWizard applications,
-platform resources, patches, product configuration, device manifest and selected
-build/staging/verification helpers from the LambdaOS development workspace.
+This publication updates the LambdaOS project-specific source to the current
+development checkpoint.
 
-The local system is based on LambdaOS `0.1.0-alpha.2`. The latest fully packaged
-local ROM is the UI17 build; a later native PIN/pattern SystemUI update was tested
-separately. The public source snapshot includes the current staging selection,
-and should not be mistaken for a verified new full ROM release.
+## Included
 
-## Deliberate publication boundary
+- Lambda Operator/Core `0.2.0-operator.4` Java, resources, WPS adapter and native
+  CPU/Mali, radio and guard sources.
+- Synthetic WPS contract/UI tests and selected reproducibility scripts.
+- Lambda setup assistant, platform resources, Android patches and product
+  configuration already present in the public snapshot.
+- Lambda Kernel configs, scripts, capability matrix and a patch against the
+  pinned upstream kernel revision.
+- Architecture, security-boundary, benchmark and current-status documentation.
+- Existing screenshots, wallpapers, branding and design archive.
 
-Included: implementation sources, resource assets, retained license notices,
-reviewed screenshots, visual concepts and source-integrity manifests.
+## Deliberately kept private or external
 
-Kept locally: private signing keys, ADB host keys, device backups, extracted
-proprietary firmware/blobs, private test logs and credentials, build caches,
-ROM/APK binaries and AI model weights. Full ROM distribution is handled through
-the release process rather than a blanket upload of the development directory.
+- signing and ADB keys, credentials, backups and personal/device identifiers;
+- raw network captures, recovered credentials, real SSIDs and private test logs;
+- Samsung proprietary firmware/blobs and full Android/build trees;
+- APK/ROM/kernel build output, caches, downloaded dependencies and wordlists;
+- AI model weights, checkpoints and private benchmark artifacts;
+- six independent/nested Git repositories from the private workspace.
 
-`docs/source-inventory.json` records hashes of the published implementation
-files. `assets/manifest.json` records the reusable image library. These indexes
-identify the snapshot; they do not establish a successful Android build.
+External source dependencies are pinned by URL and revision instead of being
+silently copied into this Git history. `docs/source-inventory.json` records the
+path, size and SHA-256 of every published implementation file. It is an integrity
+index, not a claim that the full ROM was rebuilt from this checkout.
+
+## Status boundary
+
+The maintained ROM line is `0.1.0-alpha.2`. The latest known private FCM-v4 line
+booted with kernel `4.14.356-lambdaos+`, but no flashable ZIP is published here.
+Operator's standalone host build and synthetic tests are reproducible from this
+snapshot with their documented dependencies; physical radio claims remain
+limited to the explicit capability matrix.

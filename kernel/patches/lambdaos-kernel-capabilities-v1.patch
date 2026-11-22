@@ -1,0 +1,120 @@
+diff --git a/.gitignore b/.gitignore
+index f62701a4c..704e4ece0 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -53,6 +53,7 @@ modules.builtin
+ /vmlinux-gdb.py
+ /vmlinuz
+ /System.map
++/out/
+ /Module.markers
+ 
+ #
+diff --git a/.gitmodules b/.gitmodules
+index bb6a869d3..76ec0bf08 100644
+--- a/.gitmodules
++++ b/.gitmodules
+@@ -19,3 +19,6 @@
+ [submodule "drivers/net/wireless/realtek/rtl88x2bu"]
+ 	path = drivers/net/wireless/realtek/rtl88x2bu
+ 	url = https://github.com/akabul0us/rtl88x2bu
++[submodule "drivers/net/wireless/mediatek/mt76"]
++	path = drivers/net/wireless/mediatek/mt76
++	url = https://github.com/akabul0us/mt76.git
+diff --git a/drivers/net/can/can327.c b/drivers/net/can/can327.c
+index 915c63aaf..b08cdac11 100644
+--- a/drivers/net/can/can327.c
++++ b/drivers/net/can/can327.c
+@@ -761,9 +761,9 @@ static void can327_parse_rxbuf(struct can327 *elm, size_t first_new_char_idx)
+  * Fixed in v5.10 - 728fc9ff73d3
+  */
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(5,5,0)
+-static unsigned int *can327_mailbox_read(struct can_rx_offload *offload,
+-					 struct can_frame *cf,
+-					 u32 *timestamp, unsigned int n)
++static unsigned int can327_mailbox_read(struct can_rx_offload *offload,
++					struct can_frame *cf,
++					u32 *timestamp, unsigned int n)
+ {
+ 	WARN_ON_ONCE(1); /* This function is a dummy, so don't call it! */
+ 
+diff --git a/drivers/net/wireless/mediatek/Kconfig b/drivers/net/wireless/mediatek/Kconfig
+index 28843fed7..92ce4062f 100644
+--- a/drivers/net/wireless/mediatek/Kconfig
++++ b/drivers/net/wireless/mediatek/Kconfig
+@@ -11,4 +11,5 @@ config WLAN_VENDOR_MEDIATEK
+ 
+ if WLAN_VENDOR_MEDIATEK
+ source "drivers/net/wireless/mediatek/mt7601u/Kconfig"
++source "drivers/net/wireless/mediatek/mt76/Kconfig"
+ endif # WLAN_VENDOR_MEDIATEK
+diff --git a/drivers/net/wireless/mediatek/Makefile b/drivers/net/wireless/mediatek/Makefile
+index 9d5f182fd..00f945f59 100644
+--- a/drivers/net/wireless/mediatek/Makefile
++++ b/drivers/net/wireless/mediatek/Makefile
+@@ -1 +1,2 @@
+ obj-$(CONFIG_MT7601U)	+= mt7601u/
++obj-$(CONFIG_MT76_CORE)	+= mt76/
+diff --git a/drivers/net/wireless/mediatek/mt76 b/drivers/net/wireless/mediatek/mt76
+new file mode 160000
+index 000000000..6d4d562a4
+--- /dev/null
++++ b/drivers/net/wireless/mediatek/mt76
+@@ -0,0 +1 @@
++Subproject commit 6d4d562a411b59c625874e23edcff8c598b4ce2f
+diff --git a/drivers/net/wireless/realtek/Makefile b/drivers/net/wireless/realtek/Makefile
+index 81fcd94f3..c67d8ea87 100644
+--- a/drivers/net/wireless/realtek/Makefile
++++ b/drivers/net/wireless/realtek/Makefile
+@@ -6,7 +6,7 @@ obj-$(CONFIG_RTL8180)		+= rtl818x/
+ obj-$(CONFIG_RTL8187)		+= rtl818x/
+ obj-$(CONFIG_RTLWIFI)		+= rtlwifi/
+ obj-$(CONFIG_RTL8XXXU)		+= rtl8xxxu/
+-obj-$(CONFIG_88XXAU)		+= rtl8188eus/
++obj-$(CONFIG_RTL8188EU)		+= rtl8188eus/
+ obj-$(CONFIG_88XXAU)		+= rtl8812au/
+ obj-$(CONFIG_RTL8822BU)		+= rtl88x2bu/
+ 
+diff --git a/drivers/usb/core/hub.c b/drivers/usb/core/hub.c
+index 79859f587..022550bd1 100644
+--- a/drivers/usb/core/hub.c
++++ b/drivers/usb/core/hub.c
+@@ -1796,7 +1796,11 @@ static int hub_probe(struct usb_interface *intf, const struct usb_device_id *id)
+ 	 * Restoring suspend delay will resolve USB3.0 hub detect issue.
+ 	 */
+ 	hcd = bus_to_hcd(hdev->bus);
+-	if ((hdev->dev.power.autosuspend_delay >= 0) && !hcd->driver->usb_l2_check(hcd))
++	/* Samsung's USB-L2 callback is optional (e.g. absent on USB/IP VHCI).
++	 * Keep the xHCI quirk, but never call a missing controller callback.
++	 */
++	if ((hdev->dev.power.autosuspend_delay >= 0) &&
++	    (!hcd->driver->usb_l2_check || !hcd->driver->usb_l2_check(hcd)))
+ 		pm_runtime_set_autosuspend_delay(&hdev->dev, 0);
+ #endif
+ 
+diff --git a/include/linux/overflow.h b/include/linux/overflow.h
+index 55906456f..fef999cb0 100644
+--- a/include/linux/overflow.h
++++ b/include/linux/overflow.h
+@@ -4,6 +4,8 @@
+ 
+ #include <linux/compiler.h>
+ #include <linux/limits.h>
++#include <linux/types.h>
++#include <linux/kernel.h>
+ 
+ /*
+  * In the fallback code below, we need to compute the minimum and
+diff --git a/kernel/Makefile b/kernel/Makefile
+index 128523b90..1d402828a 100644
+--- a/kernel/Makefile
++++ b/kernel/Makefile
+@@ -121,7 +121,7 @@ obj-$(CONFIG_INTELLIGENCE) += intelligence.o
+ $(obj)/configs.o: $(obj)/config_data.h
+ 
+ targets += config_data.gz
+-$(obj)/config_data.gz: arch/arm64/configs/exynos9820-beyond1lte_defconfig FORCE
++$(obj)/config_data.gz: $(KCONFIG_CONFIG) FORCE
+ 	$(call if_changed,gzip)
+ 
+       filechk_ikconfiggz = (echo "static const char kernel_config_data[] __used = MAGIC_START"; cat $< | scripts/basic/bin2c; echo "MAGIC_END;")

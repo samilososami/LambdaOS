@@ -8,6 +8,7 @@ import pwd
 import subprocess
 import tempfile
 import zipfile
+import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 SDK = Path(os.environ.get("LAMBDA_ANDROID_SDK", "/tools/codex/android-sdk"))
@@ -44,7 +45,8 @@ def main():
             "-validity", "3650", "-dname", "CN=LambdaOS Development, O=Lambda Project")
         key.chmod(0o600)
 
-    target = out / "lambda-0.1.0-alpha.1-dev.apk"
+    version = ET.parse(APP / "AndroidManifest.xml").getroot().get("{http://schemas.android.com/apk/res/android}versionName")
+    target = out / f"lambda-{version}-dev.apk"
     with tempfile.TemporaryDirectory(prefix="lambda-build-", dir=out) as scratch:
         work = Path(scratch)
         classes = work / "classes"
@@ -76,7 +78,7 @@ def main():
     digest = hashlib.sha256(target.read_bytes()).hexdigest()
     report = {"artifact": target.name, "sha256": digest, "bytes": target.stat().st_size,
               "type": "standalone-development-apk", "rom": False, "device_tested": False,
-              "version": "0.1.0-alpha.1", "sdk": 35, "build_tools": "35.0.0"}
+              "version": version, "sdk": 35, "build_tools": "35.0.0"}
     (out / "lambda-build.json").write_text(json.dumps(report, indent=2) + "\n")
     print(json.dumps(report, indent=2))
 

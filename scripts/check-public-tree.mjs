@@ -17,7 +17,7 @@ const list = spawnSync('git', ['ls-files', '--cached', '--others', '--exclude-st
 if (list.status !== 0) throw new Error('Cannot enumerate public Git tree');
 const files = [...new Set(list.stdout.split('\0').filter(Boolean))];
 const errors = [];
-const forbidden = /(^|\/)(private|backups|checkpoints|node_modules|\.git|out|__pycache__)(\/|$)|\.(pk8|p12|pfx|jks|keystore|key|pass|pem|apk|img|bin|zip|gguf|litertlm|safetensors|vhdx)$/i;
+const forbidden = /(^|\/)(private|backups|checkpoints|node_modules|\.git|out|__pycache__)(\/|$)|\.(pk8|p12|pfx|jks|keystore|key|pass|pem|apk|img|bin|zip|gguf|litertlm|safetensors|vhdx|pcap|pcapng|cap|hccapx|22000|hc22000|sqlite3?|db)$/i;
 const secretRules = [
   ['private-key', /-----BEGIN (?:RSA |EC |OPENSSH |ENCRYPTED )?PRIVATE KEY-----/],
   ['github-token', /\bgh[pousr]_[A-Za-z0-9]{30,}\b/],
@@ -37,7 +37,7 @@ for (const name of files) {
   }
 }
 // Check only authored publication docs; upstream docs retain their own context.
-const docs = files.filter(p => /^(README\.md|ROADMAP\.md|NOTICE\.md|docs\/.*\.md|releases\/.*\.md|assets\/(README|INDEX)\.md)$/.test(p));
+const docs = files.filter(p => /^(README\.md|ROADMAP\.md|NOTICE\.md|docs\/.*\.md|releases\/.*\.md|assets\/(README|INDEX)\.md|alpha\/apps\/Lambda\/.*\.md|alpha\/vendor\/.*\.md|kernel\/.*\.md)$/.test(p));
 for (const name of docs) {
   const text = fs.readFileSync(path.join(root, name), 'utf8');
   const refs = [...text.matchAll(/\]\(([^)]+)\)/g)].map(m => m[1])

@@ -58,11 +58,16 @@ for (const [group, entries] of groups) {
 fs.writeFileSync(path.join(root, 'assets/INDEX.md'), lines.join('\n').trimEnd() + '\n');
 const sources = walk(path.join(root, 'alpha')).filter(p =>
   !/(^|\/)(private|out|build|__pycache__)(\/|$)/.test(relative(p)) && !p.endsWith('.pyc'));
+const kernelSources = walk(path.join(root, 'kernel')).filter(p =>
+  !/(^|\/)(out|build|__pycache__)(\/|$)/.test(relative(p)) && !p.endsWith('.pyc'));
+const publishedSources = [...sources, ...kernelSources].sort((a, b) =>
+  relative(a).localeCompare(relative(b), 'en'));
 fs.writeFileSync(path.join(root, 'docs/source-inventory.json'), JSON.stringify({
-  schema: 1, snapshot: '2026-10-29', files: sources.map(name => {
+  schema: 1, snapshot: '2026-11-22', files: publishedSources.map(name => {
     const data = fs.readFileSync(name);
     return {path: relative(name), bytes: data.length, sha256: digest(data)};
   }),
 }, null, 2) + '\n');
-console.log(JSON.stringify({images: inventory.length, source_files: sources.length,
+console.log(JSON.stringify({images: inventory.length, source_files: publishedSources.length,
+  kernel_source_files: kernelSources.length,
   image_bytes: inventory.reduce((total, x) => total + x.bytes, 0)}));

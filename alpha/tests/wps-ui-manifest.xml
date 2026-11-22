@@ -1,0 +1,5 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="org.lambdaproject.lambda.wpsuitest" android:versionCode="1" android:versionName="1">
+    <uses-sdk android:minSdkVersion="29" android:targetSdkVersion="35"/>
+    <application android:label="Lambda WPS visual QA"/>
+    <instrumentation android:name="org.lambdaproject.lambda.WpsUiPreview" android:targetPackage="org.lambdaproject.lambda" android:label="WPS fixtures without radio"/>
+</manifest>

@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index 93bfcfc..2a531f2 100644
+--- a/Makefile
++++ b/Makefile
+@@ -14,7 +14,7 @@ EXTRA_CFLAGS += -Wno-unused-variable
+ EXTRA_CFLAGS += -Wno-unused-function
+ #EXTRA_CFLAGS += -Wno-unused
+ #EXTRA_CFLAGS += -Wno-uninitialized
+-EXTRA_CFLAGS += -Wno-misleading-indentation
++EXTRA_CFLAGS += $(call cc-disable-warning,misleading-indentation)
+ EXTRA_CFLAGS += -Wno-implicit-fallthrough
+ EXTRA_CFLAGS += -Wno-address
+ EXTRA_CFLAGS += -Wframe-larger-than=1648

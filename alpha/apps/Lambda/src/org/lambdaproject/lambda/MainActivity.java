@@ -40,22 +40,37 @@ public final class MainActivity extends Activity {
     private final ExecutorService worker = Executors.newSingleThreadExecutor();
     private SharedPreferences prefs;
     private LinearLayout root;
-    private LinearLayout content;
+    LinearLayout content;
+    private OperatorUi operator;
+    HandshakeUi handshake;
+    WpsUi wps;
+    private BenchmarkUi benchmark;
+    CrackUi cracking;
+    VerifiedWifiUi verifiedWifi;
     private String page = "home";
+    private String jobBack = "category";
     private int category = 0;
-    private int background, surface, foreground, secondary, divider;
-    private boolean dark, english;
+    int background, surface, foreground, secondary, divider;
+    boolean dark, english;
     private JSONObject snapshot;
     private boolean collecting;
     private final int[] accents = {0xff4F9BA9, 0xff578FCE, 0xffA096BE, 0xffB58D6A, 0xffA2AAAF, 0xffA2AAAF};
 
-    private String tr(String es, String en) { return english ? en : es; }
-    private int dp(float value) { return Math.round(value * getResources().getDisplayMetrics().density); }
+    String tr(String es, String en) { return english ? en : es; }
+    int dp(float value) { return Math.round(value * getResources().getDisplayMetrics().density); }
     private String[] categories() { return new String[]{"Wi-Fi", "Bluetooth", "USB", "CAN", tr("Red", "Network"), "Radio"}; }
 
     @Override public void onCreate(Bundle state) {
         super.onCreate(state);
         prefs = getSharedPreferences("appearance", MODE_PRIVATE);
+        operator = new OperatorUi(this);
+        handshake = new HandshakeUi(this);
+        wps = new WpsUi(this);
+        benchmark = new BenchmarkUi(this);
+        cracking = new CrackUi(this);
+        verifiedWifi = new VerifiedWifiUi(this);
+        getSharedPreferences("core", MODE_PRIVATE).edit().putBoolean("enabled", true).apply();
+        CoreService.ensure(this);
         // Setup is the source of first-run defaults, never overwrite later app choices.
         if (!prefs.getBoolean("setup_defaults_imported", false)) {
             String layout = Settings.Secure.getString(getContentResolver(), "lambda_layout");
@@ -69,8 +84,11 @@ public final class MainActivity extends Activity {
             }
         }
         if (state != null) {
+            handshake.restore(state);
             page = state.getString("page", "home");
             category = state.getInt("category", 0);
+            jobBack = state.getString("jobBack", "category");
+            if(page.equals("wps")) { wps.id=getPreferences(0).getString("wps_last_job",null);wps.screen=wps.id==null?"intro":"working"; }
         }
         render();
     }
@@ -79,9 +97,17 @@ public final class MainActivity extends Activity {
         super.onSaveInstanceState(state);
         state.putString("page", page);
         state.putInt("category", category);
+        state.putString("jobBack", jobBack);
+        handshake.save(state);
     }
 
     @Override protected void onDestroy() {
+        operator.destroy();
+        handshake.destroy();
+        wps.destroy();
+        benchmark.destroy();
+        cracking.destroy();
+        verifiedWifi.destroy();
         worker.shutdownNow();
         super.onDestroy();
     }
@@ -90,12 +116,15 @@ public final class MainActivity extends Activity {
         if (prefs.getBoolean("haptics", true)) view.performHapticFeedback(HapticFeedbackConstants.CONTEXT_CLICK);
     }
 
-    private void navigate(String destination) {
+    void navigate(String destination) {
+        if(destination.equals("job")&&!page.equals("job"))jobBack=page;
         page = destination;
         render();
+        content.setAlpha(0f);content.setTranslationY(dp(5));
+        content.animate().alpha(1f).translationY(0).setDuration(150).start();
     }
 
-    private TextView text(String value, float size, boolean bold, int color) {
+    TextView text(String value, float size, boolean bold, int color) {
         TextView view = new TextView(this);
         view.setText(value);
         view.setTextSize(size);
@@ -105,30 +134,30 @@ public final class MainActivity extends Activity {
         return view;
     }
 
-    private LinearLayout column() {
+    LinearLayout column() {
         LinearLayout layout = new LinearLayout(this);
         layout.setOrientation(LinearLayout.VERTICAL);
         return layout;
     }
 
-    private void space(LinearLayout parent, int height) {
+    void space(LinearLayout parent, int height) {
         parent.addView(new View(this), new LinearLayout.LayoutParams(1, dp(height)));
     }
 
-    private void separator(LinearLayout parent) {
+    void separator(LinearLayout parent) {
         View line = new View(this);
         line.setBackgroundColor(divider);
         parent.addView(line, new LinearLayout.LayoutParams(-1, dp(1)));
     }
 
-    private void touch(View view, String label, Runnable run) {
+    void touch(View view, String label, Runnable run) {
         view.setClickable(true);
         view.setFocusable(true);
         view.setContentDescription(label);
         view.setOnClickListener(clicked -> { feedback(clicked); run.run(); });
     }
 
-    private void card(View view, int color, int radius) {
+    void card(View view, int color, int radius) {
         GradientDrawable shape = new GradientDrawable();
         shape.setColor(color);
         shape.setCornerRadius(dp(radius));
@@ -138,17 +167,23 @@ public final class MainActivity extends Activity {
         view.setBackground(new RippleDrawable(ColorStateList.valueOf(dark ? 0x22FFFFFF : 0x18000000), shape, mask));
     }
 
-    private void render() {
+    void render() {
+        if(operator!=null)operator.beforeRender();
+        if(handshake!=null)handshake.beforeRender();
+        if(wps!=null)wps.beforeRender();
+        if(benchmark!=null)benchmark.beforeRender();
+        if(cracking!=null)cracking.beforeRender();
+        if(verifiedWifi!=null)verifiedWifi.detach();
         english = prefs.getBoolean("english", Locale.getDefault().getLanguage().equals("en"));
         String mode = prefs.getString("theme_mode", Settings.Secure.getString(getContentResolver(), "lambda_theme"));
         dark = mode == null ? prefs.getBoolean("dark", true) : mode.equals("auto")
                 ? (getResources().getConfiguration().uiMode & android.content.res.Configuration.UI_MODE_NIGHT_MASK) == android.content.res.Configuration.UI_MODE_NIGHT_YES
                 : !mode.equals("light");
-        background = dark ? 0xff181B1D : 0xffF4F3EF;
-        surface = dark ? 0xff23272A : 0xffE6E6E2;
-        foreground = dark ? 0xffF1F0EC : 0xff1A1D1F;
-        secondary = dark ? 0xffACB2B6 : 0xff62696E;
-        divider = dark ? 0xff363C40 : 0xffD3D5D3;
+        background = dark ? 0xff101112 : 0xffF4F4F2;
+        surface = dark ? 0xff1D1F20 : 0xffE6E6E3;
+        foreground = dark ? 0xffEEEEEC : 0xff18191A;
+        secondary = dark ? 0xffA4A7A9 : 0xff626568;
+        divider = dark ? 0xff303234 : 0xffD3D5D3;
         root = column();
         root.setBackgroundColor(background);
         if (Build.VERSION.SDK_INT >= 30) {
@@ -171,8 +206,13 @@ public final class MainActivity extends Activity {
         root.addView(scroll, new LinearLayout.LayoutParams(-1, 0, 1));
         switch (page) {
             case "settings": settings(); break;
-            case "category": category(); break;
-            case "sessions": sessions(); break;
+            case "developer":case "cracking_tests":case "benchmark":benchmark.render(page);break;
+            case "category": if(category<3)operator.category(category);else category(); break;
+            case "handshake": handshake.render(); break;
+            case "wps": wps.render(); break;
+            case "cracking": cracking.render(); break;
+            case "job": operator.job(); break;
+            case "sessions": operator.sessions(); break;
             case "files": files(); break;
             default: home(); break;
         }
@@ -192,7 +232,12 @@ public final class MainActivity extends Activity {
         LinearLayout bar = new LinearLayout(this);
         bar.setGravity(Gravity.CENTER_VERTICAL);
         bar.setPadding(dp(20), dp(10), dp(12), dp(12));
-        TextView title = text("Lambda", 30, true, foreground);
+        if(!page.equals("home")){
+            Glyph back=new Glyph(this,10,foreground);
+            bar.addView(back,new LinearLayout.LayoutParams(dp(34),dp(48)));
+            touch(back,tr("Volver","Back"),()->{if(!wps.back()&&!handshake.back()&&!benchmark.back()&&!cracking.back())navigate(page.equals("job")?jobBack:"home");});
+        }
+        TextView title = text("Lambda", 28, true, foreground);
         bar.addView(title, new LinearLayout.LayoutParams(0, dp(56), 1));
         title.setGravity(Gravity.CENTER_VERTICAL);
         touch(title, tr("Inicio", "Home"), () -> navigate("home"));
@@ -205,6 +250,8 @@ public final class MainActivity extends Activity {
     }
 
     private void home() {
+        TextView core = text(tr("OPERATOR  /  CORE ACTIVO", "OPERATOR  /  CORE ACTIVE"),11,true,secondary);
+        core.setLetterSpacing(.12f);content.addView(core);space(content,16);
         String[] names = categories();
         if (prefs.getBoolean("icons", true)) {
             for (int row = 0; row < 3; row++) {
@@ -216,7 +263,7 @@ public final class MainActivity extends Activity {
                     tile.setPadding(dp(8), dp(20), dp(8), dp(20));
                     tile.setMinimumHeight(dp(154));
                     card(tile, surface, 16);
-                    tile.addView(new Glyph(this, index, index < 2 ? accents[index] : foreground),
+                    tile.addView(new Glyph(this, index, foreground),
                         new LinearLayout.LayoutParams(dp(78), dp(78)));
                     space(tile, 12);
                     TextView label = text(names[index], 21, true, foreground);
@@ -257,7 +304,7 @@ public final class MainActivity extends Activity {
             final String route = routes[i];
             LinearLayout item = column();
             item.setGravity(Gravity.CENTER);
-            boolean active = page.equals(route) || (i == 0 && page.equals("category"));
+            boolean active = page.equals(route) || (i == 0 && (page.equals("category") || page.equals("wps") || page.equals("handshake") || page.equals("job")&&!jobBack.equals("sessions"))) || (i==1&&page.equals("job")&&jobBack.equals("sessions"));
             int tint = active ? foreground : secondary;
             item.addView(new Glyph(this, 7 + i, tint), new LinearLayout.LayoutParams(dp(28), dp(28)));
             space(item, 4);
@@ -269,7 +316,7 @@ public final class MainActivity extends Activity {
         root.addView(nav);
     }
 
-    private void heading(String title, String subtitle) {
+    void heading(String title, String subtitle) {
         content.addView(text(title, 31, true, foreground));
         space(content, 12);
         TextView body = text(subtitle, 15, false, secondary);
@@ -278,7 +325,7 @@ public final class MainActivity extends Activity {
         space(content, 24);
     }
 
-    private void button(String label, Runnable run) {
+    void button(String label, Runnable run) {
         TextView button = text(label, 17, true, foreground);
         button.setGravity(Gravity.CENTER_VERTICAL);
         button.setPadding(dp(20), dp(16), dp(20), dp(16));
@@ -289,7 +336,7 @@ public final class MainActivity extends Activity {
         space(content, 12);
     }
 
-    private void fact(String label, String value) {
+    void fact(String label, String value) {
         content.addView(text(label, 13, false, secondary));
         space(content, 6);
         TextView body = text(value, 16, false, foreground);
@@ -412,6 +459,7 @@ public final class MainActivity extends Activity {
 
     private void files() {
         heading(tr("Archivos", "Files"), tr("Solo en este dispositivo. Tú decides qué exportar.", "Only on this device. You choose what to export."));
+        button(tr("Informes de auditoría", "Audit reports"), () -> navigate("sessions"));
         File[] files = diagnostics();
         if (files.length == 0) {
             content.addView(text(tr("Aún no hay diagnósticos guardados.", "No saved diagnostics yet."), 16, false, secondary));
@@ -435,6 +483,9 @@ public final class MainActivity extends Activity {
 
     @Override protected void onActivityResult(int request, int result, Intent data) {
         super.onActivityResult(request, result, data);
+        if(handshake.activityResult(request,result,data))return;
+        if(cracking.activityResult(request,result,data))return;
+        if(operator.onActivityResult(request,result,data))return;
         if (request != 20 || result != RESULT_OK || data == null || data.getData() == null) return;
         String filename = prefs.getString("export", "");
         if (!filename.matches("diagnostic-[0-9-]+\\.json")) return;
@@ -456,7 +507,11 @@ public final class MainActivity extends Activity {
         toggle(tr("Respuesta háptica", "Haptic feedback"), "haptics", true);
         toggle("English", "english", Locale.getDefault().getLanguage().equals("en"));
         space(content, 24);
-        fact(tr("Versión de Lambda", "Lambda version"), "0.1.0-alpha.1");
+        String appVersion="—";try{appVersion=getPackageManager().getPackageInfo(getPackageName(),0).versionName;}catch(Exception ignored){}
+        fact(tr("Versión de Lambda", "Lambda version"), appVersion+" · Core API v1");
+        button(tr("Permisos de auditoría", "Audit permissions"), () -> operator.permissions());
+        button(tr("Wi-Fi en segundo plano", "Background Wi-Fi"), () -> operator.backgroundPermission());
+        button("Developer mode", () -> navigate("developer"));
         fact("Lamb AI Agent", tr("Pendiente de integración", "Integration pending"));
         content.addView(text("the system for hacking systems.", 14, false, secondary));
     }
@@ -478,10 +533,21 @@ public final class MainActivity extends Activity {
         separator(content);
     }
 
-    private void notice(String message) { Toast.makeText(this, message, Toast.LENGTH_SHORT).show(); }
+    void notice(String message) { Toast.makeText(this, message, Toast.LENGTH_SHORT).show(); }
+
+    @Override public void onRequestPermissionsResult(int r,String[] p,int[] g){super.onRequestPermissionsResult(r,p,g);operator.permissionsResult(r);}
+    boolean isHandshake(){return page.equals("handshake");}
+    boolean isWps(){return page.equals("wps");}
+    @Override protected void onResume(){super.onResume();if(operator!=null)operator.resume();if(handshake!=null)handshake.resume();if(wps!=null)wps.resume();if(benchmark!=null)benchmark.resume();if(cracking!=null)cracking.resume();if(verifiedWifi!=null)verifiedWifi.resume();}
+    @Override protected void onPause(){if(operator!=null)operator.pause();if(handshake!=null)handshake.pause();if(wps!=null)wps.pause();if(benchmark!=null)benchmark.pause();if(cracking!=null)cracking.pause();if(verifiedWifi!=null)verifiedWifi.pause();super.onPause();}
 
     @Override public void onBackPressed() {
-        if (!page.equals("home")) navigate("home");
+        if(wps.back())return;
+        if(handshake.back())return;
+        if(benchmark.back())return;
+        if(cracking.back())return;
+        if (page.equals("job")) navigate(jobBack);
+        else if (!page.equals("home")) navigate("home");
         else super.onBackPressed();
     }
 }

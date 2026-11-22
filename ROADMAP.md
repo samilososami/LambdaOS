@@ -1,65 +1,67 @@
 # LambdaOS roadmap
 
-Updated 29 October 2026. The current priority is the operating system and its
-usable capabilities. This roadmap describes intended work, not released features.
+Updated 22 November 2026. Status labels distinguish published source,
+development deployment and physically verified behavior.
 
-## Established foundation
+## Current checkpoint
 
-- A booting Android 15 / LineageOS 22.2 alpha on the Exynos Galaxy S10 SM-G973F.
-- Lambda setup, boot artwork, wallpapers, clocks and monochrome system styling.
-- A Lambda Operator foundation for device information and future tool workflows.
-- Local build/signing work and device testing records.
-- A preserved Lamb model/agent research checkpoint.
+- LambdaOS `0.1.0-alpha.2` boots on the reference SM-G973F without GApps.
+- The custom setup, boot experience, wallpapers, lock screen and monochrome
+  platform styling are implemented in the development line.
+- Kernel `4.14.356-lambdaos+` has booted with a 95-module package; selected
+  internal and external 2.4 GHz monitor-receive paths are verified.
+- Operator `0.2.0-operator.4` includes bounded Wi-Fi capture, WPS and offline
+  verification workflows with persistent receipts and thermal limits.
+- Lamb model work is preserved and paused; no fine-tuning has started.
 
-## 1. System foundation and recovery
+## 1. Reproducible system foundation
 
-Record the exact source and firmware requirements, refine build reproducibility,
-and prepare a tested recovery path. Stabilize system services, updates and the
-configuration needed for a public release.
+- Pin the Android/device source revisions and proprietary extraction inputs.
+- Turn the private build pipeline into a portable, reviewed public recipe.
+- Finish release signing, update behavior, checksums and recovery instructions.
+- Publish the first flashable build only after clean-install and upgrade testing.
 
-## 2. Kernel and hardware capabilities
+## 2. Kernel and hardware validation
 
-Establish a capability matrix for the S10 and external adapters. Select and
-build a kernel candidate against concrete requirements; validate drivers,
-modules, USB behavior, stability and power use on the device.
+- Rebuild and physically retest the prepared USB callback guard before enabling
+  USB/IP VHCI.
+- Complete firmware packaging and fix the read-only vendor module helper in a
+  new ROM build.
+- Validate supported adapter families by exact USB ID and workflow; keep build
+  support separate from monitor/injection/sustained-capture claims.
+- Measure stability, power and thermal behavior under longer workloads.
 
-Monitor mode, injection, HID, CAN and radio support will be documented only
-where the required hardware and software have been tested.
+## 3. Lambda Core integration
 
-## 3. Lambda Core and command interfaces
-
-Define versioned operations with structured arguments, results and errors.
-Build a common execution layer for the CLI, Operator and the future assistant,
-including permission handling, cancellation and observable job state. Work on
-existing Android capabilities can proceed alongside kernel development.
+- Move the restricted development worker into reviewed ROM services and SELinux
+  domains.
+- Version the typed operation catalogue, errors, job state and receipts.
+- Make cancellation and restoration robust across process and system restarts.
+- Keep active actions explicitly authorized and target-bound.
 
 ## 4. Lambda Operator
 
-Turn the application foundation into useful, coherent workflows. Keep GUI and
-CLI state synchronized, communicate required adapters clearly and distinguish
-available operations from unsupported capabilities. Refine motion, accessibility
-and feedback as the functionality becomes real.
+- Package runtime dependencies and notices reproducibly.
+- Finish accessibility, error recovery and hardware-unavailable states.
+- Validate Bluetooth and USB workflows against the same typed Core boundary.
+- Keep synthetic tests separate from physical radio validation.
 
-## 5. Public releases
+## 5. Recovery and public releases
 
-Package reviewed components into reproducible, signed ROMs. Publish checksums,
-device-specific installation notes, upgrade behavior and known issues through
-GitHub Releases. Complete the public build and source-distribution requirements
-before the first flashable release.
+- Define the Lambda recovery, installation validation, snapshot and rollback
+  strategy.
+- Publish ROM artifacts through GitHub Releases with device target, SHA-256,
+  signing identity, installation notes, upgrade behavior and known issues.
 
 ## 6. Resume Lamb
 
-Model development is **paused at the 29 October 2026 checkpoint**. Resume once
-the operating system's operations, permissions, hardware support and output
-formats are stable enough to produce representative training examples.
-
-The next model work will first complete the untrained export comparisons, then
-test a small training/export round trip. A broader fine-tune follows only when
-learning and mobile performance are verified. No training has begun at this
-checkpoint. See [checkpoint details](docs/LAMB-CHECKPOINT.md).
+Resume only after Core contracts represent the final operating environment.
+First validate the training/export/deployment round trip, then specialize the
+model against real typed operations and evaluate it on the S10. Distillation is
+conditional on measured memory, latency and energy requirements.
 
 ## Later exploration
 
-Recovery interface design, screen sharing, desktop workflows, voice activation
-and a modular USB-C hardware accessory remain exploratory ideas. They do not
-carry support or delivery commitments yet.
+Wireless ADB in recovery, screen sharing, desktop modes, voice activation,
+snapshot workflows and a modular USB-C hardware accessory remain exploratory.
+They are not implementation claims or release commitments.
