@@ -497,3 +497,28 @@ dialog{padding:0;background:#101010;color:#f4f4f2;border:1px solid #555;width:mi
   .hero h1{font-size:clamp(34px,10vw,50px)}
   .hero-ribbon{height:260px}
 }
+
+/* ---------- revision 6: menu fix, better phone frames ---------- */
+/* An animation that stays "in effect" on the header made it the containing block for the fixed
+   menu, so the menu collapsed to the header's height. Only fill backwards, and keep the menu outside. */
+.site-header{animation-fill-mode:backwards}
+@media(max-width:800px){
+  .mobile-menu{position:fixed;inset:0;z-index:49;height:100dvh;padding-top:96px;background:#000;overflow-y:auto;overscroll-behavior:contain}
+  .mobile-menu nav a{line-height:1.15}
+}
+
+/* One phone frame for every screenshot: thin metal edge, punch hole, no hard rings. */
+.slide .phone,.operator-shots .phone{position:relative;display:block;aspect-ratio:900/1900;padding:3.2%;border:0;border-radius:13% / 6.2%;background:linear-gradient(140deg,#6b6b6b,#1a1a1a 14%,#050505 40%,#0b0b0b 78%,#5a5a5a);box-shadow:inset 0 0 0 1px rgba(255,255,255,.16),inset 0 0 0 4px #050505,0 28px 50px -28px rgba(0,0,0,.55);overflow:hidden}
+.slide .phone img,.operator-shots .phone img{width:100%;height:100%;object-fit:cover;border:0;border-radius:10.8% / 5.1%}
+.slide .phone:after,.operator-shots .phone:after{content:'';position:absolute;top:4.3%;right:13%;width:4.6%;aspect-ratio:1;border-radius:50%;background:#000;box-shadow:inset 0 0 0 1.5px #1d1d1d}
+.operator-shots .phone{box-shadow:inset 0 0 0 1px rgba(255,255,255,.2),inset 0 0 0 4px #050505,0 0 0 1px rgba(255,255,255,.04)}
+.carousel-track{padding-bottom:44px}
+.operator-shots figure:hover .phone{transform:translateY(-6px)}
+
+@media(max-width:800px){
+  /* Operator: a 2 x 2 grid instead of a sideways strip. */
+  .operator-shots{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 16px;overflow:visible;margin-inline:0;padding-inline:0;scroll-snap-type:none}
+  .operator-shots figure{flex:none;gap:12px}
+  .operator-shots .phone{max-width:none}
+  .operator-shots figcaption{font-size:13px;text-align:center}
+}

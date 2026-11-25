@@ -135,6 +135,6 @@ export const copy = [
   ['Idea', 'Idea'],
   ['Pantalla anterior', 'Previous screen'], ['Pantalla siguiente', 'Next screen'],
   ['Captura pasiva', 'Passive capture'], ['Primero, confirmación', 'Confirmation first'], ['Un resultado claro', 'A clear result'],
-  ['Hablemos.', 'Get in touch.'], ['Apoya el proyecto', 'Support the project'],
+  ['¿Alguna pregunta?', 'Any question?'], ['Apoya el proyecto', 'Support the project'],
   ['LambdaOS en GitHub', 'LambdaOS on GitHub'], ['Menú', 'Menu']
 ];

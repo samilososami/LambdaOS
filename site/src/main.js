@@ -6,7 +6,8 @@ const mobileMenu = document.querySelector('#mobile-menu');
 
 function setMenu(open) {
   mobileMenu.hidden = !open;
-  document.body.style.overflow = open ? 'hidden' : '';
+  // Lock the page on <html>: overflow on <body> would make it a scroll container and unstick the header.
+  document.documentElement.style.overflow = open ? 'hidden' : '';
   menuButton.setAttribute('aria-expanded', String(open));
   menuButton.setAttribute('aria-label', t(open ? 'Cerrar menú' : 'Abrir menú'));
 }
