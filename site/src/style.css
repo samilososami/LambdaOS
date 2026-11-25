@@ -295,3 +295,134 @@ dialog{padding:0;background:#101010;color:#f4f4f2;border:1px solid #555;width:mi
   .dev-detail{grid-column:1/-1;grid-row:2;font-size:14px}
   .contact{padding-block:80px}
 }
+
+/* ---------- revision 4: light hero, carousel, quieter nav ---------- */
+/* Header: wordmark left, links centred, two small tools right. */
+.header-inner{height:68px;position:relative;justify-content:flex-start;border-bottom:1px solid #1c1c1c}
+.site-header .wordmark{width:150px}
+.desktop-nav{position:absolute;left:50%;transform:translateX(-50%);margin:0;gap:30px;font-size:14px}
+.desktop-nav a{font-weight:500;color:#9f9f9f}
+.header-tools{margin-left:auto;display:flex;align-items:center;gap:14px}
+.language-switch{margin:0;gap:0;font-size:12px}
+.language-switch button{min-width:30px;min-height:40px;padding:6px 4px;color:#6f6f6f;font-weight:600;letter-spacing:.04em}
+.language-switch button[aria-pressed=true]{color:#fff;text-decoration:none}
+.header-github{margin:0;padding:0;width:38px;height:38px;min-height:0;display:grid;place-items:center;border-radius:50%;background:none;color:#cfcfcf}
+.header-github:hover{background:#1b1b1b;color:#fff;transform:none}
+.header-github .gh-mark{width:19px;height:19px}
+.site-header.is-scrolled .header-inner{height:58px}
+.site-header.is-scrolled .wordmark{width:138px}
+@media(min-width:801px){.mobile-menu{display:none!important}}
+
+/* Hero: paper, centred type, the folded ribbon underneath. */
+.hero{background:#f4f4f1;color:#0b0b0b;min-height:calc(100svh - 68px);display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;overflow:hidden}
+.hero:after{display:none}
+.hero-content{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center;width:100%;padding-top:clamp(56px,11vh,128px);padding-bottom:0}
+.hero h1{font-size:clamp(44px,5.3vw,90px);line-height:1.02;letter-spacing:-.055em;font-weight:500;max-width:none}
+.hero h1 .line{display:block}
+.hero-description{color:#5c5c5c;font-size:clamp(17px,1.35vw,21px);margin-top:26px}
+.hero-actions{justify-content:center;margin-top:38px}
+.hero .text-link{color:#0b0b0b}
+.button-dark{background:#0b0b0b;color:#f4f4f2}
+.button-dark:hover{background:#000}
+.hero-status{display:inline-flex;align-items:center;gap:10px;margin-bottom:30px;padding:7px 15px;border:1px solid #d2d2cd;border-radius:999px;font-size:13px;color:#555;transition:border-color .2s,color .2s}
+.hero-status:hover{border-color:#0b0b0b;color:#0b0b0b}
+.hero-status .status-dot{background:#0b0b0b;box-shadow:0 0 0 4px rgba(0,0,0,.07)}
+.hero-ribbon{position:absolute;left:0;bottom:0;width:100%;height:min(44%,520px);object-fit:cover;object-position:50% 72%;z-index:0;pointer-events:none;-webkit-mask:linear-gradient(transparent,#000 28%);mask:linear-gradient(transparent,#000 28%);will-change:transform}
+.js-anim .hero-ribbon{animation:ribbon-in 1.6s .2s cubic-bezier(.2,.8,.2,1) both}
+@keyframes ribbon-in{from{opacity:0;translate:0 40px}}
+
+/* The idea, now first, on black. */
+.origin{padding-block:128px;background:var(--dark);color:var(--light)}
+.origin .author:before{background:#f4f4f2}
+.origin .author a{color:#9a9a9a}
+.origin-story{color:#e8e8e6}
+.origin-story a:hover{color:#fff}
+
+/* System: a centred carousel. Slides scale with distance from the centre. */
+.system{padding-bottom:110px}
+.section-heading{align-items:flex-end}
+.carousel-controls{display:flex;gap:10px}
+.carousel-arrow{width:52px;height:52px;display:grid;place-items:center;border:1px solid #c4c4c0;border-radius:50%;color:#111;transition:background .2s,color .2s,border-color .2s}
+.carousel-arrow:hover{background:#0b0b0b;border-color:#0b0b0b;color:#f4f4f2}
+.carousel-arrow[data-step="-1"] .icon{transform:rotate(180deg)}
+.carousel-arrow:disabled{opacity:.3;pointer-events:none}
+.carousel{margin-top:34px}
+.carousel-track{--w:clamp(210px,19vw,280px);display:flex;gap:clamp(28px,4vw,72px);overflow-x:auto;scroll-snap-type:x mandatory;padding:26px calc(50% - var(--w)/2) 8px;scrollbar-width:none;cursor:grab;outline:none;user-select:none}
+.carousel-track::-webkit-scrollbar{display:none}
+.carousel-track:focus-visible{outline:2px solid #0b0b0b;outline-offset:-2px}
+.carousel-track.is-dragging{cursor:grabbing;scroll-snap-type:none}
+.slide{flex:0 0 var(--w);scroll-snap-align:center;display:grid;gap:24px;justify-items:center;transform:scale(calc(1 - var(--d,1)*.14));opacity:calc(1 - var(--d,1)*.55);transform-origin:50% 40%}
+.slide .phone{width:100%}
+.slide .phone:hover{transform:none}
+.slide figcaption{display:grid;gap:6px;max-width:30ch;text-align:center;font-size:15px;opacity:calc(1 - var(--d,1)*1.8)}
+.slide figcaption span{color:#686868}
+.carousel-dots{display:flex;justify-content:center;gap:8px;margin-top:26px}
+.carousel-dots span{width:6px;height:6px;border-radius:999px;background:#c4c4c0;transition:width .35s,background .35s}
+.carousel-dots span.is-on{width:22px;background:#0b0b0b}
+
+/* Operator: the same phone frame, plain captions. */
+.operator-shots .phone{width:100%;max-width:230px;transform:none}
+.operator-shots .phone img{border:0;border-radius:28px;max-width:none}
+.operator-shots figcaption{display:block;border-top:0;padding-top:4px;font-size:15px;color:#bdbdbd}
+.operator{padding-bottom:128px}
+
+/* Contact and support, together. */
+.contact{background:var(--light);color:#0b0b0b;padding-block:128px}
+.contact-layout{grid-template-columns:1fr 1fr;gap:clamp(48px,7vw,120px)}
+.contact h2{font-size:clamp(44px,5vw,76px);margin-bottom:28px}
+.contact-copy{color:#333;font-size:clamp(19px,1.5vw,23px)}
+.contact-mail{color:#0b0b0b;border-bottom-color:rgba(11,11,11,.25)}
+.contact-mail:hover{border-color:#0b0b0b}
+.support-block{border-left:1px solid #d6d6d2;padding-left:clamp(32px,4vw,64px)}
+.support-block h3{font-size:26px;margin-bottom:14px}
+.support-block .support-copy{font-size:15px;color:#555;max-width:520px}
+.support-block .support-list{margin-top:26px}
+
+@media(max-width:1100px){
+  .desktop-nav{gap:20px;font-size:13px}
+}
+@media(max-width:960px){
+  .desktop-nav a[href="#proyecto"]{display:none}
+}
+@media(max-width:800px){
+  .header-inner{height:62px;position:relative;z-index:2;background:#000}
+  .desktop-nav,.header-tools{display:none}
+  .menu-toggle{display:block;position:relative;width:44px;height:44px;margin-left:auto;padding:0}
+  .menu-toggle span{position:absolute;left:10px;width:24px;height:1.5px;margin:0;background:#f4f4f2;transition:top .3s,transform .3s,opacity .2s}
+  .menu-toggle span:nth-child(1){top:15px}.menu-toggle span:nth-child(2){top:21px}.menu-toggle span:nth-child(3){top:27px}
+  .menu-toggle[aria-expanded=true] span:nth-child(1){top:21px;transform:rotate(45deg)}
+  .menu-toggle[aria-expanded=true] span:nth-child(2){opacity:0}
+  .menu-toggle[aria-expanded=true] span:nth-child(3){top:21px;transform:rotate(-45deg)}
+  .mobile-menu{position:fixed;inset:0;z-index:1;display:flex;flex-direction:column;justify-content:space-between;padding:96px var(--gutter) max(28px,env(safe-area-inset-bottom));background:#000;border:0;animation:menu-fade .3s ease both}
+  .mobile-menu nav{display:flex;flex-direction:column}
+  .mobile-menu nav a{font-size:clamp(34px,10vw,44px);letter-spacing:-.045em;padding:6px 0;border:0;color:#f4f4f2}
+  .mobile-menu-foot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;border-top:1px solid #222;padding-top:18px}
+  .mobile-menu-foot .language-switch{margin:0}
+  .mobile-menu-links{display:flex;gap:18px}
+  .mobile-menu-links a{font-size:14px;padding:0;border:0;color:#a8a8a8}
+  .site-header.is-scrolled .header-inner{height:56px}
+  .hero{min-height:calc(100svh - 62px)}
+  .hero-content{padding-top:44px}
+  .hero h1{font-size:clamp(34px,9.6vw,50px);line-height:1.05}
+
+  .hero-description{font-size:16px;max-width:30ch}
+  .hero-actions{flex-direction:column;gap:14px}
+  .hero-ribbon{height:34%}
+  .origin{padding-block:80px}
+  .section-heading{display:flex;justify-content:space-between;gap:20px}
+  .carousel-arrow{width:44px;height:44px}
+  .carousel-track{--w:60vw}
+  .slide figcaption span{font-size:14px}
+  .operator-shots .phone{max-width:none}
+  .contact{padding-block:80px}
+  .contact-layout{grid-template-columns:1fr;gap:56px}
+  .support-block{border-left:0;padding-left:0;border-top:1px solid #d6d6d2;padding-top:44px}
+}
+@keyframes menu-fade{from{opacity:0}}
+.hero h1{font-size:clamp(40px,4.7vw,80px)}
+@media(min-width:801px){.hero h1 .line{white-space:nowrap}}
+/* Hero copy sits on the left edge, the ribbon runs underneath. */
+.hero-content{align-items:flex-start;text-align:left}
+.hero-actions{justify-content:flex-start}
+.hero-description{max-width:none}
+@media(max-width:800px){.hero-actions{align-items:flex-start}}

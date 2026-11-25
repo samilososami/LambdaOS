@@ -127,4 +127,14 @@ export const copy = [
   ['Escritorio Kali funcionando en el S10', 'Kali desktop running on the S10'],
   ['Asistente en el dispositivo', 'On-device assistant'],
   ['Build firmada con pasos de instalación y recuperación', 'Signed build with install and recovery steps']
+  ,
+  ['El sistema operativo para pentesting', 'The most complete operating system'],
+  ['en Android más completo.', 'for pentesting on Android.'],
+  ['Diseñado alrededor del Samsung Galaxy S10. Parte de Lambda Project.', 'Designed around the Samsung Galaxy S10. Part of Lambda Project.'],
+  ['Alpha en desarrollo', 'Alpha in development'],
+  ['Idea', 'Idea'],
+  ['Pantalla anterior', 'Previous screen'], ['Pantalla siguiente', 'Next screen'],
+  ['Captura pasiva', 'Passive capture'], ['Primero, confirmación', 'Confirmation first'], ['Un resultado claro', 'A clear result'],
+  ['Hablemos.', 'Get in touch.'], ['Apoya el proyecto', 'Support the project'],
+  ['LambdaOS en GitHub', 'LambdaOS on GitHub'], ['Menú', 'Menu']
 ];

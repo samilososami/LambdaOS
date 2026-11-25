@@ -6,6 +6,7 @@ const mobileMenu = document.querySelector('#mobile-menu');
 
 function setMenu(open) {
   mobileMenu.hidden = !open;
+  document.body.style.overflow = open ? 'hidden' : '';
   menuButton.setAttribute('aria-expanded', String(open));
   menuButton.setAttribute('aria-label', t(open ? 'Cerrar menú' : 'Abrir menú'));
 }
@@ -50,15 +51,13 @@ if (!reduceMotion && 'IntersectionObserver' in window) {
 }
 
 const header = document.querySelector('.site-header');
-const heroFront = document.querySelector('.device-front');
-const heroBack = document.querySelector('.device-back');
+const heroRibbon = document.querySelector('.hero-ribbon');
 let ticking = false;
 function onScroll() {
   ticking = false;
   header.classList.toggle('is-scrolled', scrollY > 24);
   if (!reduceMotion && innerWidth > 800 && scrollY < innerHeight * 1.2) {
-    heroFront.style.transform = `translateY(${(scrollY * -0.08).toFixed(1)}px)`;
-    heroBack.style.transform = `translateY(${(scrollY * 0.06).toFixed(1)}px)`;
+    heroRibbon.style.transform = `translateY(${(scrollY * 0.22).toFixed(1)}px)`;
   }
 }
 addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
@@ -78,3 +77,63 @@ const heroSpy = new IntersectionObserver(([entry]) => {
   if (entry.isIntersecting) navLinks.forEach(link => link.classList.remove('is-active'));
 }, { rootMargin: '-45% 0px -50% 0px' });
 heroSpy.observe(document.querySelector('.hero'));
+
+/* System carousel: native scroll-snap, arrows, dots, keyboard and mouse drag. */
+const track = document.querySelector('.carousel-track');
+if (track) {
+  const slides = [...track.children];
+  const dots = [...document.querySelectorAll('.carousel-dots span')];
+  const arrows = [...document.querySelectorAll('.carousel-arrow')];
+  let current = 0;
+  const centerOf = slide => slide.offsetLeft + slide.offsetWidth / 2;
+  const goTo = index => {
+    const slide = slides[Math.max(0, Math.min(slides.length - 1, index))];
+    track.scrollTo({ left: centerOf(slide) - track.clientWidth / 2, behavior: reduceMotion ? 'auto' : 'smooth' });
+  };
+  function paint() {
+    const middle = track.scrollLeft + track.clientWidth / 2;
+    const spacing = slides.length > 1 ? centerOf(slides[1]) - centerOf(slides[0]) : 1;
+    let nearest = 0;
+    slides.forEach((slide, i) => {
+      const distance = Math.abs(centerOf(slide) - middle) / spacing;
+      slide.style.setProperty('--d', Math.min(distance, 1.5).toFixed(3));
+      if (distance < Math.abs(centerOf(slides[nearest]) - middle) / spacing) nearest = i;
+    });
+    current = nearest;
+    dots.forEach((dot, i) => dot.classList.toggle('is-on', i === current));
+    arrows[0].disabled = current === 0;
+    arrows[1].disabled = current === slides.length - 1;
+  }
+  let pending = false;
+  track.addEventListener('scroll', () => { if (!pending) { pending = true; requestAnimationFrame(() => { pending = false; paint(); }); } }, { passive: true });
+  arrows.forEach(arrow => arrow.addEventListener('click', () => goTo(current + Number(arrow.dataset.step))));
+  slides.forEach((slide, i) => slide.addEventListener('click', () => { if (!moved && i !== current) goTo(i); }));
+  track.addEventListener('keydown', event => {
+    if (event.key === 'ArrowRight') { event.preventDefault(); goTo(current + 1); }
+    if (event.key === 'ArrowLeft') { event.preventDefault(); goTo(current - 1); }
+  });
+  // Mouse drag (touch already scrolls natively).
+  let startX = 0, startLeft = 0, dragging = false, moved = false;
+  track.addEventListener('pointerdown', event => {
+    if (event.pointerType !== 'mouse') return;
+    dragging = true; moved = false; startX = event.clientX; startLeft = track.scrollLeft;
+    track.setPointerCapture(event.pointerId);
+  });
+  track.addEventListener('pointermove', event => {
+    if (!dragging) return;
+    const delta = event.clientX - startX;
+    if (Math.abs(delta) > 4) { moved = true; track.classList.add('is-dragging'); }
+    track.scrollLeft = startLeft - delta;
+  });
+  const endDrag = () => {
+    if (!dragging) return;
+    dragging = false;
+    track.classList.remove('is-dragging');
+    if (moved) goTo(current);
+  };
+  track.addEventListener('pointerup', endDrag);
+  track.addEventListener('pointercancel', endDrag);
+  addEventListener('resize', paint);
+  paint();
+  requestAnimationFrame(() => goTo(0));
+}
