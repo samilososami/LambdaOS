@@ -1,7 +1,13 @@
+import Lenis from 'lenis';
+import 'lenis/dist/lenis.css';
 import './style.css';
 import { t, setupLanguage } from './i18n.js';
 
 const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const easeOutExpo = x => (x === 1 ? 1 : 1 - 2 ** (-10 * x));
+
+/* Smooth wheel scrolling (touch keeps the native scroll). */
+const lenis = reduceMotion ? null : new Lenis({ autoRaf: true, lerp: 0.085 });
 const menuButton = document.querySelector('.menu-toggle');
 const mobileMenu = document.querySelector('#mobile-menu');
 
@@ -24,6 +30,7 @@ function setMenu(open) {
   clearTimeout(closeTimer);
   // Lock the page on <html>: overflow on <body> would make it a scroll container and unstick the header.
   document.documentElement.style.overflow = open ? 'hidden' : '';
+  if (lenis) (open ? lenis.stop() : lenis.start());
   menuButton.setAttribute('aria-expanded', String(open));
   menuButton.setAttribute('aria-label', t(open ? 'Cerrar menú' : 'Abrir menú'));
   if (open) {
@@ -37,9 +44,21 @@ function setMenu(open) {
   closeTimer = setTimeout(() => {
     mobileMenu.hidden = true;
     mobileMenu.classList.remove('is-closing');
-  }, 300);
+  }, 380);
 }
 menuButton.addEventListener('click', () => setMenu(menuButton.getAttribute('aria-expanded') !== 'true'));
+document.addEventListener('click', event => {
+  const link = event.target.closest('a[href^="#"]');
+  if (!link || !lenis) return;
+  const id = link.getAttribute('href');
+  const target = id === '#top' ? 0 : document.querySelector(id);
+  if (target === null) return;
+  event.preventDefault();
+  setMenu(false);
+  // Lenis already honours the page's scroll-padding-top, which clears the sticky header.
+  lenis.scrollTo(target, { duration: 1.5, easing: easeOutExpo });
+  history.replaceState(null, '', id);
+});
 mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setMenu(false)));
 document.addEventListener('keydown', event => {
   if (event.key === 'Escape' && !mobileMenu.hidden) { setMenu(false); menuButton.focus(); }
@@ -118,8 +137,20 @@ if (track) {
   const centerOf = slide => slide.offsetLeft + slide.offsetWidth / 2;
   const spacing = () => centerOf(slides[1]) - centerOf(slides[0]);
   const leftFor = index => centerOf(slides[index]) - track.clientWidth / 2;
+  let tween = 0;
   const goTo = (index, instant = false) => {
-    track.scrollTo({ left: leftFor(index), behavior: instant || reduceMotion ? 'auto' : 'smooth' });
+    cancelAnimationFrame(tween);
+    const to = leftFor(index);
+    if (instant || reduceMotion) { track.scrollLeft = to; track.classList.remove('is-animating'); return; }
+    const from = track.scrollLeft, start = performance.now(), duration = 850;
+    track.classList.add('is-animating');
+    const step = now => {
+      const p = Math.min(1, (now - start) / duration);
+      track.scrollLeft = from + (to - from) * easeOutExpo(p);
+      if (p < 1) tween = requestAnimationFrame(step);
+      else track.classList.remove('is-animating');
+    };
+    tween = requestAnimationFrame(step);
   };
   function paint() {
     const position = (track.scrollLeft + track.clientWidth / 2 - centerOf(slides[0])) / spacing();
@@ -134,7 +165,7 @@ if (track) {
   }
   // Once the scroll settles on a clone, jump to the matching original without animation.
   function settle() {
-    if (dragging) return;
+    if (dragging || track.classList.contains('is-animating')) return;
     if (current < count || current >= count * 2) {
       track.scrollLeft += (current < count ? count : -count) * spacing();
       paint();
@@ -177,19 +208,25 @@ if (track) {
   paint();
 }
 
-/* Hero phone leans slightly toward the pointer. */
+/* Hero phone leans toward the pointer, eased every frame rather than jumping. */
 const phone3d = document.querySelector('.phone3d');
 const hero = document.querySelector('.hero');
 if (phone3d && !reduceMotion && matchMedia('(pointer: fine)').matches) {
+  let targetX = 0, targetY = 0, x = 0, y = 0, running = false;
+  const loop = () => {
+    x += (targetX - x) * 0.07;
+    y += (targetY - y) * 0.07;
+    phone3d.style.setProperty('--ty', `${(x * 14).toFixed(3)}deg`);
+    phone3d.style.setProperty('--tx', `${(-y * 10).toFixed(3)}deg`);
+    running = Math.abs(targetX - x) + Math.abs(targetY - y) > 0.0005;
+    if (running) requestAnimationFrame(loop);
+  };
+  const kick = () => { if (!running) { running = true; requestAnimationFrame(loop); } };
   hero.addEventListener('pointermove', event => {
     const box = hero.getBoundingClientRect();
-    const x = (event.clientX - box.left) / box.width - 0.5;
-    const y = (event.clientY - box.top) / box.height - 0.5;
-    phone3d.style.setProperty('--ty', `${(x * 14).toFixed(2)}deg`);
-    phone3d.style.setProperty('--tx', `${(-y * 10).toFixed(2)}deg`);
+    targetX = (event.clientX - box.left) / box.width - 0.5;
+    targetY = (event.clientY - box.top) / box.height - 0.5;
+    kick();
   });
-  hero.addEventListener('pointerleave', () => {
-    phone3d.style.setProperty('--ty', '0deg');
-    phone3d.style.setProperty('--tx', '0deg');
-  });
+  hero.addEventListener('pointerleave', () => { targetX = 0; targetY = 0; kick(); });
 }

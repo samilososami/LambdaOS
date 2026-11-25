@@ -583,3 +583,70 @@ dialog{padding:0;background:#101010;color:#f4f4f2;border:1px solid #555;width:mi
 @media(max-width:800px){.hero h1{font-size:clamp(38px,10.9vw,56px);letter-spacing:-.068em}}
 /* Largest size at which "The most complete" still fits one line in bold on a phone. */
 @media(max-width:800px){.hero h1{font-size:min(calc((100vw - 48px) / 8.3),58px)}}
+
+/* ---------- revision 8: motion pass. One easing family, longer and softer. ---------- */
+:root{--ease-out:cubic-bezier(.16,1,.3,1);--ease-io:cubic-bezier(.65,0,.35,1)}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+.lenis.lenis-stopped{overflow:hidden}
+
+/* Hero: each line rises out of its own mask, then the rest settles in. */
+.hero h1 .line{overflow:hidden;padding-bottom:.1em;margin-bottom:-.1em}
+.hero h1 .line>span{display:block}
+.js-anim .hero h1 .line{animation:none}
+.js-anim .hero h1 .line>span{animation:line-up 1.3s var(--ease-out) both}
+.js-anim .hero h1 .line:nth-child(1)>span{animation-delay:.12s}
+.js-anim .hero h1 .line:nth-child(2)>span{animation-delay:.2s}
+.js-anim .hero h1 .line:nth-child(3)>span{animation-delay:.28s}
+.js-anim .hero h1 .line:nth-child(4)>span{animation-delay:.36s}
+.js-anim .hero-description{animation:soft-in 1.3s .62s var(--ease-out) both}
+.js-anim .hero-phone{animation:phone-in 1.8s .28s var(--ease-out) both,float 9s 2.2s ease-in-out infinite}
+.js-anim .hero-ribbon{animation:ribbon-in 2.2s .05s var(--ease-out) both}
+@keyframes line-up{from{transform:translateY(108%)}}
+@keyframes soft-in{from{opacity:0;transform:translateY(18px);filter:blur(6px)}}
+@keyframes phone-in{from{opacity:0;translate:0 90px;scale:.94}}
+@keyframes float{50%{translate:0 -12px}}
+@keyframes ribbon-in{from{opacity:0;translate:0 70px}}
+.phone3d{transition:none}
+
+/* Header */
+.site-header{animation:header-in 1s var(--ease-out) backwards}
+.header-inner,.site-header .wordmark{transition-duration:.6s;transition-timing-function:var(--ease-out)}
+.desktop-nav a{transition:color .45s var(--ease-out),background-size .7s var(--ease-out)}
+.menu-toggle span{transition:top .55s var(--ease-out),transform .55s var(--ease-out),opacity .3s}
+
+/* Scroll reveals: rise, unblur, fade; groups follow one after another. */
+.js-anim [data-reveal]{opacity:0;transform:translateY(44px);filter:blur(8px);transition:opacity 1.1s var(--ease-out),transform 1.4s var(--ease-out),filter 1.1s var(--ease-out)}
+.js-anim .carousel[data-reveal]{filter:none;transform:translateY(60px)}
+.js-anim [data-reveal].in-view{opacity:1;transform:none;filter:none}
+.js-anim [data-stagger]>*{opacity:0;transform:translateY(48px);transition:opacity 1s var(--ease-out),transform 1.3s var(--ease-out);transition-delay:calc(var(--i,0)*110ms)}
+.js-anim [data-stagger].in-view>*{opacity:1;transform:none}
+
+/* Hover and press feedback, all on the same curve. */
+.button,.text-link .icon,.contact-mail .icon,.hero-status{transition-duration:.5s;transition-timing-function:var(--ease-out)}
+.stack-node{transition:border-color .45s var(--ease-out),transform .7s var(--ease-out)}
+.stack-node:hover{transform:translateY(-3px)}
+.stack-core{transition:transform .7s var(--ease-out)}
+.stack-core:hover{transform:scale(1.015)}
+.carousel-arrow{transition:background .4s var(--ease-out),color .4s,border-color .4s,transform .5s var(--ease-out)}
+.carousel-arrow:active{transform:scale(.92)}
+.social a{transition:color .4s var(--ease-out),background .4s var(--ease-out),transform .6s var(--ease-out)}
+.social a:hover{transform:translateY(-2px)}
+.lex-shot img,.operator-phone img{transition:transform 1s var(--ease-out)}
+.lex-shot:hover img{transform:scale(1.015)}
+.dev-stages li{transition:background .5s var(--ease-out)}
+.dev-stages li:hover{background:rgba(255,255,255,.025)}
+
+/* Mobile menu: softer in, softer out. */
+@media(max-width:800px){
+  .mobile-menu{animation:menu-fade .5s var(--ease-out) both}
+  .mobile-menu:not([hidden]) nav a{animation:menu-link-in .9s var(--ease-out) both}
+  .mobile-menu nav a:nth-child(1){animation-delay:.06s}.mobile-menu nav a:nth-child(2){animation-delay:.11s}.mobile-menu nav a:nth-child(3){animation-delay:.16s}
+  .mobile-menu nav a:nth-child(4){animation-delay:.21s}.mobile-menu nav a:nth-child(5){animation-delay:.26s}.mobile-menu nav a:nth-child(6){animation-delay:.31s}
+  .mobile-menu:not([hidden]) .mobile-menu-foot{animation:menu-link-in .9s .36s var(--ease-out) both}
+  .mobile-menu.is-closing{animation:menu-out .38s var(--ease-io) forwards}
+  .mobile-menu.is-closing nav a,.mobile-menu.is-closing .mobile-menu-foot{animation:menu-link-out .3s var(--ease-io) forwards}
+}
+@keyframes menu-link-in{from{opacity:0;transform:translateY(28px)}}
+@keyframes menu-fade{from{opacity:0}}
+.carousel-track.is-animating{scroll-snap-type:none}
