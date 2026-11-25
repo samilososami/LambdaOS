@@ -11,7 +11,7 @@ captures, folded-paper art and the project films.
 Requires Node.js 20.19+ or 22.12+ and npm.
 
 ```sh
-cd /tools/codex/workspace/LambdaOS-web
+cd site
 npm ci
 npm run dev -- --port 8882 --strictPort
 ```
