@@ -98,17 +98,16 @@
     <section class="hero" id="top" aria-labelledby="hero-title">
       <div class="hero-art" aria-hidden="true"><img src="/assets/hero-art.webp" width="1536" height="1024" alt="" fetchpriority="high" /></div>
       <div class="hero-content wrap">
-        <h1 id="hero-title">The most complete<br>operating system<br>for pentesting<br>on Android.</h1>
+        <h1 id="hero-title"><span class="line">The most complete</span><span class="line">operating system</span><span class="line">for pentesting</span><span class="line">on Android.</span></h1>
         <p class="hero-description">Designed around the Samsung Galaxy S10.<br>Part of Lambda Project.</p>
         <div class="hero-actions"><a class="button button-light" href="#sistema">Explore the system <svg class="icon"><use href="#arrow-right"/></svg></a><a class="text-link" href="https://github.com/samilososami/LambdaOS" target="_blank" rel="noopener">View the code <svg class="icon"><use href="#arrow-up"/></svg></a></div>
       </div>
-      <div class="device-strip wrap"><span>Galaxy S10 <span class="muted">· SM-G973F</span></span><span>Android 15</span><a href="#desarrollo"><span class="status-dot"></span> In development · Alpha <svg class="icon"><use href="#arrow-right"/></svg></a></div>
     </section>
 
     <section class="system light-section" id="sistema" aria-labelledby="system-title">
       <div class="wrap">
-        <div class="section-heading"><div><h2 id="system-title">The system.</h2><p class="section-intro">A distinct identity, from the first boot.</p></div></div>
-        <div class="screen-grid">
+        <div class="section-heading" data-reveal><div><h2 id="system-title">The system.</h2><p class="section-intro">A distinct identity, from the first boot.</p></div></div>
+        <div class="screen-grid" data-stagger>
           <figure><div class="phone"><img src="/assets/setup-welcome.webp" width="900" height="1900" alt="LambdaOS setup wizard on the Samsung S10" loading="lazy" /></div><figcaption><strong>Welcome</strong><span>A custom setup wizard: language, connectivity, security and preferences.</span></figcaption></figure>
           <figure><div class="phone"><img src="/assets/lockscreen.webp" width="900" height="1900" alt="Actual lock screen with clock, dark wallpaper and fingerprint sensor" loading="lazy" /></div><figcaption><strong>Lock screen</strong><span>Clock, authentication and a wallpaper designed to complement the interface.</span></figcaption></figure>
           <figure><div class="phone"><img src="/assets/quick-settings.webp" width="900" height="1900" alt="Native Android quick settings with the LambdaOS monochrome palette" loading="lazy" /></div><figcaption><strong>Controls</strong><span>Native Android controls, with the LambdaOS monochrome palette.</span></figcaption></figure>
@@ -116,7 +115,7 @@
         </div>
         <p class="evidence-note">Actual screenshots from a development build on the S10.</p>
 
-        <div class="wallpaper-section">
+        <div class="wallpaper-section" data-reveal>
           <div class="wallpaper-copy"><h3>The same form.<br>Two perspectives.</h3><p>Black, white and just enough texture. The appearance you choose during setup determines your initial wallpaper. After that, wallpaper and theme are independent.</p><a class="text-link" href="https://github.com/samilososami/LambdaOS/tree/main/assets/wallpapers" target="_blank" rel="noopener">View original wallpapers <svg class="icon"><use href="#arrow-up"/></svg></a></div>
           <div class="wallpaper-pair"><figure><img src="/assets/wallpaper-dark.webp" alt="Dark wallpaper with the lambda symbol behind the fold" width="864" height="1821" loading="lazy" /><figcaption>Dark</figcaption></figure><figure><img src="/assets/wallpaper-light.webp" alt="Light version of the same wallpaper" width="865" height="1819" loading="lazy" /><figcaption>Light</figcaption></figure></div>
         </div>
@@ -124,11 +123,11 @@
     </section>
 
     <section class="operator dark-section" id="operator" aria-labelledby="operator-title"><div class="wrap">
-      <div class="operator-layout"><div><h2 id="operator-title">Lambda<br>Operator.</h2><p class="large-copy">The interface and terminal,<br>connected to the same system.</p><p class="body-copy">I’m building a shared layer for operations, permissions and results. The app is already part of the alpha; workflows are still in development.</p></div>
+      <div class="operator-layout" data-reveal><div><h2 id="operator-title">Lambda<br>Operator.</h2><p class="large-copy">The interface and terminal,<br>connected to the same system.</p><p class="body-copy">I’m building a shared layer for operations, permissions and results. The app is already part of the alpha; workflows are still in development.</p></div>
         <figure class="architecture"><div class="arch-top"><div class="arch-node"><svg class="icon"><use href="#window"/></svg>Operator</div><div class="arch-node"><svg class="icon"><use href="#terminal"/></svg>Terminal</div></div><div class="arch-join"></div><div class="arch-node arch-core"><img src="/favicon.svg" width="34" height="34" alt="" />Lambda Core</div><div class="arch-stem"></div><div class="arch-node arch-base"><svg class="icon"><use href="#device"/></svg>Android · Kernel · Peripherals</div><figcaption>Architecture in development</figcaption></figure>
       </div>
 
-      <div class="operator-shots">
+      <div class="operator-shots" data-stagger>
         <figure><img src="/assets/operator/operator-home.webp" width="900" height="1900" alt="Operator home: Wi-Fi, Bluetooth, USB, CAN, network and radio" loading="lazy" /><figcaption><span class="row-number">01</span>Tools by category</figcaption></figure>
         <figure><img src="/assets/operator/op-capture.webp" width="900" height="1900" alt="Handshake capture waiting for a connection on the lab network" loading="lazy" /><figcaption><span class="row-number">02</span>Passive capture on the lab network</figcaption></figure>
         <figure><img src="/assets/operator/op-confirm.webp" width="900" height="1900" alt="Confirmation before a deauthentication burst" loading="lazy" /><figcaption><span class="row-number">03</span>Active steps ask for confirmation</figcaption></figure>
@@ -136,23 +135,19 @@
       </div>
       <p class="shots-note">Developer build on the reference S10, tested only on the author’s own lab network. The router address is masked.</p>
 
-      <div class="capability-list">
-        <details><summary><span class="row-number">01</span><span>Networks and connectivity</span><svg class="icon plus"><use href="#plus"/></svg></summary><div class="detail-content"><p>Wi-Fi, Bluetooth and networking, organized by task. Each operation should show what it needs, what it is doing and what it has found.</p><p class="muted">Operational workflows are in development. The interface does not mean every capability is available.</p></div></details>
-        <details><summary><span class="row-number">02</span><span>Device and peripherals</span><svg class="icon plus"><use href="#plus"/></svg></summary><div class="detail-content"><p>USB, HID, CAN and radio adapters. The kernel is being integrated and validated on the S10; support will be documented by chipset and tested capability.</p><p class="muted">A compiled driver is no substitute for testing the physical adapter.</p></div></details>
-        <details><summary><span class="row-number">03</span><span>Operations and results</span><svg class="icon plus"><use href="#plus"/></svg></summary><div class="detail-content"><p>The same operation from Operator or the terminal, with shared state, cancellation and structured results. This is the direction of Lambda Core.</p></div></details>
-      </div>
-      <div class="lamb-checkpoint"><img src="/assets/lamb.webp" width="420" height="420" alt="Lamb, the LambdaOS mascot" loading="lazy" /><div><h3>Lamb</h3><p>On-device research, on hold.</p><p class="lamb-note">Development of the assistant will resume once system operations are defined. The current ROM does not include an AI model.</p></div><a class="text-link" href="https://github.com/samilososami/LambdaOS/blob/main/docs/LAMB-CHECKPOINT.md" target="_blank" rel="noopener">View the checkpoint <svg class="icon"><use href="#arrow-up"/></svg></a></div>
     </div></section>
 
     <section class="lex light-section" id="lex" aria-labelledby="lex-title"><div class="wrap">
-      <div class="lex-layout"><div><h2 id="lex-title">LEX.</h2><p class="section-intro">A Linux desktop on the phone.</p></div><p class="lex-copy">Kali Linux in a slim XFCE session, drawn by a native viewer inside Operator, with no web layer in between. A top bar, a dock and a terminal one tap away, in about 100 MB of memory.</p></div>
+      <div class="lex-layout" data-reveal><div><h2 id="lex-title">LEX.</h2><p class="section-intro">A Linux desktop on the phone.</p></div><p class="lex-copy">Kali Linux in a slim XFCE session, drawn by a native viewer inside Operator, with no web layer in between. A top bar, a dock and a terminal one tap away, in about 100 MB of memory.</p></div>
+      <div class="lex-shots" data-stagger>
       <figure class="lex-shot"><img src="/assets/lex-desktop.webp" width="2280" height="1080" alt="LEX desktop on the S10 with the top bar, a file manager and the dock" loading="lazy" /></figure>
       <figure class="lex-shot"><img src="/assets/lex-menu.webp" width="2280" height="1080" alt="LEX application menu open over the desktop" loading="lazy" /></figure>
-      <dl class="lex-facts"><div><dt>Canvas</dt><dd>2280 × 1080</dd></div><div><dt>Session</dt><dd>Kali Rolling, XFCE</dd></div><div><dt>Viewer</dt><dd>Native, inside Operator</dd></div><div><dt>Status</dt><dd>In development</dd></div></dl>
+      </div>
+      <dl class="lex-facts" data-stagger><div><dt>Canvas</dt><dd>2280 × 1080</dd></div><div><dt>Session</dt><dd>Kali Rolling, XFCE</dd></div><div><dt>Viewer</dt><dd>Native, inside Operator</dd></div><div><dt>Status</dt><dd>In development</dd></div></dl>
     </div></section>
 
     <section class="development dark-section" id="desarrollo" aria-labelledby="development-title"><div class="wrap">
-      <div class="development-layout"><div><h2 id="development-title">Development.</h2><p class="body-copy">LambdaOS is in alpha. The system already boots on the reference device; public distribution is being prepared.</p><p class="release-note">There is no public ROM download yet. Initial releases will include requirements, instructions, SHA-256 checksums and known issues.</p><a class="text-link" href="https://github.com/samilososami/LambdaOS/releases" target="_blank" rel="noopener">View releases <svg class="icon"><use href="#arrow-up"/></svg></a></div>
+      <div class="development-layout" data-reveal><div><h2 id="development-title">Development.</h2><p class="body-copy">LambdaOS is in alpha. The system already boots on the reference device; public distribution is being prepared.</p><p class="release-note">There is no public ROM download yet. Initial releases will include requirements, instructions, SHA-256 checksums and known issues.</p><a class="text-link" href="https://github.com/samilososami/LambdaOS/releases" target="_blank" rel="noopener">View releases <svg class="icon"><use href="#arrow-up"/></svg></a></div>
         <div class="roadmap">
           <details open><summary><span class="row-number">01</span><span>System foundation</span><span class="stage">Implemented</span><svg class="icon"><use href="#chevron"/></svg></summary><p>Android 15, setup wizard, boot sequence, lock screen and a consistent palette. The foundation uses LineageOS 22.2 and is tested on the reference S10.</p></details>
           <details><summary><span class="row-number">02</span><span>Kernel and hardware</span><span class="stage">In validation</span><svg class="icon"><use href="#chevron"/></svg></summary><p>Kernel 4.14.356 with 95 modules. Monitor-mode receive is verified on the internal Wi-Fi and on the Alfa AWUS036ACH at 2.4 GHz; injection and 5 GHz are tested separately.</p></details>
@@ -162,12 +157,12 @@
           <details><summary><span class="row-number">06</span><span>Lamb</span><span class="stage">On hold</span><svg class="icon"><use href="#chevron"/></svg></summary><p>The checkpoint preserves the on-device model tests. Fine-tuning will resume when training can reflect the actual tools and behavior of LambdaOS.</p></details>
         </div>
       </div>
-      <div class="specifications"><div><svg class="icon"><use href="#device"/></svg><div><h3>Samsung Galaxy S10</h3><p>SM-G973F · beyond1lte<br>Exynos 9820</p></div></div><div><div><h3>Android 15</h3><p>Based on LineageOS 22.2<br>No Google Apps included</p></div></div><a class="button button-outline" href="https://github.com/samilososami/LambdaOS/blob/main/ROADMAP.md" target="_blank" rel="noopener">View the roadmap <svg class="icon"><use href="#arrow-up"/></svg></a></div>
+      <div class="specifications" data-reveal><div><svg class="icon"><use href="#device"/></svg><div><h3>Samsung Galaxy S10</h3><p>SM-G973F · beyond1lte<br>Exynos 9820</p></div></div><div><div><h3>Android 15</h3><p>Based on LineageOS 22.2<br>No Google Apps included</p></div></div><a class="button button-outline" href="https://github.com/samilososami/LambdaOS/blob/main/ROADMAP.md" target="_blank" rel="noopener">View the roadmap <svg class="icon"><use href="#arrow-up"/></svg></a></div>
     </div></section>
 
-    <section class="origin light-section" id="proyecto" aria-labelledby="origin-title"><div class="wrap origin-layout"><div><h2 id="origin-title">The idea.</h2><div class="author"><span>Sami González Kamel</span><a href="https://samilososami.com" target="_blank" rel="noopener">@samilososami <svg class="icon"><use href="#arrow-up"/></svg></a></div></div><div class="origin-story"><p>It started with <a href="https://www.ubisoft.com/en-us/games/watch-dogs-2" target="_blank" rel="noopener">Watch Dogs</a>. I was drawn to how easily Aiden Pearce and Marcus Holloway interacted with technology from a phone.</p><p>Then I discovered <a href="https://www.kali.org/get-kali/#kali-mobile" target="_blank" rel="noopener">Kali NetHunter</a>. I liked what it made possible, but wanted to take the idea further: a more integrated, intuitive experience, with less switching between tools.</p><p>That is how LambdaOS began, as part of Lambda Project. I’m designing a system dedicated to pentesting and cybersecurity around the Galaxy S10, from the interface down to the hardware.</p></div></div><img class="origin-art" src="/assets/fold-art.webp" width="1536" height="640" alt="" loading="lazy" /></section>
+    <section class="origin light-section" id="proyecto" aria-labelledby="origin-title"><div class="wrap origin-layout" data-reveal><div><h2 id="origin-title">The idea.</h2><div class="author"><span>Sami González Kamel</span><a href="https://samilososami.com" target="_blank" rel="noopener">@samilososami <svg class="icon"><use href="#arrow-up"/></svg></a></div></div><div class="origin-story"><p>It started with <a href="https://www.ubisoft.com/en-us/games/watch-dogs-2" target="_blank" rel="noopener">Watch Dogs</a>. I was drawn to how easily Aiden Pearce and Marcus Holloway interacted with technology from a phone.</p><p>Then I discovered <a href="https://www.kali.org/get-kali/#kali-mobile" target="_blank" rel="noopener">Kali NetHunter</a>. I liked what it made possible, but wanted to take the idea further: a more integrated, intuitive experience, with less switching between tools.</p><p>That is how LambdaOS began, as part of Lambda Project. I’m designing a system dedicated to pentesting and cybersecurity around the Galaxy S10, from the interface down to the hardware.</p></div></div><img class="origin-art" src="/assets/fold-art.webp" width="1536" height="640" alt="" loading="lazy" /></section>
 
-    <section class="support light-section" id="apoyo" aria-labelledby="support-title"><div class="wrap support-layout">
+    <section class="support light-section" id="apoyo" aria-labelledby="support-title"><div class="wrap support-layout" data-reveal>
       <div><h2 id="support-title">Support.</h2><p class="support-copy">LambdaOS is developed by one person, alongside my studies. If it helps you and you would like it to keep growing, you can support it. It is completely optional: nothing on this site is paid, and nothing changes if you don’t.</p><p class="support-copy">Every contribution goes towards hardware, time and, honestly, motivation to keep going.</p><p class="support-note">Only send what you can spare. Crypto transfers are final; double-check the address before sending.</p></div>
       <ul class="support-list">
         <li><span class="method">Bitcoin</span><code>bc1qa8r8ll0m0e58f3ngrauh08nnzdn0alm825nc3r</code><span class="actions"><button class="copy-button" type="button" aria-label="Copy Bitcoin address">Copy</button></span></li>
@@ -179,7 +174,7 @@
   </main>
 
   <footer class="site-footer"><div class="wrap">
-    <a class="footer-mark" href="#top" aria-label="Back to top"><span aria-hidden="true"></span></a>
+    <a class="footer-mark" data-reveal href="#top" aria-label="Back to top"><span aria-hidden="true"></span></a>
     <div class="footer-main"><span>Part of Lambda Project</span><nav aria-label="Resources"><a href="https://github.com/samilososami/LambdaOS" target="_blank" rel="noopener">GitHub</a><a href="https://www.tiktok.com/@lambdaosproject" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/lambdaosproject/" target="_blank" rel="noopener">Instagram</a><a href="https://github.com/samilososami/LambdaOS/blob/main/ROADMAP.md" target="_blank" rel="noopener">Roadmap</a><a href="https://github.com/samilososami/LambdaOS/blob/main/NOTICE.md" target="_blank" rel="noopener">Credits</a></nav></div>
     <div class="footer-bottom"><p>An independent project based on AOSP and LineageOS. Not affiliated with Samsung or LineageOS.</p><a href="https://samilososami.com" target="_blank" rel="noopener">Sami González Kamel <svg class="icon"><use href="#arrow-up"/></svg></a></div>
   </div></footer>

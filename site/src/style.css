@@ -166,3 +166,77 @@ dialog{padding:0;background:#101010;color:#f4f4f2;border:1px solid #555;width:mi
 }
 .support-list .actions{align-items:center}
 .support-list .actions a{display:inline-flex;align-items:center}
+
+/* ---------- 2026-11-25 revision 2: full-bleed hero, compact rows, motion ---------- */
+/* Hero fills the first screen edge to edge; text sits on a dark gradient, not on the phone. */
+.hero{min-height:calc(100svh - 78px);display:flex;align-items:center}
+.hero-art{position:absolute;inset:0;max-width:none!important;margin:0!important}
+.hero-art img{width:100%;height:100%;object-fit:cover;object-position:78% 50%;will-change:translate}
+.hero:after{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(90deg,#080808 0%,rgba(8,8,8,.88) 30%,rgba(8,8,8,.35) 52%,rgba(8,8,8,0) 66%),linear-gradient(0deg,#080808 0%,rgba(8,8,8,0) 22%)}
+.hero-content{padding-block:72px;width:100%}
+.hero h1 .line{display:block}
+
+/* Screens: one compact row, captions under each. */
+.screen-grid{gap:clamp(16px,2.2vw,36px);padding-top:56px}
+.screen-grid .phone{max-width:230px}
+.screen-grid figcaption{font-size:14px}
+.operator-shots{gap:clamp(16px,2.2vw,36px);margin-top:88px}
+.operator-shots img{max-width:220px}
+.operator-shots figcaption{font-size:14px}
+.operator .shots-note{margin-top:28px}
+.operator{padding-bottom:110px}
+
+/* Header: slides in, tightens on scroll, marks the section you are in. */
+.site-header{animation:header-in .7s cubic-bezier(.2,.8,.2,1) both;transition:box-shadow .3s}
+.header-inner{transition:height .35s cubic-bezier(.2,.8,.2,1)}
+.site-header .wordmark{transition:width .35s cubic-bezier(.2,.8,.2,1)}
+.site-header.is-scrolled{box-shadow:0 10px 30px -18px rgba(0,0,0,.9)}
+.site-header.is-scrolled .header-inner{height:62px}
+.site-header.is-scrolled .wordmark{width:150px}
+.desktop-nav a{color:#bdbdbd;transition:color .25s,background-size .35s cubic-bezier(.2,.8,.2,1)}
+.desktop-nav a:hover,.desktop-nav a.is-active{color:#fff;background-size:100% 1.5px}
+.header-github{transition:background .2s,transform .2s}
+.header-github:hover{background:#fff;transform:translateY(-1px)}
+.mobile-menu:not([hidden]) a{animation:menu-in .45s cubic-bezier(.2,.8,.2,1) both}
+.mobile-menu a:nth-child(2){animation-delay:.04s}.mobile-menu a:nth-child(3){animation-delay:.08s}.mobile-menu a:nth-child(4){animation-delay:.12s}.mobile-menu a:nth-child(5){animation-delay:.16s}.mobile-menu a:nth-child(6){animation-delay:.2s}.mobile-menu a:nth-child(7){animation-delay:.24s}
+@keyframes header-in{from{transform:translateY(-100%)}}
+@keyframes menu-in{from{opacity:0;transform:translateY(-10px)}}
+
+/* Hero entrance and scroll reveals (only when JS adds .js-anim). */
+.js-anim .hero h1 .line,.js-anim .hero-description,.js-anim .hero-actions{animation:rise .9s cubic-bezier(.2,.8,.2,1) both}
+.js-anim .hero h1 .line:nth-child(2){animation-delay:.08s}
+.js-anim .hero h1 .line:nth-child(3){animation-delay:.16s}
+.js-anim .hero h1 .line:nth-child(4){animation-delay:.24s}
+.js-anim .hero-description{animation-delay:.36s}
+.js-anim .hero-actions{animation-delay:.46s}
+.js-anim .hero-art img{animation:settle 1.8s cubic-bezier(.2,.8,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(34px)}}
+@keyframes settle{from{opacity:0;scale:1.08}}
+.js-anim [data-reveal]{opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1)}
+.js-anim [data-stagger]>*{opacity:0;transform:translateY(36px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1);transition-delay:calc(var(--i,0)*90ms)}
+.js-anim [data-reveal].in-view,.js-anim [data-stagger].in-view>*{opacity:1;transform:none}
+.screen-grid .phone,.operator-shots img,.lex-shot img{transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.screen-grid figure:hover .phone,.operator-shots figure:hover img{transform:translateY(-6px)}
+
+@media(max-width:1100px){
+  .screen-grid,.operator-shots{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .screen-grid figcaption span{display:none}
+}
+@media(max-width:800px){
+  .hero{min-height:0;display:flex}
+  .hero:after{display:none}
+  .hero-content{padding-block:52px 0}
+  /* Phones scroll sideways instead of stacking into a wall of screens. */
+  .screen-grid,.operator-shots{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:16px;margin-inline:calc(var(--gutter)*-1);padding-inline:var(--gutter);padding-bottom:8px;scrollbar-width:none}
+  .screen-grid::-webkit-scrollbar,.operator-shots::-webkit-scrollbar{display:none}
+  .screen-grid figure,.operator-shots figure{flex:0 0 58%;scroll-snap-align:start}
+  .screen-grid figcaption span{display:block}
+  .site-header.is-scrolled .header-inner{height:58px}
+  .site-header.is-scrolled .wordmark{width:136px}
+}
+@media(prefers-reduced-motion:reduce){
+  .js-anim [data-reveal],.js-anim [data-stagger]>*{opacity:1;transform:none}
+}
+.lex-shots{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.lex-shots .lex-shot+.lex-shot{margin-top:0}
+@media(max-width:800px){.lex-shots{grid-template-columns:1fr;gap:16px}}

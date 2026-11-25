@@ -33,3 +33,46 @@ document.querySelectorAll('.copy-button').forEach(button => button.addEventListe
 }));
 
 setupLanguage(() => setMenu(menuButton.getAttribute('aria-expanded') === 'true'));
+
+/* Motion: reveals on scroll, a header that tightens, a slow hero parallax. */
+const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (!reduceMotion && 'IntersectionObserver' in window) {
+  document.documentElement.classList.add('js-anim');
+  document.querySelectorAll('[data-stagger]').forEach(group => {
+    [...group.children].forEach((child, i) => child.style.setProperty('--i', i));
+  });
+  const reveal = new IntersectionObserver(entries => entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    entry.target.classList.add('in-view');
+    reveal.unobserve(entry.target);
+  }), { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('[data-reveal],[data-stagger]').forEach(el => reveal.observe(el));
+}
+
+const header = document.querySelector('.site-header');
+const heroImage = document.querySelector('.hero-art img');
+let ticking = false;
+function onScroll() {
+  ticking = false;
+  header.classList.toggle('is-scrolled', scrollY > 24);
+  if (!reduceMotion && innerWidth > 800 && scrollY < innerHeight * 1.2) {
+    heroImage.style.translate = `0 ${(scrollY * 0.18).toFixed(1)}px`;
+  }
+}
+addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+onScroll();
+
+/* The nav marks the section currently in the middle of the screen. */
+const navLinks = [...document.querySelectorAll('.desktop-nav a')];
+const spy = new IntersectionObserver(entries => entries.forEach(entry => {
+  if (!entry.isIntersecting) return;
+  navLinks.forEach(link => link.classList.toggle('is-active', link.getAttribute('href') === `#${entry.target.id}`));
+}), { rootMargin: '-45% 0px -50% 0px' });
+navLinks.forEach(link => {
+  const target = document.querySelector(link.getAttribute('href'));
+  if (target) spy.observe(target);
+});
+const heroSpy = new IntersectionObserver(([entry]) => {
+  if (entry.isIntersecting) navLinks.forEach(link => link.classList.remove('is-active'));
+}, { rootMargin: '-45% 0px -50% 0px' });
+heroSpy.observe(document.querySelector('.hero'));
