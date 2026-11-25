@@ -426,3 +426,74 @@ dialog{padding:0;background:#101010;color:#f4f4f2;border:1px solid #555;width:mi
 .hero-actions{justify-content:flex-start}
 .hero-description{max-width:none}
 @media(max-width:800px){.hero-actions{align-items:flex-start}}
+
+/* ---------- revision 5: compact hero with a 3D phone, social icons, mobile pass ---------- */
+.hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);align-items:center;min-height:calc(100svh - 68px);max-width:none;padding-inline:max(var(--gutter),calc((100vw - 1536px)/2 + var(--gutter)))}
+.hero .hero-content{max-width:none;padding:0 0 clamp(40px,8vh,90px);margin:0}
+.hero h1{font-size:clamp(56px,6.4vw,112px);line-height:.92;letter-spacing:-.065em;font-weight:600}
+@media(min-width:801px){.hero h1 .line{white-space:nowrap}}
+.hero-description{margin-top:30px;font-size:clamp(17px,1.3vw,20px);line-height:1.5}
+.hero-actions{margin-top:36px}
+.hero-ribbon{height:min(38%,440px);z-index:0}
+
+/* A single S10 in perspective, resting on the paper. */
+.hero-phone{position:relative;z-index:1;justify-self:center;align-self:center;height:min(74svh,700px);aspect-ratio:900/1900;perspective:1800px;margin-bottom:clamp(20px,5vh,60px)}
+.phone3d{position:absolute;inset:0;transform-style:preserve-3d;transform:rotateY(-24deg) rotateX(8deg) rotateZ(5deg);transition:transform .9s cubic-bezier(.2,.8,.2,1)}
+.phone3d-back{position:absolute;inset:0;border-radius:13% / 6.2%;background:linear-gradient(90deg,#2a2a2a,#050505 18%,#0b0b0b 82%,#3a3a3a);transform:translateZ(-16px)}
+.phone3d-body{position:absolute;inset:0;border-radius:13% / 6.2%;padding:3.2%;background:linear-gradient(140deg,#6b6b6b,#1a1a1a 14%,#050505 40%,#0b0b0b 78%,#5a5a5a);box-shadow:inset 0 0 0 1px rgba(255,255,255,.16),inset 0 0 0 4px #050505;overflow:hidden}
+.phone3d-body img{width:100%;height:100%;object-fit:cover;border-radius:10.8% / 5.1%}
+.phone3d-glare{position:absolute;inset:0;border-radius:inherit;background:linear-gradient(118deg,rgba(255,255,255,.16) 0%,rgba(255,255,255,.05) 34%,transparent 35%);pointer-events:none}
+.phone3d-punch{position:absolute;top:4.2%;right:13%;width:4.6%;aspect-ratio:1;border-radius:50%;background:#000;box-shadow:inset 0 0 0 1.5px #1d1d1d}
+.phone3d-shadow{position:absolute;left:4%;right:-14%;bottom:-5%;height:9%;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.34),transparent);filter:blur(10px);transform:skewX(-20deg)}
+.js-anim .hero-phone{animation:phone-in 1.3s .2s cubic-bezier(.2,.8,.2,1) both}
+@keyframes phone-in{from{opacity:0;translate:0 50px}}
+
+/* Social icons. */
+.social{display:flex;align-items:center;gap:6px}
+.social a{width:40px;height:40px;display:grid;place-items:center;border-radius:50%;color:#bdbdbd;transition:color .2s,background .2s}
+.social a:hover{color:#fff;background:#1b1b1b}
+.social svg{width:20px;height:20px}
+.site-footer .footer-main{flex-wrap:wrap}
+.site-footer .footer-main .social{margin-left:auto;margin-right:12px}
+.mobile-menu-foot .social a{color:#cfcfcf}
+
+@media(max-width:1100px){
+  .hero{grid-template-columns:1.1fr .9fr}
+  .hero h1{font-size:clamp(48px,6.6vw,80px)}
+  .hero-phone{height:min(62svh,560px)}
+}
+@media(max-width:800px){
+  html{scroll-padding-top:70px}
+  .hero{display:flex;flex-direction:column;align-items:stretch;padding-inline:var(--gutter);min-height:0;padding-bottom:40px}
+  .hero .hero-content{padding:44px 0 0}
+  .hero h1{font-size:clamp(42px,12.2vw,58px);line-height:.95}
+  .hero h1 .line{white-space:normal}
+  .hero-description{font-size:16px;margin-top:20px}
+  .hero-actions{flex-direction:row;flex-wrap:wrap;align-items:center;gap:12px 22px;margin-top:28px}
+  .hero-actions .button{min-height:50px;padding:14px 18px;gap:16px}
+  .hero-phone{height:420px;margin:36px auto 0}
+  .phone3d{transform:rotateY(-18deg) rotateX(6deg) rotateZ(4deg)}
+  .hero-ribbon{height:300px}
+  h2,.status h2,.origin h2,.contact h2,.dev-head h2{font-size:clamp(40px,11vw,52px)}
+  .operator h2{font-size:clamp(40px,11vw,52px)}
+  .dark-section,.origin,.operator,.development,.contact,.lex,.system{padding-block:72px}
+  .section-intro{font-size:16px;margin-top:14px}
+  .carousel-controls{display:none}
+  .carousel{margin-top:20px}
+  .carousel-track{--w:62vw;gap:22px}
+  .operator .large-copy{font-size:22px}
+  .architecture{transform:scale(.92);transform-origin:top center}
+  .arch-node{min-height:64px;padding:16px 10px;font-size:14px}
+  .arch-core{min-height:84px}
+  .operator-shots{margin-top:40px}
+  .lex-layout{margin-bottom:32px}
+  .site-footer .footer-main .social{margin-left:0}
+  .site-footer .footer-main nav{width:100%}
+}
+@media(min-width:801px){.phone3d{transform:rotateY(calc(-24deg + var(--ty,0deg))) rotateX(calc(8deg + var(--tx,0deg))) rotateZ(5deg)}}
+@media(max-width:800px){
+  .hero .hero-content{order:1}
+  .hero-phone{order:2;height:400px}
+  .hero h1{font-size:clamp(34px,10vw,50px)}
+  .hero-ribbon{height:260px}
+}

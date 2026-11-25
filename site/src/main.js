@@ -137,3 +137,20 @@ if (track) {
   paint();
   requestAnimationFrame(() => goTo(0));
 }
+
+/* Hero phone leans slightly toward the pointer. */
+const phone3d = document.querySelector('.phone3d');
+const hero = document.querySelector('.hero');
+if (phone3d && !reduceMotion && matchMedia('(pointer: fine)').matches) {
+  hero.addEventListener('pointermove', event => {
+    const box = hero.getBoundingClientRect();
+    const x = (event.clientX - box.left) / box.width - 0.5;
+    const y = (event.clientY - box.top) / box.height - 0.5;
+    phone3d.style.setProperty('--ty', `${(x * 14).toFixed(2)}deg`);
+    phone3d.style.setProperty('--tx', `${(-y * 10).toFixed(2)}deg`);
+  });
+  hero.addEventListener('pointerleave', () => {
+    phone3d.style.setProperty('--ty', '0deg');
+    phone3d.style.setProperty('--tx', '0deg');
+  });
+}
