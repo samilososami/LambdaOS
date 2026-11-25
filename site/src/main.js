@@ -1,15 +1,43 @@
 import './style.css';
 import { t, setupLanguage } from './i18n.js';
 
+const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const menuButton = document.querySelector('.menu-toggle');
 const mobileMenu = document.querySelector('#mobile-menu');
 
+/* The looping carousel needs its clones in the DOM before the language switch indexes the text. */
+const track = document.querySelector('.carousel-track');
+const originals = track ? [...track.children] : [];
+if (track) {
+  const clone = slide => {
+    const copy = slide.cloneNode(true);
+    copy.setAttribute('aria-hidden', 'true');
+    copy.classList.add('is-clone');
+    return copy;
+  };
+  track.prepend(...originals.map(clone));
+  track.append(...originals.map(clone));
+}
+
+let closeTimer;
 function setMenu(open) {
-  mobileMenu.hidden = !open;
+  clearTimeout(closeTimer);
   // Lock the page on <html>: overflow on <body> would make it a scroll container and unstick the header.
   document.documentElement.style.overflow = open ? 'hidden' : '';
   menuButton.setAttribute('aria-expanded', String(open));
   menuButton.setAttribute('aria-label', t(open ? 'Cerrar menú' : 'Abrir menú'));
+  if (open) {
+    mobileMenu.classList.remove('is-closing');
+    mobileMenu.hidden = false;
+    return;
+  }
+  if (mobileMenu.hidden) return;
+  if (reduceMotion) { mobileMenu.hidden = true; return; }
+  mobileMenu.classList.add('is-closing');
+  closeTimer = setTimeout(() => {
+    mobileMenu.hidden = true;
+    mobileMenu.classList.remove('is-closing');
+  }, 300);
 }
 menuButton.addEventListener('click', () => setMenu(menuButton.getAttribute('aria-expanded') !== 'true'));
 mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setMenu(false)));
@@ -37,7 +65,6 @@ document.querySelectorAll('.copy-button').forEach(button => button.addEventListe
 setupLanguage(() => setMenu(menuButton.getAttribute('aria-expanded') === 'true'));
 
 /* Motion: reveals on scroll, a header that tightens, a slow hero parallax. */
-const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 if (!reduceMotion && 'IntersectionObserver' in window) {
   document.documentElement.classList.add('js-anim');
   document.querySelectorAll('[data-stagger]').forEach(group => {
@@ -79,34 +106,46 @@ const heroSpy = new IntersectionObserver(([entry]) => {
 }, { rootMargin: '-45% 0px -50% 0px' });
 heroSpy.observe(document.querySelector('.hero'));
 
-/* System carousel: native scroll-snap, arrows, dots, keyboard and mouse drag. */
-const track = document.querySelector('.carousel-track');
+/* System carousel: an endless loop (clones on both sides), scroll-snap, arrows, keys, mouse drag
+   and dots that follow the scroll continuously. */
 if (track) {
   const slides = [...track.children];
+  const count = originals.length;
   const dots = [...document.querySelectorAll('.carousel-dots span')];
   const arrows = [...document.querySelectorAll('.carousel-arrow')];
-  let current = 0;
+  let current = count;
+  let dragging = false, moved = false, startX = 0, startLeft = 0, settleTimer;
   const centerOf = slide => slide.offsetLeft + slide.offsetWidth / 2;
-  const goTo = index => {
-    const slide = slides[Math.max(0, Math.min(slides.length - 1, index))];
-    track.scrollTo({ left: centerOf(slide) - track.clientWidth / 2, behavior: reduceMotion ? 'auto' : 'smooth' });
+  const spacing = () => centerOf(slides[1]) - centerOf(slides[0]);
+  const leftFor = index => centerOf(slides[index]) - track.clientWidth / 2;
+  const goTo = (index, instant = false) => {
+    track.scrollTo({ left: leftFor(index), behavior: instant || reduceMotion ? 'auto' : 'smooth' });
   };
   function paint() {
-    const middle = track.scrollLeft + track.clientWidth / 2;
-    const spacing = slides.length > 1 ? centerOf(slides[1]) - centerOf(slides[0]) : 1;
-    let nearest = 0;
-    slides.forEach((slide, i) => {
-      const distance = Math.abs(centerOf(slide) - middle) / spacing;
-      slide.style.setProperty('--d', Math.min(distance, 1.5).toFixed(3));
-      if (distance < Math.abs(centerOf(slides[nearest]) - middle) / spacing) nearest = i;
+    const position = (track.scrollLeft + track.clientWidth / 2 - centerOf(slides[0])) / spacing();
+    current = Math.round(position);
+    slides.forEach((slide, i) => slide.style.setProperty('--d', Math.min(Math.abs(position - i), 1.5).toFixed(3)));
+    const logical = ((position - count) % count + count) % count;
+    dots.forEach((dot, i) => {
+      const raw = Math.abs(logical - i);
+      const distance = Math.min(raw, count - raw);
+      dot.style.setProperty('--w', Math.max(0, 1 - distance).toFixed(3));
     });
-    current = nearest;
-    dots.forEach((dot, i) => dot.classList.toggle('is-on', i === current));
-    arrows[0].disabled = current === 0;
-    arrows[1].disabled = current === slides.length - 1;
+  }
+  // Once the scroll settles on a clone, jump to the matching original without animation.
+  function settle() {
+    if (dragging) return;
+    if (current < count || current >= count * 2) {
+      track.scrollLeft += (current < count ? count : -count) * spacing();
+      paint();
+    }
   }
   let pending = false;
-  track.addEventListener('scroll', () => { if (!pending) { pending = true; requestAnimationFrame(() => { pending = false; paint(); }); } }, { passive: true });
+  track.addEventListener('scroll', () => {
+    if (!pending) { pending = true; requestAnimationFrame(() => { pending = false; paint(); }); }
+    clearTimeout(settleTimer);
+    settleTimer = setTimeout(settle, 140);
+  }, { passive: true });
   arrows.forEach(arrow => arrow.addEventListener('click', () => goTo(current + Number(arrow.dataset.step))));
   slides.forEach((slide, i) => slide.addEventListener('click', () => { if (!moved && i !== current) goTo(i); }));
   track.addEventListener('keydown', event => {
@@ -114,7 +153,6 @@ if (track) {
     if (event.key === 'ArrowLeft') { event.preventDefault(); goTo(current - 1); }
   });
   // Mouse drag (touch already scrolls natively).
-  let startX = 0, startLeft = 0, dragging = false, moved = false;
   track.addEventListener('pointerdown', event => {
     if (event.pointerType !== 'mouse') return;
     dragging = true; moved = false; startX = event.clientX; startLeft = track.scrollLeft;
@@ -134,9 +172,9 @@ if (track) {
   };
   track.addEventListener('pointerup', endDrag);
   track.addEventListener('pointercancel', endDrag);
-  addEventListener('resize', paint);
+  addEventListener('resize', () => { goTo(current, true); paint(); });
+  goTo(count, true);
   paint();
-  requestAnimationFrame(() => goTo(0));
 }
 
 /* Hero phone leans slightly toward the pointer. */

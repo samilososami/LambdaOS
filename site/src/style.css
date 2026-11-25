@@ -522,3 +522,64 @@ dialog{padding:0;background:#101010;color:#f4f4f2;border:1px solid #555;width:mi
   .operator-shots .phone{max-width:none}
   .operator-shots figcaption{font-size:13px;text-align:center}
 }
+
+/* ---------- revision 7: bolder title, Operator stack, four-stage status, menu exit ---------- */
+.hero h1{font-weight:700;letter-spacing:-.062em;font-size:clamp(58px,6.8vw,118px)}
+
+.operator-head{display:grid;grid-template-columns:.9fr 1.1fr;gap:95px;align-items:end}
+.operator-head h2{margin:0}
+.operator-head .large-copy{margin:0;color:#d8d8d8}
+.operator-body{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(48px,7vw,120px);align-items:center;margin-top:72px}
+.operator-copy .body-copy{max-width:560px;color:#a8a8a8}
+.stack{margin-top:48px;max-width:580px}
+.stack-row{display:grid;gap:14px}
+.stack-top{grid-template-columns:1fr 1fr}
+.stack-base{grid-template-columns:repeat(3,1fr)}
+.stack-node{display:flex;align-items:center;gap:12px;padding:16px 18px;border:1px solid #2a2a2a;border-radius:14px;background:linear-gradient(180deg,#151515,#0b0b0b);font-size:15px;color:#e6e6e6;transition:border-color .25s}
+.stack-node:hover{border-color:#4a4a4a}
+.stack-node .icon{width:22px;height:22px}
+.stack-base .stack-node{flex-direction:column;justify-content:center;gap:8px;padding:14px 8px;font-size:13px;color:#bdbdbd}
+.stack-links{display:block;width:100%;height:44px;overflow:visible}
+.stack-links path{fill:none;stroke:#4a4a4a;stroke-width:1.2;vector-effect:non-scaling-stroke;stroke-dasharray:3 6;animation:flow 1.4s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-18}}
+.stack-core{display:flex;align-items:center;gap:16px;padding:18px 20px;border-radius:16px;background:#f4f4f2;color:#0b0b0b}
+.stack-lambda{display:grid;place-items:center;flex:none;width:44px;height:44px;border-radius:12px;background:#0b0b0b;color:#f4f4f2;font-size:24px;font-weight:600}
+.stack-core strong{display:block;font-size:18px;font-weight:600;letter-spacing:-.02em}
+.stack-core small{display:block;margin-top:2px;font-size:13px;color:#555}
+.operator-phone{justify-self:center}
+.operator-phone img{display:block;width:min(100%,380px);height:auto;filter:drop-shadow(0 40px 60px rgba(0,0,0,.65))}
+
+.dev-stages{list-style:none;margin:56px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #333}
+.dev-stages li{display:grid;align-content:start;gap:16px;padding:28px 24px 30px 0;border-bottom:1px solid #222}
+.dev-stages li+li{padding-left:24px;border-left:1px solid #222}
+.dev-stages strong{font-size:clamp(22px,2vw,30px);font-weight:500;letter-spacing:-.03em}
+.dev-links{margin-top:30px}
+
+.mobile-menu.is-closing{animation:menu-out .3s cubic-bezier(.4,0,.2,1) forwards}
+.mobile-menu.is-closing a{animation:menu-link-out .25s cubic-bezier(.4,0,.2,1) forwards}
+@keyframes menu-out{to{opacity:0}}
+@keyframes menu-link-out{to{opacity:0;transform:translateY(-8px)}}
+
+@media(max-width:1100px){
+  .operator-body{grid-template-columns:1fr 1fr}
+  .dev-stages{grid-template-columns:1fr 1fr}
+  .dev-stages li:nth-child(3){padding-left:0;border-left:0}
+}
+@media(max-width:800px){
+  .hero h1{font-size:clamp(40px,11.6vw,58px);line-height:.94}
+  .operator-head{grid-template-columns:1fr;gap:18px}
+  .operator-body{grid-template-columns:1fr;gap:48px;margin-top:36px}
+  .stack{margin-top:36px}
+  .stack-node{padding:14px;font-size:14px}
+  .stack-base .stack-node{font-size:12px}
+  .operator-phone img{width:min(78vw,320px)}
+  .dev-stages li{padding:22px 14px 22px 0}
+  .dev-stages li+li{padding-left:14px}
+  .dev-stages strong{font-size:22px}
+}
+/* Dots follow the scroll: each one widens and darkens with how close its slide is to the centre. */
+.carousel-dots span{width:calc(6px + 16px * var(--w,0));background:color-mix(in srgb,#0b0b0b calc(var(--w,0) * 100%),#c4c4c0);transition:none}
+@media(min-width:801px){.hero h1{font-size:clamp(54px,5.8vw,100px)}}
+@media(max-width:800px){.hero h1{font-size:clamp(38px,10.9vw,56px);letter-spacing:-.068em}}
+/* Largest size at which "The most complete" still fits one line in bold on a phone. */
+@media(max-width:800px){.hero h1{font-size:min(calc((100vw - 48px) / 8.3),58px)}}

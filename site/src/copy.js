@@ -137,4 +137,14 @@ export const copy = [
   ['Captura pasiva', 'Passive capture'], ['Primero, confirmación', 'Confirmation first'], ['Un resultado claro', 'A clear result'],
   ['¿Alguna pregunta?', 'Any question?'], ['Apoya el proyecto', 'Support the project'],
   ['LambdaOS en GitHub', 'LambdaOS on GitHub'], ['Menú', 'Menu']
+  ,
+  ['Yo ya usaba', 'I was already using'],
+  ['. Fue entonces cuando se me ocurrió llevarlo más lejos: una experiencia más integrada e intuitiva, con menos saltos entre herramientas.', '. That is when I thought of taking it further: a more integrated, intuitive experience, with less switching between tools.'],
+  ['La interfaz y la terminal, conectadas al mismo sistema.', 'The interface and terminal, connected to the same system.'],
+  ['Cada herramienta, del Wi-Fi al CAN, pasa por Lambda Core. Core comprueba qué puede hacer cada tarea, pregunta antes de cualquier acción activa e informa de lo que ha pasado de verdad. La app y la terminal comparten las mismas tareas y los mismos resultados.', 'Every tool, from Wi-Fi to CAN, runs through Lambda Core. Core checks what a job is allowed to do, asks before anything active and reports what actually happened. The app and the terminal share the same jobs and the same results.'],
+  ['Tareas tipadas, permisos y resultados', 'Typed jobs, permissions and results'],
+  ['Periféricos', 'Peripherals'],
+  ['Arquitectura: Operator y la terminal funcionan sobre Lambda Core, que corre sobre Android, el kernel y los periféricos', 'Architecture: Operator and the terminal sit on Lambda Core, which runs on Android, the kernel and peripherals'],
+  ['Pantalla de inicio de Lambda Operator: Wi-Fi, Bluetooth, USB, CAN, red y radio', 'Lambda Operator home screen: Wi-Fi, Bluetooth, USB, CAN, network and radio'],
+  ['En alpha en el Galaxy S10 de referencia. Aún no hay descarga pública.', 'In alpha on the reference Galaxy S10. There is no public download yet.']
 ];
