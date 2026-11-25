@@ -1,89 +1,60 @@
-import { es } from './es.js';
+import { copy } from './copy.js';
 
+const english = new Map(copy);
+const spanish = new Map(copy.map(([es, en]) => [en, es]));
 const storageKey = 'lambdaos-language';
 let language = 'en';
 try { if (localStorage.getItem(storageKey) === 'es') language = 'es'; } catch { /* Storage is optional. */ }
 
 export const getLanguage = () => language;
-
-// Static, developer-authored strings only: innerHTML never receives user input.
-const textNodes = [...document.querySelectorAll('[data-i18n]')];
-const originals = new Map();
-textNodes.forEach(node => {
-  const key = node.dataset.i18n;
-  if (!originals.has(key)) originals.set(key, node.innerHTML);
-});
-
-const ariaNodes = [...document.querySelectorAll('[data-i18n-aria]')];
-const ariaOriginals = new Map();
-ariaNodes.forEach(node => {
-  const key = node.dataset.i18nAria;
-  if (!ariaOriginals.has(key)) ariaOriginals.set(key, node.getAttribute('aria-label') ?? '');
-});
-
-const altNodes = [...document.querySelectorAll('[data-i18n-alt]')];
-const altOriginals = new Map();
-altNodes.forEach(node => {
-  const key = node.dataset.i18nAlt;
-  if (!altOriginals.has(key)) altOriginals.set(key, node.getAttribute('alt') ?? '');
-});
-
-const meta = {
-  title: document.title,
-  description: document.querySelector('meta[name="description"]')?.content ?? '',
-  ogTitle: document.querySelector('meta[property="og:title"]')?.content ?? '',
-  ogDescription: document.querySelector('meta[property="og:description"]')?.content ?? '',
-  twitterTitle: document.querySelector('meta[name="twitter:title"]')?.content ?? '',
-  twitterDescription: document.querySelector('meta[name="twitter:description"]')?.content ?? ''
-};
-
-function setMeta(name, value) {
-  const el = document.querySelector(`meta[name="${name}"]`) ?? document.querySelector(`meta[property="${name}"]`);
-  if (el) el.content = value;
+export function t(spanishText) {
+  return language === 'es' ? spanishText : english.get(spanishText) ?? spanishText;
 }
 
-function apply() {
-  document.documentElement.lang = language;
-  textNodes.forEach(node => {
-    const key = node.dataset.i18n;
-    node.innerHTML = language === 'es' ? (es[key] ?? originals.get(key)) : originals.get(key);
+export function setupLanguage(onChange) {
+  // Keep original node references: never replace markup or reset controls.
+  const entries = [];
+  const walker = document.createTreeWalker(document.documentElement, NodeFilter.SHOW_TEXT);
+  while (walker.nextNode()) {
+    const node = walker.currentNode;
+    if (node.parentElement?.closest('script,style,svg')) continue;
+    const value = node.textContent;
+    const key = value.trim();
+    if (spanish.has(key)) entries.push({ node, value, key });
+  }
+  const attributes = [];
+  document.querySelectorAll('[alt],[aria-label],meta[content]').forEach(node => {
+    for (const name of ['alt', 'aria-label', 'content']) {
+      const value = node.getAttribute(name);
+      if (spanish.has(value)) attributes.push({ node, name, value });
+    }
   });
-  ariaNodes.forEach(node => {
-    const key = node.dataset.i18nAria;
-    node.setAttribute('aria-label', language === 'es' ? (es[key] ?? ariaOriginals.get(key)) : ariaOriginals.get(key));
-  });
-  altNodes.forEach(node => {
-    const key = node.dataset.i18nAlt;
-    node.setAttribute('alt', language === 'es' ? (es[key] ?? altOriginals.get(key)) : altOriginals.get(key));
-  });
-
-  document.title = language === 'es' ? es['meta.title'] : meta.title;
-  setMeta('description', language === 'es' ? es['meta.desc'] : meta.description);
-  const ogTitle = document.querySelector('meta[property="og:title"]');
-  const ogDescription = document.querySelector('meta[property="og:description"]');
-  const twitterTitle = document.querySelector('meta[name="twitter:title"]');
-  const twitterDescription = document.querySelector('meta[name="twitter:description"]');
-  const ogLocale = document.querySelector('meta[property="og:locale"]');
-  if (ogTitle) ogTitle.content = language === 'es' ? es['meta.ogTitle'] : meta.ogTitle;
-  if (ogDescription) ogDescription.content = language === 'es' ? es['meta.ogDesc'] : meta.ogDescription;
-  if (twitterTitle) twitterTitle.content = language === 'es' ? es['meta.ogTitle'] : meta.twitterTitle;
-  if (twitterDescription) twitterDescription.content = language === 'es' ? es['meta.ogDesc'] : meta.twitterDescription;
-  if (ogLocale) ogLocale.content = language === 'es' ? 'es_ES' : 'en_US';
-
-  document.querySelectorAll('[data-language]').forEach(button => {
-    button.setAttribute('aria-pressed', String(button.dataset.language === language));
-  });
-}
-
-export function setupLanguage(onChange = () => {}) {
+  const apply = () => {
+    document.documentElement.lang = language;
+    for (const { node, value, key } of entries) {
+      node.textContent = language === 'en' ? value : value.replace(key, spanish.get(key));
+    }
+    for (const { node, name, value } of attributes) {
+      node.setAttribute(name, language === 'en' ? value : spanish.get(value));
+    }
+    // The Spanish metadata must use the new headline too.
+    const title = language === 'en'
+      ? 'LambdaOS — The most complete operating system for pentesting on Android'
+      : 'LambdaOS — El sistema operativo para pentesting en Android más completo';
+    document.title = title;
+    document.querySelector('meta[property="og:title"]').content = title;
+    document.querySelector('meta[property="og:locale"]').content = language === 'en' ? 'en_US' : 'es_ES';
+    document.querySelectorAll('[data-language]').forEach(button => {
+      button.setAttribute('aria-pressed', String(button.dataset.language === language));
+    });
+    onChange();
+  };
   document.querySelectorAll('[data-language]').forEach(button => {
     button.addEventListener('click', () => {
       language = button.dataset.language === 'es' ? 'es' : 'en';
       try { localStorage.setItem(storageKey, language); } catch { /* Still switch in memory. */ }
       apply();
-      onChange();
     });
   });
   apply();
-  onChange();
 }

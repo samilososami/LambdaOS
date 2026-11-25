@@ -1,40 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://lambdaos.samilososami.com/</loc>
     <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image><image:loc>https://lambdaos.samilososami.com/social-preview.png</image:loc></image:image>
-    <image:image><image:loc>https://lambdaos.samilososami.com/assets/screens/operator-home.webp</image:loc></image:image>
+    <image:image><image:loc>https://lambdaos.samilososami.com/assets/hero-art.webp</image:loc></image:image>
+    <image:image><image:loc>https://lambdaos.samilososami.com/assets/operator/operator-home.webp</image:loc></image:image>
     <image:image><image:loc>https://lambdaos.samilososami.com/assets/lex-desktop.webp</image:loc></image:image>
-    <video:video>
-      <video:thumbnail_loc>https://lambdaos.samilososami.com/media/explainer-poster.jpg</video:thumbnail_loc>
-      <video:title>LambdaOS in a minute</video:title>
-      <video:description>What LambdaOS is and where it is going, narrated in English with subtitles.</video:description>
-      <video:content_loc>https://lambdaos.samilososami.com/media/explainer.mp4</video:content_loc>
-      <video:duration>65</video:duration>
-    </video:video>
-    <video:video>
-      <video:thumbnail_loc>https://lambdaos.samilososami.com/media/operator-poster.jpg</video:thumbnail_loc>
-      <video:title>Lambda Operator, explained</video:title>
-      <video:description>The LambdaOS control centre and its tools, tab by tab.</video:description>
-      <video:content_loc>https://lambdaos.samilososami.com/media/operator.mp4</video:content_loc>
-      <video:duration>41</video:duration>
-    </video:video>
-    <video:video>
-      <video:thumbnail_loc>https://lambdaos.samilososami.com/media/lex-poster.jpg</video:thumbnail_loc>
-      <video:title>LEX, explained</video:title>
-      <video:description>The idea behind LEX, the LambdaOS desktop, from the phone to a bigger screen.</video:description>
-      <video:content_loc>https://lambdaos.samilososami.com/media/lex.mp4</video:content_loc>
-      <video:duration>41</video:duration>
-    </video:video>
-    <video:video>
-      <video:thumbnail_loc>https://lambdaos.samilososami.com/media/lamb-poster.jpg</video:thumbnail_loc>
-      <video:title>Lamb, explained</video:title>
-      <video:description>What Lamb, the planned on-device assistant for LambdaOS, is meant to do.</video:description>
-      <video:content_loc>https://lambdaos.samilososami.com/media/lamb.mp4</video:content_loc>
-      <video:duration>48</video:duration>
-    </video:video>
   </url>
 </urlset>
