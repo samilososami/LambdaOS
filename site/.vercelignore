@@ -1,0 +1,6 @@
+node_modules
+design
+docs
+.git
+scripts
+.env*

@@ -128,6 +128,7 @@ A passing host build is not presented as proof of a radio or device capability.
 | [`kernel`](kernel) | Kernel configs, patch, scripts and capability matrix |
 | [`assets`](assets) | Branding, screenshots, wallpapers and design archive |
 | [`docs`](docs) | Architecture, development and status documentation |
+| [`site`](site) | Source of the official website, <https://lambdaos.samilososami.com> |
 | [`releases`](releases) | Release policy and packaging requirements |
 
 The exact implementation inventory and SHA-256 hashes are recorded in

@@ -1,0 +1,19 @@
+{
+  "name": "lambdaos-web",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 4318",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1 --port 4318",
+    "check": "node --check src/main.js && node --check src/i18n.js && node --check src/es.js"
+  },
+  "devDependencies": {
+    "vite": "^7.2.0",
+    "sharp": "^0.34.0"
+  },
+  "dependencies": {
+    "@fontsource-variable/inter": "^5.2.0"
+  }
+}

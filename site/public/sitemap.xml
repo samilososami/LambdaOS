@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://lambdaos.samilososami.com/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://lambdaos.samilososami.com/social-preview.png</image:loc>
+      <image:title>LambdaOS — The system for hacking systems</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://lambdaos.samilososami.com/assets/lex-desktop.webp</image:loc>
+      <image:title>LEX desktop on the Samsung Galaxy S10</image:title>
+    </image:image>
+  </url>
+</urlset>
