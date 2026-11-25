@@ -42,6 +42,8 @@ final class HandshakeUi {
         if(screen.equals("working")||screen.equals("capture")){a.navigate("category");return true;}
         if(screen.equals("networks"))release();go("choice");return true;}
     private TextView chip(String text,boolean selected,Runnable action){TextView v=a.text(text,14,true,selected?a.background:a.foreground);v.setGravity(Gravity.CENTER);v.setSelected(selected);a.card(v,selected?a.foreground:a.surface,26);a.touch(v,text,action);return v;}
+    void showExplore(){tab="explore";}
+    void openAp(){tab="ap";}
     boolean category(){
         a.heading("Wi-Fi",t("Redes y auditorías Wi-Fi","Networks and Wi-Fi audits"));
         LinearLayout tabs=new LinearLayout(a);String[] names={t("Explorar","Explore"),"AP","Atacks","WPS"};String[] values={"explore","ap","attacks","wps"};
@@ -49,7 +51,7 @@ final class HandshakeUi {
         a.content.addView(tabs);a.space(a.content,24);
         if(tab.equals("explore"))return false;
         if(tab.equals("wps")){a.wps.landing();return true;}
-        if(tab.equals("ap")){a.space(a.content,28);a.content.addView(new Glyph(a,0,a.secondary),new LinearLayout.LayoutParams(a.dp(56),a.dp(56)));a.space(a.content,20);a.fact(t("Puntos de acceso","Access points"),t("La creación de AP se incorporará en una próxima versión.","AP creation will be added in a future version."));return true;}
+        if(tab.equals("ap")){a.ap.landing();return true;}
         row("Handshake capture",t("Captura pasiva · WPA / WPA2","Passive capture · WPA / WPA2"),RadioIllustration.HANDSHAKE,()->open("capture"));
         row("Deauth",t("Desconexión controlada · una ráfaga","Controlled disconnection · one burst"),RadioIllustration.SCAN,()->open("deauth"));
         return true;
@@ -180,7 +182,8 @@ final class HandshakeUi {
         if(e.contains("cancelled"))return t("Tarea detenida. Se ha solicitado restaurar la antena.","Task stopped. Adapter restoration was requested.");
         if(e.contains("scan_session_expired"))return t("La selección ha caducado y se ha restaurado el Wi-Fi. Vuelve a escanear.","Selection expired and Wi-Fi was restored. Scan again.");
         if(e.contains("adapter_missing")||e.contains("adapter_disconnected"))return t("La antena ya no está conectada o no dispone de un controlador compatible. Vuelve a conectarla y selecciónala de nuevo.","The adapter is disconnected or has no compatible driver. Reconnect and select it again.");
-        if(e.contains("network_not_in_scan"))return t("Esta red no pertenece al escaneo actual. Busca de nuevo antes de continuar.","This network is not in the current survey. Scan again before continuing.");return e;
+        if(e.contains("network_not_in_scan"))return t("Esta red no pertenece al escaneo actual. Busca de nuevo antes de continuar.","This network is not in the current survey. Scan again before continuing.");
+        if(e.contains("wifi_task_in_progress"))return t("Hay otra tarea de Wi-Fi en curso. Deténla antes de iniciar otra.","Another Wi-Fi task is running. Stop it first.");return e;
     }
     private void result(){if(receipt!=null&&receipt.optString("tool").equals("radio.deauth")){deauthResult();return;}boolean nativeCapture=result!=null&&result.has("handshake_detected");boolean pair=result!=null&&result.optBoolean(nativeCapture?"handshake_detected":"pair_observed");String outcome=result==null?"":result.optString("outcome");boolean stopped=outcome.equals("cancelled");
         title("Handshake capture",pair?t("Intercambio EAPOL detectado","EAPOL exchange observed"):stopped?t("Captura detenida","Capture stopped"):t("Captura finalizada","Capture ended"));illustration(pair?RadioIllustration.CHECK:RadioIllustration.CAPTURE,175,false);a.space(a.content,20);

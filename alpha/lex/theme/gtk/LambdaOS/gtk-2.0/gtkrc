@@ -1,0 +1,62 @@
+# LambdaOS GTK2 fallback theme.
+# Same palette as alpha/lex/theme/DESIGN.md. GTK2 cannot draw the rounded,
+# borderless surfaces of the GTK3 theme; colours and typography are kept equal.
+
+gtk-font-name = "Cantarell 10"
+gtk-button-images = 1
+gtk-menu-images = 1
+gtk-toolbar-style = GTK_TOOLBAR_ICONS
+
+style "lambdaos-default"
+{
+  fg[NORMAL]        = "#E9E9E9"
+  fg[PRELIGHT]      = "#FFFFFF"
+  fg[ACTIVE]        = "#FFFFFF"
+  fg[SELECTED]      = "#101112"
+  fg[INSENSITIVE]   = "#6B7075"
+
+  bg[NORMAL]        = "#101112"
+  bg[PRELIGHT]      = "#1F2225"
+  bg[ACTIVE]        = "#2A2E33"
+  bg[SELECTED]      = "#E9E9E9"
+  bg[INSENSITIVE]   = "#17191B"
+
+  base[NORMAL]      = "#08090A"
+  base[PRELIGHT]    = "#101112"
+  base[ACTIVE]      = "#2A2E33"
+  base[SELECTED]    = "#E9E9E9"
+  base[INSENSITIVE] = "#17191B"
+
+  text[NORMAL]      = "#E9E9E9"
+  text[PRELIGHT]    = "#E9E9E9"
+  text[ACTIVE]      = "#FFFFFF"
+  text[SELECTED]    = "#101112"
+  text[INSENSITIVE] = "#6B7075"
+}
+
+style "lambdaos-menu"
+{
+  fg[NORMAL]        = "#E9E9E9"
+  fg[PRELIGHT]      = "#FFFFFF"
+  fg[INSENSITIVE]   = "#6B7075"
+
+  bg[NORMAL]        = "#17191B"
+  bg[PRELIGHT]      = "#2A2E33"
+  bg[ACTIVE]        = "#2A2E33"
+
+  text[NORMAL]      = "#E9E9E9"
+  text[PRELIGHT]    = "#FFFFFF"
+  text[SELECTED]    = "#FFFFFF"
+}
+
+style "lambdaos-tooltip"
+{
+  fg[NORMAL]        = "#E9E9E9"
+  bg[NORMAL]        = "#17191B"
+}
+
+class "GtkWidget" style "lambdaos-default"
+class "GtkMenuBar" style "lambdaos-menu"
+class "GtkMenu" style "lambdaos-menu"
+class "GtkToolbar" style "lambdaos-default"
+widget "gtk-tooltip*" style "lambdaos-tooltip"

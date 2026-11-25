@@ -18,7 +18,8 @@ int main(int argc, char **argv) {
     if (getuid() != 0 || argc < 4) return 64;
     char *end = NULL;
     long seconds = strtol(argv[1], &end, 10);
-    if (*end || seconds < 1 || seconds > 220) return 64;
+    /* 620 = radio.ap 600 s ceiling plus margin; Core validates that bound. */
+    if (*end || seconds < 1 || seconds > 620) return 64;
     if (strcmp(argv[2], "/system/bin/tcpdump") &&
         strcmp(argv[2], "/data/local/tmp/lambda-operator-radio/airodump-ng") &&
         strcmp(argv[2], "/data/local/tmp/lambda-operator-radio/aireplay-ng")) return 64;

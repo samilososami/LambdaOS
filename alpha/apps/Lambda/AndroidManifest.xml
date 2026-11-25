@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.lambdaproject.lambda" android:versionCode="24" android:versionName="0.2.0-operator.4">
+    package="org.lambdaproject.lambda" android:versionCode="51" android:versionName="0.2.0-operator.31">
     <uses-sdk android:minSdkVersion="29" android:targetSdkVersion="35" />
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
@@ -12,6 +13,7 @@
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" android:maxSdkVersion="30" />
     <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <uses-permission android:name="android.permission.NEARBY_WIFI_DEVICES" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_CONNECTED_DEVICE" />
@@ -24,13 +26,31 @@
         <package android:name="com.offsec.nhterm" />
     </queries>
     <application android:label="Lambda" android:icon="@drawable/ic_launcher"
-        android:theme="@style/AppTheme" android:allowBackup="false" android:supportsRtl="true">
+        android:theme="@style/AppTheme" android:allowBackup="false" android:supportsRtl="true"
+        android:networkSecurityConfig="@xml/network_security_config">
         <activity android:name=".MainActivity" android:exported="true" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".CoolingActivity" android:exported="false"
+            android:screenOrientation="locked" android:configChanges="orientation|screenSize" />
+        <activity android:name=".LexActivity" android:exported="false" android:launchMode="singleTop"
+            android:screenOrientation="landscape" android:configChanges="orientation|screenSize" />
+        <activity android:name=".LexMonitorActivity" android:exported="false"
+            android:screenOrientation="landscape"
+            android:configChanges="orientation|screenSize|screenLayout|keyboard|keyboardHidden" />
+        <activity android:name=".LexWirelessActivity" android:exported="false"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|screenSize|screenLayout|keyboard|keyboardHidden" />
+        <receiver android:name=".LambdaDeviceAdmin" android:exported="true"
+            android:permission="android.permission.BIND_DEVICE_ADMIN">
+            <meta-data android:name="android.app.device_admin" android:resource="@xml/device_admin" />
+            <intent-filter>
+                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+            </intent-filter>
+        </receiver>
         <service android:name=".CoreService" android:process=":core" android:exported="false"
             android:foregroundServiceType="connectedDevice" android:stopWithTask="false" />
         <!-- Every RPC checks the Binder UID. No URI grants, filesystem access or arbitrary shell. -->

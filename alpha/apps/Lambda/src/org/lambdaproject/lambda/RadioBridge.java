@@ -18,6 +18,8 @@ final class RadioBridge {
     private static boolean claimed;
     private static JSONObject deauthControl;
     private static boolean deauthDelivered;
+    private static JSONObject apControl;
+    private static boolean apControlDelivered;
     static synchronized void checkDeauth(CoreEngine.Job job)throws Exception {
         if(active!=job||!claimed||answer!=null||!job.tool().equals("radio.capture")||job.cancelled)
             throw new IllegalStateException("capture_not_active");
@@ -33,6 +35,18 @@ final class RadioBridge {
             .put("session",job.args().getString("session")).put("bssid",job.args().getString("bssid"))
             .put("expires_elapsed_ms",SystemClock.elapsedRealtime()+5000);
         deauthDelivered=false;
+    }
+    static synchronized void checkApControl(CoreEngine.Job job)throws Exception {
+        if(active!=job||!claimed||answer!=null||!job.tool().equals("radio.ap")||job.cancelled)
+            throw new IllegalStateException("ap_not_active");
+        if(SystemClock.elapsedRealtime()-heartbeat>=12000)throw new IllegalStateException("radio_worker_offline");
+        JSONObject progress=job.progress;
+        if(progress==null||!progress.optString("phase").equals("ap"))throw new IllegalStateException("ap_not_ready");
+        if(apControl!=null)throw new IllegalStateException("ap_control_busy");
+    }
+    static synchronized void requestApControl(CoreEngine.Job job,JSONObject control)throws Exception {
+        checkApControl(job);
+        apControl=control;apControlDelivered=false;
     }
     static synchronized JSONObject status()throws Exception {
         return new JSONObject().put("ok",true).put("available",!worker.isEmpty()&&SystemClock.elapsedRealtime()-heartbeat<12000)
@@ -66,15 +80,25 @@ final class RadioBridge {
                 &&SystemClock.elapsedRealtime()<deauthControl.getLong("expires_elapsed_ms")){
             deauthDelivered=true;reply.put("capture_deauth",new JSONObject(deauthControl.toString()));
         }
+        // Same single-delivery contract for live AP client controls (kick/ban):
+        // one pending control at a time, released once handed to the worker.
+        if(apControl!=null){
+            if(SystemClock.elapsedRealtime()>=apControl.getLong("expires_elapsed_ms"))apControl=null;
+            else if(!apControlDelivered&&active!=null&&answer==null&&!active.cancelled
+                    &&r.has("token")&&r.has("progress")&&r.getJSONObject("progress").optString("phase").equals("ap")){
+                apControlDelivered=true;reply.put("ap_control",new JSONObject(apControl.toString()));
+                apControl=null;
+            }
+        }
         return reply;
     }
     static JSONObject run(CoreEngine.Job job)throws Exception {
         synchronized(RadioBridge.class){
             if(worker.isEmpty()||SystemClock.elapsedRealtime()-heartbeat>=12000)throw new IllegalStateException("radio_worker_offline");
             if(active!=null)throw new IllegalStateException("radio_busy");
-            active=job;answer=null;claimed=false;token=UUID.randomUUID().toString();deauthControl=null;deauthDelivered=false;
+            active=job;answer=null;claimed=false;token=UUID.randomUUID().toString();deauthControl=null;deauthDelivered=false;apControl=null;apControlDelivered=false;
         }
-        long deadline=SystemClock.elapsedRealtime()+(job.tool().equals("crack.wpa")?3660000:job.tool().equals("wps.oneshot")?650000:360000);
+        long deadline=SystemClock.elapsedRealtime()+(job.tool().equals("crack.wpa")?3660000:job.tool().equals("wps.oneshot")?650000:job.tool().startsWith("system.")?3600000:job.tool().equals("radio.ap")?86400000L:360000);
         try {
             synchronized(RadioBridge.class){
                 while(answer==null){
@@ -93,6 +117,6 @@ final class RadioBridge {
                     .put("outcome",deauthDelivered?"unconfirmed":"not_started").put("transmission_reported",false).put("effect_verified",false));
                 return result;
             }
-        }finally{synchronized(RadioBridge.class){active=null;answer=null;token=null;claimed=false;deauthControl=null;deauthDelivered=false;}}
+        }finally{synchronized(RadioBridge.class){active=null;answer=null;token=null;claimed=false;deauthControl=null;deauthDelivered=false;apControl=null;apControlDelivered=false;}}
     }
 }

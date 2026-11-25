@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Nmap
+Comment=Network scanner
+Exec=qterminal -e sh -c "nmap -h; exec sh"
+Icon=security-high
+Terminal=false
+Categories=Network;Security;
+StartupNotify=true

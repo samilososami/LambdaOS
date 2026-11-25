@@ -100,6 +100,12 @@ final class Glyph extends View {
             case 9: // Files
                 line(canvas, 13, 78, 13, 22, 38, 22, 46, 33, 87, 33, 87, 78, 13, 78);
                 break;
+            case 11: // LEX: screen with the Lambda mark
+                canvas.drawRoundRect(new RectF(8, 16, 92, 70), 6, 6, paint);
+                line(canvas, 50, 70, 50, 80);
+                line(canvas, 34, 82, 66, 82);
+                line(canvas, 36, 56, 50, 30, 64, 56);
+                break;
             default:
                 line(canvas, 62, 25, 37, 50, 62, 75);
         }

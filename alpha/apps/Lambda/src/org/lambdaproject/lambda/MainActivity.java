@@ -43,6 +43,7 @@ public final class MainActivity extends Activity {
     LinearLayout content;
     private OperatorUi operator;
     HandshakeUi handshake;
+    ApUi ap;
     WpsUi wps;
     private BenchmarkUi benchmark;
     CrackUi cracking;
@@ -58,13 +59,14 @@ public final class MainActivity extends Activity {
 
     String tr(String es, String en) { return english ? en : es; }
     int dp(float value) { return Math.round(value * getResources().getDisplayMetrics().density); }
-    private String[] categories() { return new String[]{"Wi-Fi", "Bluetooth", "USB", "CAN", tr("Red", "Network"), "Radio"}; }
+    private String[] categories() { return new String[]{"Wi-Fi", "Bluetooth", "USB", "CAN", tr("Red", "Network"), "Radio", tr("Sistema", "System"), "LEX"}; }
 
     @Override public void onCreate(Bundle state) {
         super.onCreate(state);
         prefs = getSharedPreferences("appearance", MODE_PRIVATE);
         operator = new OperatorUi(this);
         handshake = new HandshakeUi(this);
+        ap = new ApUi(this);
         wps = new WpsUi(this);
         benchmark = new BenchmarkUi(this);
         cracking = new CrackUi(this);
@@ -85,12 +87,29 @@ public final class MainActivity extends Activity {
         }
         if (state != null) {
             handshake.restore(state);
+            ap.restore(state);
             page = state.getString("page", "home");
             category = state.getInt("category", 0);
             jobBack = state.getString("jobBack", "category");
             if(page.equals("wps")) { wps.id=getPreferences(0).getString("wps_last_job",null);wps.screen=wps.id==null?"intro":"working"; }
         }
+        // Core notification deep link: live AP tab or the sessions list.
+        applyOpenIntent(getIntent());
         render();
+    }
+
+    private void applyOpenIntent(Intent intent) {
+        if(intent==null)return;
+        String open=intent.getStringExtra("open");
+        String job=intent.getStringExtra("job");
+        if("ap".equals(open)){category=0;page="category";handshake.openAp();if(job!=null&&!job.isEmpty())ap.openLive(job);}
+        else if("lex".equals(open)){category=7;page="category";startActivity(new android.content.Intent(this,LexActivity.class));}
+        else if("lex_tab".equals(open)){category=7;page="category";}
+        else if("sessions".equals(open)){page="sessions";jobBack="sessions";}
+    }
+
+    @Override protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);setIntent(intent);applyOpenIntent(intent);render();
     }
 
     @Override protected void onSaveInstanceState(Bundle state) {
@@ -99,11 +118,13 @@ public final class MainActivity extends Activity {
         state.putInt("category", category);
         state.putString("jobBack", jobBack);
         handshake.save(state);
+        ap.save(state);
     }
 
     @Override protected void onDestroy() {
         operator.destroy();
         handshake.destroy();
+        ap.destroy();
         wps.destroy();
         benchmark.destroy();
         cracking.destroy();
@@ -170,6 +191,7 @@ public final class MainActivity extends Activity {
     void render() {
         if(operator!=null)operator.beforeRender();
         if(handshake!=null)handshake.beforeRender();
+        if(ap!=null)ap.beforeRender();
         if(wps!=null)wps.beforeRender();
         if(benchmark!=null)benchmark.beforeRender();
         if(cracking!=null)cracking.beforeRender();
@@ -206,9 +228,10 @@ public final class MainActivity extends Activity {
         root.addView(scroll, new LinearLayout.LayoutParams(-1, 0, 1));
         switch (page) {
             case "settings": settings(); break;
-            case "developer":case "cracking_tests":case "benchmark":benchmark.render(page);break;
+            case "developer":case "temperature":case "cracking_tests":case "benchmark":benchmark.render(page);break;
             case "category": if(category<3)operator.category(category);else category(); break;
             case "handshake": handshake.render(); break;
+            case "ap": ap.render(); break;
             case "wps": wps.render(); break;
             case "cracking": cracking.render(); break;
             case "job": operator.job(); break;
@@ -235,7 +258,7 @@ public final class MainActivity extends Activity {
         if(!page.equals("home")){
             Glyph back=new Glyph(this,10,foreground);
             bar.addView(back,new LinearLayout.LayoutParams(dp(34),dp(48)));
-            touch(back,tr("Volver","Back"),()->{if(!wps.back()&&!handshake.back()&&!benchmark.back()&&!cracking.back())navigate(page.equals("job")?jobBack:"home");});
+            touch(back,tr("Volver","Back"),()->{if(!wps.back()&&!handshake.back()&&!ap.back()&&!benchmark.back()&&!cracking.back())navigate(page.equals("job")?jobBack:"home");});
         }
         TextView title = text("Lambda", 28, true, foreground);
         bar.addView(title, new LinearLayout.LayoutParams(0, dp(56), 1));
@@ -254,30 +277,35 @@ public final class MainActivity extends Activity {
         core.setLetterSpacing(.12f);content.addView(core);space(content,16);
         String[] names = categories();
         if (prefs.getBoolean("icons", true)) {
-            for (int row = 0; row < 3; row++) {
+            int rows = (names.length + 1) / 2;
+            for (int row = 0; row < rows; row++) {
                 LinearLayout pair = new LinearLayout(this);
                 for (int col = 0; col < 2; col++) {
                     final int index = row * 2 + col;
+                    if (index >= names.length) {
+                        pair.addView(new View(this), new LinearLayout.LayoutParams(0, -1, 1));
+                        continue;
+                    }
                     LinearLayout tile = column();
                     tile.setGravity(Gravity.CENTER);
-                    tile.setPadding(dp(8), dp(20), dp(8), dp(20));
-                    tile.setMinimumHeight(dp(154));
+                    tile.setPadding(dp(8), dp(12), dp(8), dp(14));
+                    tile.setMinimumHeight(dp(128));
                     card(tile, surface, 16);
-                    tile.addView(new Glyph(this, index, foreground),
-                        new LinearLayout.LayoutParams(dp(78), dp(78)));
-                    space(tile, 12);
-                    TextView label = text(names[index], 21, true, foreground);
+                    tile.addView(new Glyph(this, index == 7 ? 11 : index, foreground),
+                        new LinearLayout.LayoutParams(dp(64), dp(64)));
+                    space(tile, 8);
+                    TextView label = text(names[index], 19, true, foreground);
                     label.setGravity(Gravity.CENTER);
                     label.setMaxLines(1);
-                    label.setAutoSizeTextTypeUniformWithConfiguration(15, 21, 1, android.util.TypedValue.COMPLEX_UNIT_SP);
-                    tile.addView(label, new LinearLayout.LayoutParams(-1, dp(30)));
+                    label.setAutoSizeTextTypeUniformWithConfiguration(14, 19, 1, android.util.TypedValue.COMPLEX_UNIT_SP);
+                    tile.addView(label, new LinearLayout.LayoutParams(-1, dp(26)));
                     LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(0, -1, 1);
                     if (col == 0) params.rightMargin = dp(12);
                     pair.addView(tile, params);
                     touch(tile, names[index], () -> { category = index; navigate("category"); });
                 }
                 LinearLayout.LayoutParams rowParams = new LinearLayout.LayoutParams(-1, 0, 1);
-                if (row < 2) rowParams.bottomMargin = dp(12);
+                if (row < rows - 1) rowParams.bottomMargin = dp(8);
                 content.addView(pair, rowParams);
             }
         } else {
@@ -304,7 +332,7 @@ public final class MainActivity extends Activity {
             final String route = routes[i];
             LinearLayout item = column();
             item.setGravity(Gravity.CENTER);
-            boolean active = page.equals(route) || (i == 0 && (page.equals("category") || page.equals("wps") || page.equals("handshake") || page.equals("job")&&!jobBack.equals("sessions"))) || (i==1&&page.equals("job")&&jobBack.equals("sessions"));
+            boolean active = page.equals(route) || (i == 0 && (page.equals("category") || page.equals("wps") || page.equals("handshake") || page.equals("ap") || page.equals("job")&&!jobBack.equals("sessions"))) || (i==1&&page.equals("job")&&jobBack.equals("sessions"));
             int tint = active ? foreground : secondary;
             item.addView(new Glyph(this, 7 + i, tint), new LinearLayout.LayoutParams(dp(28), dp(28)));
             space(item, 4);
@@ -345,7 +373,82 @@ public final class MainActivity extends Activity {
         space(content, 20);
     }
 
+    private void system() {
+        heading(tr("Sistema", "System"), tr("Refrigeración y estado térmico del dispositivo.", "Device cooling and thermal state."));
+        double temp = CoolingJob.socTempC();
+        fact(tr("Temperatura SoC", "SoC temperature"), temp > 0 ? String.format(Locale.ROOT, "%.1f °C", temp) : tr("No disponible", "Unavailable"));
+        button("Smart Ultra Cooling", () -> cooling("smart"));
+        button("Ultra Cooling", () -> cooling("ultra"));
+        content.addView(text(tr("Pantalla completa. Termina al alcanzar 38 °C o al pulsar Parar. Ultra puede desactivar Wi-Fi/Bluetooth y forzar Doze.",
+            "Fullscreen. Ends at 38 °C or via Stop. Ultra may disable Wi-Fi/Bluetooth and force Doze."), 13, false, secondary));
+    }
+
+    private void cooling(String mode) {
+        worker.execute(() -> {
+            boolean apRunning = false;
+            try {
+                Bundle b = getContentResolver().call(CoreProvider.URI, "list", new JSONObject().put("include_hidden", true).toString(), null);
+                JSONArray jobs = new JSONObject(b.getString("json")).optJSONArray("jobs");
+                for (int i = 0; jobs != null && i < jobs.length(); i++) {
+                    JSONObject job = jobs.optJSONObject(i);
+                    if (job != null && "radio.ap".equals(job.optString("tool"))
+                        && ("running".equals(job.optString("state")) || "queued".equals(job.optString("state")))) { apRunning = true; break; }
+                }
+            } catch (Exception ignored) {}
+            boolean flag = apRunning;
+            runOnUiThread(() -> {
+                if (isFinishing() || isDestroyed()) return;
+                if (!flag) { startCooling(mode); return; }
+                new AlertDialog.Builder(this)
+                    .setTitle(tr("AP activo", "AP running"))
+                    .setMessage(tr("El worker está ocupado con el AP. Detén el AP antes de iniciar la refrigeración.",
+                        "The worker is busy with the AP. Stop the AP before starting cooling."))
+                    .setPositiveButton(tr("Entendido", "OK"), null)
+                    .show();
+            });
+        });
+    }
+
+    private void startCooling(String mode) {
+        startActivity(new android.content.Intent(this, CoolingActivity.class).putExtra("mode", mode).putExtra("target_c", 38));
+    }
+
+    private void lex() {
+        heading("LEX", tr("Escritorio Kali XFCE en el móvil.", "Kali XFCE desktop on the phone."));
+        button(tr("Abrir escritorio", "Open desktop"), () -> startActivity(new android.content.Intent(this, LexActivity.class)));
+        button(tr("Detener escritorio", "Stop desktop"), this::stopLex);
+        button(tr("Monitor USB-C", "USB-C monitor"), () -> startActivity(new android.content.Intent(this, LexMonitorActivity.class)));
+        button(tr("Pantalla inalámbrica", "Wireless display"), () -> startActivity(new android.content.Intent(this, LexWirelessActivity.class)));
+        content.addView(text(tr("Se abre en horizontal y tarda unos segundos. Toca y arrastra para el ratón; al tocar el escritorio aparece el teclado de Android. Volver cierra el visor y deja el escritorio activo.",
+            "Opens in landscape and takes a few seconds. Tap and drag for the pointer; tapping the desktop brings up the Android keyboard. Back closes the viewer and leaves the desktop running."), 13, false, secondary));
+        content.addView(text(tr("Web por ADB: en el PC ejecuta node alpha/web/lex-dashboard/server.mjs y abre http://127.0.0.1:7788.",
+            "Web over ADB: on the PC run node alpha/web/lex-dashboard/server.mjs and open http://127.0.0.1:7788."), 13, false, secondary));
+    }
+
+    private void stopLex() {
+        worker.execute(() -> {
+            String message;
+            try {
+                JSONObject request = new JSONObject().put("tool", "system.desktop")
+                    .put("args", new JSONObject().put("action", "stop"))
+                    .put("request_id", java.util.UUID.randomUUID().toString());
+                Bundle b = getContentResolver().call(CoreProvider.URI, "submit", request.toString(), null);
+                JSONObject r = new JSONObject(b.getString("json"));
+                message = r.optBoolean("ok") ? tr("Deteniendo escritorio", "Stopping desktop")
+                    : r.optString("detail", r.optString("error", "Error"));
+            } catch (Exception e) {
+                message = e.getMessage() == null ? e.getClass().getSimpleName() : e.getMessage();
+            }
+            String text = message;
+            runOnUiThread(() -> {
+                if (!isFinishing() && !isDestroyed()) Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+            });
+        });
+    }
+
     private void category() {
+        if (category == 6) { system(); return; }
+        if (category == 7) { lex(); return; }
         heading(categories()[category], tr("Información y acceso a herramientas", "Information and tool access"));
         if (snapshot == null) {
             content.addView(text(tr("Leyendo el dispositivo…", "Reading the device…"), 16, false, secondary));
@@ -484,6 +587,7 @@ public final class MainActivity extends Activity {
     @Override protected void onActivityResult(int request, int result, Intent data) {
         super.onActivityResult(request, result, data);
         if(handshake.activityResult(request,result,data))return;
+        if(ap.activityResult(request,result,data))return;
         if(cracking.activityResult(request,result,data))return;
         if(operator.onActivityResult(request,result,data))return;
         if (request != 20 || result != RESULT_OK || data == null || data.getData() == null) return;
@@ -537,13 +641,15 @@ public final class MainActivity extends Activity {
 
     @Override public void onRequestPermissionsResult(int r,String[] p,int[] g){super.onRequestPermissionsResult(r,p,g);operator.permissionsResult(r);}
     boolean isHandshake(){return page.equals("handshake");}
+    boolean isAp(){return page.equals("ap");}
     boolean isWps(){return page.equals("wps");}
-    @Override protected void onResume(){super.onResume();if(operator!=null)operator.resume();if(handshake!=null)handshake.resume();if(wps!=null)wps.resume();if(benchmark!=null)benchmark.resume();if(cracking!=null)cracking.resume();if(verifiedWifi!=null)verifiedWifi.resume();}
-    @Override protected void onPause(){if(operator!=null)operator.pause();if(handshake!=null)handshake.pause();if(wps!=null)wps.pause();if(benchmark!=null)benchmark.pause();if(cracking!=null)cracking.pause();if(verifiedWifi!=null)verifiedWifi.pause();super.onPause();}
+    @Override protected void onResume(){super.onResume();if(operator!=null)operator.resume();if(handshake!=null)handshake.resume();if(ap!=null)ap.resume();if(wps!=null)wps.resume();if(benchmark!=null)benchmark.resume();if(cracking!=null)cracking.resume();if(verifiedWifi!=null)verifiedWifi.resume();}
+    @Override protected void onPause(){if(operator!=null)operator.pause();if(handshake!=null)handshake.pause();if(ap!=null)ap.pause();if(wps!=null)wps.pause();if(benchmark!=null)benchmark.pause();if(cracking!=null)cracking.pause();if(verifiedWifi!=null)verifiedWifi.pause();super.onPause();}
 
     @Override public void onBackPressed() {
         if(wps.back())return;
         if(handshake.back())return;
+        if(ap.back())return;
         if(benchmark.back())return;
         if(cracking.back())return;
         if (page.equals("job")) navigate(jobBack);

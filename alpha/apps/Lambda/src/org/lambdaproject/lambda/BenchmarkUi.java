@@ -1,5 +1,6 @@
 package org.lambdaproject.lambda;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.*;
 import android.view.*;
@@ -42,6 +43,7 @@ final class BenchmarkUi {
     void destroy(){destroyed=true;main.removeCallbacksAndMessages(null);io.shutdownNow();}
     boolean back(){
         if(page.equals("developer")){a.navigate("settings");return true;}
+        if(page.equals("temperature")){a.navigate("developer");return true;}
         if(page.equals("cracking_tests")){a.navigate("developer");return true;}
         if(page.equals("benchmark")){a.navigate("cracking_tests");return true;}return false;
     }
@@ -50,7 +52,15 @@ final class BenchmarkUi {
         if(route.equals("developer")){
             a.heading("Developer mode",t("Pruebas locales de Lambda Operator.","Local Lambda Operator tests."));
             tile("Cracking speed test",t("Velocidad real · CPU y GPU","Real throughput · CPU and GPU"),()->a.navigate("cracking_tests"));
+            tile("Temperature",t("FDT y monitor térmico","FDT and thermal monitor"),()->a.navigate("temperature"));
             a.space(a.content,18);a.content.addView(a.text(t("Datos sintéticos. Sin capturas ni deauth.","Synthetic data. No captures or deauth."),14,false,a.secondary));return;
+        }
+        if(route.equals("temperature")){
+            a.heading("Temperature",t("Pruebas térmicas del dispositivo.","Device thermal tests."));
+            tile("Force Device temperature",t("Calienta hasta el objetivo y mantiene 30 s","Heats to the target and holds for 30 s"),()->fdt());
+            tile("Temperature Monitor",t("Monitor pasivo de temperatura en tiempo real","Passive live temperature monitor"),()->a.startActivity(new Intent(a,CoolingActivity.class).putExtra("mode","monitor")));
+            a.space(a.content,18);
+            a.content.addView(a.text(t("El monitor no modifica el dispositivo; sirve para comparar el enfriamiento natural con UCM.","The monitor does not modify the device; use it to compare natural cooling with UCM."),14,false,a.secondary));return;
         }
         if(route.equals("cracking_tests")){
             a.heading("Cracking speed test",t("Elige el tipo de prueba.","Choose a test suite."));
@@ -87,6 +97,27 @@ final class BenchmarkUi {
         call("radio_status",new JSONObject(),r->{JSONObject cap=r.optJSONObject("benchmark");boolean ready=r.optBoolean("available")&&cap!=null&&cap.optBoolean("provisioned");
             status.setText(ready?t("Motor disponible · solo datos sintéticos","Engine available · synthetic data only"):t("El servicio de pruebas no está disponible. Requiere aprovisionamiento por ADB tras reiniciar.","Test worker unavailable. ADB provisioning is required after a reboot."));});
         refresh();
+    }
+    private void fdt(){
+        new AlertDialog.Builder(a).setTitle("Force Device temperature")
+            .setMessage(t("Esto calienta el dispositivo de forma controlada hasta el objetivo elegido. Herramienta de desarrollo: no la dejes sin supervisión.",
+                "This heats the device in a controlled way up to the chosen target. Developer tool: do not leave it unattended."))
+            .setNegativeButton(t("Cancelar","Cancel"),null)
+            .setPositiveButton(t("Elegir objetivo","Choose target"),(d,w)->fdtTarget())
+            .show();
+    }
+    private void fdtTarget(){
+        new AlertDialog.Builder(a).setTitle(t("Objetivo de temperatura","Temperature target"))
+            .setItems(new CharSequence[]{"50 °C","55 °C","60 °C","65 °C","70 °C"},(d,w)->fdtHold(50+w*5))
+            .setNegativeButton(t("Cancelar","Cancel"),null).show();
+    }
+    private void fdtHold(int target){
+        new AlertDialog.Builder(a).setTitle(t("Duración del hold","Hold duration"))
+            .setMessage(t("Para calentar el cuerpo, no solo el SoC, usa 120 o 300 s.","To warm the body, not just the SoC, use 120 or 300 s."))
+            .setItems(new CharSequence[]{"30 s","60 s","120 s","300 s"},(d,w)->{
+                int hold=new int[]{30,60,120,300}[w];
+                a.startActivity(new Intent(a,CoolingActivity.class).putExtra("mode","heater").putExtra("target_c",target).putExtra("hold_seconds",hold));
+            }).setNegativeButton(t("Cancelar","Cancel"),null).show();
     }
     private void tile(String title,String subtitle,Runnable action){
         LinearLayout tile=a.column();tile.setPadding(a.dp(22),a.dp(24),a.dp(22),a.dp(24));a.card(tile,a.surface,20);
