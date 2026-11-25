@@ -109,11 +109,22 @@ export const copy = [
   ['Kernel 4.14.356 con 95 módulos. La recepción en modo monitor está verificada con el Wi-Fi interno y con la Alfa AWUS036ACH en 2,4 GHz; la inyección y los 5 GHz se prueban por separado.', 'Kernel 4.14.356 with 95 modules. Monitor-mode receive is verified on the internal Wi-Fi and on the Alfa AWUS036ACH at 2.4 GHz; injection and 5 GHz are tested separately.'],
   ['Contratos comunes para comandos y aplicación: argumentos, permisos, estados, cancelación y resultados. La captura de handshake, las pruebas WPS y el crackeo offline funcionan en builds de desarrollo.', 'Shared contracts for commands and the app: arguments, permissions, states, cancellation and results. Handshake capture, WPS testing and offline cracking run in developer builds.'],
   ['Un chroot de Kali con una sesión XFCE ligera y un visor nativo dentro de Operator, funcionando en el S10. El teclado en pantalla aún está en progreso.', 'A Kali chroot with a slim XFCE session and a native viewer inside Operator, running on the S10. The on-screen keyboard is still in progress.'],
-  ['LambdaOS lo desarrollo yo solo, compaginándolo con mis estudios. Si te sirve y quieres que siga creciendo, puedes apoyarlo. Es completamente opcional: nada de esta web es de pago y no cambia nada si no lo haces.', 'LambdaOS is developed by one person, alongside my studies. If it helps you and you would like it to keep growing, you can support it. It is completely optional: nothing on this site is paid, and nothing changes if you don’t.'],
+  ['LambdaOS lo desarrollo yo solo, compaginándolo con mis estudios. Si te sirve y quieres que siga creciendo, puedes apoyarlo. Es completamente opcional: nada de esta web es de pago y no cambia nada si no lo haces.', 'I build LambdaOS on my own, alongside my studies. If it helps you and you would like it to keep growing, you can support it. It is completely optional: nothing on this site is paid, and nothing changes if you don’t.'],
   ['Cualquier aporte va a hardware, tiempo y, la verdad, a motivación para seguir.', 'Every contribution goes towards hardware, time and, honestly, motivation to keep going.'],
   ['Envía solo lo que puedas permitirte. Las transferencias en cripto son definitivas; revisa bien la dirección antes de enviar.', 'Only send what you can spare. Crypto transfers are final; double-check the address before sending.'],
   ['Copiar', 'Copy'], ['Copiado', 'Copied'], ['Abrir', 'Open'],
   ['Copiar dirección de Bitcoin', 'Copy Bitcoin address'], ['Copiar dirección de Litecoin', 'Copy Litecoin address'],
   ['Copiar usuario de PayPal', 'Copy PayPal username'], ['Copiar usuario de Revolut', 'Copy Revolut username'],
   ['LambdaOS funcionando en un Samsung Galaxy S10', 'LambdaOS running on a Samsung Galaxy S10']
+  ,
+  ['Contacto', 'Contact'], ['Contacto.', 'Contact.'],
+  ['¿Dudas, sugerencias o simplemente quieres contactar conmigo? Escríbeme. Estoy abierto a ideas, cambios y consejos.', 'Questions, suggestions, or you just want to get in touch? Write to me. I’m open to ideas, changes and advice.'],
+  ['LambdaOS está en alpha y arranca en el S10 de referencia. Aún no hay descarga pública; la primera versión incluirá instrucciones, checksums y problemas conocidos.', 'LambdaOS is in alpha and boots on the reference S10. There is no public download yet; the first release will ship with instructions, checksums and known issues.'],
+  ['Kernel y Wi-Fi', 'Kernel and Wi-Fi'], ['Funciona', 'Working'], ['Versión pública', 'Public release'],
+  ['Android 15 sobre LineageOS 22.2, sin apps de Google', 'Android 15 on LineageOS 22.2, without Google apps'],
+  ['95 módulos; modo monitor verificado en 2,4 GHz', '95 modules; monitor mode verified at 2.4 GHz'],
+  ['Captura, pruebas WPS y crackeo offline en builds de desarrollo', 'Capture, WPS testing and offline cracking in developer builds'],
+  ['Escritorio Kali funcionando en el S10', 'Kali desktop running on the S10'],
+  ['Asistente en el dispositivo', 'On-device assistant'],
+  ['Build firmada con pasos de instalación y recuperación', 'Signed build with install and recovery steps']
 ];

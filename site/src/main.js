@@ -50,13 +50,15 @@ if (!reduceMotion && 'IntersectionObserver' in window) {
 }
 
 const header = document.querySelector('.site-header');
-const heroImage = document.querySelector('.hero-art img');
+const heroFront = document.querySelector('.device-front');
+const heroBack = document.querySelector('.device-back');
 let ticking = false;
 function onScroll() {
   ticking = false;
   header.classList.toggle('is-scrolled', scrollY > 24);
   if (!reduceMotion && innerWidth > 800 && scrollY < innerHeight * 1.2) {
-    heroImage.style.translate = `0 ${(scrollY * 0.18).toFixed(1)}px`;
+    heroFront.style.transform = `translateY(${(scrollY * -0.08).toFixed(1)}px)`;
+    heroBack.style.transform = `translateY(${(scrollY * 0.06).toFixed(1)}px)`;
   }
 }
 addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
