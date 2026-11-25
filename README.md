@@ -171,3 +171,18 @@ Created by **Sami González Kamel** — [@samilososami](https://github.com/samil
 Built on Android Open Source Project, LineageOS, the Samsung Exynos community
 and the upstream projects named in [NOTICE.md](NOTICE.md). LambdaOS is independent
 and is not affiliated with Samsung or LineageOS.
+
+## Support
+
+LambdaOS is developed by one person, alongside my studies. Supporting the
+project is completely optional: nothing here is paid, and nothing changes if
+you don't. Every contribution goes towards hardware, time and motivation to
+keep going.
+
+- **Bitcoin (BTC):** `bc1qa8r8ll0m0e58f3ngrauh08nnzdn0alm825nc3r`
+- **Litecoin (LTC):** `ltc1qtpyddqcq6vscm0gyajkgp3y2r7msdnfythzgua`
+- **PayPal:** [@samilososami](https://paypal.me/samilososami)
+- **Revolut:** [@samilososami](https://revolut.me/samilososami)
+
+Only send what you can spare. Crypto transfers are final; double-check the
+address before sending.
