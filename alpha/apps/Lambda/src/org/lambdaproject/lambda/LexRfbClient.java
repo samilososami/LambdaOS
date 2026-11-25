@@ -47,6 +47,12 @@ public final class LexRfbClient {
     private static final long MAX_PIXELS=4_000_000L;
 
     private final Object writeLock=new Object();
+    // One writer thread owns the socket: UI-thread input must never touch the
+    // network directly (StrictMode would kill it) and the reader thread also
+    // sends update requests, so all writes go through this queue.
+    private final java.util.concurrent.BlockingQueue<byte[]> outQueue=
+        new java.util.concurrent.LinkedBlockingQueue<>(256);
+    private volatile Thread writer;
     private volatile OutputStream out;
     private volatile Socket socket;
     private volatile Listener listener;
@@ -87,6 +93,10 @@ public final class LexRfbClient {
                 if(closed){closeSocket(s);return;}
                 socket=s;out=o;
             }
+            Thread wthread=new Thread(this::writeLoop,"lex-rfb-writer");
+            wthread.setDaemon(true);
+            writer=wthread;
+            wthread.start();
             // 32bpp, depth 24, little-endian, true-colour, R16 G8 B0.
             send(new byte[]{0,0,0,0,32,24,0,1,0,(byte)255,0,(byte)255,0,(byte)255,16,8,0,0,0,0});
             // Hextile, CopyRect, Raw, in that preference order.
@@ -230,15 +240,7 @@ public final class LexRfbClient {
      *  left/middle/right; 8/16 are wheel up/down. */
     public void pointer(int x,int y,int mask){
         lastX=x;lastY=y;
-        synchronized(writeLock){
-            OutputStream o=out;
-            if(o==null||closed)return;
-            try{
-                o.write(5);o.write(mask);
-                o.write(x>>8);o.write(x);o.write(y>>8);o.write(y);
-                o.flush();
-            }catch(IOException e){fail("vnc_disconnected");}
-        }
+        send(new byte[]{5,(byte)mask,(byte)(x>>8),(byte)x,(byte)(y>>8),(byte)y});
     }
 
     /** Wheel at the last pointer position; positive scrolls down. */
@@ -253,15 +255,8 @@ public final class LexRfbClient {
 
     /** KeyEvent with an X11 keysym (printable Latin-1 or an X keysym). */
     public void key(int keysym,boolean down){
-        synchronized(writeLock){
-            OutputStream o=out;
-            if(o==null||closed)return;
-            try{
-                o.write(4);o.write(down?1:0);o.write(0);o.write(0);
-                o.write(keysym>>24);o.write(keysym>>16);o.write(keysym>>8);o.write(keysym);
-                o.flush();
-            }catch(IOException e){fail("vnc_disconnected");}
-        }
+        send(new byte[]{4,(byte)(down?1:0),0,0,
+            (byte)(keysym>>24),(byte)(keysym>>16),(byte)(keysym>>8),(byte)keysym});
     }
 
     /** X11 keysym for a Unicode code point typed on the soft keyboard. */
@@ -276,6 +271,7 @@ public final class LexRfbClient {
 
     public void close(){
         Socket s;
+        Thread w;
         synchronized(this){
             if(closed)return;
             closed=true;
@@ -283,18 +279,31 @@ public final class LexRfbClient {
             s=socket;
             socket=null;
             listener=null;
+            w=writer;writer=null;
         }
+        if(w!=null)w.interrupt();
         closeSocket(s);
     }
 
     private void send(byte[] message){
-        synchronized(writeLock){
-            OutputStream o=out;
-            if(o==null||closed)return;
-            try{
-                o.write(message);
-                o.flush();
-            }catch(IOException e){fail("vnc_disconnected");}
+        if(closed||out==null)return;
+        if(!outQueue.offer(message))fail("vnc_output_overflow");
+    }
+
+    private void writeLoop(){
+        try{
+            while(!closed){
+                byte[] message=outQueue.take();
+                OutputStream target=out;
+                if(target==null||closed)return;
+                synchronized(writeLock){
+                    target.write(message);
+                    target.flush();
+                }
+            }
+        }catch(InterruptedException ignored){
+        }catch(IOException e){
+            fail("vnc_disconnected");
         }
     }
 
@@ -306,6 +315,7 @@ public final class LexRfbClient {
     private void fail(String detail){
         Listener target;
         Socket s;
+        Thread w;
         synchronized(this){
             if(closed)return;
             closed=true;
@@ -314,7 +324,9 @@ public final class LexRfbClient {
             socket=null;
             target=listener;
             listener=null;
+            w=writer;writer=null;
         }
+        if(w!=null&&w!=Thread.currentThread())w.interrupt();
         closeSocket(s);
         if(target!=null)target.onError(detail);
     }

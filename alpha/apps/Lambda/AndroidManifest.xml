@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.lambdaproject.lambda" android:versionCode="51" android:versionName="0.2.0-operator.31">
+    package="org.lambdaproject.lambda" android:versionCode="54" android:versionName="0.2.0-operator.34">
     <uses-sdk android:minSdkVersion="29" android:targetSdkVersion="35" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />

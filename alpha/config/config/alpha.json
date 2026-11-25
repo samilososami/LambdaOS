@@ -1,0 +1,77 @@
+{
+  "name": "LambdaOS",
+  "version": "0.1.0-alpha.2",
+  "device": "beyond1lte",
+  "model": "SM-G973F",
+  "base": "lineage-22.2",
+  "android": 15,
+  "status": "alpha2-package-verified-not-flashed",
+  "verified_ota_sha256": "a2367d192225e18cd8de55b97b65f6978c0737f8085d5c6b49b7c3bb4966b4b3",
+  "setup": {
+    "implementation": "native-lineage-setup-fork",
+    "module": "LineageSetupWizard",
+    "activity": "org.lineageos.setupwizard.LambdaSetupActivity",
+    "background": "upper-left-graphite-gradient-dots",
+    "gradient_intensity": 0.95,
+    "native_security_handoffs": ["lock-screen", "fingerprint", "SIM-PIN-PUK", "emergency-call", "Seedvault-restore"]
+  },
+  "signing_identity": "lambdaos-release-v1",
+  "application": {
+    "name": "Lambda",
+    "module": "Lambda",
+    "package": "org.lambdaproject.lambda",
+    "version": "0.1.0-alpha.1",
+    "icon": "geometric-lambda-without-cursor"
+  },
+  "bootanimation": {
+    "source": "design/round-05/boot-animation/android-test-v11-continuous-575/bootanimation.zip",
+    "sha256": "2b6acfdf1f9972b57f4ae31b0f41acfc02624e59bec1fbb3351b9e956b1b5155",
+    "width": 1440,
+    "height": 3040,
+    "fps": 60,
+    "logs": "synthetic",
+    "original_log_rows": 75,
+    "additional_log_rows": 500,
+    "total_log_rows": 575,
+    "original_log_window_seconds": 2,
+    "additional_log_window_seconds": 13.333333333333334,
+    "fixed_sequence_seconds": 17.35,
+    "tail": "0.6-second-blinking-cursor-loop",
+    "exit_behavior": "all-parts-interruptible-on-android-boot-complete"
+  },
+  "up_param": {
+    "policy": "preserve-current-reference-device-state",
+    "expected_sha256": "6104609625b336c1ce4aca8137249c22e9bc53d8b7d5ee686aeb8cbe43e25f79"
+  },
+  "adb": {
+    "enabled_from_first_boot": true,
+    "transport": "usb",
+    "usb_functions": "mtp,adb",
+    "authentication_required": true,
+    "preauthorized_hosts": 1,
+    "root_mode": "userdebug-adb-root",
+    "tcp_port": null
+  },
+  "proprietary": {
+    "source": "connected-reference-device",
+    "archive_sha256": "355c3fb65e618b5bd88355595cc6599adfceaacc2d31e99cad5cd2fbe9cae9c3",
+    "tree_sha256": "ce58ff6aafa45609b7e52ab0c6dd417ab820984697b5027f1f78e7b00c756877",
+    "file_count": 223
+  },
+  "firmware": {
+    "required_bootloader": "G973FXXSGHWC2",
+    "ota_policy": "preserve-installed-firmware",
+    "bl_cp_archive_sha256": "971a6079f159c70cd9189b32e747e74738f047946b0852b0c8006f43ae63574c"
+  },
+  "release_gates": [
+    "sufficient-x86_64-builder-storage-and-memory",
+    "complete-source-revision-lock",
+    "vendor-license-review",
+    "kernel-nethunter-rebuild-and-module-compatibility",
+    "magisk-and-nethunter-clean-install-integration",
+    "source-build-and-package-validation",
+    "recovery-restore-procedure",
+    "signature-migration-and-userdata-decision",
+    "physical-s10-boot-and-hardware-test"
+  ]
+}

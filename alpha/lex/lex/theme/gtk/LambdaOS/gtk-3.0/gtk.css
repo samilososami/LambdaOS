@@ -1,0 +1,667 @@
+/* LambdaOS GTK3 theme
+ * Implements alpha/lex/theme/DESIGN.md. Tokens only, monochrome accent,
+ * no gradients, transitions <= 120ms, radius <= 8px.
+ * The Xfce panel (#XfcePanelWindow) is deliberately not styled here;
+ * the panel theme owns the bars.
+ */
+
+@define-color bg0 #08090A;
+@define-color bg1 #101112;
+@define-color bg2 #17191B;
+@define-color bg3 #1F2225;
+@define-color bg4 #2A2E33;
+@define-color line #26292D;
+@define-color line_soft rgba(255, 255, 255, 0.06);
+@define-color fg #E9E9E9;
+@define-color fg_dim #9AA0A6;
+@define-color fg_muted #6B7075;
+@define-color accent #E9E9E9;
+@define-color danger #D9534F;
+@define-color white #FFFFFF;
+@define-color title_inactive #121416;
+@define-color scroll_hover #3A3F45;
+@define-color shadow rgba(0, 0, 0, 0.45);
+
+/* ---------------------------------------------------------------- canvas */
+window {
+  font-family: Cantarell, "DejaVu Sans", sans-serif;
+  font-size: 12.5px;
+}
+
+window,
+.background {
+  background-color: @bg1;
+  color: @fg;
+}
+
+menu,
+.menu,
+.context-menu,
+popover,
+tooltip {
+  font-family: Cantarell, "DejaVu Sans", sans-serif;
+  font-size: 11.5px;
+}
+
+*:disabled {
+  color: @fg_muted;
+}
+
+selection {
+  background-color: @accent;
+  color: @bg1;
+}
+
+separator {
+  background-color: @line_soft;
+  min-width: 1px;
+  min-height: 1px;
+}
+
+/* ------------------------------------------------------------- titlebars */
+decoration {
+  border: 1px solid @line;
+  border-radius: 8px 8px 0 0;
+  background-color: @bg2;
+  box-shadow: 0 4px 18px @shadow;
+}
+
+headerbar,
+.titlebar {
+  min-height: 32px;
+  padding: 0 8px;
+  border: none;
+  border-bottom: 1px solid @line;
+  border-radius: 0;
+  background-color: @bg2;
+  background-image: none;
+  box-shadow: none;
+  color: @fg;
+  font-size: 11.5px;
+  font-weight: 600;
+}
+
+headerbar:backdrop,
+.titlebar:backdrop {
+  background-color: @title_inactive;
+  color: @fg_dim;
+}
+
+headerbar .title,
+.titlebar .title {
+  font-weight: 600;
+}
+
+headerbar button,
+.titlebar button {
+  font-weight: 400;
+}
+
+.titlebutton {
+  min-width: 24px;
+  min-height: 24px;
+  padding: 0;
+  border: none;
+  border-radius: 4px;
+  background: transparent;
+  box-shadow: none;
+  color: @fg_dim;
+  transition: background-color 120ms ease-out, color 120ms ease-out;
+}
+
+.titlebutton:hover {
+  background-color: @bg3;
+  color: @fg;
+}
+
+.titlebutton.close:hover {
+  background-color: @danger;
+  color: @white;
+}
+
+/* --------------------------------------------------------------- buttons */
+button {
+  min-width: 24px;
+  min-height: 24px;
+  padding: 3px 12px;
+  border: 1px solid @line;
+  border-radius: 6px;
+  background-color: @bg2;
+  background-image: none;
+  color: @fg;
+  box-shadow: none;
+  text-shadow: none;
+  -gtk-outline-radius: 6px;
+  transition: background-color 120ms ease-out, border-color 120ms ease-out,
+    color 120ms ease-out;
+}
+
+button:hover {
+  background-color: @bg3;
+}
+
+button:active,
+button:checked {
+  background-color: @bg4;
+}
+
+button:disabled {
+  border-color: @line;
+  background-color: @bg1;
+  color: @fg_muted;
+}
+
+button:focus {
+  box-shadow: inset 0 0 0 1px @accent;
+}
+
+button.suggested-action {
+  border-color: @accent;
+  background-color: @accent;
+  color: @bg1;
+}
+
+button.suggested-action:hover {
+  background-color: @white;
+  border-color: @white;
+}
+
+/* DESIGN: danger is a hover-only stop affordance. */
+button.destructive-action:hover {
+  border-color: @danger;
+  background-color: @danger;
+  color: @white;
+}
+
+headerbar button,
+.titlebar button,
+toolbar button,
+.toolbar button {
+  border-color: transparent;
+  background-color: transparent;
+  background-image: none;
+  box-shadow: none;
+}
+
+headerbar button:hover,
+.titlebar button:hover,
+toolbar button:hover,
+.toolbar button:hover {
+  background-color: @bg3;
+  border-color: transparent;
+}
+
+headerbar button:active,
+headerbar button:checked,
+toolbar button:active,
+toolbar button:checked {
+  background-color: @bg4;
+  border-color: transparent;
+}
+
+/* ---------------------------------------------------------------- entries */
+entry,
+.entry {
+  min-height: 24px;
+  padding: 2px 8px;
+  border: 1px solid @line;
+  border-radius: 6px;
+  background-color: @bg0;
+  background-image: none;
+  color: @fg;
+  caret-color: @fg;
+  transition: border-color 120ms ease-out, background-color 120ms ease-out;
+}
+
+entry:hover {
+  border-color: @bg4;
+}
+
+entry:focus {
+  border-color: @accent;
+}
+
+entry:disabled {
+  background-color: @bg1;
+  color: @fg_muted;
+}
+
+entry selection {
+  background-color: @accent;
+  color: @bg1;
+}
+
+entry image {
+  color: @fg_dim;
+}
+
+spinbutton {
+  border: none;
+  background: transparent;
+  box-shadow: none;
+}
+
+spinbutton button {
+  min-width: 20px;
+  min-height: 12px;
+  padding: 0;
+  border: none;
+  border-radius: 4px;
+  background-color: transparent;
+  box-shadow: none;
+}
+
+spinbutton button:hover {
+  background-color: @bg3;
+}
+
+combobox button {
+  padding: 2px 8px;
+  min-height: 24px;
+}
+
+combobox arrow {
+  color: @fg_dim;
+}
+
+/* ------------------------------------------------------ menus and popups */
+menu,
+.menu,
+.context-menu {
+  padding: 6px;
+  border: 1px solid @line;
+  border-radius: 8px;
+  background-color: @bg2;
+  background-image: none;
+  color: @fg;
+}
+
+menuitem {
+  min-height: 26px;
+  padding: 0 10px;
+  border-radius: 4px;
+  color: @fg;
+  transition: background-color 120ms ease-out;
+}
+
+menuitem:hover,
+menuitem:selected {
+  background-color: @bg4;
+  color: @white;
+}
+
+menuitem:disabled {
+  color: @fg_muted;
+}
+
+menuitem accelerator {
+  color: @fg_dim;
+}
+
+menu separator {
+  min-height: 1px;
+  margin: 4px 8px;
+  background-color: @line_soft;
+}
+
+popover.background,
+popover {
+  padding: 6px;
+  border: 1px solid @line;
+  border-radius: 8px;
+  background-color: @bg2;
+  background-image: none;
+  box-shadow: 0 6px 18px @shadow;
+  color: @fg;
+}
+
+tooltip,
+tooltip.background {
+  padding: 2px 4px;
+  border: 1px solid @line;
+  border-radius: 6px;
+  background-color: @bg2;
+  background-image: none;
+  color: @fg;
+}
+
+tooltip decoration {
+  background-color: transparent;
+}
+
+/* ------------------------------------------------------------ scrollbars */
+scrollbar {
+  border: none;
+  background-color: transparent;
+}
+
+scrollbar.vertical {
+  min-width: 8px;
+}
+
+scrollbar.horizontal {
+  min-height: 8px;
+}
+
+scrollbar trough {
+  border: none;
+  background-color: transparent;
+}
+
+scrollbar slider {
+  min-width: 8px;
+  min-height: 32px;
+  border: none;
+  border-radius: 4px;
+  background-color: @bg4;
+  background-image: none;
+  transition: background-color 120ms ease-out;
+}
+
+scrollbar slider:hover,
+scrollbar slider:active {
+  background-color: @scroll_hover;
+}
+
+scrollbar button {
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
+/* ----------------------------------------------------------- views/trees */
+.view,
+treeview.view {
+  background-color: @bg1;
+  color: @fg;
+}
+
+.view:hover,
+treeview.view:hover {
+  background-color: @bg3;
+}
+
+.view:selected,
+.view:selected:focus,
+treeview.view:selected,
+treeview.view:selected:focus {
+  background-color: @bg4;
+  color: @white;
+}
+
+.view:disabled,
+treeview.view:disabled {
+  color: @fg_muted;
+}
+
+treeview header button {
+  min-height: 28px;
+  padding: 0 8px;
+  border: none;
+  border-right: 1px solid @line;
+  border-bottom: 1px solid @line;
+  border-radius: 0;
+  background-color: @bg2;
+  background-image: none;
+  box-shadow: none;
+  color: @fg_dim;
+  font-size: 11.5px;
+  font-weight: 600;
+}
+
+treeview header button:hover {
+  background-color: @bg3;
+  color: @fg;
+}
+
+.sidebar {
+  border-right: 1px solid @line;
+  background-color: @bg2;
+}
+
+.sidebar row {
+  min-height: 30px;
+  padding: 0 8px;
+  border-radius: 4px;
+}
+
+.sidebar row:hover {
+  background-color: @bg3;
+}
+
+.sidebar row:selected {
+  background-color: @bg4;
+  color: @white;
+}
+
+list row {
+  padding: 4px 8px;
+}
+
+list row:hover {
+  background-color: @bg3;
+}
+
+list row:selected {
+  background-color: @bg4;
+  color: @white;
+}
+
+/* -------------------------------------------------------------- notebooks */
+notebook {
+  border: none;
+  background-color: @bg1;
+  background-image: none;
+}
+
+notebook > header {
+  border: none;
+  border-bottom: 1px solid @line;
+  background-color: @bg1;
+}
+
+notebook > header > tabs > tab {
+  min-height: 30px;
+  padding: 0 14px;
+  border: none;
+  border-radius: 6px 6px 0 0;
+  background-color: transparent;
+  color: @fg_dim;
+  transition: background-color 120ms ease-out, color 120ms ease-out;
+}
+
+notebook > header > tabs > tab:hover {
+  background-color: @bg3;
+  color: @fg;
+}
+
+notebook > header > tabs > tab:checked {
+  background-color: @bg2;
+  color: @fg;
+  box-shadow: inset 0 -2px 0 @accent;
+}
+
+/* ----------------------------------------------------------- check/radio */
+check,
+radio {
+  min-width: 14px;
+  min-height: 14px;
+  padding: 0;
+  border: 1px solid @line;
+  border-radius: 3px;
+  background-color: @bg0;
+  background-image: none;
+  color: @bg1;
+  -gtk-icon-source: none;
+  transition: background-color 120ms ease-out, border-color 120ms ease-out;
+}
+
+radio {
+  border-radius: 50%;
+}
+
+check:hover,
+radio:hover {
+  border-color: @scroll_hover;
+}
+
+check:checked,
+check:indeterminate,
+radio:checked {
+  border-color: @accent;
+  background-color: @accent;
+  color: @bg1;
+}
+
+check:checked {
+  -gtk-icon-source: -gtk-icontheme("object-select-symbolic");
+}
+
+check:indeterminate {
+  -gtk-icon-source: -gtk-icontheme("list-remove-symbolic");
+}
+
+radio:checked {
+  -gtk-icon-source: -gtk-icontheme("radio-checked-symbolic");
+}
+
+check:disabled,
+radio:disabled {
+  border-color: @line;
+  background-color: @bg1;
+}
+
+/* ------------------------------------------------------------- progress */
+progressbar {
+  color: @fg;
+  font-size: 11.5px;
+}
+
+progressbar trough {
+  min-height: 8px;
+  padding: 1px;
+  border: 1px solid @line;
+  border-radius: 4px;
+  background-color: @bg0;
+  background-image: none;
+}
+
+progressbar progress {
+  min-height: 6px;
+  border: none;
+  border-radius: 3px;
+  background-color: @accent;
+  background-image: none;
+}
+
+progressbar text {
+  color: @fg;
+}
+
+/* ---------------------------------------------------- scale and switches */
+scale trough {
+  min-height: 4px;
+  border: 1px solid @line;
+  border-radius: 3px;
+  background-color: @bg0;
+  background-image: none;
+}
+
+scale highlight {
+  border-radius: 3px;
+  background-color: @accent;
+  background-image: none;
+}
+
+scale slider {
+  min-width: 14px;
+  min-height: 14px;
+  margin: -6px;
+  border: 1px solid @bg1;
+  border-radius: 50%;
+  background-color: @fg;
+  background-image: none;
+}
+
+switch {
+  min-width: 40px;
+  min-height: 20px;
+  border: 1px solid @line;
+  border-radius: 8px;
+  background-color: @bg0;
+  background-image: none;
+  color: transparent;
+  transition: background-color 120ms ease-out, border-color 120ms ease-out;
+}
+
+switch:checked {
+  border-color: @accent;
+  background-color: @accent;
+}
+
+switch slider {
+  min-width: 16px;
+  min-height: 16px;
+  margin: 1px;
+  border: none;
+  border-radius: 6px;
+  background-color: @fg_dim;
+  background-image: none;
+}
+
+switch:checked slider {
+  background-color: @bg1;
+}
+
+switch:disabled {
+  border-color: @line;
+  background-color: @bg1;
+}
+
+switch:disabled slider {
+  background-color: @fg_muted;
+}
+
+/* ------------------------------------------------------------- chrome */
+toolbar {
+  padding: 4px;
+  border: none;
+  border-bottom: 1px solid @line_soft;
+  background-color: @bg1;
+  background-image: none;
+}
+
+toolbar separator {
+  background-color: @line;
+}
+
+statusbar {
+  border-top: 1px solid @line_soft;
+  background-color: @bg1;
+  color: @fg_dim;
+}
+
+paned > separator {
+  min-width: 1px;
+  min-height: 1px;
+  background-color: @line;
+}
+
+frame > border {
+  border: 1px solid @line;
+  border-radius: 6px;
+}
+
+infobar {
+  border: 1px solid @line;
+  border-radius: 6px;
+  background-color: @bg2;
+  color: @fg;
+}
+
+*:link {
+  color: @fg;
+}

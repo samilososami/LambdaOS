@@ -203,7 +203,7 @@ final class CoreEngine {
             }
             case "catalog": keys(r); return catalog();
             case "status":
-                keys(r);return new JSONObject().put("ok",true).put("schema_version",1).put("version","0.2.0-operator.31")
+                keys(r);return new JSONObject().put("ok",true).put("schema_version",1).put("version","0.2.0-operator.34")
                     .put("pid",android.os.Process.myPid()).put("active",running.size()).put("tools",new JSONArray(Arrays.asList(TOOLS)))
                     .put("privilege","Android API + explicit allowlisted maintenance root worker; no arbitrary shell").put("storage","private SQLite; recent 200 jobs in list; receipts retained");
             case "list": {

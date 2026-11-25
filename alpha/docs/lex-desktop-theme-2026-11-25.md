@@ -1,7 +1,7 @@
 # LEX desktop: slim session, custom theme and native viewer
 
 Date: 2026-11-25. Device: SM-G973F (`beyond1lte`), Kali arm64 chroot at
-`/data/local/lex/rootfs`, Xvnc 1.15 at 2280x1080, Operator `0.2.0-operator.31`.
+`/data/local/lex/rootfs`, Xvnc 1.15 at 2280x1080, Operator `0.2.0-operator.34`.
 
 ## Decision
 
@@ -66,12 +66,20 @@ trim the same tree measured ~236 MB RSS for the XFCE daemons alone.
   the maximised terminal. The earlier "click does nothing" was a test
   coordinate outside the pill, not a dock bug; the input shape is now set
   explicitly anyway.
+- Native viewer on device (operator.34): the RFB client connects to 5901 and
+  renders frames; taps reach the desktop (Whisker opens on the Lambda mark, a
+  dock click launched Thunar, a tap focused the terminal) and
+  `adb shell input text ls` + Enter ran `ls` in qterminal. The first build
+  crashed with `NetworkOnMainThreadException` because `pointer()`/`key()`
+  wrote the socket on the UI thread; all input now goes through a single
+  writer queue shared with the update requests. The overlay buttons moved to
+  the right edge so the bottom dock is reachable.
 
 ## Pending / known defects
 
-- **Native viewer on device**: not yet exercised. The S10 was locked, so
-  `LexActivity` stayed paused and the RFB client correctly disconnected; no
-  ESTABLISHED connection to 5901. Needs an unlocked device.
+- **Soft keyboard (IME)**: the on-screen toggle changes its label but no IME
+  was observed over the desktop; hardware key events (typing, Enter) work.
+  Needs a fix and a second device pass.
 - Whisker category icons still come from Kali's coloured set (not monochrome).
 - Top-bar tasklist hides labels; workspace names were replaced by thumbnails.
 - No desktop icons by design (`xfdesktop` removed).

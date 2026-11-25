@@ -73,7 +73,8 @@ public final class LexActivity extends Activity {
         status.setGravity(Gravity.CENTER);status.setPadding(dp(32),dp(16),dp(32),dp(16));
         root.addView(status,new FrameLayout.LayoutParams(-1,-2,Gravity.CENTER));
         LinearLayout buttons=new LinearLayout(this);
-        buttons.setOrientation(LinearLayout.HORIZONTAL);
+        buttons.setOrientation(LinearLayout.VERTICAL);
+        buttons.setGravity(Gravity.END);
         keyboard=pillButton(tr("Teclado","Keyboard"));
         keyboard.setVisibility(View.GONE);
         keyboard.setOnClickListener(v->{
@@ -82,13 +83,14 @@ public final class LexActivity extends Activity {
         close=pillButton(tr("Cerrar","Close"));
         close.setVisibility(View.GONE);
         close.setOnClickListener(v->finish());
-        LinearLayout.LayoutParams keyboardParams=new LinearLayout.LayoutParams(-2,dp(40));
-        LinearLayout.LayoutParams closeParams=new LinearLayout.LayoutParams(-2,dp(40));
+        LinearLayout.LayoutParams keyboardParams=new LinearLayout.LayoutParams(-2,dp(36));
+        LinearLayout.LayoutParams closeParams=new LinearLayout.LayoutParams(-2,dp(36));
+        closeParams.topMargin=dp(8);
         buttons.addView(keyboard,keyboardParams);
         buttons.addView(close,closeParams);
-        close.setPadding(dp(16),0,dp(16),0);
-        FrameLayout.LayoutParams barParams=new FrameLayout.LayoutParams(-2,-2,Gravity.BOTTOM|Gravity.CENTER_HORIZONTAL);
-        barParams.bottomMargin=dp(16);
+        // Right edge, vertically centred: the bottom centre belongs to the dock.
+        FrameLayout.LayoutParams barParams=new FrameLayout.LayoutParams(-2,-2,Gravity.RIGHT|Gravity.CENTER_VERTICAL);
+        barParams.rightMargin=dp(10);
         root.addView(buttons,barParams);
         setContentView(root);
         immersive();
@@ -98,11 +100,17 @@ public final class LexActivity extends Activity {
     private Button pillButton(String label){
         Button button=new Button(this);
         button.setText(label);button.setAllCaps(false);
-        button.setTextColor(BG);button.setBackgroundColor(FG);
-        button.setTextSize(TypedValue.COMPLEX_UNIT_SP,13);
-        button.setAlpha(0.92f);
+        button.setTextColor(FG);
+        button.setTextSize(TypedValue.COMPLEX_UNIT_SP,12);
+        android.graphics.drawable.GradientDrawable shape=new android.graphics.drawable.GradientDrawable();
+        shape.setColor(0xD917191B);
+        shape.setCornerRadius(dp(8));
+        shape.setStroke(dp(1),0x26FFFFFF);
+        button.setBackground(shape);
         button.setMinWidth(0);button.setMinimumWidth(0);
-        button.setPadding(dp(16),0,dp(16),0);
+        button.setMinHeight(0);button.setMinimumHeight(0);
+        button.setPadding(dp(12),0,dp(12),0);
+        button.setStateListAnimator(null);
         return button;
     }
 
