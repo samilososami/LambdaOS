@@ -102,7 +102,8 @@ const heroRibbon = document.querySelector('.hero-ribbon');
 let ticking = false;
 function onScroll() {
   ticking = false;
-  header.classList.toggle('is-scrolled', scrollY > 24);
+  // Two thresholds, so the header never flickers between sizes around one scroll position.
+  header.classList.toggle('is-scrolled', header.classList.contains('is-scrolled') ? scrollY > 8 : scrollY > 40);
   if (!reduceMotion && innerWidth > 800 && scrollY < innerHeight * 1.2) {
     heroRibbon.style.transform = `translateY(${(scrollY * 0.22).toFixed(1)}px)`;
   }

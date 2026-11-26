@@ -686,6 +686,58 @@ html.lenis,html.lenis body{height:auto}
 .icon.icon-fill{fill:currentColor;stroke:none}
 .stack-lambda svg{width:26px;height:26px;fill:currentColor}
 
-/* Language ripple: a thin inverted ring with a faint body, visible on paper and on black. */
-.lang-ripple{position:fixed;z-index:200;width:0;height:0;border-radius:50%;pointer-events:none;transform:translate(-50%,-50%);border:1.5px solid #fff;background:radial-gradient(closest-side,transparent 72%,rgba(255,255,255,.14));mix-blend-mode:difference}
 .stack-base .stack-node .icon{width:26px;height:26px}
+
+/* ---------- revision 10: native language reveal, breathing header, lighter mobile scale ---------- */
+/* Language: the new snapshot is clipped to a growing circle, with no cross-fade. */
+::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}
+
+/* Desktop header: taller at the very top, settles to the compact bar once you scroll.
+   Fixed, so its height can change without moving the page underneath. */
+@media(min-width:801px){
+  body{padding-top:84px}
+  .site-header{position:fixed;top:0;left:0;right:0}
+  .hero{min-height:calc(100svh - 84px)}
+  .site-header .header-inner{height:84px;transition:height .8s var(--ease-out)}
+  .site-header.is-scrolled .header-inner{height:58px}
+  .site-header .wordmark{width:138px;transform:scale(1.22);transform-origin:0 50%;transition:transform .8s var(--ease-out)}
+  .site-header.is-scrolled .wordmark{width:138px;transform:none}
+  .desktop-nav{transform:translateX(-50%) scale(1.08);transition:transform .8s var(--ease-out)}
+  .site-header.is-scrolled .desktop-nav{transform:translateX(-50%)}
+  .header-tools{transform:scale(1.08);transform-origin:100% 50%;transition:transform .8s var(--ease-out)}
+  .site-header.is-scrolled .header-tools{transform:none}
+  .site-header{transition:box-shadow .8s var(--ease-out)}
+}
+
+/* Mobile: everything a step smaller, so the page breathes. */
+@media(max-width:800px){
+  .hero h1{font-size:min(calc((100vw - 48px) / 9.3),52px)}
+  .hero-description{font-size:15px}
+  .hero-phone{height:350px}
+  .hero-ribbon{height:230px}
+  h2,.status h2,.origin h2,.contact h2,.dev-head h2,.operator h2,.system h2,.lex h2,.development h2{font-size:clamp(32px,9.6vw,44px)}
+  .origin-story{font-size:18px}
+  .section-intro{font-size:15px}
+  .carousel-track{--w:54vw;gap:18px}
+  .slide figcaption{font-size:14px}
+  .slide figcaption span{font-size:13px}
+  .operator .large-copy{font-size:19px}
+  .body-copy{font-size:15px}
+  .stack-core strong{font-size:16px}
+  .stack-core small{font-size:12px}
+  .stack-node{font-size:13px}
+  .stack-base .stack-node{font-size:11.5px}
+  .operator-phone img{width:min(66vw,270px)}
+  .lex-copy{font-size:16px}
+  .dev-stages strong{font-size:19px}
+  .dev-stage{font-size:12px}
+  .text-link{font-size:14px}
+  .contact-copy{font-size:17px}
+  .contact-mail{font-size:19px}
+  .contact h3,.support-block h3{font-size:22px}
+  .support-copy{font-size:14px}
+  .method{font-size:15px}
+  .support-block code,.copy-button{font-size:13px}
+  .mobile-menu nav a{font-size:clamp(30px,8.6vw,38px)}
+  .site-header .wordmark{width:138px}
+}

@@ -157,9 +157,6 @@ export const copy = [
   ['Control de linterna rediseñado con cinco niveles de intensidad', 'Redesigned flashlight control with five intensity levels'],
   ['Linterna', 'Flashlight'],
   ['Un control rediseñado con cinco niveles de intensidad.', 'A redesigned control with five intensity levels.'],
-  ['Control de carga inalámbrica inversa con límite de batería', 'Reverse wireless charging control with a battery limit'],
-  ['Compartir batería', 'Battery sharing'],
-  ['Carga inalámbrica inversa, con un límite que protege tu batería.', 'Reverse wireless charging, with a limit that protects your battery.'],
   ['Paso del asistente para elegir el diseño de Lambda Operator: iconos o texto', 'Setup step to choose the Lambda Operator layout: icons or text'],
   ['Tu Operator', 'Your Operator'],
   ['Elige iconos o una lista de texto durante la configuración.', 'Choose icons or a text list during setup.']
