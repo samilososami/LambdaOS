@@ -55,7 +55,7 @@ export function setupLanguage(onChange) {
       if (next === language) return;
       language = next;
       try { localStorage.setItem(storageKey, language); } catch { /* Still switch in memory. */ }
-      if (!document.startViewTransition || matchMedia('(prefers-reduced-motion: reduce)').matches) { apply(); return; }
+      if (!document.startViewTransition || document.documentElement.classList.contains('lite')) { apply(); return; }
       // The browser snapshots the page once and reveals the new language inside a circle
       // growing from the click: one composited animation, nothing on the page is re-rendered.
       const box = button.getBoundingClientRect();

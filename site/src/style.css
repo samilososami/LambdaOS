@@ -709,20 +709,27 @@ body{padding-top:var(--hh-top)}
 /* The clean, trimmed wordmark: nothing is cropped, so the final "S" stays whole. */
 .site-header .wordmark{aspect-ratio:987/156;overflow:visible}
 .site-header .wordmark img{position:static;display:block;width:100%;height:auto;transform:none;mix-blend-mode:normal}
-.site-header .wordmark,.site-header.is-scrolled .wordmark{width:138px;transform-origin:0 50%;transition:transform .8s var(--ease-out)}
-.site-header .wordmark{transform:scale(1.22)}
-.site-header.is-scrolled .wordmark{transform:none}
+/* Everything is laid out at its large, top-of-page size and only ever scaled down. Scaling text
+   up shows a soft, enlarged raster until the animation ends, which made the bar seem to grow
+   before the text did on the way back up; scaling down stays sharp in both directions. */
+.site-header .wordmark,.site-header.is-scrolled .wordmark{width:168px;transform-origin:0 50%;transition:transform .8s var(--ease-out)}
+.site-header .wordmark{transform:none}
+.site-header.is-scrolled .wordmark{transform:scale(.8214)}
 @media(min-width:801px){
   .hero{min-height:calc(100svh - var(--hh-top))}
-  .desktop-nav{transform:translateX(-50%) scale(1.08);transition:transform .8s var(--ease-out)}
-  .site-header.is-scrolled .desktop-nav{transform:translateX(-50%)}
-  .header-tools{transform:scale(1.08);transform-origin:100% 50%;transition:transform .8s var(--ease-out)}
-  .site-header.is-scrolled .header-tools{transform:none}
+  .desktop-nav{gap:32px;font-size:15px;transform:translateX(-50%);transition:transform .8s var(--ease-out)}
+  .site-header.is-scrolled .desktop-nav{transform:translateX(-50%) scale(.9333)}
+  .header-tools .language-switch{font-size:13px}
+  .header-github .gh-mark{width:20.5px;height:20.5px}
+  .header-tools{transform-origin:100% 50%;transition:transform .8s var(--ease-out)}
+  .site-header.is-scrolled .header-tools{transform:scale(.926)}
 }
 @media(max-width:800px){
-  .site-header .wordmark{transform:scale(1.12)}
-  .menu-toggle{transform:scale(1.1);transform-origin:100% 50%;transition:transform .8s var(--ease-out)}
-  .site-header.is-scrolled .menu-toggle{transform:none}
+  .site-header .wordmark,.site-header.is-scrolled .wordmark{width:155px}
+  .site-header.is-scrolled .wordmark{transform:scale(.8903)}
+  .menu-toggle{transform-origin:100% 50%;transition:transform .8s var(--ease-out)}
+  .menu-toggle span{width:26px;left:9px}
+  .site-header.is-scrolled .menu-toggle{transform:scale(.91)}
 }
 
 /* Mobile: everything a step smaller, so the page breathes. */
@@ -755,7 +762,6 @@ body{padding-top:var(--hh-top)}
   .method{font-size:15px}
   .support-block code,.copy-button{font-size:13px}
   .mobile-menu nav a{font-size:clamp(30px,8.6vw,38px)}
-  .site-header .wordmark{width:138px}
 }
 
 /* ---------- revision 11: visible language ripple, lighter rendering ---------- */
@@ -763,3 +769,18 @@ body{padding-top:var(--hh-top)}
 .lang-ring{position:fixed;z-index:300;border-radius:50%;pointer-events:none;transform:translate(-50%,-50%) scale(0);mix-blend-mode:difference;background:radial-gradient(closest-side,transparent calc(100% - 160px),rgba(255,255,255,.07) calc(100% - 60px),rgba(255,255,255,.28) calc(100% - 4px),#fff calc(100% - 2.5px),#fff calc(100% - 1px),transparent 100%)}
 /* The parallax ribbon gets its own layer instead of being repainted while it moves. */
 .hero-ribbon{will-change:transform}
+
+/* ---------- revision 12: adaptive motion ---------- */
+/* Pause infinite animations while they are off screen. */
+.hero.is-off .hero-phone{animation-play-state:running,paused}
+.stack.is-off .stack-links path{animation-play-state:paused}
+/* Lite: chosen for slow devices, software rendering or Save-Data. Same page, lighter motion:
+   native scrolling, no floating phone, no blur, no language reveal, shorter reveals. */
+.lite .hero-phone{animation-play-state:running,paused}
+.lite .stack-links path{animation-play-state:paused}
+.lite .hero-ribbon{will-change:auto}
+.lite-boot .hero h1 .line>span,.lite-boot .hero-description{animation-name:lite-in;animation-duration:.9s}
+@keyframes lite-in{from{opacity:0;transform:translateY(12px)}}
+.lite.js-anim [data-reveal]{transform:translateY(20px);transition-duration:.7s}
+.lite.js-anim [data-stagger]>*{transform:translateY(20px);transition-duration:.6s;transition-delay:calc(var(--i,0)*60ms)}
+.lite.js-anim [data-reveal].in-view,.lite.js-anim [data-stagger].in-view>*{transform:none}

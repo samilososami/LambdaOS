@@ -2,12 +2,28 @@ import Lenis from 'lenis';
 import 'lenis/dist/lenis.css';
 import './style.css';
 import { t, setupLanguage } from './i18n.js';
+import { startsLite, softwareRendering, frameWatcher } from './perf.js';
 
 const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const easeOutExpo = x => (x === 1 ? 1 : 1 - 2 ** (-10 * x));
 
-/* Smooth wheel scrolling (touch keeps the native scroll). */
-const lenis = reduceMotion ? null : new Lenis({ autoRaf: true, lerp: 0.085 });
+const root = document.documentElement;
+const idle = window.requestIdleCallback ? fn => requestIdleCallback(fn, { timeout: 2000 }) : fn => setTimeout(fn, 200);
+
+/* Slow devices get the lite profile from the start; others can still fall back to it later. */
+let lite = reduceMotion || startsLite();
+if (lite) root.classList.add('lite', 'lite-boot');
+
+/* Smooth wheel scrolling, only where there is a wheel: touch screens keep their native scroll. */
+const finePointer = matchMedia('(hover: hover) and (pointer: fine)').matches;
+let lenis = lite || !finePointer ? null : new Lenis({ autoRaf: true, lerp: 0.085 });
+function goLite() {
+  if (lite) return;
+  lite = true;
+  root.classList.add('lite');
+  lenis?.destroy();
+  lenis = null;
+}
 const menuButton = document.querySelector('.menu-toggle');
 const mobileMenu = document.querySelector('#mobile-menu');
 
@@ -99,13 +115,16 @@ if (!reduceMotion && 'IntersectionObserver' in window) {
 
 const header = document.querySelector('.site-header');
 const heroRibbon = document.querySelector('.hero-ribbon');
-let ticking = false;
-function onScroll() {
+const watchFrames = frameWatcher(goLite);
+let ticking = false, ribbonY = -1;
+function onScroll(now) {
   ticking = false;
+  if (!lite && now) watchFrames(now);
   // Two thresholds, so the header never flickers between sizes around one scroll position.
   header.classList.toggle('is-scrolled', header.classList.contains('is-scrolled') ? scrollY > 8 : scrollY > 40);
-  if (!reduceMotion && innerWidth > 800 && scrollY < innerHeight * 1.2) {
-    heroRibbon.style.transform = `translateY(${(scrollY * 0.22).toFixed(1)}px)`;
+  if (!lite && innerWidth > 800 && scrollY < innerHeight * 1.2) {
+    const y = Math.round(scrollY * 0.22);
+    if (y !== ribbonY) { ribbonY = y; heroRibbon.style.transform = `translateY(${y}px)`; }
   }
 }
 addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
@@ -134,6 +153,7 @@ if (track) {
   const dots = [...document.querySelectorAll('.carousel-dots span')];
   const arrows = [...document.querySelectorAll('.carousel-arrow')];
   let first = 0, step = 1, half = 0, current = count, tween = 0, settleTimer;
+  const slideDepth = [], dotWidth = [];
   // Slide centres do not move while scrolling, so measure them once instead of every frame.
   const measure = () => {
     first = slides[0].offsetLeft + slides[0].offsetWidth / 2;
@@ -146,11 +166,15 @@ if (track) {
   function paint() {
     const position = (track.scrollLeft + half - first) / step;
     current = Math.round(position);
-    slides.forEach((slide, i) => slide.style.setProperty('--d', Math.min(Math.abs(position - i), 1.5).toFixed(3)));
+    slides.forEach((slide, i) => {
+      const d = Math.min(Math.abs(position - i), 1.5).toFixed(3);
+      if (d !== slideDepth[i]) { slideDepth[i] = d; slide.style.setProperty('--d', d); }
+    });
     const logical = ((position - count) % count + count) % count;
     dots.forEach((dot, i) => {
       const raw = Math.abs(logical - i);
-      dot.style.setProperty('--w', Math.max(0, 1 - Math.min(raw, count - raw)).toFixed(3));
+      const w = Math.max(0, 1 - Math.min(raw, count - raw)).toFixed(3);
+      if (w !== dotWidth[i]) { dotWidth[i] = w; dot.style.setProperty('--w', w); }
     });
   }
   // Resting on a clone: jump to the matching original, which looks identical.
@@ -258,11 +282,36 @@ if (phone3d && !reduceMotion && matchMedia('(pointer: fine)').matches) {
     if (running) requestAnimationFrame(loop);
   };
   const kick = () => { if (!running) { running = true; requestAnimationFrame(loop); } };
+  // Measure once per visit instead of forcing a layout read on every pointer move.
+  let box = null;
+  hero.addEventListener('pointerenter', () => { box = hero.getBoundingClientRect(); });
+  addEventListener('scroll', () => { box = null; }, { passive: true });
   hero.addEventListener('pointermove', event => {
-    const box = hero.getBoundingClientRect();
+    if (lite) return;
+    box ??= hero.getBoundingClientRect();
     targetX = (event.clientX - box.left) / box.width - 0.5;
     targetY = (event.clientY - box.top) / box.height - 0.5;
     kick();
   });
   hero.addEventListener('pointerleave', () => { targetX = 0; targetY = 0; kick(); });
 }
+
+/* Infinite animations rest while they are off screen. */
+const offscreen = new IntersectionObserver(entries => entries.forEach(entry => entry.target.classList.toggle('is-off', !entry.isIntersecting)));
+document.querySelectorAll('.hero, .stack').forEach(el => offscreen.observe(el));
+
+addEventListener('load', () => {
+  // No usable GPU: drop to lite before the first scroll.
+  if (!lite) idle(() => { if (softwareRendering()) goLite(); });
+  // Fetch and decode every lazy image in the background, one per idle slot, so reaching
+  // the carousel or LEX never waits on a decode. Skipped when the visitor asked to save data.
+  if (navigator.connection?.saveData) return;
+  const queue = [...document.images].filter(img => img.loading === 'lazy');
+  const next = () => {
+    const img = queue.shift();
+    if (!img) return;
+    img.loading = 'eager';
+    (img.decode ? img.decode() : Promise.resolve()).catch(() => {}).finally(() => idle(next));
+  };
+  idle(next);
+}, { once: true });
