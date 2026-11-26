@@ -62,12 +62,19 @@ export function setupLanguage(onChange) {
       const x = event.detail ? event.clientX : box.left + box.width / 2;
       const y = event.detail ? event.clientY : box.top + box.height / 2;
       const radius = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
-      document.startViewTransition(apply).ready.then(() => {
+      // A ring that marks the edge of the drop. It only exists in the new snapshot.
+      const ring = Object.assign(document.createElement('span'), { className: 'lang-ring' });
+      ring.style.cssText = `left:${x}px;top:${y}px;width:${radius * 2}px;height:${radius * 2}px`;
+      const transition = document.startViewTransition(() => { apply(); document.body.append(ring); });
+      transition.ready.then(() => {
+        const timing = { duration: 950, easing: 'cubic-bezier(.22,.7,.25,1)' };
         document.documentElement.animate(
           { clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${radius}px at ${x}px ${y}px)`] },
-          { duration: 820, easing: 'cubic-bezier(.45,0,.2,1)', pseudoElement: '::view-transition-new(root)' }
+          { ...timing, pseudoElement: '::view-transition-new(root)' }
         );
+        ring.animate({ transform: ['translate(-50%,-50%) scale(0)', 'translate(-50%,-50%) scale(1)'], opacity: [1, 1, 0] }, timing);
       }, () => {});
+      transition.finished.finally(() => ring.remove());
     });
   });
   apply();

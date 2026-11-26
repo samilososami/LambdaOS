@@ -616,9 +616,9 @@ html.lenis,html.lenis body{height:auto}
 .menu-toggle span{transition:top .55s var(--ease-out),transform .55s var(--ease-out),opacity .3s}
 
 /* Scroll reveals: rise, unblur, fade; groups follow one after another. */
-.js-anim [data-reveal]{opacity:0;transform:translateY(44px);filter:blur(8px);transition:opacity 1.1s var(--ease-out),transform 1.4s var(--ease-out),filter 1.1s var(--ease-out)}
+.js-anim [data-reveal]{opacity:0;transform:translateY(40px);transition:opacity 1.1s var(--ease-out),transform 1.4s var(--ease-out)}
 .js-anim .carousel[data-reveal]{filter:none;transform:translateY(60px)}
-.js-anim [data-reveal].in-view{opacity:1;transform:none;filter:none}
+.js-anim [data-reveal].in-view{opacity:1;transform:none}
 .js-anim [data-stagger]>*{opacity:0;transform:translateY(48px);transition:opacity 1s var(--ease-out),transform 1.3s var(--ease-out);transition-delay:calc(var(--i,0)*110ms)}
 .js-anim [data-stagger].in-view>*{opacity:1;transform:none}
 
@@ -692,21 +692,37 @@ html.lenis,html.lenis body{height:auto}
 /* Language: the new snapshot is clipped to a growing circle, with no cross-fade. */
 ::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}
 
-/* Desktop header: taller at the very top, settles to the compact bar once you scroll.
-   Fixed, so its height can change without moving the page underneath. */
+/* Header: taller at the very top, a compact bar once you scroll. The box never changes size:
+   the black bar scales, the line and the content slide, all on the compositor, so nothing
+   is laid out again while it moves and the page underneath never shifts. */
+:root{--hh-top:84px;--hh:58px;--hh-ratio:.6905;--hh-lift:-13px}
+@media(max-width:800px){:root{--hh-top:68px;--hh:56px;--hh-ratio:.8235;--hh-lift:-6px}}
+body{padding-top:var(--hh-top)}
+.site-header,.site-header.is-scrolled{position:fixed;top:0;left:0;right:0;height:var(--hh-top);background:none;box-shadow:none;pointer-events:none;z-index:50}
+.site-header:before{content:'';position:absolute;inset:0;background:#000;transform-origin:50% 0;transition:transform .8s var(--ease-out)}
+.site-header:after{content:'';position:absolute;left:0;right:0;top:calc(var(--hh-top) - 1px);height:1px;background:#1c1c1c;transition:transform .8s var(--ease-out)}
+.site-header.is-scrolled:before{transform:scaleY(var(--hh-ratio))}
+.site-header.is-scrolled:after{transform:translateY(calc(var(--hh) - var(--hh-top)))}
+.site-header .header-inner,.site-header.is-scrolled .header-inner{height:var(--hh-top);background:none;border:0;transition:transform .8s var(--ease-out)}
+.site-header.is-scrolled .header-inner{transform:translateY(var(--hh-lift))}
+.site-header a,.site-header button{pointer-events:auto}
+/* The clean, trimmed wordmark: nothing is cropped, so the final "S" stays whole. */
+.site-header .wordmark{aspect-ratio:987/156;overflow:visible}
+.site-header .wordmark img{position:static;display:block;width:100%;height:auto;transform:none;mix-blend-mode:normal}
+.site-header .wordmark,.site-header.is-scrolled .wordmark{width:138px;transform-origin:0 50%;transition:transform .8s var(--ease-out)}
+.site-header .wordmark{transform:scale(1.22)}
+.site-header.is-scrolled .wordmark{transform:none}
 @media(min-width:801px){
-  body{padding-top:84px}
-  .site-header{position:fixed;top:0;left:0;right:0}
-  .hero{min-height:calc(100svh - 84px)}
-  .site-header .header-inner{height:84px;transition:height .8s var(--ease-out)}
-  .site-header.is-scrolled .header-inner{height:58px}
-  .site-header .wordmark{width:138px;transform:scale(1.22);transform-origin:0 50%;transition:transform .8s var(--ease-out)}
-  .site-header.is-scrolled .wordmark{width:138px;transform:none}
+  .hero{min-height:calc(100svh - var(--hh-top))}
   .desktop-nav{transform:translateX(-50%) scale(1.08);transition:transform .8s var(--ease-out)}
   .site-header.is-scrolled .desktop-nav{transform:translateX(-50%)}
   .header-tools{transform:scale(1.08);transform-origin:100% 50%;transition:transform .8s var(--ease-out)}
   .site-header.is-scrolled .header-tools{transform:none}
-  .site-header{transition:box-shadow .8s var(--ease-out)}
+}
+@media(max-width:800px){
+  .site-header .wordmark{transform:scale(1.12)}
+  .menu-toggle{transform:scale(1.1);transform-origin:100% 50%;transition:transform .8s var(--ease-out)}
+  .site-header.is-scrolled .menu-toggle{transform:none}
 }
 
 /* Mobile: everything a step smaller, so the page breathes. */
@@ -741,3 +757,9 @@ html.lenis,html.lenis body{height:auto}
   .mobile-menu nav a{font-size:clamp(30px,8.6vw,38px)}
   .site-header .wordmark{width:138px}
 }
+
+/* ---------- revision 11: visible language ripple, lighter rendering ---------- */
+/* The ring lives in the new snapshot and grows with the reveal circle, so it marks its edge. */
+.lang-ring{position:fixed;z-index:300;border-radius:50%;pointer-events:none;transform:translate(-50%,-50%) scale(0);mix-blend-mode:difference;background:radial-gradient(closest-side,transparent calc(100% - 160px),rgba(255,255,255,.07) calc(100% - 60px),rgba(255,255,255,.28) calc(100% - 4px),#fff calc(100% - 2.5px),#fff calc(100% - 1px),transparent 100%)}
+/* The parallax ribbon gets its own layer instead of being repainted while it moves. */
+.hero-ribbon{will-change:transform}
