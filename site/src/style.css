@@ -650,3 +650,42 @@ html.lenis,html.lenis body{height:auto}
 @keyframes menu-link-in{from{opacity:0;transform:translateY(28px)}}
 @keyframes menu-fade{from{opacity:0}}
 .carousel-track.is-animating{scroll-snap-type:none}
+
+/* ---------- revision 9: hero focus-in, reversed menu close, swipe carousel, ripple language ---------- */
+/* Hero copy sits a touch further left on desktop. */
+@media(min-width:801px){.hero .hero-content{margin-left:calc(clamp(12px,1.6vw,34px) * -1)}}
+/* No masks around the lines any more: nothing can clip the final "e" or the descenders. */
+.hero h1 .line{overflow:visible;padding-bottom:0;margin-bottom:0}
+.hero h1{line-height:.97}
+@media(max-width:800px){.hero h1{line-height:.99}}
+/* Each line comes into focus from the left instead of rising. */
+.js-anim .hero h1 .line>span{animation:title-in 1.7s var(--ease-out) both}
+.js-anim .hero h1 .line:nth-child(1)>span{animation-delay:.1s}
+.js-anim .hero h1 .line:nth-child(2)>span{animation-delay:.2s}
+.js-anim .hero h1 .line:nth-child(3)>span{animation-delay:.3s}
+.js-anim .hero h1 .line:nth-child(4)>span{animation-delay:.4s}
+.js-anim .hero-description{animation:title-in 1.5s .62s var(--ease-out) both}
+@keyframes title-in{from{opacity:0;filter:blur(14px);transform:translateX(-.22em)}}
+
+/* Mobile menu closes as the exact reverse of its opening: links sink back last-first, then the black lifts. */
+@media(max-width:800px){
+  .mobile-menu.is-closing{animation:menu-out .46s .24s var(--ease-io) forwards}
+  .mobile-menu.is-closing nav a,.mobile-menu.is-closing .mobile-menu-foot{animation:menu-link-back .5s var(--ease-io) forwards}
+  .mobile-menu.is-closing .mobile-menu-foot{animation-delay:0s}
+  .mobile-menu.is-closing nav a:nth-child(6){animation-delay:.04s}.mobile-menu.is-closing nav a:nth-child(5){animation-delay:.08s}
+  .mobile-menu.is-closing nav a:nth-child(4){animation-delay:.12s}.mobile-menu.is-closing nav a:nth-child(3){animation-delay:.16s}
+  .mobile-menu.is-closing nav a:nth-child(2){animation-delay:.2s}.mobile-menu.is-closing nav a:nth-child(1){animation-delay:.24s}
+}
+@keyframes menu-link-back{to{opacity:0;transform:translateY(28px)}}
+
+/* Carousel: vertical page scroll stays native, horizontal drags belong to the script. */
+.carousel-track{touch-action:pan-y;overscroll-behavior-x:contain;-webkit-user-select:none}
+.slide img{-webkit-user-drag:none;pointer-events:none}
+
+/* Operator stack: filled brand marks and the real Lambda glyph. */
+.icon.icon-fill{fill:currentColor;stroke:none}
+.stack-lambda svg{width:26px;height:26px;fill:currentColor}
+
+/* Language ripple: a thin inverted ring with a faint body, visible on paper and on black. */
+.lang-ripple{position:fixed;z-index:200;width:0;height:0;border-radius:50%;pointer-events:none;transform:translate(-50%,-50%);border:1.5px solid #fff;background:radial-gradient(closest-side,transparent 72%,rgba(255,255,255,.14));mix-blend-mode:difference}
+.stack-base .stack-node .icon{width:26px;height:26px}

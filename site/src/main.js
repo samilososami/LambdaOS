@@ -44,7 +44,7 @@ function setMenu(open) {
   closeTimer = setTimeout(() => {
     mobileMenu.hidden = true;
     mobileMenu.classList.remove('is-closing');
-  }, 380);
+  }, 760);
 }
 menuButton.addEventListener('click', () => setMenu(menuButton.getAttribute('aria-expanded') !== 'true'));
 document.addEventListener('click', event => {
@@ -125,87 +125,122 @@ const heroSpy = new IntersectionObserver(([entry]) => {
 }, { rootMargin: '-45% 0px -50% 0px' });
 heroSpy.observe(document.querySelector('.hero'));
 
-/* System carousel: an endless loop (clones on both sides), scroll-snap, arrows, keys, mouse drag
-   and dots that follow the scroll continuously. */
+/* System carousel: an endless loop (clones on both sides). Mouse and touch drags are handled here,
+   so a swipe always moves exactly one screen and lands on the same eased curve as the arrows. */
 if (track) {
   const slides = [...track.children];
   const count = originals.length;
   const dots = [...document.querySelectorAll('.carousel-dots span')];
   const arrows = [...document.querySelectorAll('.carousel-arrow')];
-  let current = count;
-  let dragging = false, moved = false, startX = 0, startLeft = 0, settleTimer;
-  const centerOf = slide => slide.offsetLeft + slide.offsetWidth / 2;
-  const spacing = () => centerOf(slides[1]) - centerOf(slides[0]);
-  const leftFor = index => centerOf(slides[index]) - track.clientWidth / 2;
-  let tween = 0;
-  const goTo = (index, instant = false) => {
-    cancelAnimationFrame(tween);
-    const to = leftFor(index);
-    if (instant || reduceMotion) { track.scrollLeft = to; track.classList.remove('is-animating'); return; }
-    const from = track.scrollLeft, start = performance.now(), duration = 850;
-    track.classList.add('is-animating');
-    const step = now => {
-      const p = Math.min(1, (now - start) / duration);
-      track.scrollLeft = from + (to - from) * easeOutExpo(p);
-      if (p < 1) tween = requestAnimationFrame(step);
-      else track.classList.remove('is-animating');
-    };
-    tween = requestAnimationFrame(step);
+  let first = 0, step = 1, half = 0, current = count, tween = 0, settleTimer;
+  // Slide centres do not move while scrolling, so measure them once instead of every frame.
+  const measure = () => {
+    first = slides[0].offsetLeft + slides[0].offsetWidth / 2;
+    step = slides[1].offsetLeft + slides[1].offsetWidth / 2 - first;
+    half = track.clientWidth / 2;
   };
+  const leftFor = index => first + index * step - half;
+  let dragging = false, moved = false, startX = 0, startLeft = 0, startIndex = 0, lastX = 0, lastT = 0, velocity = 0;
+
   function paint() {
-    const position = (track.scrollLeft + track.clientWidth / 2 - centerOf(slides[0])) / spacing();
+    const position = (track.scrollLeft + half - first) / step;
     current = Math.round(position);
     slides.forEach((slide, i) => slide.style.setProperty('--d', Math.min(Math.abs(position - i), 1.5).toFixed(3)));
     const logical = ((position - count) % count + count) % count;
     dots.forEach((dot, i) => {
       const raw = Math.abs(logical - i);
-      const distance = Math.min(raw, count - raw);
-      dot.style.setProperty('--w', Math.max(0, 1 - distance).toFixed(3));
+      dot.style.setProperty('--w', Math.max(0, 1 - Math.min(raw, count - raw)).toFixed(3));
     });
   }
-  // Once the scroll settles on a clone, jump to the matching original without animation.
+  // Resting on a clone: jump to the matching original, which looks identical.
   function settle() {
     if (dragging || track.classList.contains('is-animating')) return;
     if (current < count || current >= count * 2) {
-      track.scrollLeft += (current < count ? count : -count) * spacing();
+      track.scrollLeft += (current < count ? count : -count) * step;
       paint();
     }
   }
+  function goTo(index, instant = false) {
+    cancelAnimationFrame(tween);
+    const to = leftFor(index);
+    if (instant || reduceMotion) {
+      track.scrollLeft = to;
+      track.classList.remove('is-animating');
+      paint();
+      settle();
+      return;
+    }
+    // Snap off before reading the position: a layout flush with snapping on would jump the track.
+    track.classList.add('is-animating');
+    const from = track.scrollLeft, start = performance.now(), duration = 850;
+    const frame = now => {
+      const p = Math.min(1, (now - start) / duration);
+      track.scrollLeft = from + (to - from) * easeOutExpo(p);
+      if (p < 1) { tween = requestAnimationFrame(frame); return; }
+      track.classList.remove('is-animating');
+      paint();
+      settle();
+    };
+    tween = requestAnimationFrame(frame);
+  }
+
   let pending = false;
   track.addEventListener('scroll', () => {
     if (!pending) { pending = true; requestAnimationFrame(() => { pending = false; paint(); }); }
-    clearTimeout(settleTimer);
-    settleTimer = setTimeout(settle, 140);
+    if (!('onscrollend' in window)) { clearTimeout(settleTimer); settleTimer = setTimeout(settle, 140); }
   }, { passive: true });
+  track.addEventListener('scrollend', settle);
   arrows.forEach(arrow => arrow.addEventListener('click', () => goTo(current + Number(arrow.dataset.step))));
   slides.forEach((slide, i) => slide.addEventListener('click', () => { if (!moved && i !== current) goTo(i); }));
   track.addEventListener('keydown', event => {
     if (event.key === 'ArrowRight') { event.preventDefault(); goTo(current + 1); }
     if (event.key === 'ArrowLeft') { event.preventDefault(); goTo(current - 1); }
   });
-  // Mouse drag (touch already scrolls natively).
+
   track.addEventListener('pointerdown', event => {
-    if (event.pointerType !== 'mouse') return;
-    dragging = true; moved = false; startX = event.clientX; startLeft = track.scrollLeft;
+    if (event.button > 0) return;
+    cancelAnimationFrame(tween);
+    track.classList.add('is-dragging');
+    track.classList.remove('is-animating');
+    clearTimeout(settleTimer);
+    paint();
+    settle();
+    dragging = true; moved = false; velocity = 0;
+    startX = lastX = event.clientX; lastT = event.timeStamp;
+    startLeft = track.scrollLeft; startIndex = current;
     track.setPointerCapture(event.pointerId);
   });
   track.addEventListener('pointermove', event => {
     if (!dragging) return;
     const delta = event.clientX - startX;
-    if (Math.abs(delta) > 4) { moved = true; track.classList.add('is-dragging'); }
-    track.scrollLeft = startLeft - delta;
+    if (!moved && Math.abs(delta) > 6) moved = true;
+    if (!moved) return;
+    // Past the neighbour the screen resists, so one swipe never covers two screens.
+    const over = Math.abs(delta) - step;
+    track.scrollLeft = startLeft - (over > 0 ? Math.sign(delta) * (step + over * 0.2) : delta);
+    const dt = event.timeStamp - lastT;
+    if (dt > 0) velocity = (event.clientX - lastX) / dt;
+    lastX = event.clientX; lastT = event.timeStamp;
   });
-  const endDrag = () => {
+  const endDrag = event => {
     if (!dragging) return;
     dragging = false;
+    let direction = 0;
+    if (moved) {
+      if (event.timeStamp - lastT > 90) velocity = 0;
+      const delta = lastX - startX;
+      if (Math.abs(delta) > Math.min(60, step * 0.16)) direction = Math.sign(delta);
+      else if (Math.abs(velocity) > 0.3) direction = Math.sign(velocity);
+    }
+    // A tap that interrupted a glide finishes it on the nearest screen.
+    goTo(moved ? startIndex - direction : current);
     track.classList.remove('is-dragging');
-    if (moved) goTo(current);
   };
   track.addEventListener('pointerup', endDrag);
   track.addEventListener('pointercancel', endDrag);
-  addEventListener('resize', () => { goTo(current, true); paint(); });
+  addEventListener('resize', () => { measure(); goTo(current, true); });
+  measure();
   goTo(count, true);
-  paint();
 }
 
 /* Hero phone leans toward the pointer, eased every frame rather than jumping. */

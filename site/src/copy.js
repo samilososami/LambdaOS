@@ -146,5 +146,21 @@ export const copy = [
   ['Periféricos', 'Peripherals'],
   ['Arquitectura: Operator y la terminal funcionan sobre Lambda Core, que corre sobre Android, el kernel y los periféricos', 'Architecture: Operator and the terminal sit on Lambda Core, which runs on Android, the kernel and peripherals'],
   ['Pantalla de inicio de Lambda Operator: Wi-Fi, Bluetooth, USB, CAN, red y radio', 'Lambda Operator home screen: Wi-Fi, Bluetooth, USB, CAN, network and radio'],
-  ['En alpha en el Galaxy S10 de referencia. Aún no hay descarga pública.', 'In alpha on the reference Galaxy S10. There is no public download yet.']
+  ['En alpha en el Galaxy S10 de referencia. Aún no hay descarga pública.', 'In alpha on the reference Galaxy S10. There is no public download yet.'],
+  ['Wi-Fi, Bluetooth, USB, CAN, red y radio, a un toque.', 'Wi-Fi, Bluetooth, USB, CAN, network and radio, one tap away.'],
+  ['Herramientas Wi-Fi de Lambda Operator: escaneo, auditoría de seguridad, mapa de canales y monitor de señal', 'Lambda Operator Wi-Fi tools: scan, security audit, channel map and signal monitor'],
+  ['Herramientas Wi-Fi', 'Wi-Fi tools'],
+  ['Escanea redes, audita su seguridad, mapea canales y sigue la señal.', 'Scan networks, audit security, map channels and watch the signal.'],
+  ['Paso de huella del asistente de configuración de LambdaOS', 'Fingerprint step of the LambdaOS setup wizard'],
+  ['Huella', 'Fingerprint'],
+  ['El registro de la huella forma parte del primer arranque.', 'Fingerprint enrolment is part of the first-boot setup.'],
+  ['Control de linterna rediseñado con cinco niveles de intensidad', 'Redesigned flashlight control with five intensity levels'],
+  ['Linterna', 'Flashlight'],
+  ['Un control rediseñado con cinco niveles de intensidad.', 'A redesigned control with five intensity levels.'],
+  ['Control de carga inalámbrica inversa con límite de batería', 'Reverse wireless charging control with a battery limit'],
+  ['Compartir batería', 'Battery sharing'],
+  ['Carga inalámbrica inversa, con un límite que protege tu batería.', 'Reverse wireless charging, with a limit that protects your battery.'],
+  ['Paso del asistente para elegir el diseño de Lambda Operator: iconos o texto', 'Setup step to choose the Lambda Operator layout: icons or text'],
+  ['Tu Operator', 'Your Operator'],
+  ['Elige iconos o una lista de texto durante la configuración.', 'Choose icons or a text list during setup.']
 ];
