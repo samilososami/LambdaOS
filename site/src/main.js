@@ -145,26 +145,31 @@ const heroSpy = new IntersectionObserver(([entry]) => {
 }, { rootMargin: '-45% 0px -50% 0px' });
 heroSpy.observe(document.querySelector('.hero'));
 
-/* System carousel: an endless loop (clones on both sides). Mouse and touch drags are handled here,
-   so a swipe always moves exactly one screen and lands on the same eased curve as the arrows. */
+/* System carousel: an endless loop (clones on both sides). Motion follows a critically damped
+   spring, so rapid clicks queue up, a change of direction turns smoothly instead of restarting,
+   and a released drag hands its speed to the glide. Mouse and touch drags move one screen. */
 if (track) {
   const slides = [...track.children];
   const count = originals.length;
   const dots = [...document.querySelectorAll('.carousel-dots span')];
   const arrows = [...document.querySelectorAll('.carousel-arrow')];
-  let first = 0, step = 1, half = 0, current = count, tween = 0, settleTimer;
+  let first = 0, step = 1, half = 0, current = count;
   const slideDepth = [], dotWidth = [];
   // Slide centres do not move while scrolling, so measure them once instead of every frame.
+  // Sub-pixel centres from the rects (scaling around the centre leaves them in place); offsetLeft
+  // rounds each slide to whole pixels and the error added up to a visible snap at the end.
   const measure = () => {
-    first = slides[0].offsetLeft + slides[0].offsetWidth / 2;
-    step = slides[1].offsetLeft + slides[1].offsetWidth / 2 - first;
+    const origin = track.getBoundingClientRect().left - track.scrollLeft;
+    const centre = slide => { const r = slide.getBoundingClientRect(); return r.left + r.width / 2 - origin; };
+    first = centre(slides[0]);
+    step = (centre(slides.at(-1)) - first) / (slides.length - 1);
     half = track.clientWidth / 2;
   };
   const leftFor = index => first + index * step - half;
-  let dragging = false, moved = false, startX = 0, startLeft = 0, startIndex = 0, lastX = 0, lastT = 0, velocity = 0;
+  const indexAt = left => (left + half - first) / step;
 
-  function paint() {
-    const position = (track.scrollLeft + half - first) / step;
+  function paint(left) {
+    const position = indexAt(left);
     current = Math.round(position);
     slides.forEach((slide, i) => {
       const d = Math.min(Math.abs(position - i), 1.5).toFixed(3);
@@ -177,58 +182,92 @@ if (track) {
       if (w !== dotWidth[i]) { dotWidth[i] = w; dot.style.setProperty('--w', w); }
     });
   }
-  // Resting on a clone: jump to the matching original, which looks identical.
-  function settle() {
-    if (dragging || track.classList.contains('is-animating')) return;
-    if (current < count || current >= count * 2) {
-      track.scrollLeft += (current < count ? count : -count) * step;
-      paint();
+
+  // The spring: position and velocity in pixels, target in slides.
+  let pos = 0, vel = 0, target = count, running = false, last = 0, frame = 0;
+  const SMOOTH = 0.2; // seconds; the glide settles in about three times this
+  function tick(now) {
+    const dt = Math.min(0.05, Math.max(0.001, (now - last) / 1000));
+    last = now;
+    // Inside the clones? Shift position and target by one full set: the view is identical.
+    const at = indexAt(pos);
+    if (at < count - 0.5 || at > count * 2 - 0.5) {
+      const shift = (at < count - 0.5 ? count : -count);
+      pos += shift * step;
+      target += shift;
     }
-  }
-  function goTo(index, instant = false) {
-    cancelAnimationFrame(tween);
-    const to = leftFor(index);
-    if (instant || reduceMotion) {
-      track.scrollLeft = to;
+    const goal = leftFor(target);
+    const omega = 2 / SMOOTH, x = omega * dt;
+    const decay = 1 / (1 + x + 0.48 * x * x + 0.235 * x * x * x);
+    const change = pos - goal, temp = (vel + omega * change) * dt;
+    vel = (vel - omega * temp) * decay;
+    pos = goal + (change + temp) * decay;
+    if (Math.abs(goal - pos) < 0.35 && Math.abs(vel) < 6) {
+      pos = goal; vel = 0; running = false;
+      track.scrollLeft = pos;
+      paint(pos);
       track.classList.remove('is-animating');
-      paint();
+      return;
+    }
+    track.scrollLeft = pos;
+    paint(pos);
+    frame = requestAnimationFrame(tick);
+  }
+  function glide(index, startVelocity = vel) {
+    // Never queue more than three screens ahead of what is on screen.
+    const at = indexAt(running ? pos : track.scrollLeft);
+    target = Math.max(Math.round(at) - 3, Math.min(Math.round(at) + 3, index));
+    if (reduceMotion) {
+      track.scrollLeft = pos = leftFor(target);
+      paint(pos);
       settle();
       return;
     }
+    vel = startVelocity;
+    if (running) return;
     // Snap off before reading the position: a layout flush with snapping on would jump the track.
     track.classList.add('is-animating');
-    const from = track.scrollLeft, start = performance.now(), duration = 850;
-    const frame = now => {
-      const p = Math.min(1, (now - start) / duration);
-      track.scrollLeft = from + (to - from) * easeOutExpo(p);
-      if (p < 1) { tween = requestAnimationFrame(frame); return; }
-      track.classList.remove('is-animating');
-      paint();
-      settle();
-    };
-    tween = requestAnimationFrame(frame);
+    pos = track.scrollLeft;
+    running = true;
+    last = performance.now();
+    frame = requestAnimationFrame(tick);
+  }
+  const nudge = direction => glide((running ? target : current) + direction);
+  function stop() {
+    cancelAnimationFrame(frame);
+    running = false;
+    track.classList.remove('is-animating');
+  }
+  // Resting on a clone after a native scroll (trackpad): jump to the matching original.
+  function settle() {
+    if (dragging || running) return;
+    if (current < count || current >= count * 2) {
+      track.scrollLeft += (current < count ? count : -count) * step;
+      paint(track.scrollLeft);
+    }
   }
 
-  let pending = false;
+  let pending = false, settleTimer;
   track.addEventListener('scroll', () => {
-    if (!pending) { pending = true; requestAnimationFrame(() => { pending = false; paint(); }); }
+    if (running) return; // the spring paints its own frames
+    if (!pending) { pending = true; requestAnimationFrame(() => { pending = false; paint(track.scrollLeft); }); }
     if (!('onscrollend' in window)) { clearTimeout(settleTimer); settleTimer = setTimeout(settle, 140); }
   }, { passive: true });
   track.addEventListener('scrollend', settle);
-  arrows.forEach(arrow => arrow.addEventListener('click', () => goTo(current + Number(arrow.dataset.step))));
-  slides.forEach((slide, i) => slide.addEventListener('click', () => { if (!moved && i !== current) goTo(i); }));
+  arrows.forEach(arrow => arrow.addEventListener('click', () => nudge(Number(arrow.dataset.step))));
+  slides.forEach((slide, i) => slide.addEventListener('click', () => { if (!moved && i !== current) glide(i); }));
   track.addEventListener('keydown', event => {
-    if (event.key === 'ArrowRight') { event.preventDefault(); goTo(current + 1); }
-    if (event.key === 'ArrowLeft') { event.preventDefault(); goTo(current - 1); }
+    if (event.key === 'ArrowRight') { event.preventDefault(); nudge(1); }
+    if (event.key === 'ArrowLeft') { event.preventDefault(); nudge(-1); }
   });
 
+  let dragging = false, moved = false, startX = 0, startLeft = 0, startIndex = 0, lastX = 0, lastT = 0, velocity = 0;
   track.addEventListener('pointerdown', event => {
     if (event.button > 0) return;
-    cancelAnimationFrame(tween);
     track.classList.add('is-dragging');
-    track.classList.remove('is-animating');
+    stop();
     clearTimeout(settleTimer);
-    paint();
+    paint(track.scrollLeft);
     settle();
     dragging = true; moved = false; velocity = 0;
     startX = lastX = event.clientX; lastT = event.timeStamp;
@@ -257,15 +296,21 @@ if (track) {
       if (Math.abs(delta) > Math.min(60, step * 0.16)) direction = Math.sign(delta);
       else if (Math.abs(velocity) > 0.3) direction = Math.sign(velocity);
     }
-    // A tap that interrupted a glide finishes it on the nearest screen.
-    goTo(moved ? startIndex - direction : current);
+    // The finger's speed becomes the glide's starting speed (pointer px/ms to scroll px/s).
+    glide(moved ? startIndex - direction : current, moved ? -velocity * 1000 : 0);
     track.classList.remove('is-dragging');
   };
   track.addEventListener('pointerup', endDrag);
   track.addEventListener('pointercancel', endDrag);
-  addEventListener('resize', () => { measure(); goTo(current, true); });
+  addEventListener('resize', () => {
+    stop();
+    measure();
+    track.scrollLeft = pos = leftFor(current);
+    paint(pos);
+  });
   measure();
-  goTo(count, true);
+  track.scrollLeft = pos = leftFor(count);
+  paint(pos);
 }
 
 /* Hero phone leans toward the pointer, eased every frame rather than jumping. */
