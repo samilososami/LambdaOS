@@ -1,6 +1,8 @@
 package org.lambdaproject.lambda;
 
 import android.app.Activity;
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,6 +16,7 @@ import android.view.WindowInsetsController;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import org.json.JSONObject;
@@ -38,6 +41,8 @@ public final class LexActivity extends Activity {
     private LexDesktopView desktop;
     private TextView status;
     private Button close,keyboard;
+    private View statusBox;
+    private ObjectAnimator pulse;
     private JSONObject desktopInfo;
     private volatile LexRfbClient client;
     private volatile int generation;
@@ -70,8 +75,24 @@ public final class LexActivity extends Activity {
         status=new TextView(this);
         status.setText(tr("Iniciando escritorio…","Starting desktop…"));
         status.setTextColor(SECONDARY);status.setTextSize(TypedValue.COMPLEX_UNIT_SP,16);
-        status.setGravity(Gravity.CENTER);status.setPadding(dp(32),dp(16),dp(32),dp(16));
-        root.addView(status,new FrameLayout.LayoutParams(-1,-2,Gravity.CENTER));
+        status.setGravity(Gravity.CENTER);status.setPadding(dp(32),0,dp(32),0);
+        // Mark above the label, both centred: the start screen reads as a card, not a bare line.
+        LinearLayout statusBox=new LinearLayout(this);
+        statusBox.setOrientation(LinearLayout.VERTICAL);
+        statusBox.setGravity(Gravity.CENTER);
+        ImageView mark=new ImageView(this);
+        mark.setImageResource(R.drawable.ic_core);
+        LinearLayout.LayoutParams markParams=new LinearLayout.LayoutParams(dp(64),dp(64));
+        markParams.bottomMargin=dp(18);
+        statusBox.addView(mark,markParams);
+        statusBox.addView(status,new LinearLayout.LayoutParams(-1,-2));
+        this.statusBox=statusBox;
+        root.addView(statusBox,new FrameLayout.LayoutParams(-1,-2,Gravity.CENTER));
+        pulse=ObjectAnimator.ofFloat(mark,"alpha",1f,0.45f);
+        pulse.setDuration(1200);
+        pulse.setRepeatMode(ValueAnimator.REVERSE);
+        pulse.setRepeatCount(ValueAnimator.INFINITE);
+        pulse.start();
         LinearLayout buttons=new LinearLayout(this);
         buttons.setOrientation(LinearLayout.VERTICAL);
         buttons.setGravity(Gravity.END);
@@ -146,7 +167,7 @@ public final class LexActivity extends Activity {
                 retries=0;
                 status.setText(tr("Conectando al escritorio…","Connecting to desktop…"));
                 status.setTextColor(SECONDARY);
-                status.setVisibility(View.VISIBLE);
+                statusBox.setVisibility(View.VISIBLE);
                 connectViewer();
                 pollDesktop();
             });
@@ -195,7 +216,7 @@ public final class LexActivity extends Activity {
                 main.post(()->{
                     if(destroyed||closing||attempt!=generation)return;
                     retries=0;
-                    status.setVisibility(View.GONE);
+                    statusBox.setVisibility(View.GONE);
                     desktop.setVisibility(View.VISIBLE);
                     desktop.requestFocus();
                     keyboard.setVisibility(View.VISIBLE);
@@ -221,7 +242,7 @@ public final class LexActivity extends Activity {
         status.setText(tr("Conexión perdida","Connection lost")+"\n"+detail+"\n"
             +tr("Reconectando…","Reconnecting…"));
         status.setTextColor(FG);
-        status.setVisibility(View.VISIBLE);
+        statusBox.setVisibility(View.VISIBLE);
         keyboard.setVisibility(View.GONE);
         scheduleReconnect();
     }
@@ -328,7 +349,7 @@ public final class LexActivity extends Activity {
             // A fresh connection requests a full (non-incremental) update.
             status.setText(tr("Conectando al escritorio…","Connecting to desktop…"));
             status.setTextColor(SECONDARY);
-            status.setVisibility(desktop.hasFrame()?View.GONE:View.VISIBLE);
+            statusBox.setVisibility(desktop.hasFrame()?View.GONE:View.VISIBLE);
             connectViewer();
             pollDesktop();
         }else if(!starting){
@@ -337,6 +358,7 @@ public final class LexActivity extends Activity {
     }
 
     @Override protected void onDestroy(){
+        if(pulse!=null)pulse.cancel();
         destroyed=true;
         main.removeCallbacksAndMessages(null);
         closeClient();

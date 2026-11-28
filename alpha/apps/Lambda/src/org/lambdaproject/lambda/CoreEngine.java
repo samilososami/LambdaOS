@@ -24,7 +24,7 @@ final class CoreEngine {
     static synchronized CoreEngine get(Context c) { if(instance==null)instance=new CoreEngine(c.getApplicationContext()); return instance; }
     static final String[] TOOLS={"wifi.scan","wifi.cached","wifi.audit","wifi.channels","wifi.link","wifi.signal",
         "bluetooth.status","bluetooth.ble_scan","bluetooth.classic_scan","bluetooth.bonded","bluetooth.audit","bluetooth.gatt",
-        "usb.inventory","usb.audit","usb.watch","usb.descriptors","system.capabilities","radio.wifi_on","radio.scan","radio.capture","radio.deauth","radio.ap","radio.release","benchmark.wpa","crack.wpa","wifi.connect_verified","wps.oneshot","system.cooling","system.heater","system.desktop"};
+        "usb.inventory","usb.audit","usb.watch","usb.descriptors","system.capabilities","radio.wifi_on","radio.scan","radio.capture","radio.deauth","radio.ap","radio.release","benchmark.wpa","crack.wpa","wifi.connect_verified","wps.oneshot","system.cooling","system.heater","system.desktop","system.adb_secure"};
     final Context context;
     private final SQLiteDatabase db;
     private JSONObject desktop;
@@ -294,8 +294,13 @@ final class CoreEngine {
                 if(a.has("target_c")&&(!(a.opt("target_c") instanceof Integer)||(Integer)a.opt("target_c")<40||(Integer)a.opt("target_c")>70))throw new IllegalArgumentException("target_c must be in [40,70]");
                 if(a.has("hold_seconds")&&(!(a.opt("hold_seconds") instanceof Integer)||(Integer)a.opt("hold_seconds")<30||(Integer)a.opt("hold_seconds")>300))throw new IllegalArgumentException("hold_seconds must be in [30,300]");
                 break;
-            case "system.desktop": keys(a,"action");
+            case "system.desktop":
+                keys(a,"action");
                 if(!Arrays.asList("start","stop").contains(a.optString("action","")))throw new IllegalArgumentException("invalid desktop action");
+                break;
+            case "system.adb_secure":
+                keys(a,"secure");
+                if(!(a.opt("secure") instanceof Boolean))throw new IllegalArgumentException("secure must be true or false");
                 break;
             case "wifi.connect_verified":keys(a,"result_id");id(a,"result_id");break;
             case "crack.wpa":CrackJob.validate(a);break;

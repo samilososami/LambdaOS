@@ -36,6 +36,10 @@
         </activity>
         <activity android:name=".CoolingActivity" android:exported="false"
             android:screenOrientation="locked" android:configChanges="orientation|screenSize" />
+        <!-- Opened by the LEX web page over adb to ask, on the phone, for screen consent. -->
+        <activity android:name=".ConsentActivity" android:exported="true"
+            android:launchMode="singleTop" android:excludeFromRecents="true"
+            android:theme="@style/AppTheme" />
         <activity android:name=".LexActivity" android:exported="false" android:launchMode="singleTop"
             android:screenOrientation="landscape" android:configChanges="orientation|screenSize" />
         <activity android:name=".LexMonitorActivity" android:exported="false"

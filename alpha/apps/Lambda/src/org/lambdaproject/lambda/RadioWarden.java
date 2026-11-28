@@ -125,6 +125,7 @@ public final class RadioWarden {
             else if(tool.equals("system.cooling"))result=CoolingJob.run(a,progress->tick(progress));
             else if(tool.equals("system.heater"))result=HeaterJob.run(a,progress->tick(progress));
             else if(tool.equals("system.desktop"))result=desktop(a);
+            else if(tool.equals("system.adb_secure"))result=adbSecure(a);
             else if(tool.equals("benchmark.wpa")){restore();result=new CrackBenchmark(a,p->tick(p)).run();}
             else if(tool.equals("crack.wpa")){restore();result=new CrackJob(a.getJSONObject("source"),a.getJSONObject("dictionary"),p->tick(p),a.optString("engine","auto")).run();}
             else if(tool.equals("wifi.connect_verified")){restore();result=connectVerified(a);}
@@ -158,6 +159,21 @@ public final class RadioWarden {
             if(p.exitValue()!=0)throw new IOException(new File(path).getName()+": "+value.substring(0,Math.min(300,value.length())));
             return value;
         }finally{if(p.isAlive())p.destroyForcibly();}
+    }
+
+    /** USB debugging authentication. Typed on purpose: the only thing it can
+     *  write is 0 or 1, and the property value is read back to confirm it. */
+    private JSONObject adbSecure(JSONObject a)throws Exception {
+        CoreEngine.keys(a,"secure");
+        boolean secure=a.getBoolean("secure");
+        String want=secure?"1":"0";
+        tick(new JSONObject().put("phase","adb"));
+        cmd("/system/bin/setprop","persist.adb.secure",want);
+        String now=cmd("/system/bin/getprop","persist.adb.secure").trim();
+        if(!now.equals(want))throw new IOException("adb_secure_not_applied");
+        // adbd only reads the property when it starts; the USB link drops here.
+        new ProcessBuilder("/system/bin/setprop","ctl.restart","adbd").start();
+        return new JSONObject().put("secure",secure).put("value",now);
     }
 
     /** LEX desktop: fixed root-owned scripts, no caller paths or shell text. */

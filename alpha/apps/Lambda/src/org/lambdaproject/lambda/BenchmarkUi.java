@@ -53,6 +53,7 @@ final class BenchmarkUi {
             a.heading("Developer mode",t("Pruebas locales de Lambda Operator.","Local Lambda Operator tests."));
             tile("Cracking speed test",t("Velocidad real · CPU y GPU","Real throughput · CPU and GPU"),()->a.navigate("cracking_tests"));
             tile("Temperature",t("FDT y monitor térmico","FDT and thermal monitor"),()->a.navigate("temperature"));
+            adbSecure();
             a.space(a.content,18);a.content.addView(a.text(t("Datos sintéticos. Sin capturas ni deauth.","Synthetic data. No captures or deauth."),14,false,a.secondary));return;
         }
         if(route.equals("temperature")){
@@ -98,6 +99,59 @@ final class BenchmarkUi {
             status.setText(ready?t("Motor disponible · solo datos sintéticos","Engine available · synthetic data only"):t("El servicio de pruebas no está disponible. Requiere aprovisionamiento por ADB tras reiniciar.","Test worker unavailable. ADB provisioning is required after a reboot."));});
         refresh();
     }
+    /** USB debugging authentication: on asks the phone; off lets any host in. */
+    private void adbSecure(){
+        android.widget.Switch control=new android.widget.Switch(a);
+        control.setText(t("Autorización ADB","ADB authorization"));
+        control.setTextSize(17);
+        control.setTextColor(a.foreground);
+        control.setMinHeight(a.dp(62));
+        control.setPadding(0,a.dp(10),0,a.dp(10));
+        boolean secure=!"0".equals(shell("getprop persist.adb.secure").trim());
+        control.setChecked(secure);
+        control.setOnCheckedChangeListener((v,checked)->{
+            if(saving)return;
+            saving=true;
+            v.setEnabled(false);
+            JSONObject request = new JSONObject();
+            try {
+                request.put("tool","system.adb_secure")
+                    .put("args",new JSONObject().put("secure",checked))
+                    .put("request_id",java.util.UUID.randomUUID().toString());
+            } catch (org.json.JSONException e) {
+                saving=false;v.setEnabled(true);a.notice(e.getMessage());return;
+            }
+            call("submit",request,r->{
+                    saving=false;v.setEnabled(true);
+                    if(!r.optBoolean("ok")){a.notice(r.optString("detail",r.optString("error","error")));v.setChecked(!checked);return;}
+                    a.notice(checked?t("Se volverá a pedir autorización al conectar.","Authorization will be required again.")
+                                    :t("El aviso de depuración USB queda desactivado al reiniciar adbd.","The USB debugging prompt is off once adbd restarts."));
+                    a.render();
+                });
+        });
+        a.content.addView(control,new LinearLayout.LayoutParams(-1,-2));
+        a.separator(a.content);
+        a.space(a.content,10);
+        a.content.addView(a.text(secure
+            ?t("Cada ordenador nuevo tiene que autorizarse en el teléfono.","Every new computer has to be authorized on the phone.")
+            :t("Cualquier ordenador con el cable puede controlar el teléfono. Úsalo solo mientras pruebes la web.","Any computer with the cable can control the phone. Use it only while testing the web."),13,false,a.secondary));
+        a.space(a.content,18);
+    }
+
+    private boolean saving;
+
+    /** Small synchronous shell read; the app is allowed to run getprop. */
+    private String shell(String command){
+        try{
+            java.lang.Process p=new ProcessBuilder("/system/bin/sh","-c",command).redirectErrorStream(true).start();
+            java.io.ByteArrayOutputStream out=new java.io.ByteArrayOutputStream();
+            byte[] b=new byte[512];int n;
+            while((n=p.getInputStream().read(b))!=-1&&out.size()<4096)out.write(b,0,n);
+            p.waitFor();
+            return out.toString("UTF-8");
+        }catch(Exception e){return "";}
+    }
+
     private void fdt(){
         new AlertDialog.Builder(a).setTitle("Force Device temperature")
             .setMessage(t("Esto calienta el dispositivo de forma controlada hasta el objetivo elegido. Herramienta de desarrollo: no la dejes sin supervisión.",
