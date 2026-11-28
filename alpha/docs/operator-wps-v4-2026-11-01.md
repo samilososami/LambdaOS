@@ -1,3 +1,5 @@
+> Nota de publicación: las rutas locales del equipo de desarrollo se han convertido a rutas relativas del repositorio.
+
 # OneShot WPS — progress and diagnosis update
 
 Date: 2026-11-01. Lambda Operator **0.2.0-operator.4**, versionCode **24**.
@@ -93,8 +95,8 @@ unrestricted root app or arbitrary shell endpoint.
 ## Visual verification / fidelity ledger
 
 The frontend skill guided a targeted extension of the established native UI.
-Reference: `/home/kali/Documents/Claude/LambdaOS/alpha/out/operator-wps/07-methods.png`.
-New captures: `/home/kali/Documents/Claude/LambdaOS/alpha/out/operator-wps/wps-qa-*.png`.
+Reference: `alpha/out/operator-wps/07-methods.png`.
+New captures: `alpha/out/operator-wps/wps-qa-*.png`.
 `view_image` inspected the reference and new rendered captures in the same QA
 pass, including the scrolled brute-force controls. Capture size: **1440 × 3040**.
 ADB plus Android Instrumentation/UiAutomation replaces Browser/IAB because this

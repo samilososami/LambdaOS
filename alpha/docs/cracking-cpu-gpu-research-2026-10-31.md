@@ -1,3 +1,5 @@
+> Nota de publicación: las rutas locales del equipo de desarrollo se han convertido a rutas relativas del repositorio.
+
 # Samsung S10: investigación de cracking CPU + GPU
 
 Fecha: 31 de octubre de 2026. Dispositivo medido: Samsung Galaxy S10
@@ -174,7 +176,7 @@ S10 aproximadamente 83 GiB libres.
 
 ## 5. Artefactos y reproducción
 
-Dentro de `/home/kali/Documents/Claude/LambdaOS/`:
+Dentro del repositorio:
 
 - `alpha/scripts/build_cracking_research.py`: reconstruye las variantes
   experimentales sin sustituir Aircrack estable. Probado como kali y mediante

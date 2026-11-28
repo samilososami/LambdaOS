@@ -1,3 +1,5 @@
+> Nota de publicación: los identificadores de laboratorio (SSID/BSSID/MAC) se han redactado en esta copia pública; el original privado se conserva sin cambios.
+
 # Lambda Operator — AP / evil twin
 
 Date: 2026-11-22. Lambda Operator **0.2.0-operator.5**, versionCode **25**.
@@ -40,7 +42,7 @@ and installed with `adb install -r`; app data and receipts were preserved.
   configured DHCP range and DNS; the exact restore sequence returned
   `type managed` and `wifi_on=1`.
 - **Real clone AP running on the S10** against the owner's `2.4GHz_TEST`
-  (BSSID `36:f6:47:23:6c:cf`, channel 6): `iw` reported `type AP` and the
+  (BSSID `xx:xx:xx:xx:xx:xx` redacted, channel 6): `iw` reported `type AP` and the
   cloned SSID, `hostapd` ran as user `wifi`, `dnsmasq` and the bounded
   `tcpdump` were active, and the UI showed the running screen
   (`0` clients, `0` packets without a station attached).
@@ -114,7 +116,7 @@ Two fixes were required for the real path:
 
 ## Third iteration — client DHCP and forwarding
 
-- The owner's S23 (`s23u`, `ae:ed:d6:8c:78:b3`) completed DHCP against `ap0`:
+- The owner's S23 (`s23u`, MAC `xx:xx:xx:xx:xx:xx` redacted) completed DHCP against `ap0`:
   DISCOVER → OFFER → REQUEST → ACK, address `192.168.50.10`. DNS also worked
   (queries answered and forwarded to 1.1.1.1/8.8.8.8).
 - The client still showed "connected, without internet": its TCP SYNs reached
