@@ -39,11 +39,12 @@ not installed anywhere in the system, so it must not be named. Monospace:
 
 ## Top bar (Kali-like, subtle)
 
-- 28px tall, full width, bg #101112 at 94%, 1px bottom border line-soft, 10px
-  horizontal padding.
-- Left: Lambda menu (24px glyph), 2 workspaces (18px), separator.
-- Centre-left: window buttons (tasklist), max 50% of the width.
-- Right: tray icons 18px, clock HH:MM.
+- 72px tall, full width, bg #141516 at 98%, 1px bottom border line-soft, 10px
+  horizontal padding, 40px icons.
+- Left: Lambda menu (40px glyph), separator.
+- Centre-left: window buttons with labels (tasklist), max 50% of the width.
+- Right: CPU/RAM/battery status (genmon), separator, clock with date and time
+  (`%a %d %b` above `%H:%M`).
 
 ## Bottom dock (macOS-like, centred)
 
@@ -69,7 +70,8 @@ not installed anywhere in the system, so it must not be named. Monospace:
 - Base grid 24, stroke 1.6, round caps and joins, no fills except tiny details.
 - App icons: 48px squircle tile (#1C2023, radius 12) with a 24px monochrome
   glyph (#E9E9E9); secondary detail may use #9AA0A6. No colour.
-- Panel/tray: 18px glyphs at 1.4 stroke.
+- Panel: 40px glyphs at 1.4 stroke inside the 72px bar; the dock keeps 48px
+  icons at 1.4 stroke.
 - The theme inherits `Adwaita` and `hicolor` for anything not drawn.
 
 ## Ownership

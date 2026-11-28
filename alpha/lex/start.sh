@@ -89,16 +89,33 @@ xset s off -dpms 2>/dev/null || true
 GEOM=${LEX_GEOMETRY:-2280x1080}
 W=${GEOM%x*}
 H=${GEOM#*x}
+# Same source the app uses: Settings.Secure lambda_theme, and "auto" follows the system.
+theme_name() {
+  _t=$(settings get secure lambda_theme 2>/dev/null | tr -d '\r')
+  case "$_t" in
+    light) echo light ;;
+    auto) case "$(cmd uimode night 2>/dev/null)" in *yes*) echo dark ;; *) echo light ;; esac ;;
+    *) echo dark ;;
+  esac
+}
+THEME=$(theme_name)
 vncconfig -nowin &
 # Slim session: no xfce4-session/xfdesktop/power-manager. xfwm4 + panel + dock,
 # all inside one session bus so xfconf and notifications work.
 exec dbus-launch --exit-with-session /bin/sh -c '
+  # vncserver does not pass the caller environment to the session, so the image
+  # loader settings have to be set here or GTK aborts on the first icon.
+  export TMPDIR=/tmp XDG_RUNTIME_DIR=/tmp/runtime-root GLYCIN_DISABLE_SANDBOX=i-know-the-risks
+  # The wallpaper apply reads this, so it has to be set before it runs.
+  export LEX_WALLPAPER=$3
   if [ -f /usr/local/share/lambdaos-theme/apply.sh ]; then
     /bin/sh /usr/local/share/lambdaos-theme/apply.sh
   fi
-  W=$1; H=$2
+  W=$1; H=$2; THEME=$3
+  PLATE=lambdaos-${W}x${H}.png
+  [ "$THEME" = light ] && PLATE=lambdaos-${W}x${H}-light.png
   if command -v feh >/dev/null 2>&1; then
-    feh --bg-fill "/usr/share/backgrounds/lambdaos/lambdaos-${W}x${H}.png" 2>/dev/null \
+    feh --bg-fill "/usr/share/backgrounds/lambdaos/$PLATE" 2>/dev/null \
       || xsetroot -solid "#101112" 2>/dev/null || true
   else
     xsetroot -solid "#101112" 2>/dev/null || true
@@ -111,7 +128,7 @@ exec dbus-launch --exit-with-session /bin/sh -c '
     /usr/bin/python3 /usr/local/share/lambdaos-theme/dock/dock.py >/dev/null 2>&1 &
   fi
   wait
-' sh "$W" "$H"
+' sh "$W" "$H" "$THEME"
 XSTART
 chmod 755 "$VNC/xstartup"
 
@@ -172,6 +189,12 @@ for c in /proc/[0-9]*/cmdline; do
     *"/usr/bin/websockify"*) OURS=1; break ;;
   esac
 done
+# Live sync: theme-watch.sh follows the phone's light/dark setting while the
+# desktop runs. setsid detaches it, or the adb shell that ran us takes it down.
+if [ -f "$BASE/theme-watch.sh" ]; then
+  nohup setsid sh "$BASE/theme-watch.sh" >/dev/null 2>&1 &
+fi
+
 PASS=$(cat "$BASE/vncpass")
 if [ "$RUN" = 1 ] && [ "$VNC" = 1 ] && [ "$WEB" = 1 ] && [ "$OURS" = 1 ]; then RUNJSON=true; else RUNJSON=false; fi
 if [ "$RUNJSON" = false ]; then sh "$BASE/stop.sh" >/dev/null 2>&1 || true; fi

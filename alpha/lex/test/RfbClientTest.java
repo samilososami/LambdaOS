@@ -164,6 +164,9 @@ public final class RfbClientTest {
         client.key(0x41, true);
         client.key(0x41, false);
         client.scroll(1);
+        // Input and the incremental request travel through the writer queue:
+        // give the writer a moment before closing, or close() drops them.
+        Thread.sleep(300);
         client.close();
 
         Path report = Paths.get(reportPath);
@@ -172,7 +175,7 @@ public final class RfbClientTest {
         while (System.currentTimeMillis() < deadline) {
             if (Files.exists(report)) {
                 json = new String(Files.readAllBytes(report), StandardCharsets.UTF_8);
-                if (json.contains("\"fb_requests\"")) break;
+                if (json.contains("\"fb_requests\":[[0,0,0,64,48],[1,0,0,64,48]]")) break;
             }
             Thread.sleep(50);
         }

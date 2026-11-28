@@ -1,7 +1,7 @@
 #!/bin/sh
 # LambdaOS LEX top bar + dock. Runs inside the chroot as root, with DISPLAY and
 # a DBus session, before xfce4-panel starts. Idempotent; never aborts the
-# session. Bar 28 high; dock 76 high, 48 icons, 14 pad (see the width note).
+# session. Bar 72 high; dock 76 high, 48 icons, 14 pad (see the width note).
 set -u
 
 DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
@@ -99,7 +99,7 @@ install_app() { # desktop-id fallback-icon
 }
 
 # xfce4-panel's launcher shows one icon per plugin; give each app its own.
-PID=11
+PID=20
 DOCKIDS=
 DOCKPLUGINS=
 while IFS='|' read -r id fb; do
@@ -194,14 +194,14 @@ cat > "$XML" <<EOF
       <property name="length" type="uint" value="100"/>
       <property name="length-adjust" type="bool" value="true"/>
       <property name="position-locked" type="bool" value="true"/>
-      <property name="size" type="uint" value="28"/>
-      <property name="icon-size" type="uint" value="24"/>
+      <property name="size" type="uint" value="72"/>
+      <property name="icon-size" type="uint" value="40"/>
       <property name="background-style" type="uint" value="1"/>
       <property name="background-rgba" type="array">
-        <value type="double" value="0.062745"/>
-        <value type="double" value="0.066667"/>
-        <value type="double" value="0.070588"/>
-        <value type="double" value="0.941176"/>
+        <value type="double" value="0.078431"/>
+        <value type="double" value="0.082353"/>
+        <value type="double" value="0.086275"/>
+        <value type="double" value="0.980000"/>
       </property>
       <property name="plugin-ids" type="array">
         <value type="int" value="1"/>
@@ -240,30 +240,40 @@ $DOCKIDS      </property>
       <property name="show-button-title" type="bool" value="false"/>
       <property name="button-single-row" type="bool" value="true"/>
     </property>
-    <property name="plugin-2" type="string" value="pager">
-      <property name="miniature-view" type="bool" value="true"/>
-      <property name="rows" type="uint" value="1"/>
-    </property>
-    <property name="plugin-3" type="string" value="separator">
+    <property name="plugin-2" type="string" value="separator">
       <property name="style" type="uint" value="0"/>
     </property>
-    <property name="plugin-4" type="string" value="tasklist">
+    <property name="plugin-3" type="string" value="tasklist">
       <property name="show-handle" type="bool" value="false"/>
-      <property name="show-labels" type="bool" value="false"/>
+      <property name="show-labels" type="bool" value="true"/>
       <property name="grouping" type="uint" value="1"/>
+      <property name="flat-buttons" type="bool" value="true"/>
     </property>
-    <property name="plugin-5" type="string" value="separator">
+    <property name="plugin-4" type="string" value="separator">
       <property name="expand" type="bool" value="true"/>
       <property name="style" type="uint" value="0"/>
     </property>
-    <property name="plugin-6" type="string" value="systray">
-      <property name="size-max" type="uint" value="18"/>
-      <property name="square-icons" type="bool" value="true"/>
+    <property name="plugin-5" type="string" value="genmon">
+      <property name="command" type="string" value="$DIR/status.sh"/>
+      <property name="update-interval" type="uint" value="5"/>
+      <property name="use-label" type="bool" value="false"/>
+      <property name="font" type="string" value="DejaVu Sans Mono 13"/>
+    </property>
+    <property name="plugin-6" type="string" value="separator">
+      <property name="style" type="uint" value="2"/>
+      <property name="expand" type="bool" value="false"/>
     </property>
     <property name="plugin-7" type="string" value="clock">
-      <property name="digital-layout" type="uint" value="3"/>
-      <property name="digital-time-format" type="string" value="%H:%M"/>
-      <property name="digital-time-font" type="string" value="Cantarell 11.5"/>
+      <!-- No "mode" key: leaving it unset is the digital face. Any explicit value
+           selects another one (0 a bare dial, 1/2 a dot grid). -->
+      <!-- No frame: its border cut into the status text sitting next to it. -->
+      <property name="show-frame" type="bool" value="false"/>
+      <!-- Layout 0 is date over time; 3 drops the date. -->
+      <property name="digital-layout" type="uint" value="0"/>
+      <property name="digital-time-format" type="string" value="  %H:%M"/>
+      <property name="digital-date-format" type="string" value="  %a %d %b"/>
+      <property name="digital-time-font" type="string" value="DejaVu Sans 17"/>
+      <property name="digital-date-font" type="string" value="DejaVu Sans 13"/>
     </property>
 $DOCKPLUGINS  </property>
 </channel>
@@ -275,5 +285,13 @@ if have xfconf-query; then
     || xfconf-query -c xfwm4 -p /general/workspace_count -n -t int -s 2 2>/dev/null \
     || true
 fi
+
+chmod 755 "$DIR/status.sh" 2>/dev/null || true
+# Panel keeps per-plugin state by id; stale ids from older layouts confuse it.
+rm -f "$PANELDIR"/genmon-*.rc "$PANELDIR"/clock-*.rc 2>/dev/null || true
+for d in "$PANELDIR"/launcher-*; do
+  [ -d "$d" ] || continue
+  case "${d##*/}" in launcher-11|launcher-12|launcher-13|launcher-14|launcher-15|launcher-16|launcher-17|launcher-18) rm -rf "$d" ;; esac
+done
 
 have update-desktop-database && update-desktop-database "$APPDIR" >/dev/null 2>&1 || true

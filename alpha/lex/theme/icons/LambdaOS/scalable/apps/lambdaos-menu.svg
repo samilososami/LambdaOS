@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E9E9E9" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M12 3.4 3.9 20.6"/>
-  <path d="M12 3.4 20.1 20.6"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 108 108">
+  <!-- The LambdaOS mark, same geometry as the app launcher (alpha/apps/Lambda/res/drawable/ic_launcher.xml). -->
+  <path fill="#E9E9E9" d="M33,24H49L78,84H63L47,51L29,84H14L40,38L36,31H33Z"/>
 </svg>
