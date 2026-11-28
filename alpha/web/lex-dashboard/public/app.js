@@ -1,671 +1,467 @@
 'use strict';
-
-const POLL_MS = 5000;
-
-const state = {
-  device: null,
-  desktop: null,
-  jobs: [],
-  busy: false,
-  polling: false,
-  pollTimer: null,
-  shotBusy: false,
-  shotUrl: null,
-  shotLoaded: false,
-  connection: { connected: false, host: '' },
-};
+/* LEX over WebUSB. The page drives the whole handshake:
+   pick the S10 → wait for ADB authorization → ask the phone for screen consent
+   → start the desktop → attach a VNC client to it over the adb pipe. */
 
 const $ = (id) => document.getElementById(id);
-const rtf = new Intl.RelativeTimeFormat('en', { numeric: 'auto' });
+const app = $('app');
+const sleep = (ms) => new Promise((done) => setTimeout(done, ms));
 
-function formatBytes(bytes) {
-  if (!Number.isFinite(bytes)) return '—';
-  const gib = bytes / 1024 ** 3;
-  if (gib >= 100) return `${Math.round(gib)} GB`;
-  if (gib >= 10) return `${gib.toFixed(1)} GB`;
-  return `${gib.toFixed(2)} GB`;
+const state = {
+  live: false,
+  busy: false,
+  consentToken: '',
+  answered: false,
+};
+
+let desktop = null;
+let desktopStream = null;
+
+function show(name) {
+  app.dataset.state = name;
 }
 
-function relativeTime(ms) {
-  if (!Number.isFinite(ms)) return '—';
-  const diff = Date.now() - ms;
-  if (diff < 45000) return 'just now';
-  const minute = 60000;
-  const hour = 3600000;
-  const day = 86400000;
-  if (diff < hour) return rtf.format(-Math.round(diff / minute), 'minute');
-  if (diff < day) return rtf.format(-Math.round(diff / hour), 'hour');
-  return rtf.format(-Math.round(diff / day), 'day');
+function error(title, text, command) {
+  $('error-title').textContent = title;
+  $('error-text').textContent = text || '';
+  $('error-cmd').hidden = !command;
+  $('error-cmd-text').textContent = command || '';
+  show('error');
 }
 
-function formatDuration(ms) {
-  if (!Number.isFinite(ms)) return '—';
-  if (ms < 1000) return `${Math.round(ms)} ms`;
-  if (ms < 60000) return `${(ms / 1000).toFixed(1)} s`;
-  const minutes = Math.floor(ms / 60000);
-  const seconds = Math.round((ms % 60000) / 1000);
-  return `${minutes}m ${seconds}s`;
+/** The host's adb server holds the interface Chrome needs; only the person can free it. */
+function looksLikeClaimFailure(message) {
+  return /claim|another program|adb kill-server/i.test(message);
 }
 
-function setAction(text, tone = '') {
-  const element = $('action-status');
-  element.textContent = text || '';
-  element.dataset.tone = tone;
-}
+const adapter = () => window.LexAdb;
 
-function connected() {
-  return state.connection.connected;
-}
-
-function setConnectStatus(text, tone = '') {
-  const element = $('connect-status');
-  element.textContent = text;
-  element.dataset.tone = tone;
-}
-
-function adoptConnection(host) {
-  state.connection.connected = true;
-  state.connection.host = host;
-  $('connection').classList.add('is-connected');
-  $('btn-connect-usb').disabled = true;
-  $('connect-host').readOnly = true;
-  setConnectStatus(`Connected · ${host} approved on the phone.`, 'ok');
-  syncButtons();
-  startPolling();
-  void refreshShot();
-}
-
-function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
-const usbAdapter = () => window.LexAdb;
-
-async function usbCore(method, payload) {
-  const data = await usbAdapter().core(method, payload || {});
-  if (data && data.ok === false) throw new Error(data.detail || data.error || 'Core rejected the request.');
-  return data;
-}
-
-// Accepting Android's USB-debugging prompt resets the USB function, so the
-// first shell after AUTH can die with a cancelled transfer. Reopen once: adbd
-// keeps the accepted key in memory for this session and does not prompt again.
-async function usbCoreRetry(method, payload) {
+/* Chrome remembers a granted device for the origin. Picking it up at load means
+   a second visit connects with one click and no chooser. */
+let knownDevice = null;
+async function pickExisting() {
   try {
-    return await usbCore(method, payload);
-  } catch (error) {
-    if (!/USB read failed|transfer was cancelled|USB disconnected|not connected/i.test(error.message)) throw error;
-    await usbAdapter().close().catch(() => {});
-    await sleep(900);
-    await usbAdapter().connect();
-    return usbCore(method, payload);
-  }
-}
-
-function renderDevice(data, error) {
-  const pill = $('pill-text');
-  const dot = $('pill-dot');
-
-  if (!data || data.ok !== true) {
-    const message = error?.message || 'No data from adb.';
-    if (!connected()) {
-      pill.textContent = 'Not connected · approve on the S10';
-      dot.dataset.state = 'idle';
-    } else {
-      pill.textContent = /unauthorized/i.test(message)
-        ? 'ADB unauthorized · accept the prompt on the S10'
-        : 'USB link unavailable · check the phone';
-      dot.dataset.state = 'bad';
-    }
-    $('device-pill').title = message;
-    for (const [valueId, detailId] of [
-      ['m-battery', 'm-battery-detail'],
-      ['m-wifi', 'm-wifi-detail'],
-      ['m-storage', 'm-storage-detail'],
-      ['m-core', 'm-core-detail'],
-      ['m-worker', 'm-worker-detail'],
-    ]) {
-      $(valueId).textContent = '—';
-      $(detailId).textContent = 'waiting for USB';
-    }
-    $('m-battery-bar').style.width = '0%';
-    $('m-storage-bar').style.width = '0%';
-    $('shot-activity').textContent = 'Foreground —';
-    return;
-  }
-
-  const device = data.device || {};
-  const worker = data.worker || {};
-  const model = device.model || 'S10';
-  const android = device.android ? `Android ${device.android}` : 'Android —';
-  pill.textContent = `${model} · ${android} · worker ${worker.available ? 'online' : 'offline'}`;
-  $('device-pill').removeAttribute('title');
-  dot.dataset.state = worker.available ? 'ok' : 'warn';
-
-  const battery = data.battery;
-  $('m-battery').textContent = Number.isFinite(battery?.level) ? `${battery.level}%` : '—';
-  $('m-battery-detail').textContent = battery?.status
-    ? `${battery.status}${battery.temperature_c != null ? ` · ${battery.temperature_c} °C` : ''}`
-    : 'battery unavailable';
-  const level = Number.isFinite(battery?.level) ? battery.level : 0;
-  const batteryBar = $('m-battery-bar');
-  batteryBar.style.width = `${Math.max(0, Math.min(100, level))}%`;
-  batteryBar.dataset.tone = level <= 10 ? 'critical' : level <= 25 ? 'warn' : 'ok';
-
-  const wifi = data.wifi;
-  $('m-wifi').textContent = wifi?.connected ? wifi.ssid || 'Connected' : 'Offline';
-  $('m-wifi').title = wifi?.ssid || '';
-  $('m-wifi-detail').textContent = wifi?.connected ? wifi.ip || 'no IPv4 address' : 'no wireless link';
-
-  const storage = data.storage;
-  $('m-storage').textContent = storage ? `${formatBytes(storage.free_bytes)} free` : '—';
-  $('m-storage-detail').textContent = storage
-    ? `${storage.used_percent ?? '—'}% used of ${formatBytes(storage.total_bytes)}`
-    : 'storage unavailable';
-  const used = Number.isFinite(storage?.used_percent) ? storage.used_percent : 0;
-  const storageBar = $('m-storage-bar');
-  storageBar.style.width = `${Math.max(0, Math.min(100, used))}%`;
-  storageBar.dataset.tone = used >= 90 ? 'critical' : used >= 75 ? 'warn' : 'ok';
-
-  const core = data.core || {};
-  $('m-core').textContent = core.version || 'Unreachable';
-  $('m-core-detail').textContent = core.version ? 'ContentProvider RPC' : core.error || 'Core not responding';
-  $('m-core-detail').title = core.error || '';
-
-  $('m-worker').textContent = worker.available ? 'Online' : 'Offline';
-  const adapters = worker.adapters || 0;
-  $('m-worker-detail').textContent = worker.available
-    ? `${adapters} adapter${adapters === 1 ? '' : 's'} · maintenance`
-    : 'radio worker unavailable';
-  $('m-worker-detail').title = worker.error || '';
-
-  const activity = data.top_activity || '—';
-  $('shot-activity').textContent = `Foreground · ${activity}`;
-  $('shot-activity').title = activity;
-}
-
-function renderJobs(jobs) {
-  const body = $('jobs-body');
-  body.replaceChildren();
-  $('jobs-empty').hidden = jobs.length > 0;
-  $('jobs-meta').textContent = jobs.length ? `${jobs.length} shown · Core` : 'Core · empty';
-  $('jobs-meta').removeAttribute('title');
-
-  const fragment = document.createDocumentFragment();
-  for (const job of jobs) {
-    const row = document.createElement('tr');
-
-    const tool = document.createElement('td');
-    tool.className = 'tool';
-    tool.textContent = job.action ? `${job.tool} · ${job.action}` : job.tool || '—';
-    row.append(tool);
-
-    const stateCell = document.createElement('td');
-    stateCell.dataset.label = 'State';
-    const chip = document.createElement('span');
-    chip.className = 'chip';
-    chip.dataset.state = job.state || 'unknown';
-    chip.textContent = job.state || 'unknown';
-    stateCell.append(chip);
-    row.append(stateCell);
-
-    const created = document.createElement('td');
-    created.className = 'time';
-    created.dataset.label = 'Created';
-    created.textContent = relativeTime(job.created_ms);
-    if (Number.isFinite(job.created_ms)) created.title = new Date(job.created_ms).toLocaleString();
-    row.append(created);
-
-    const duration = document.createElement('td');
-    duration.className = 'duration col-duration';
-    duration.dataset.label = 'Duration';
-    duration.textContent = formatDuration(job.duration_ms);
-    row.append(duration);
-
-    const detail = document.createElement('td');
-    detail.className = 'detail';
-    detail.dataset.label = 'Detail';
-    detail.textContent = job.error || '—';
-    if (job.error) {
-      detail.classList.add('has-error');
-      detail.title = job.error;
-    } else {
-      detail.classList.add('is-empty');
-    }
-    row.append(detail);
-
-    fragment.append(row);
-  }
-  body.append(fragment);
-}
-
-function syncButtons() {
-  const data = state.desktop;
-  const running = data?.running === true;
-  const busy = state.busy;
-  const ready = connected();
-
-  const start = $('btn-start');
-  const stop = $('btn-stop');
-  const cta = $('btn-start-cta');
-
-  start.hidden = running;
-  start.disabled = busy || !ready;
-  stop.hidden = !running;
-  stop.disabled = busy || !ready;
-  cta.disabled = busy || !ready;
-  cta.hidden = running;
-  $('btn-refresh').disabled = busy || !ready;
-  $('btn-shot').disabled = !ready || state.shotBusy;
-  $('desk-frame').setAttribute('aria-busy', String(busy));
-
-  if (busy) {
-    $('desk-dot').dataset.state = 'busy';
-  } else if (running) {
-    $('desk-dot').dataset.state = 'on';
-  } else {
-    $('desk-dot').dataset.state = 'off';
-  }
-}
-
-function renderDesktop(data) {
-  state.desktop = data || null;
-
-  const running = data?.running === true;
-  const desktop = data?.desktop || null;
-
-  $('desk-frame').dataset.state = running ? 'running' : 'stopped';
-  $('desk-empty').hidden = false;
-
-  const title = $('empty-title');
-  const copy = $('empty-copy');
-
-  if (running) {
-    $('desk-state').textContent = 'Desktop live on the phone';
-    $('desk-meta').textContent = `${desktop?.geometry || '2280 × 1080'} · XFCE`;
-    title.textContent = 'Desktop is live';
-    copy.textContent =
-      'The XFCE session is running on the S10. To watch it on a computer, run “adb forward tcp:6080 tcp:6080” there and open http://127.0.0.1:6080/vnc.html — WebUSB cannot open host ports.';
-  } else {
-    $('desk-state').textContent = 'Desktop stopped';
-    $('desk-meta').textContent = 'system.desktop · WebUSB';
-    title.textContent = 'Desktop is off';
-    copy.textContent = 'Start the Kali XFCE session over the USB link. Core runs the typed system.desktop job on the phone.';
-  }
-
-  syncButtons();
-}
-
-function parseUsbWifi(text) {
-  const match = /Wifi is connected to "([^"]*)"/.exec(text || '');
-  if (!match) return { connected: false, ssid: null, ip: null };
-  const ip = /IP:\s*\/?(\d{1,3}(?:\.\d{1,3}){3})/.exec(text || '');
-  return { connected: true, ssid: match[1], ip: ip ? ip[1] : null };
-}
-
-function parseUsbStorage(text) {
-  const match = /^\s*\S+\s+(\d+)\s+(\d+)\s+(\d+)\s+\d+%\s+\/data\s*$/m.exec(text || '');
-  if (!match) return null;
-  const total = Number(match[1]) * 1024;
-  const used = Number(match[2]) * 1024;
-  const free = Number(match[3]) * 1024;
-  return {
-    total_bytes: total,
-    used_bytes: used,
-    free_bytes: free,
-    used_percent: total ? Math.round((used / total) * 100) : null,
-  };
-}
-
-async function usbShellSafe(command) {
-  try {
-    return await usbAdapter().shell(command);
+    const granted = await navigator.usb.getDevices();
+    return granted.find((device) => device.vendorId === 0x04e8) || null;
   } catch {
     return null;
   }
 }
+pickExisting().then((device) => { knownDevice = device; });
 
-async function usbDevice() {
-  const props = await usbShellSafe(
-    'getprop ro.product.model; getprop ro.build.version.release; getprop ro.build.version.sdk',
-  );
-  const batteryText = await usbShellSafe('dumpsys battery');
-  const wifiText = await usbShellSafe('cmd wifi status');
-  const storageText = await usbShellSafe('df -k /data');
-  if (props === null && batteryText === null && wifiText === null && storageText === null) {
-    throw new Error('USB link lost. Reconnect over USB.');
-  }
-  const coreStatus = await usbCore('status').catch((error) => ({ ok: false, error: error.message }));
-  const radio = await usbCore('radio_status').catch((error) => ({ ok: false, error: error.message }));
-  const propLines = String(props || '').split(/\r?\n/);
-  const level = /level:\s*(\d+)/.exec(batteryText || '');
-  const temperature = /temperature:\s*(\d+)/.exec(batteryText || '');
-  const rawStatus = /status:\s*(\d+)/.exec(batteryText || '');
-  const labels = { 1: 'unknown', 2: 'charging', 3: 'discharging', 4: 'not charging', 5: 'full' };
-  const status = rawStatus ? labels[Number(rawStatus[1])] || 'unknown' : '';
-  return {
-    ok: true,
-    device: {
-      model: propLines[0] || null,
-      product: propLines[0] || null,
-      android: propLines[1] || null,
-      sdk: propLines[2] || null,
-    },
-    battery: batteryText
-      ? {
-          level: level ? Number(level[1]) : null,
-          status,
-          charging: rawStatus ? [2, 5].includes(Number(rawStatus[1])) : null,
-          temperature_c: temperature ? Number((Number(temperature[1]) / 10).toFixed(1)) : null,
-        }
-      : null,
-    wifi: wifiText ? parseUsbWifi(wifiText) : null,
-    storage: parseUsbStorage(storageText),
-    top_activity: null,
-    core: {
-      reachable: coreStatus.ok !== false,
-      version: coreStatus.version || null,
-      error: coreStatus.ok === false ? coreStatus.error : null,
-    },
-    worker: { available: radio.available === true, adapters: 0, error: radio.ok === false ? radio.error : null },
-  };
-}
+/* ---------- connection ---------- */
 
-async function usbDesktopState() {
-  const status = await usbCore('desktop_status');
-  return { ok: true, running: status.running === true, desktop: status.desktop || null };
-}
-
-async function usbJobs(limit = 10) {
-  const data = await usbCore('list', { include_hidden: true });
-  const jobs = (Array.isArray(data.jobs) ? data.jobs : [])
-    .slice()
-    .sort((a, b) => (b.created_ms || 0) - (a.created_ms || 0))
-    .slice(0, limit)
-    .map((job) => ({
-      id: job.id,
-      tool: job.tool,
-      action: job.args && typeof job.args === 'object' ? job.args.action ?? null : null,
-      state: job.state,
-      created_ms: job.created_ms ?? null,
-      duration_ms: job.duration_ms ?? null,
-      error: job.error ?? null,
-    }));
-  return { ok: true, jobs };
-}
-
-async function usbSubmitDesktop(action) {
-  const requestId =
-    typeof crypto.randomUUID === 'function' ? crypto.randomUUID() : `${Date.now()}-${Math.random().toString(16).slice(2)}`;
-  const submitted = await usbCore('submit', { tool: 'system.desktop', args: { action }, request_id: requestId });
-  const id = submitted.job?.id || requestId;
-  const deadline = Date.now() + 45000;
-  let job = submitted.job;
-  while (Date.now() < deadline) {
-    if (job && !['queued', 'running'].includes(job.state)) break;
-    await sleep(700);
-    job = (await usbCore('get', { id })).job;
-  }
-  if (!job) throw new Error('Core returned no job.');
-  if (['queued', 'running'].includes(job.state)) throw new Error(`system.desktop ${action} is still ${job.state}.`);
-  if (job.state !== 'completed') throw new Error(job.error || `system.desktop ${action} ended ${job.state}.`);
-  return usbDesktopState();
-}
-
-async function loadDevice() {
-  try {
-    const data = await usbDevice();
-    state.device = data;
-    renderDevice(data);
-  } catch (error) {
-    state.device = null;
-    renderDevice(null, error);
-  }
-}
-
-async function loadDesktop() {
+/** Runs inside the click: requestDevice has to be the first thing we await. */
+async function beginConnect() {
   if (state.busy) return;
-  try {
-    renderDesktop(await usbDesktopState());
-  } catch (error) {
-    $('desk-state').textContent = 'Desktop state unavailable';
-    $('desk-meta').textContent = 'Core / USB error';
-    $('desk-dot').dataset.state = 'bad';
-  }
-}
-
-async function loadJobs() {
-  try {
-    const data = await usbJobs(10);
-    state.jobs = data.jobs || [];
-    renderJobs(state.jobs);
-  } catch (error) {
-    $('jobs-meta').textContent = 'Core unavailable';
-    $('jobs-meta').title = error.message;
-  }
-}
-
-async function pollOnce() {
-  if (state.polling || document.hidden || !connected()) return;
-  state.polling = true;
-  try {
-    // One ADB stream at a time on the WebUSB link.
-    await loadDevice();
-    await loadDesktop();
-    await loadJobs();
-  } finally {
-    state.polling = false;
-  }
-}
-
-function stopPolling() {
-  if (state.pollTimer) clearInterval(state.pollTimer);
-  state.pollTimer = null;
-}
-
-function startPolling() {
-  stopPolling();
-  void pollOnce();
-  state.pollTimer = setInterval(() => void pollOnce(), POLL_MS);
-}
-
-function restoreDesktop() {
-  renderDesktop(state.desktop || { ok: true, running: false, desktop: null });
-}
-
-async function startDesktop() {
-  if (state.busy || !connected()) return;
-  state.busy = true;
-  syncButtons();
-  setAction('Submitting the typed system.desktop start job…');
-  $('empty-title').textContent = 'Starting the desktop…';
-  $('empty-copy').textContent = 'Core is running system.desktop start. The XFCE session usually appears in 3–6 seconds.';
-  $('btn-start-cta').textContent = 'Starting…';
-  $('desk-state').textContent = 'Starting desktop…';
-
-  try {
-    const data = await usbSubmitDesktop('start');
-    renderDesktop(data);
-    setAction('Desktop started. The live view needs an ADB forward on a computer.', 'ok');
-  } catch (error) {
-    setAction(error.message, 'error');
-    restoreDesktop();
-  } finally {
-    state.busy = false;
-    syncButtons();
-    $('btn-start-cta').textContent = 'Start desktop';
-    void pollOnce();
-  }
-}
-
-async function stopDesktop() {
-  if (state.busy || !connected()) return;
-  state.busy = true;
-  syncButtons();
-  setAction('Submitting the typed system.desktop stop job…');
-  $('desk-state').textContent = 'Stopping desktop…';
-
-  try {
-    const data = await usbSubmitDesktop('stop');
-    renderDesktop(data);
-    setAction('Desktop stopped.', 'ok');
-  } catch (error) {
-    setAction(error.message, 'error');
-    restoreDesktop();
-  } finally {
-    state.busy = false;
-    syncButtons();
-    void pollOnce();
-  }
-}
-
-const PNG_SIGNATURE = [0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a];
-
-async function refreshShot() {
-  const image = $('shot');
-  const empty = $('shot-empty');
-  if (!connected()) {
-    image.hidden = true;
-    empty.hidden = false;
-    empty.textContent = 'Connect first';
-    return;
-  }
-  if (state.shotBusy) return;
-  state.shotBusy = true;
-  $('btn-shot').disabled = true;
-  empty.hidden = false;
-  empty.textContent = 'Capturing…';
-  image.classList.add('is-loading');
-  try {
-    const raw = await usbAdapter().shellBytes('screencap -p', 25000);
-    // adb's v1 shell merges stderr into stdout; skip any warning before the PNG.
-    const start = raw.findIndex(
-      (value, index) => value === 0x89 && PNG_SIGNATURE.every((byte, offset) => raw[index + offset] === byte),
-    );
-    if (start < 0) throw new Error('The phone did not return a PNG frame.');
-    const bytes = raw.subarray(start);
-    if (state.shotUrl) URL.revokeObjectURL(state.shotUrl);
-    state.shotUrl = URL.createObjectURL(new Blob([bytes], { type: 'image/png' }));
-    image.onload = () => {
-      state.shotLoaded = true;
-      image.classList.remove('is-loading');
-      image.hidden = false;
-      empty.hidden = true;
-      const width = image.naturalWidth || 0;
-      const height = image.naturalHeight || 0;
-      if (width && height) {
-        $('shot-frame').style.aspectRatio = `${width} / ${height}`;
-        $('shot-frame').style.minHeight = '0';
-        $('shot-size').textContent = `${width} × ${height}`;
-      }
-    };
-    image.onerror = () => {
-      image.classList.remove('is-loading');
-      if (!state.shotLoaded) image.hidden = true;
-      empty.hidden = false;
-      empty.textContent = 'Screenshot unavailable';
-    };
-    image.src = state.shotUrl;
-  } catch (error) {
-    image.classList.remove('is-loading');
-    if (!state.shotLoaded) image.hidden = true;
-    empty.hidden = false;
-    empty.textContent = /Timed out/i.test(error.message) ? 'Screenshot timed out' : 'Screenshot unavailable';
-  } finally {
-    state.shotBusy = false;
-    $('btn-shot').disabled = !connected();
-  }
-}
-
-// ---- Connection gate -------------------------------------------------------
-
-async function connectViaUsb() {
-  const adapter = usbAdapter();
-  if (!adapter || !adapter.supported()) {
-    setConnectStatus(
-      window.isSecureContext === false
-        ? 'WebUSB needs a secure context: open this page from http://127.0.0.1:… or over HTTPS.'
-        : 'WebUSB is not available in this browser. Use Chrome or Edge with the S10 on a USB cable.',
-      'error',
+  if (!adapter() || !adapter().supported()) {
+    error(
+      'Este navegador no puede hablar con el USB.',
+      'WebUSB solo está disponible en navegadores basados en Chromium (Chrome, Edge) y en un contexto seguro. Abre esta página en http://localhost.',
     );
     return;
   }
-  const host = $('connect-host').value.trim();
-  if (!host) {
-    setConnectStatus('Give this device a name first.', 'error');
+  state.busy = true;
+  state.answered = false;
+  if (knownDevice) {
+    // No chooser needed: go straight at the remembered device, but never hang
+    // on it. If it does not open, the chooser is one click away.
+    show('opening');
+    openRemembered(knownDevice);
     return;
   }
-  $('btn-connect-usb').disabled = true;
-  $('connect-host').readOnly = true;
-  setConnectStatus('Pick the S10 in Chrome’s USB chooser…', 'wait');
+  show('picking');
+  // A chooser that never appears should not look like normal waiting.
+  const pickHint = setTimeout(() => { $('pick-hint').hidden = false; }, 12000);
+  let picking;
   try {
-    await adapter.connect();
-    setConnectStatus('USB link up. If Android asks “Allow USB debugging?”, accept it.', 'wait');
-    const first = await usbCoreRetry('connect', { host });
-    if (first.state === 'trusted' || first.state === 'allowed') {
-      adoptConnection(host);
+    picking = adapter().request();
+  } catch (failure) {
+    // A request that lost the user gesture: maybe the browser already knows the
+    // device and no chooser is needed at all.
+    const remembered = await pickExisting();
+    if (remembered) {
+      clearTimeout(pickHint);
+      finishConnect(Promise.resolve(remembered));
       return;
     }
-    if (first.state === 'denied') throw new Error('The phone denied this host.');
-    setConnectStatus(`Waiting for approval on the S10: “${host} quiere conectarse a este teléfono. ¿Permitir?”`, 'wait');
-    const deadline = Date.now() + 180000;
-    for (;;) {
-      if (Date.now() > deadline) throw new Error('No answer from the phone. Check the notification shade and retry.');
-      await sleep(1500);
-      const status = await usbCoreRetry('connect_status', { host });
-      if (status.state === 'trusted' || status.state === 'allowed') {
-        adoptConnection(host);
-        return;
-      }
-      if (status.state === 'denied') throw new Error('The phone denied this host.');
+    state.busy = false;
+    error('No se pudo abrir el selector de dispositivos.', describe(failure));
+    return;
+  }
+  finishConnect(picking, pickHint);
+}
+
+async function openRemembered(device) {
+  // Accepting the phone's authorization dialog drops the USB link, so the
+  // attach is retried a few times: after acceptance the same device object
+  // reconnects and the handshake completes without asking again.
+  const attempts = 4;
+  for (let attempt = 1; attempt <= attempts; attempt += 1) {
+    // A USB re-enumeration (adbd restart, replug) invalidates the object we hold;
+    // the granted list has the fresh one.
+    const fresh = await pickExisting();
+    if (fresh) {
+      device = fresh;
+      knownDevice = fresh;
     }
-  } catch (error) {
-    setConnectStatus(error.message, 'error');
-    $('btn-connect-usb').disabled = false;
-    $('connect-host').readOnly = false;
-    await adapter.close().catch(() => {});
+    try {
+      // The phone may show its authorization dialog, which waits for a human up to 3 minutes.
+      await withTimeout(adapter().attach(device), 170000);
+      break;
+    } catch (failure) {
+      await adapter().close().catch(() => {});
+      if (attempt < attempts) {
+        await sleep(1500);
+        continue;
+      }
+      knownDevice = null;
+      state.busy = false;
+      error(
+        'No se pudo abrir el dispositivo recordado.',
+        `${describe(failure)} Pulsa Reintentar para elegirlo otra vez.`,
+      );
+      return;
+    }
   }
+  state.busy = false;
+  const settle = setTimeout(() => { if (!state.answered) show('authorize'); }, 1500);
+  try {
+    await identify();
+  } catch (failure) {
+    clearTimeout(settle);
+    error('No se pudo terminar la conexión.', describe(failure));
+    return;
+  }
+  clearTimeout(settle);
 }
 
-function boot() {
-  const platform = (navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || 'Chrome';
-  $('connect-host').value = String(platform).slice(0, 64);
-  const usb = Boolean(window.LexAdb && window.LexAdb.supported());
-  $('btn-connect-usb').disabled = !usb;
-  if (!usb) {
-    setConnectStatus(
-      window.isSecureContext === false
-        ? 'WebUSB needs a secure context: open this page from http://127.0.0.1:… or over HTTPS.'
-        : 'WebUSB is not available in this browser. Use Chrome or Edge with the S10 on a USB cable.',
-      'error',
+function withTimeout(promise, ms) {
+  return Promise.race([
+    promise,
+    new Promise((_, reject) => setTimeout(() => reject(new Error('La conexión USB no respondió a tiempo.')), ms)),
+  ]);
+}
+
+function describe(failure) {
+  if (!failure) return 'Error desconocido.';
+  const name = failure.name ? `${failure.name}: ` : '';
+  return `${name}${failure.message || failure}`;
+}
+
+async function finishConnect(picking, pickHint) {
+  if (pickHint) clearTimeout(pickHint);
+  let device;
+  try {
+    device = await picking;
+  } catch (failure) {
+    state.busy = false;
+    // Closing the chooser is a decision, not an error.
+    if (/No device selected|chooser/i.test(describe(failure))) {
+      show('connect');
+      return;
+    }
+    error('No se pudo abrir el selector de dispositivos.', describe(failure));
+    return;
+  }
+  try {
+    try {
+      await adapter().attach(device);
+    } catch (first) {
+      // Accepting the debugging prompt can reset the pipe; the device object
+      // stays valid, so one clean retry usually lands.
+      await sleep(900);
+      await adapter().attach(device);
+    }
+  } catch (failure) {
+    state.busy = false;
+    const detail = describe(failure);
+    if (looksLikeClaimFailure(detail)) {
+      error(
+        'El USB lo tiene ocupado adb en este ordenador.',
+        'Chrome no puede coger la interfaz del teléfono mientras el servidor de adb la retiene. '
+          + 'Ejecuta este comando en una terminal de este ordenador y vuelve a pulsar Conectar: '
+          + 'Chrome ya guarda el permiso, así que no volverá a pedirte el dispositivo.',
+        'adb kill-server',
+      );
+      return;
+    }
+    error('No se pudo abrir el dispositivo.', detail);
+    return;
+  }
+  state.busy = false;
+  // The USB link is open; adb only answers once the phone authorizes this
+  // browser, so say that straight away instead of leaving the picker up.
+  const settle = setTimeout(() => { if (!state.answered) show('authorize'); }, 1500);
+  try {
+    await identify();
+  } catch (failure) {
+    clearTimeout(settle);
+    error('No se pudo terminar la conexión.', describe(failure));
+    return;
+  }
+  clearTimeout(settle);
+}
+
+/** Wait until adb answers; an unauthorized phone keeps the socket silent. */
+async function waitForShell(seconds = 75) {
+  const deadline = Date.now() + seconds * 1000;
+  let lastProblem = '';
+  let attempts = 0;
+  while (Date.now() < deadline) {
+    try {
+      const echo = (await adapter().shell('echo ok', 6000)).trim();
+      if (echo.includes('ok')) {
+        $('authorize-detail').hidden = true;
+        return true;
+      }
+      lastProblem = 'El teléfono respondió, pero no al comando de prueba.';
+    } catch (failure) {
+      // Saying "waiting for you" when the shell is failing is misleading, so
+      // show what actually came back once we have tried a couple of times.
+      lastProblem = describe(failure);
+    }
+    attempts += 1;
+    if (attempts >= 2) {
+      const detail = $('authorize-detail');
+      detail.hidden = false;
+      detail.textContent = `Detalle: ${lastProblem}`;
+      const key = $('authorize-key');
+      const print = adapter().fingerprint();
+      if (print) {
+        key.hidden = false;
+        key.textContent = `Clave de este navegador: ${print}. Si cambia entre recargas, el aviso se repetirá.`;
+      }
+      const trace = adapter().trace();
+      if (trace.length) {
+        const box = $('authorize-trace');
+        box.hidden = false;
+        box.textContent = trace.join('\n');
+      }
+    }
+    await sleep(2500);
+  }
+  return false;
+}
+
+async function identify() {
+  const answered = await waitForShell();
+  state.answered = answered;
+  if (!answered) {
+    error(
+      'El S10 no responde a adb.',
+      'No se ha autorizado la depuración USB. Acepta el aviso en el teléfono y vuelve a intentarlo.',
     );
-  } else {
-    setConnectStatus('Plug the S10 in by USB, stop any host adb server, then press Connect.');
+    return;
   }
-  renderDevice(null, { message: 'Connect to the S10 to load telemetry.' });
-  renderDesktop({ ok: true, running: false, desktop: null });
-  syncButtons();
+  // The first command after the handshake can land before the pipe settles, so
+  // ask a few times and keep the reason if it never answers. One line is enough:
+  // the build flavor names both the system and the device.
+  let identity = '';
+  let lastError = '';
+  for (let attempt = 0; attempt < 3 && !identity; attempt += 1) {
+    try {
+      const out = await adapter().shell('getprop ro.build.flavor', 8000);
+      if (out.trim()) identity = out.trim();
+    } catch (failure) {
+      lastError = describe(failure);
+    }
+    if (!identity) await sleep(700);
+  }
+  if (!identity) {
+    error(
+      'No se pudo leer la identidad del dispositivo.',
+      lastError || 'El teléfono no respondió a la consulta de propiedades.',
+    );
+    return;
+  }
+  // lineage_lambda_beyond1lte-userdebug: both words have to be there.
+  const ours = /lambda/i.test(identity) && /beyond1lte/i.test(identity);
+  if (!ours) {
+    $('wrong-title').textContent = 'Ese dispositivo no es un S10 con LambdaOS.';
+    $('wrong-text').textContent = `El dispositivo se identifica como «${identity}», y este escritorio solo se abre desde un Galaxy S10 con LambdaOS.`;
+    show('wrong');
+    return;
+  }
+  $('stage-device').textContent = 'Galaxy S10 · LambdaOS';
+  await requestConsent();
 }
 
-$('btn-start').addEventListener('click', startDesktop);
-$('btn-start-cta').addEventListener('click', startDesktop);
-$('btn-stop').addEventListener('click', stopDesktop);
-$('btn-refresh').addEventListener('click', async () => {
-  if (state.busy || !connected()) return;
-  setAction('Refreshing…');
-  await pollOnce();
-  setAction('');
-});
-$('btn-shot').addEventListener('click', refreshShot);
-$('btn-connect-usb').addEventListener('click', connectViaUsb);
+/* ---------- screen consent, handled by the phone ---------- */
 
-document.addEventListener('visibilitychange', () => {
-  if (document.hidden) stopPolling();
-  else if (connected()) startPolling();
+async function requestConsent() {
+  const token =
+    typeof crypto.randomUUID === 'function'
+      ? crypto.randomUUID()
+      : `${Date.now()}-${Math.random().toString(16).slice(2)}`;
+  state.consentToken = token;
+  show('consent');
+  try {
+    await adapter().shell(
+      `am start -n org.lambdaproject.lambda/.ConsentActivity --es token ${token}`,
+      10000,
+    );
+  } catch (failure) {
+    error('No se pudo pedir autorización al teléfono.', String(failure.message || failure));
+    return;
+  }
+  const path = `/sdcard/Android/data/org.lambdaproject.lambda/files/consent-${token}`;
+  const deadline = Date.now() + 120000;
+  while (Date.now() < deadline && state.consentToken === token) {
+    await sleep(900);
+    let answer = '';
+    try {
+      answer = (await adapter().shell(`cat ${path} 2>/dev/null`, 6000)).trim();
+    } catch {
+      continue;
+    }
+    if (answer.startsWith('accepted')) {
+      state.consentToken = '';
+      await startDesktop();
+      return;
+    }
+    if (answer.startsWith('rejected')) {
+      state.consentToken = '';
+      show('rejected');
+      return;
+    }
+  }
+  if (state.consentToken === token) {
+    state.consentToken = '';
+    error('No ha llegado ninguna respuesta.', 'La solicitud ha caducado. Vuelve a intentarlo.');
+  }
+}
+
+/* ---------- the desktop itself ---------- */
+
+async function startDesktop() {
+  show('starting');
+  try {
+    const status = await adapter().core('desktop_status', {});
+    if (status && status.running) {
+      goLive();
+      return;
+    }
+    const requestId =
+      typeof crypto.randomUUID === 'function'
+        ? crypto.randomUUID()
+        : `${Date.now()}`;
+    const submitted = await adapter().core('submit', {
+      tool: 'system.desktop',
+      args: { action: 'start' },
+      request_id: requestId,
+    });
+    const id = (submitted.job && submitted.job.id) || requestId;
+    let job = submitted.job;
+    const deadline = Date.now() + 60000;
+    while (Date.now() < deadline) {
+      if (job && !['queued', 'running'].includes(job.state)) break;
+      await sleep(800);
+      job = (await adapter().core('get', { id })).job;
+    }
+    if (!job || job.state !== 'completed') {
+      error('El escritorio no ha arrancado.', (job && (job.error || job.state)) || 'Sin respuesta de Core.');
+      return;
+    }
+    goLive();
+  } catch (failure) {
+    error('El escritorio no ha arrancado.', String(failure.message || failure));
+  }
+}
+
+async function goLive() {
+  show('live');
+  $('screen-wait').hidden = false;
+  try {
+    // Xvnc on the phone speaks RFB; carry it through an adb shell pipe. The
+    // password is the one LambdaOS wrote when it started the desktop.
+    const password = (await adapter().shell('cat /data/local/lex/vncpass', 8000)).trim();
+    if (!password) throw new Error('El teléfono no ha publicado la contraseña del escritorio. Activa adb root en el teléfono (modo desarrollador de Lambda Operator) y vuelve a intentarlo.');
+    const channel = await adapter().openStream('nc 127.0.0.1 5901', 15000);
+    desktopStream = channel;
+    if (!window.LexDesktop) throw new Error('Falta el cliente de escritorio (lex-desktop.js).');
+    desktop = window.LexDesktop.startDesktop($('screen'), channel, { password });
+    state.live = true;
+    desktop.addEventListener('connect', () => { $('screen-wait').hidden = true; });
+    desktop.addEventListener('desktopname', (event) => {
+      const name = event.detail && event.detail.name;
+      if (name) $('stage-device').textContent = `Galaxy S10 · ${name}`;
+    });
+    desktop.addEventListener('securityfailure', (event) => {
+      error('El teléfono ha rechazado la contraseña del escritorio.', String((event.detail && event.detail.reason) || ''));
+    });
+    desktop.addEventListener('disconnect', () => {
+      if (!state.live) return;
+      error('Se ha perdido la conexión con el escritorio.', 'Comprueba el teléfono y vuelve a conectar.');
+    });
+  } catch (failure) {
+    error('No se pudo abrir el escritorio.', String(failure.message || failure));
+  }
+}
+
+function stopLive() {
+  state.live = false;
+  try { if (desktop) desktop.disconnect(); } catch { /* already gone */ }
+  desktop = null;
+  try { if (desktopStream) desktopStream.close(); } catch { /* already gone */ }
+  desktopStream = null;
+  // noVNC leaves its screen div behind; drop it so the next session starts clean.
+  for (const child of [...$('screen').children]) {
+    if (child.id !== 'screen-wait') child.remove();
+  }
+  $('screen-wait').hidden = false;
+}
+
+/* ---------- controls ---------- */
+
+$('btn-connect').addEventListener('click', beginConnect);
+$('btn-retry-wrong').addEventListener('click', () => reset(true));
+$('btn-retry-rejected').addEventListener('click', beginConnect);
+$('btn-retry-error').addEventListener('click', () => reset(true));
+$('btn-cancel-pick').addEventListener('click', () => reset(false));
+$('btn-cancel-consent').addEventListener('click', () => {
+  state.consentToken = '';
+  reset(false);
 });
 
-window.addEventListener('pagehide', () => {
-  if (connected() && window.LexAdb) void window.LexAdb.close();
+$('btn-fullscreen').addEventListener('click', async () => {
+  const stage = document.querySelector('.stage');
+  try {
+    if (document.fullscreenElement) await document.exitFullscreen();
+    else await stage.requestFullscreen();
+  } catch {
+    /* Some browsers refuse without a direct gesture; the button is the gesture. */
+  }
 });
 
-boot();
+$('btn-disconnect').addEventListener('click', () => reset(true));
+
+$('btn-copy-cmd').addEventListener('click', async () => {
+  const button = $('btn-copy-cmd');
+  try {
+    await navigator.clipboard.writeText($('error-cmd-text').textContent);
+    button.textContent = 'Copiado';
+  } catch {
+    button.textContent = 'No se pudo copiar';
+  }
+  setTimeout(() => { button.textContent = 'Copiar'; }, 1600);
+});
+
+async function reset(hard) {
+  stopLive();
+  state.answered = false;
+  state.consentToken = '';
+  if (hard && adapter()) {
+    try {
+      await adapter().close();
+    } catch {
+      /* Already gone. */
+    }
+  }
+  show('connect');
+}
+
+/* Leaving the page hangs up the USB session cleanly. */
+addEventListener('pagehide', () => {
+  if (adapter()) adapter().close().catch(() => {});
+});

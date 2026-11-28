@@ -16,6 +16,8 @@ const PUBLIC_DIR = await fs.realpath(path.join(HERE, 'public'));
 const DEFAULT_PORT = 7788;
 
 const BASE_HEADERS = {
+  // This page changes with the device in front of you; never serve a stale copy.
+  'Cache-Control': 'no-store',
   'X-Content-Type-Options': 'nosniff',
   'X-Frame-Options': 'DENY',
   'Referrer-Policy': 'no-referrer',
@@ -37,6 +39,7 @@ const CONTENT_TYPES = {
   '.css': 'text/css; charset=utf-8',
   '.js': 'text/javascript; charset=utf-8',
   '.svg': 'image/svg+xml',
+  '.woff2': 'font/woff2',
   '.png': 'image/png',
   '.json': 'application/json; charset=utf-8',
   '.ico': 'image/x-icon',

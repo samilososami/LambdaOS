@@ -28,6 +28,13 @@ does not replace the licenses of those components.
 - **Probable-Wordlists:** the optional WPA dictionaries are downloaded from the
   pinned upstream and normalized by the published scripts. The generated lists
   are not committed; upstream attribution is CC-BY-SA-4.0.
+- **noVNC:** an unmodified vendored copy at
+  [`alpha/web/lex-dashboard/public/novnc/`](alpha/web/lex-dashboard/public/novnc/)
+  is MPL-2.0, with BSD-2-Clause terms for `core/crypto/des.js` and MIT and zlib
+  terms for the bundled pako library; see its
+  [`LICENSE.txt`](alpha/web/lex-dashboard/public/novnc/LICENSE.txt).
+- **Inter:** the typeface is licensed under the SIL Open Font License 1.1; see
+  [`inter.OFL.txt`](alpha/web/lex-dashboard/public/inter.OFL.txt).
 
 The `assets/design/**/references` folders contain design reference material;
 third-party marks shown there are not LambdaOS branding or endorsements.

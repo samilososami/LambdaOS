@@ -23,7 +23,79 @@
   const AUTH_TOKEN = 1;
   const AUTH_SIGNATURE = 2;
   const AUTH_PUBLICKEY = 3;
+
+  /* adb's token signature is NOT sign(SHA1(token)): it signs the DigestInfo
+   * whose digest IS the token (verified against the reference client and
+   * openssl). WebCrypto cannot sign a pre-digested value, so the RSA
+   * exponentiation is done here with BigInt. */
+  function b64urlToBigInt(value) {
+    const clean = String(value).replace(/-/g, '+').replace(/_/g, '/');
+    const padded = clean + '='.repeat((4 - (clean.length % 4)) % 4);
+    const bytes = Uint8Array.from(atob(padded), (c) => c.charCodeAt(0));
+    let result = 0n;
+    for (const byte of bytes) result = (result << 8n) | BigInt(byte);
+    return result;
+  }
+
+  function modPow(base, exp, mod) {
+    if (mod === 1n) return 0n;
+    let result = 1n;
+    base %= mod;
+    while (exp > 0n) {
+      if (exp & 1n) result = (result * base) % mod;
+      exp >>= 1n;
+      base = (base * base) % mod;
+    }
+    return result;
+  }
+
+  function digestInfoHeader(token) {
+    return token.length === 32
+      ? [0x30, 0x31, 0x30, 0x0d, 0x06, 0x09, 0x60, 0x86, 0x48, 0x01, 0x65, 0x03, 0x04, 0x02, 0x01, 0x05, 0x00, 0x04, 0x20]
+      : [0x30, 0x21, 0x30, 0x09, 0x06, 0x05, 0x2b, 0x0e, 0x03, 0x02, 0x1a, 0x05, 0x00, 0x04, 0x14];
+  }
+
+  function signToken(privateJwk, token) {
+    const n = b64urlToBigInt(privateJwk.n);
+    const k = (n.toString(16).length + 1) >> 1;   // modulus length in bytes
+    const info = new Uint8Array([...digestInfoHeader(token), ...token]);
+    const padded = new Uint8Array(k);
+    padded[0] = 0x00;
+    padded[1] = 0x01;
+    const psLength = k - 3 - info.length;
+    padded.fill(0xff, 2, 2 + psLength);
+    padded[2 + psLength] = 0x00;
+    padded.set(info, 3 + psLength);
+    let m = 0n;
+    for (const byte of padded) m = (m << 8n) | BigInt(byte);
+    let s;
+    if (privateJwk.p && privateJwk.q && privateJwk.dp && privateJwk.dq && privateJwk.qi) {
+      const p = b64urlToBigInt(privateJwk.p);
+      const q = b64urlToBigInt(privateJwk.q);
+      let h = ((modPow(m % p, b64urlToBigInt(privateJwk.dp), p) - modPow(m % q, b64urlToBigInt(privateJwk.dq), q)) * b64urlToBigInt(privateJwk.qi)) % p;
+      if (h < 0n) h += p;
+      s = modPow(m % q, b64urlToBigInt(privateJwk.dq), q) + q * h;
+    } else {
+      s = modPow(m, b64urlToBigInt(privateJwk.d), n);
+    }
+    const out = new Uint8Array(k);
+    for (let i = k - 1; i >= 0; i -= 1) {
+      out[i] = Number(s & 0xffn);
+      s >>= 8n;
+    }
+    return out;
+  }
+
   const KEY_STORAGE = 'lambda-adb-key';
+
+  const NAME = {
+    [0x4e584e43]: 'CNXN',
+    [0x48545541]: 'AUTH',
+    [0x4e45504f]: 'OPEN',
+    [0x59414b4f]: 'OKAY',
+    [0x45534c43]: 'CLSE',
+    [0x45545257]: 'WRTE',
+  };
 
   class AdbError extends Error {}
 
@@ -127,7 +199,11 @@
     return Number(x);
   }
 
+
+
   function buildAdbPublicKey(modulus, exponent) {
+    // The CryptoAPI RSAPublicKey struct, base64: this is the format this
+    // device stores and verifies (the ssh-rsa blob was rejected on accept).
     const words = Math.ceil(modulus.length / 4);
     const padded = new Uint8Array(words * 4); // big-endian, right aligned
     padded.set(modulus, words * 4 - modulus.length);
@@ -228,11 +304,15 @@
       this.buffer = new Uint8Array(0);
       this.packets = [];
       this.localId = 1;
+      this.links = new Map();
+      this.waiters = new Set();
+      this.writeChain = Promise.resolve();
       this.running = false;
       this.dead = null;
       this.keyPair = null;
       this.publicPayload = null;
       this.maxPayload = 4096;
+      this.trace = [];
       this.onDisconnect = (event) => {
         if (event.device === this.device) this.fail(new AdbError('USB disconnected.'));
       };
@@ -253,11 +333,17 @@
       await this.authenticate();
     }
 
+    note(line) {
+      this.trace.push(line);
+      if (this.trace.length > 40) this.trace.shift();
+    }
+
     fail(error) {
       if (this.dead) return;
       this.dead = error;
       this.lastError = error.message;
       this.running = false;
+      for (const handler of this.links.values()) handler({ cmd: CMD.CLSE, arg0: 0, arg1: 0, payload: new Uint8Array(0) });
       // close() rejects while a transfer is still unwinding; it is harmless.
       void this.device.close().catch(() => {});
     }
@@ -266,7 +352,7 @@
       while (this.running) {
         let result;
         try {
-          result = await this.device.transferIn(this.inEndpoint.endpointNumber, 16384);
+          result = await this.device.transferIn(this.inEndpoint.endpointNumber, 65536);
         } catch (error) {
           console.error('LexAdb USB read failed:', error);
           this.fail(new AdbError(`USB read failed: ${error.message}`));
@@ -296,20 +382,45 @@
           payload: this.buffer.slice(24, 24 + length),
         };
         this.buffer = this.buffer.slice(24 + length);
-        this.packets.push(packet);
+        this.note(`<- ${NAME[packet.cmd] || packet.cmd} a0=${packet.arg0} a1=${packet.arg1} n=${packet.payload.length}`);
+        if (packet.cmd === CMD.CNXN || packet.cmd === CMD.AUTH) {
+          this.packets.push(packet);
+          this.wake();
+          continue;
+        }
+        const handler = this.links.get(packet.arg1) || this.links.get(packet.arg0);
+        if (handler) handler(packet);
+        else { this.packets.push(packet); this.wake(); }
       }
+    }
+
+    wake() {
+      for (const resolve of this.waiters) resolve();
+      this.waiters.clear();
     }
 
     async nextPacket(deadline) {
       for (;;) {
         if (this.packets.length) return this.packets.shift();
         if (this.dead) throw this.dead;
-        if (Date.now() > deadline) throw new AdbError('Timed out talking to ADB.');
-        await sleep(40);
+        const left = deadline - Date.now();
+        if (left <= 0) throw new AdbError('Timed out talking to ADB.');
+        await new Promise((resolve) => {
+          const timer = setTimeout(resolve, Math.min(100, left));
+          this.waiters.add(() => { clearTimeout(timer); resolve(); });
+        });
       }
     }
 
-    async send(cmd, arg0, arg1, payload) {
+    send(cmd, arg0, arg1, payload) {
+      // Chrome rejects overlapping transferOut calls, so writes run one at a time.
+      const run = this.writeChain.then(() => this.sendPacket(cmd, arg0, arg1, payload));
+      this.writeChain = run.catch(() => {});
+      return run;
+    }
+
+    async sendPacket(cmd, arg0, arg1, payload) {
+      this.note(`-> ${NAME[cmd] || cmd} a0=${arg0} a1=${arg1} n=${payload ? payload.length : 0}`);
       if (this.dead) throw this.dead;
       const data =
         payload === undefined || payload === null
@@ -335,9 +446,11 @@
       if (this.keyPair) return;
       const algorithm = { name: 'RSASSA-PKCS1-v1_5', hash: 'SHA-1' };
       let pair = null;
+      let storedPrivateJwk = null;
       try {
         const stored = JSON.parse(localStorage.getItem(KEY_STORAGE) || 'null');
         if (stored && stored.privateKey && stored.publicKey) {
+          storedPrivateJwk = stored.privateKey;
           pair = {
             privateKey: await crypto.subtle.importKey('jwk', stored.privateKey, algorithm, true, ['sign']),
             publicKey: await crypto.subtle.importKey('jwk', stored.publicKey, algorithm, true, ['verify']),
@@ -366,13 +479,21 @@
         }
       }
       this.keyPair = pair;
+      this.privateJwk = storedPrivateJwk || await crypto.subtle.exportKey('jwk', pair.privateKey);
       const spki = new Uint8Array(await crypto.subtle.exportKey('spki', pair.publicKey));
       const { modulus, exponent } = parseRsaSpki(spki);
       this.publicPayload = `${buildAdbPublicKey(modulus, exponent)} lambdaos-web@chrome`;
+      // Same 16 hex characters adb prints in "The computer's RSA key fingerprint is ...".
+      const digest = new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(this.publicPayload)));
+      this.fingerprint = [...digest.slice(0, 8)].map((b) => b.toString(16).padStart(2, '0')).join(':');
+      this.note(`key ${this.fingerprint}`);
     }
 
     async authenticate() {
-      await this.send(CMD.CNXN, 0x01000000, 4096, new TextEncoder().encode('host::\0'));
+      // Same handshake the reference client sends: v1 of the protocol, a 1 MiB
+      // window and the features the device shell services are negotiated on.
+      const FEATURES = 'host::features=shell_v2,cmd,stat_v2,ls_v2,fixed_push_mkdir,apex,abb,fixed_push_symlink_timestamp,abb_exec,remount_shell,track_app,sendrecv_v2,sendrecv_v2_brotli,sendrecv_v2_lz4,sendrecv_v2_zstd,sendrecv_v2_dry_run_send,openscreen_mdns';
+      await this.send(CMD.CNXN, 0x01000001, 1048576, new TextEncoder().encode(FEATURES));
       const deadline = Date.now() + 180000; // the native USB-debugging prompt waits for a human
       let sentSignature = false;
       for (;;) {
@@ -384,8 +505,8 @@
         if (packet.cmd === CMD.AUTH && packet.arg0 === AUTH_TOKEN) {
           await this.ensureKey();
           if (!sentSignature) {
-            const signature = await crypto.subtle.sign('RSASSA-PKCS1-v1_5', this.keyPair.privateKey, packet.payload);
-            await this.send(CMD.AUTH, AUTH_SIGNATURE, 0, new Uint8Array(signature));
+            const signature = signToken(this.privateJwk, new Uint8Array(packet.payload));
+            await this.send(CMD.AUTH, AUTH_SIGNATURE, 0, signature);
             sentSignature = true;
           } else {
             await this.send(CMD.AUTH, AUTH_PUBLICKEY, 0, new TextEncoder().encode(this.publicPayload));
@@ -398,27 +519,172 @@
       if (this.dead) throw this.dead;
       if (!this.running) throw new AdbError('ADB is not connected.');
       const local = this.localId++;
-      await this.send(CMD.OPEN, local, 0, new TextEncoder().encode(`${command}\0`));
-      const deadline = Date.now() + timeout;
-      const chunks = [];
-      for (;;) {
-        const packet = await this.nextPacket(deadline);
-        if (packet.cmd === CMD.OKAY && packet.arg0 === local) continue;
-        if (packet.cmd === CMD.WRTE && packet.arg0 === local) {
-          chunks.push(packet.payload);
-          await this.send(CMD.OKAY, packet.arg1, local);
-          continue;
+      // Match the real adb client: the shell service is "shell,v2,raw:<cmd>".
+      // v2 frames the output (id + length) and reports the exit status, so both
+      // stdout and stderr arrive without a PTY mangling them.
+      const service = /^(shell|exec)(,|:)/.test(command) ? command : `shell,v2,raw:${command}`;
+      const stdout = [];
+      let remote = 0;
+      let exitCode = null;
+      let envelope = new Uint8Array(0);
+      let finish;
+      const closed = new Promise((resolve) => { finish = resolve; });
+      // One handler per link: a click fired during a frame capture reads only its
+      // own packets instead of racing the frame loop for them.
+      this.links.set(local, (packet) => {
+        if (packet.cmd === CMD.OKAY) {
+          remote = packet.arg0 === local ? packet.arg1 : packet.arg0;
+          return;
         }
-        if (packet.cmd === CMD.CLSE && packet.arg0 === local) {
-          if (packet.arg1) await this.send(CMD.CLSE, packet.arg1, local);
-          break;
+        if (packet.cmd === CMD.WRTE) {
+          envelope = concat(envelope, packet.payload);
+          // Acknowledge the way the reference client does: our id first.
+          void this.send(CMD.OKAY, local, remote).catch(() => {});
+          while (envelope.length >= 5) {
+            const id = envelope[0];
+            const length = envelope[1] | (envelope[2] << 8) | (envelope[3] << 16) | (envelope[4] << 24);
+            if (envelope.length < 5 + length) break;
+            const body = envelope.slice(5, 5 + length);
+            envelope = envelope.slice(5 + length);
+            if (id === 1) stdout.push(body);
+            else if (id === 3 && body.length >= 1) exitCode = body[0];
+          }
+          return;
         }
+        if (packet.cmd === CMD.CLSE) {
+          if (remote) void this.send(CMD.CLSE, local, remote).catch(() => {});
+          finish();
+        }
+      });
+      try {
+        await this.send(CMD.OPEN, local, 0, new TextEncoder().encode(`${service}\0`));
+        const outcome = await Promise.race([closed, sleep(timeout).then(() => 'timeout')]);
+        if (outcome === 'timeout') {
+          throw new AdbError(`${this.lastError || 'Timed out'} [${command.slice(0, 40)}: ${this.trace.slice(-3).join(' | ')}]`);
+        }
+        if (this.dead) throw this.dead;
+      } finally {
+        this.links.delete(local);
       }
-      return concatAll(chunks);
+      if (!stdout.length && exitCode === null) {
+        throw new AdbError(`The phone closed "${service}" without returning anything.`);
+      }
+      return concatAll(stdout);
     }
 
     async shell(command, timeout = 30000) {
       return decode(await this.shellBytes(command, timeout));
+    }
+
+    /** Open a long-lived shell link (e.g. "nc 127.0.0.1 5901") and return a
+     *  WebSocket-like channel; noVNC's Websock.attach() consumes these fields. */
+    async openStream(command, timeout = 15000) {
+      if (this.dead) throw this.dead;
+      if (!this.running) throw new AdbError('ADB is not connected.');
+      const local = this.localId++;
+      const service = /^(shell|exec)(,|:)/.test(command) ? command : `shell,v2,raw:${command}`;
+      let remote = 0;
+      let opened = false;
+      let finished = false;
+      let envelope = new Uint8Array(0);
+      let settle;
+      const ready = new Promise((resolve, reject) => { settle = { resolve, reject }; });
+      let channel;
+      const finish = (code, reason) => {
+        if (finished) return;
+        finished = true;
+        channel.readyState = 3;
+        this.links.delete(local);
+        if (channel.onclose) channel.onclose({ code, reason });
+      };
+      channel = {
+        readyState: 0, // CONNECTING until the device answers OPEN with OKAY
+        binaryType: 'arraybuffer',
+        protocol: '',
+        stderr: '',
+        exitCode: null,
+        onopen: null,
+        onmessage: null,
+        onclose: null,
+        onerror: null,
+        send: (data) => {
+          if (channel.readyState !== 1) throw new AdbError('The stream is closed.');
+          const bytes = data instanceof Uint8Array ? data : new Uint8Array(data);
+          const payload = new Uint8Array(5 + bytes.length);
+          new DataView(payload.buffer).setUint32(1, bytes.length, true); // id 0: stdin
+          payload.set(bytes, 5);
+          return this.send(CMD.WRTE, local, remote, payload).catch((error) => {
+            if (channel.onerror) channel.onerror(error);
+          });
+        },
+        close: () => {
+          if (finished) return;
+          if (remote) void this.send(CMD.CLSE, local, remote).catch(() => {});
+          finish(1000, '');
+        },
+      };
+      this.links.set(local, (packet) => {
+        if (finished) return;
+        if (packet.cmd === CMD.OKAY) {
+          if (opened) return;
+          remote = packet.arg0 === local ? packet.arg1 : packet.arg0;
+          opened = true;
+          channel.readyState = 1;
+          if (channel.onopen) channel.onopen();
+          settle.resolve(channel);
+          return;
+        }
+        if (packet.cmd === CMD.WRTE) {
+          envelope = concat(envelope, packet.payload);
+          void this.send(CMD.OKAY, local, remote).catch(() => {});
+          while (envelope.length >= 5) {
+            const id = envelope[0];
+            const length = envelope[1] | (envelope[2] << 8) | (envelope[3] << 16) | (envelope[4] << 24);
+            if (envelope.length < 5 + length) break;
+            const body = envelope.slice(5, 5 + length);
+            envelope = envelope.slice(5 + length);
+            if (id === 1) {
+              if (channel.onmessage) {
+                // Keep a throwing handler (noVNC) from killing the USB read loop.
+                try {
+                  channel.onmessage({ data: body });
+                } catch (error) {
+                  console.error('LexAdb stream handler failed:', error);
+                }
+              }
+            } else if (id === 2) {
+              // Diagnostic only: a multi-byte character split across packets may
+              // decode with a replacement character.
+              channel.stderr = (channel.stderr + decode(body)).slice(-65536);
+            } else if (id === 3 && body.length >= 1) {
+              channel.exitCode = body[0];
+            }
+          }
+          return;
+        }
+        if (packet.cmd === CMD.CLSE) {
+          if (remote) void this.send(CMD.CLSE, local, remote).catch(() => {});
+          if (!opened) {
+            settle.reject(this.dead || new AdbError(`The phone closed "${service}" before opening it.`));
+            return;
+          }
+          if (this.dead && channel.onerror) channel.onerror(this.dead);
+          finish(this.dead ? 1006 : 1000, this.dead ? String(this.dead.message || this.dead) : '');
+        }
+      });
+      const timer = setTimeout(() => {
+        finished = true;
+        settle.reject(new AdbError(`Timed out opening "${service.slice(0, 60)}".`));
+      }, timeout);
+      try {
+        await Promise.all([this.send(CMD.OPEN, local, 0, new TextEncoder().encode(`${service}\0`)), ready]);
+      } catch (error) {
+        this.links.delete(local);
+        throw error;
+      } finally {
+        clearTimeout(timer);
+      }
+      return channel;
     }
 
     async close() {
@@ -454,6 +720,39 @@
       // getDevices is optional in older builds.
     }
     return root.navigator.usb.requestDevice({ filters: FILTERS });
+  }
+
+  /** Request a device now. Must be called straight from a user gesture: any
+   *  await before requestDevice spends the activation and Chrome refuses it. */
+  function request() {
+    if (!root.navigator || !root.navigator.usb) throw new AdbError('WebUSB is not available in this browser.');
+    if (!root.isSecureContext) throw new AdbError('WebUSB needs a secure context (localhost or HTTPS).');
+    return root.navigator.usb.requestDevice({ filters: FILTERS });
+  }
+
+  /** Open an already chosen device (the object requestDevice resolved with). */
+  // A link mid-handshake is tracked too, or a timeout in the page would leave
+  // the interface claimed forever.
+  let opening = null;
+
+  async function attach(device) {
+    if (active && !active.dead) return active;
+    const link = new AdbUsb(device);
+    opening = link;
+    try {
+      await link.open();
+    } catch (error) {
+      try {
+        await device.close();
+      } catch {
+        // Nothing to close.
+      }
+      throw error;
+    } finally {
+      if (opening === link) opening = null;
+    }
+    active = link;
+    return link;
   }
 
   async function connect() {
@@ -518,6 +817,8 @@
 
   const api = {
     supported: () => Boolean(root.navigator && root.navigator.usb && root.isSecureContext),
+    request,
+    attach,
     connect,
     shell: (command, timeout) => {
       if (!active) throw new AdbError('Connect over USB first.');
@@ -527,12 +828,26 @@
       if (!active) throw new AdbError('Connect over USB first.');
       return active.shellBytes(command, timeout);
     },
+    openStream: (command, timeout) => {
+      if (!active) throw new AdbError('Connect over USB first.');
+      return active.openStream(command, timeout);
+    },
     core,
     close: async () => {
       if (active) await active.close();
       active = null;
+      if (opening) {
+        try {
+          await opening.close();
+        } catch {
+          // Already gone.
+        }
+        opening = null;
+      }
     },
     deviceName: () => (active ? active.device.productName : null),
+    trace: () => ((active || opening) ? (active || opening).trace.slice(-12) : []),
+    fingerprint: () => (active ? active.fingerprint : null),
     selfTest,
     _test: { parseRsaSpki, buildAdbPublicKey, parseCoreResult, shellQuote, modInverse32, adbInterfaces, claimAdb, AdbError },
   };
