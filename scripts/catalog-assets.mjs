@@ -56,14 +56,20 @@ for (const [group, entries] of groups) {
   lines.push('');
 }
 fs.writeFileSync(path.join(root, 'assets/INDEX.md'), lines.join('\n').trimEnd() + '\n');
-const sources = walk(path.join(root, 'alpha')).filter(p =>
-  !/(^|\/)(private|out|build|__pycache__)(\/|$)/.test(relative(p)) && !p.endsWith('.pyc'));
-const kernelSources = walk(path.join(root, 'kernel')).filter(p =>
-  !/(^|\/)(out|build|__pycache__)(\/|$)/.test(relative(p)) && !p.endsWith('.pyc'));
+// Git's own view, not a filesystem walk, so gitignored files (signing keys,
+// build output, the stray alpha/config/config path) never enter the inventory.
+// The publication check enumerates the same universe.
+const list = spawnSync('git', ['ls-files', '--cached', '--others', '--exclude-standard', '-z'],
+  {cwd: root, encoding: 'utf8'});
+if (list.status !== 0) throw new Error('Cannot enumerate public Git tree');
+const tracked = [...new Set(list.stdout.split('\0').filter(Boolean))];
+const keep = name => !/(^|\/)(private|out|build|__pycache__)(\/|$)/.test(name) && !name.endsWith('.pyc');
+const sources = tracked.filter(name => name.startsWith('alpha/') && keep(name));
+const kernelSources = tracked.filter(name => name.startsWith('kernel/') && keep(name));
 const publishedSources = [...sources, ...kernelSources].sort((a, b) =>
-  relative(a).localeCompare(relative(b), 'en'));
+  a.localeCompare(b, 'en')).map(name => path.join(root, name));
 fs.writeFileSync(path.join(root, 'docs/source-inventory.json'), JSON.stringify({
-  schema: 1, snapshot: '2026-11-22', files: publishedSources.map(name => {
+  schema: 1, snapshot: '2026-11-28', files: publishedSources.map(name => {
     const data = fs.readFileSync(name);
     return {path: relative(name), bytes: data.length, sha256: digest(data)};
   }),

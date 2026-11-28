@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "snapshot": "2026-11-22",
+  "snapshot": "2026-11-28",
   "files": [
     {
       "path": "alpha/apps/Lambda/Android.bp",
@@ -9,8 +9,8 @@
     },
     {
       "path": "alpha/apps/Lambda/AndroidManifest.xml",
-      "bytes": 3135,
-      "sha256": "5d1c153d976c5b855bb9b0fb40d4eddba889cb68f93eff3edd4227f053012750"
+      "bytes": 4880,
+      "sha256": "4477fafd6568aaf6070093c3e98a3c2b812f5d4cbe8ea3d9a4fdd6e887cc9acf"
     },
     {
       "path": "alpha/apps/Lambda/HANDSHAKE-DESIGN.md",
@@ -64,8 +64,8 @@
     },
     {
       "path": "alpha/apps/Lambda/native/radio-guard.c",
-      "bytes": 2454,
-      "sha256": "bca21ad9a909681e66d55651c9dc22db10bfc3e5cd24b8981ebedae59082b5a9"
+      "bytes": 2533,
+      "sha256": "e007ccaf9da13e1b3f60c956d2584ce143f7a22c68102796c258c043382af0fb"
     },
     {
       "path": "alpha/apps/Lambda/native/wps-guard.c",
@@ -73,14 +73,84 @@
       "sha256": "7d0efaae63bd9ff6a7eba7fad07616e7ea12a8698212b106f6e0b52fbe866122"
     },
     {
+      "path": "alpha/apps/Lambda/ntlm-capture.py",
+      "bytes": 17471,
+      "sha256": "c3c5185e2bb05688d67cdc8387faee8cb258326a66aa655298fcd0da139abf46"
+    },
+    {
+      "path": "alpha/apps/Lambda/portal/google/error.html",
+      "bytes": 54899,
+      "sha256": "15319de761c0fe2c06e1a9b533c2eb6e08b200c80f50a456c3d7d5a9eea1c96a"
+    },
+    {
+      "path": "alpha/apps/Lambda/portal/google/final.html",
+      "bytes": 54133,
+      "sha256": "2671fb569d4b679402a2b7ee9ca37de3088076452969758e43a1f3418559bf71"
+    },
+    {
+      "path": "alpha/apps/Lambda/portal/google/index.html",
+      "bytes": 54521,
+      "sha256": "ab9787790e4fe799f0769baf4ed436d4402cf6ea9ce758cb59189e231d7a490d"
+    },
+    {
+      "path": "alpha/apps/Lambda/portal/NOTICE.md",
+      "bytes": 701,
+      "sha256": "01f5404de5963350492b94c1eb738e68077d13591fde9863579846eebe06ca0e"
+    },
+    {
+      "path": "alpha/apps/Lambda/portal/router/bootstrap.min.css",
+      "bytes": 121217,
+      "sha256": "0239826b4afdef0f89a012dfa4f19e90a30a7f2a88550ffad0d9e6edf61693ca"
+    },
+    {
+      "path": "alpha/apps/Lambda/portal/router/bootstrap.min.js",
+      "bytes": 36742,
+      "sha256": "a3dd9be3f239f7aa17fbee85435c6a5326971e3bc6d994dea16d479c1d748080"
+    },
+    {
+      "path": "alpha/apps/Lambda/portal/router/error.html",
+      "bytes": 5587,
+      "sha256": "48ef6dee05ceda572388e21708462a0a5c3482ca231a51fba90384c9384e1c25"
+    },
+    {
+      "path": "alpha/apps/Lambda/portal/router/final.html",
+      "bytes": 8614,
+      "sha256": "9f0ab958fe73c9ffaa9c50bdebf11e6f6bde4a17097af23553124480bfca9728"
+    },
+    {
+      "path": "alpha/apps/Lambda/portal/router/index.html",
+      "bytes": 99398,
+      "sha256": "ac6c4649f1fcba9451b0399e6157f05c6096cf2a3b182925d8651ade34849b68"
+    },
+    {
+      "path": "alpha/apps/Lambda/portal/router/jquery.min.js",
+      "bytes": 87533,
+      "sha256": "fc9a93dd241f6b045cbff0481cf4e1901becd0e12fb45166a8f17f95823f0b1a"
+    },
+    {
+      "path": "alpha/apps/Lambda/portal/simple/error.html",
+      "bytes": 608,
+      "sha256": "749a5dd8043ea55765a2facde644fb86783ecf9fb62818497dfca6a1afb7bc08"
+    },
+    {
+      "path": "alpha/apps/Lambda/portal/simple/index.html",
+      "bytes": 1022,
+      "sha256": "5a616e69b1f4d923345ae197369b70877616c3a93aee5b16b9fda50305457ef5"
+    },
+    {
+      "path": "alpha/apps/Lambda/ra_sender.py",
+      "bytes": 2689,
+      "sha256": "1fb997150f35216830db16e289decf20cc629032d7a14badec931e16c311bf9b"
+    },
+    {
       "path": "alpha/apps/Lambda/README.md",
-      "bytes": 2134,
-      "sha256": "0104dc891203f58f421f795191de6d6c0463c399768a03831120db2f5db086fb"
+      "bytes": 14161,
+      "sha256": "c5ab1c05824628f2add1ebfd5655f37c8ebf090357a3cad3388d535dd255e0a0"
     },
     {
       "path": "alpha/apps/Lambda/res/drawable/ic_core.xml",
-      "bytes": 292,
-      "sha256": "5609937a39c37f4b3ead38ca9315dce2e8c094afbaaabfaa7da59fb268293d27"
+      "bytes": 375,
+      "sha256": "43816e3bdbfa2e47152d7053f364c0388b64a98d3d0cc5b75bf2e7f0cd005219"
     },
     {
       "path": "alpha/apps/Lambda/res/drawable/ic_handshake.xml",
@@ -89,8 +159,23 @@
     },
     {
       "path": "alpha/apps/Lambda/res/drawable/ic_launcher.xml",
-      "bytes": 409,
-      "sha256": "fc318fdc1640257ee395fdd2e780a298a8de713cd3b32457fe4772680e0c6104"
+      "bytes": 449,
+      "sha256": "c30e7775102dbc3ba939f5092d86013003849d46f95307c4763fcacda68372f3"
+    },
+    {
+      "path": "alpha/apps/Lambda/res/drawable/ucm_fire.xml",
+      "bytes": 595,
+      "sha256": "acc5b0fc7c37217aedc3b9cacb01088f0418109babc729500995544c8fcf4c35"
+    },
+    {
+      "path": "alpha/apps/Lambda/res/drawable/ucm_snowflake.png",
+      "bytes": 53955,
+      "sha256": "2ee4e2963b75bb371695dafaf8ea74e96a9db3e053a66cd3486d4c1c14aaa330"
+    },
+    {
+      "path": "alpha/apps/Lambda/res/drawable/ucm_thermometer.xml",
+      "bytes": 539,
+      "sha256": "701fc3021e72100f5b903007c6a3629ee9ebc3e0a9f26297f51efce3b6640c37"
     },
     {
       "path": "alpha/apps/Lambda/res/values/styles.xml",
@@ -98,9 +183,24 @@
       "sha256": "dad24a3877deb28d024a0a82937c07fc08a3c7947fc099a3228e3e2929e4f5f4"
     },
     {
+      "path": "alpha/apps/Lambda/res/xml/device_admin.xml",
+      "bytes": 151,
+      "sha256": "cb421177f92d1d4d86a3909f80315396ff317aa801522507661c5ae71ef5ff6c"
+    },
+    {
+      "path": "alpha/apps/Lambda/res/xml/network_security_config.xml",
+      "bytes": 371,
+      "sha256": "717e0d443309dbe8259455302fddb7bb3146926b5a2bed8e66162aa8890cd240"
+    },
+    {
       "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/AirodumpStatus.java",
       "bytes": 2256,
       "sha256": "b79f43992d2493a40ddc76f6896206949f26c6e806a7c2ae23cfa390a879ef15"
+    },
+    {
+      "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/ApUi.java",
+      "bytes": 40054,
+      "sha256": "a8fdc0d77e011447eb8bb80245233b2453cf996f81d62fae92bb5cd3ae94876f"
     },
     {
       "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/AuditAnalysis.java",
@@ -114,8 +214,23 @@
     },
     {
       "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/BenchmarkUi.java",
-      "bytes": 15872,
-      "sha256": "79ceccae25db47122edc4c16aa0293eee334d890144bed85c8258c475583be46"
+      "bytes": 21289,
+      "sha256": "6622a145691ffe7fc6bcdef55e8e6cdd161164a71f4c640a32b5555fb8250e07"
+    },
+    {
+      "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/ConsentActivity.java",
+      "bytes": 6769,
+      "sha256": "223cc5af35ece7b3bf985d5560e78fddf6e0ef7d4155638315c2b8dde600c5cb"
+    },
+    {
+      "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/CoolingActivity.java",
+      "bytes": 20377,
+      "sha256": "9a661bc82f6e91a9dcea6f7cbe415c096f57f0b4149e9d35efd0f635e7c01110"
+    },
+    {
+      "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/CoolingJob.java",
+      "bytes": 12827,
+      "sha256": "ace6f47545701446a88098a365019ed63f04f310ddc1b24037ca86411725452f"
     },
     {
       "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/CoreBootReceiver.java",
@@ -124,8 +239,8 @@
     },
     {
       "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/CoreEngine.java",
-      "bytes": 26233,
-      "sha256": "4ce9728d47e6224ac3af5ac3dadf7933e510d6ca8e14580c16fe3e4e72ba247e"
+      "bytes": 48528,
+      "sha256": "30856a2e4f4907c2e8f25ef5954950e26b662e379afd622b5f71f0a33a0cc6a8"
     },
     {
       "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/CoreProvider.java",
@@ -134,8 +249,8 @@
     },
     {
       "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/CoreService.java",
-      "bytes": 2352,
-      "sha256": "be3dcc0c1eb34e2a700619e63410531688d9002a9f57da1756292b00eda5a694"
+      "bytes": 11757,
+      "sha256": "e34988647c6442b1fc504ca65a67e69a57ae2fa397e9bdb10fd47c7a80e7d976"
     },
     {
       "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/CrackBenchmark.java",
@@ -159,13 +274,13 @@
     },
     {
       "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/Glyph.java",
-      "bytes": 4528,
-      "sha256": "509b3d81e4075fa3bf2157fd6e26da831d4a21972d6f5b8e89ecd75c6daab805"
+      "bytes": 4831,
+      "sha256": "60e963a127db9c31bf06c735233d000e88b58459208ac4e2d988e1c4fa4c00c1"
     },
     {
       "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/HandshakeUi.java",
-      "bytes": 35323,
-      "sha256": "74ca2983587239d021d6f5f4d76f60a3601d5c4cbb1a159d1581435b873774c4"
+      "bytes": 35280,
+      "sha256": "4a5b317a7fd7624d8a8ad2498eececce4c20a2409d1e5b419250f71959e6546e"
     },
     {
       "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/HardwareSnapshot.java",
@@ -173,14 +288,54 @@
       "sha256": "fa2c6029088938e25fa61235c543b8b66363c229e21f8976588223034804d883"
     },
     {
+      "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/HeaterJob.java",
+      "bytes": 4598,
+      "sha256": "d45f3d62379f327158f1b8e5cd1784cf0b7b2d23c68919754d236213be1d8a89"
+    },
+    {
       "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/HybridPmk.java",
       "bytes": 2943,
       "sha256": "0bd7dfac1a98f2f00cbae08865e94da1323ad7ae1e51698e01c03cb55f88812f"
     },
     {
+      "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/LambdaDeviceAdmin.java",
+      "bytes": 367,
+      "sha256": "443ef590b865408bbe9d4cd5ade80b5cce8ed80ce5059c5a1bcce542a4d1d024"
+    },
+    {
+      "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/LexActivity.java",
+      "bytes": 16164,
+      "sha256": "69ab4d6778a27df991b8878bf95b83830c848da03b7d37ac1e41d5ab3380bfa4"
+    },
+    {
+      "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/LexDesktopView.java",
+      "bytes": 14771,
+      "sha256": "e3bd03ee272a4244d25d0ab3372a8b25bfa8bce9bb8eb525616fae239c9bb8de"
+    },
+    {
+      "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/LexMonitorActivity.java",
+      "bytes": 34630,
+      "sha256": "37bf4a23f78c75cb5e1eb8419eb5449d4a321c5711ae89cc31440d8d89a718ec"
+    },
+    {
+      "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/LexRfbClient.java",
+      "bytes": 18077,
+      "sha256": "cca483d53fc615b256ea9e9a1fa9f1c39618cb023b64b02ba9a01addf293af3e"
+    },
+    {
+      "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/LexRfbInput.java",
+      "bytes": 8399,
+      "sha256": "6973f8d89fe9304b1c354fab45b17222173dccbf835e26751194398714ec4130"
+    },
+    {
+      "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/LexWirelessActivity.java",
+      "bytes": 31540,
+      "sha256": "db1830bdc0fdda2dcf93276eaa2974b74b7266a8ac833422791326da83752920"
+    },
+    {
       "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/MainActivity.java",
-      "bytes": 27618,
-      "sha256": "2e4b3c246a5c624798d37ca4ad964751b89c5d77c72cfb0a37525f492b262fd9"
+      "bytes": 34067,
+      "sha256": "ce6a278334d1feae07cbd5fef2d185aae24d841687f8dce6b71927f6a14ede15"
     },
     {
       "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/OperatorUi.java",
@@ -189,8 +344,8 @@
     },
     {
       "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/RadioBridge.java",
-      "bytes": 6741,
-      "sha256": "205086434d6dcae67af4f86739624d2f0d5b58f7a76cd897a4ff92c40ac40caa"
+      "bytes": 8433,
+      "sha256": "981a289e42137423049599f750dd00cbbfd8350b11b1960f335017afe5dc2437"
     },
     {
       "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/RadioIllustration.java",
@@ -198,9 +353,9 @@
       "sha256": "75a75605b877b35325e900d7a2e3aae521247af5c94c015d279f28641c84e399"
     },
     {
-      "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/RadioWorker.java",
-      "bytes": 35649,
-      "sha256": "040e20573b13adbc93b554b017508ed259ff6219b72b34f79ad183f45276373e"
+      "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/RadioWarden.java",
+      "bytes": 89613,
+      "sha256": "970984f6fbd56aa79b7163ba297f5e72065f605969346e54153ced2efcf7bbdc"
     },
     {
       "path": "alpha/apps/Lambda/src/org/lambdaproject/lambda/VerifiedWifiUi.java",
@@ -1403,9 +1558,2604 @@
       "sha256": "16d49dbc11ce25367af3e6433f3aefb84af0c5c04b79a029b4926e268966e975"
     },
     {
+      "path": "alpha/config/alpha.json",
+      "bytes": 2828,
+      "sha256": "a7c63a35fd607ab457049c4e028bd8c454e77ca20f207d048ae0de3d679dce4a"
+    },
+    {
+      "path": "alpha/config/signing/key-plan.json",
+      "bytes": 1762,
+      "sha256": "7bd01694a0ce25c8b8fadc59c8f30fe19fb54c121af7e6a750fe6adb69fc7f39"
+    },
+    {
+      "path": "alpha/config/signing/lambdaos-release-v1/manifest-before-extension-1792937919577.json",
+      "bytes": 16150,
+      "sha256": "299e9dabf110476196bed1e8369e7f021f78d1ed1df2dfdcd1bc2403f7e866f4"
+    },
+    {
+      "path": "alpha/config/signing/lambdaos-release-v1/manifest.json",
+      "bytes": 20820,
+      "sha256": "9a220ecbb23c42abd7123ee4a4657fa256c4e4564c30124f8e7dbdcc6af22059"
+    },
+    {
+      "path": "alpha/config/wslconfig.builder",
+      "bytes": 259,
+      "sha256": "95d57ae5c3d4ff68daf734eaa18cd327e7437b7d488ba9291310382c30ca80fa"
+    },
+    {
+      "path": "alpha/docs/cracking-benchmark-third-party.md",
+      "bytes": 3926,
+      "sha256": "bb51f1be096038f451eb7eb76fe4791825b1f19a63baebd7238d20b5b268d2aa"
+    },
+    {
+      "path": "alpha/docs/cracking-cpu-gpu-research-2026-10-31.md",
+      "bytes": 13522,
+      "sha256": "6147be8ce9175ed5c441b22a5427e49720d729814816eaf5a79f6f1d12e65813"
+    },
+    {
+      "path": "alpha/docs/cracking-integration-2026-10-31.md",
+      "bytes": 18288,
+      "sha256": "606f0c414e435a7a07324d20a011026b05f818940a590c8eeeee6384f6f94943"
+    },
+    {
+      "path": "alpha/docs/cracking-speed-2026-10-31.md",
+      "bytes": 9651,
+      "sha256": "d04fb8fe7a3b22b6a77d83a68a5dc10642fe98566a5be58158d3bb4f42dd54ab"
+    },
+    {
+      "path": "alpha/docs/lex-connect-2026-11-24.md",
+      "bytes": 8814,
+      "sha256": "aaa5533e50b67e15c4b48b9b83562d5b901e5cbf28e0f13ed3e2a728479fb7c0"
+    },
+    {
+      "path": "alpha/docs/lex-design-2026-11-23.md",
+      "bytes": 5288,
+      "sha256": "fc59929e9b4bb77b5229dc6ac121fe0a17bf1ec5f14f156d853bbba35962eef5"
+    },
+    {
+      "path": "alpha/docs/lex-desktop-theme-2026-11-25.md",
+      "bytes": 4778,
+      "sha256": "3027177e24a7d7c9a7155f9b02a219e7d5f9a74abdeaf547d19117eeb6b347f6"
+    },
+    {
+      "path": "alpha/docs/lex-modes-integration-2026-11-23.md",
+      "bytes": 16196,
+      "sha256": "8812a8369777d697922cb5f613b6e151bf820037dafe8215b5ae6b062a437c8e"
+    },
+    {
+      "path": "alpha/docs/lex-web-2026-11-23.md",
+      "bytes": 3327,
+      "sha256": "e6fb53ccc6dd2b7579b0374740877c3ed62cc6298d3c1308bdff90f5be8ac1b4"
+    },
+    {
+      "path": "alpha/docs/lex-web-rfb-2026-11-28.md",
+      "bytes": 5910,
+      "sha256": "156d8f09e6fc4458d2c5d933aee1da77b4c1e45357cc5ce9818d057787f187a0"
+    },
+    {
+      "path": "alpha/docs/lex-wireless-2026-11-24.md",
+      "bytes": 8346,
+      "sha256": "11e6efb9af8321b02fa8ec5ec6180970b50e40028dd40a7e8badf82efdb7f508"
+    },
+    {
+      "path": "alpha/docs/operator-airodump-qa-2026-10-31.md",
+      "bytes": 6002,
+      "sha256": "c1d2317b5c4ee7da80e7db0875c1d72cb745edc437d3f88e10b2a69b6cd38dd6"
+    },
+    {
+      "path": "alpha/docs/operator-ap-2026-11-22.md",
+      "bytes": 16658,
+      "sha256": "69666d150d4e48e9ccebb8fbdbbfcfccba302cc9776b369f6afb20c728457f77"
+    },
+    {
+      "path": "alpha/docs/operator-inline-deauth-qa-2026-10-31.md",
+      "bytes": 7652,
+      "sha256": "8fb209018105f56517269596615f989c7887010e126cba04dbb0b6f8196a1fc7"
+    },
+    {
+      "path": "alpha/docs/operator-kiosk-2026-11-23.md",
+      "bytes": 3582,
+      "sha256": "f96567d32c72ce3db17b1c577d8323d3633bcad83e06663a3f953c86e42a5833"
+    },
+    {
+      "path": "alpha/docs/operator-lex-2026-11-23.md",
+      "bytes": 10275,
+      "sha256": "4f0fe63cf2a5a1dc069b998ce605d0a7298337e41b68c70303b2f677b9aa16eb"
+    },
+    {
+      "path": "alpha/docs/operator-menu-reentry-qa-2026-10-31.md",
+      "bytes": 4385,
+      "sha256": "bfd7129d1025f61eb1cde61ca0ace62d37959365296d3e94cff5cdd7fb8e234c"
+    },
+    {
+      "path": "alpha/docs/operator-ntlm-2026-11-23.md",
+      "bytes": 7344,
+      "sha256": "1a777a8f97a1b64a8d3c89ff6e04bf68adc117197eea9382295f51cee83e728a"
+    },
+    {
+      "path": "alpha/docs/operator-radio-qa-2026-10-31.md",
+      "bytes": 20560,
+      "sha256": "469662a1a94fd6b4b0f2bce0ad602b776087dcbbaa3f142c68611a9db64daa4d"
+    },
+    {
+      "path": "alpha/docs/operator-ucm-2026-11-23.md",
+      "bytes": 9561,
+      "sha256": "e43887047d1978cb615a44290dba9ab3214dc3a2d7ec1f9f98b14f55f64d8ca1"
+    },
+    {
+      "path": "alpha/docs/operator-wps-2026-11-01.md",
+      "bytes": 8775,
+      "sha256": "f28950bfc1f0061bf2d4d44d7c5bdb1151c158c03d4e2e968b12a9d867ae0c5b"
+    },
+    {
+      "path": "alpha/docs/operator-wps-v4-2026-11-01.md",
+      "bytes": 9423,
+      "sha256": "cc548e050b88621bef7cee09c7bbb02b02a024a8cf3ef8e00754bac26c5f0f28"
+    },
+    {
+      "path": "alpha/docs/storage-cleanup-2026-10-31.md",
+      "bytes": 1736,
+      "sha256": "431ed468bd60b1f5a8386a84acb98f8fb869f8ce41fc8d6b8f4e8671f9dd4ad4"
+    },
+    {
+      "path": "alpha/lex/deploy-theme.sh",
+      "bytes": 588,
+      "sha256": "5a06013216497a13bc096448d4137e1f87a1c394cf903865487a9e4040fee057"
+    },
+    {
+      "path": "alpha/lex/lambdaos-wallpaper.png",
+      "bytes": 58307,
+      "sha256": "62eaac0c4d95d97df9861ac3b3e987b4de34d9b1ca088647b024a03f050c00e9"
+    },
+    {
+      "path": "alpha/lex/make_wallpaper.py",
+      "bytes": 5136,
+      "sha256": "89b698278c84f071bb95457ff65b137c5b41c045b8e85a96bfb2a63f5c6e3dfc"
+    },
+    {
+      "path": "alpha/lex/start.sh",
+      "bytes": 7952,
+      "sha256": "9e2aa934ff005064e0de84b5774ce8cc7b8f7cadf712ddeecaa00fb30eb6ea56"
+    },
+    {
+      "path": "alpha/lex/stop.sh",
+      "bytes": 2003,
+      "sha256": "9dd8ff93d1e128a498c4aa6ebd211847cb594c79f77dc151c227686fcf118f34"
+    },
+    {
+      "path": "alpha/lex/test/fake_rfb_server.py",
+      "bytes": 6341,
+      "sha256": "95c462dbf15d52a06b6f6704004a5ad2ac61ba2ee56bfc98e8f1dbb9a72509dc"
+    },
+    {
+      "path": "alpha/lex/test/RfbClientTest.java",
+      "bytes": 10183,
+      "sha256": "313d92ff2a2b10dba8f2b4fef919891d36d6bf7747c3182214d8a1ea4786c2a7"
+    },
+    {
+      "path": "alpha/lex/test/run.sh",
+      "bytes": 1501,
+      "sha256": "8d631cf76a01f0ee5b7195e075768a8fd008f4371d5a476e67dc2c6e7d8ec09c"
+    },
+    {
+      "path": "alpha/lex/theme-watch.sh",
+      "bytes": 1200,
+      "sha256": "e31b6343f81a9b2443befd65e3b70ffc9982d93dd032bad146b0960d437be8a4"
+    },
+    {
+      "path": "alpha/lex/theme/applications/lambdaos-browser.desktop",
+      "bytes": 180,
+      "sha256": "f50c05c59b167f11a14627149f1b41c671ddf31e65f54ad452343db490c7ce8b"
+    },
+    {
+      "path": "alpha/lex/theme/applications/lambdaos-editor.desktop",
+      "bytes": 197,
+      "sha256": "85a04891459513d8b9115f769fb940ca71f032072e9c89ddc91622b187b87fd5"
+    },
+    {
+      "path": "alpha/lex/theme/applications/lambdaos-files.desktop",
+      "bytes": 179,
+      "sha256": "79e42fefc1d829a2a0fbb4bb19517ce5da593b1bc79e8812196ce8fe1bf1b036"
+    },
+    {
+      "path": "alpha/lex/theme/applications/lambdaos-nmap.desktop",
+      "bytes": 204,
+      "sha256": "58161aa2b3040caff9f2b790142813fcfa74ae46aeefbfde79a2d924c66b0b2e"
+    },
+    {
+      "path": "alpha/lex/theme/applications/lambdaos-screenshot.desktop",
+      "bytes": 194,
+      "sha256": "b635e601ff111945d5ea13755b39239328bdbd910660e6f63f874f093c9adbac"
+    },
+    {
+      "path": "alpha/lex/theme/applications/lambdaos-settings.desktop",
+      "bytes": 190,
+      "sha256": "fcd1028ba5e94ec86bf5e44c9edf0c134dad5f877b7ab2af7f40f39025b849d7"
+    },
+    {
+      "path": "alpha/lex/theme/applications/lambdaos-terminal.desktop",
+      "bytes": 189,
+      "sha256": "c08c4da2082a11d5c0cf8e2eb2ce8bf0d47915e0bea327890db7c3666e57b815"
+    },
+    {
+      "path": "alpha/lex/theme/applications/lambdaos-wireshark.desktop",
+      "bytes": 191,
+      "sha256": "936d3e76279457faece33ce97e3a5dec67efb847556a393446675e016dba5ded"
+    },
+    {
+      "path": "alpha/lex/theme/apply.sh",
+      "bytes": 428,
+      "sha256": "ff386c834752d600c1cf88818196ac83753fad0a39e99b5cb3ee1a512b4976e6"
+    },
+    {
+      "path": "alpha/lex/theme/DESIGN.md",
+      "bytes": 3340,
+      "sha256": "45f3260727de4b39e3f8c171932bf0b870cf3827ca8dc6d531ff26e349096584"
+    },
+    {
+      "path": "alpha/lex/theme/dock/apply.sh",
+      "bytes": 118,
+      "sha256": "5382bd6d98a4a143555ede6e09c228e3a42213211e60c280fec64fc6b7e77b58"
+    },
+    {
+      "path": "alpha/lex/theme/dock/dock.py",
+      "bytes": 12126,
+      "sha256": "fff3507c94bc08854f3abe75433eedeab92a90a07816ce0f7642038123a2cfbd"
+    },
+    {
+      "path": "alpha/lex/theme/gtk/apply.sh",
+      "bytes": 961,
+      "sha256": "075e950767f583aade0f977177ea914c9ffc6961279e5fa2568706eaab844d45"
+    },
+    {
+      "path": "alpha/lex/theme/gtk/LambdaOS/gtk-2.0/gtkrc",
+      "bytes": 1597,
+      "sha256": "fd2b7e960b89aa640a4fdd69f9ccababbca5d49ce5407184a4e23e27f85c0865"
+    },
+    {
+      "path": "alpha/lex/theme/gtk/LambdaOS/gtk-3.0/gtk.css",
+      "bytes": 11747,
+      "sha256": "754b1f2612562af8a6d4d3465f88ca1e46a5d53d2f29fad15e7b82feaba8c753"
+    },
+    {
+      "path": "alpha/lex/theme/gtk/LambdaOS/index.theme",
+      "bytes": 241,
+      "sha256": "56c86f5d67ae1dfe2be9ffa4b6645b4948f801b9737671bfb3587cd7e1cb0a71"
+    },
+    {
+      "path": "alpha/lex/theme/icons/apply.sh",
+      "bytes": 588,
+      "sha256": "ab69f9e88a54b1b6f7d1afc27f286df93e443d447425e3d94be79305380122ff"
+    },
+    {
+      "path": "alpha/lex/theme/icons/build.sh",
+      "bytes": 3666,
+      "sha256": "00ae0f56b07f2fde791e9c75e450cec6cf33e37600bb085970ac39308fe8ab11"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/128x128/actions/document-save.png",
+      "bytes": 1949,
+      "sha256": "3d6516821d1ef8c65add79e7e497453bc15e1b10cce7dce198471164cca65737"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/128x128/actions/edit-copy.png",
+      "bytes": 2047,
+      "sha256": "991df372377eeb6f43e8300db1eb8fdfd435f1755e1e62769874930152a9c791"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/128x128/actions/edit-delete.png",
+      "bytes": 2593,
+      "sha256": "2f992babeae9b92ff7b4a2c390c74bcf6045cf1fefeeb5e144b3ba0c42a7b32e"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/128x128/actions/edit-paste.png",
+      "bytes": 2144,
+      "sha256": "2c814392ebd554ece632fd8b7938685828ee196ada11730a41817ca85eb21400"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/128x128/actions/go-next.png",
+      "bytes": 967,
+      "sha256": "2a3da5732ae8fbce5d85d5aae615e0088081c206f1aeb6567ba93b2c1549796b"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/128x128/actions/go-previous.png",
+      "bytes": 990,
+      "sha256": "de876718a86fc42ef267ac54b20433fc7055e351e056c9be0daf19d1f6c30738"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/128x128/actions/go-up.png",
+      "bytes": 882,
+      "sha256": "adaa381270ca5eec98561e498ba0de218b3476a37ed7d465ed6d32cebbcfefe2"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/128x128/actions/system-log-out.png",
+      "bytes": 1666,
+      "sha256": "d784cf78283bc47b58dc31ecf10987d2c62ff4cea2db432614dd4959689ed2e2"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/128x128/actions/system-shutdown.png",
+      "bytes": 3554,
+      "sha256": "93c09571b7e878fe7d91f38a41c01f46e13cb9e6c496a58f554dbe206de83f40"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/128x128/actions/view-refresh.png",
+      "bytes": 3232,
+      "sha256": "bb9799381f0cbb5f07dbdc04b44fa535504f06fd57d23fe72907199331195c10"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/128x128/actions/window-close.png",
+      "bytes": 1202,
+      "sha256": "7d7562f74f6a4cd6cfca473356b7b27d3e000fe35fa1fbbdff7ad7cdcab08310"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/128x128/actions/window-maximize.png",
+      "bytes": 1083,
+      "sha256": "44f82f609e10592b63c47b287530548a6205a49ac338478596f04d9a87a7edd2"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/128x128/actions/window-minimize.png",
+      "bytes": 384,
+      "sha256": "717dd888b7961961e7154a8840825671ad89b42b09f5f9b135abcdcf109beb96"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/128x128/apps/accessories-calculator.png",
+      "bytes": 1877,
+      "sha256": "fd51889422a6d3e53a260a1321253391d358c929fd5aca8d3bdea584426a71fc"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/128x128/apps/accessories-text-editor.png",
+      "bytes": 1378,
+      "sha256": "96d8795a72599b5673f1444118b421501c4bfea1caaa278dc6214c8c4fc03962"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/128x128/apps/applets-screenshooter.png",
+      "bytes": 1575,
+      "sha256": "601bbb01dac5d1fd6b0fc310ea7129bb47f165a4672845a1ff6e202e718d1d07"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/128x128/apps/lambdaos-menu.png",
+      "bytes": 2073,
+      "sha256": "758882dd6f960a5a391ce3a640bc709a73123fa7a8de9b49a6cee9c14bce5ba6"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/128x128/apps/preferences-system.png",
+      "bytes": 1745,
+      "sha256": "800f3ffe16a0f0d2fd1d24cbe9e0b964f9420685a35dca4c589923d25ce6870a"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/128x128/apps/system-file-manager.png",
+      "bytes": 1219,
+      "sha256": "e31e381f5eae58a4b85d75b6537216766e56acb34cf2c6de0d87b6f67a3a34ee"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/128x128/apps/system-search.png",
+      "bytes": 1669,
+      "sha256": "c19383e7a20f5fde8295952069a88a85bf3758af42f7eda4ce79eb84e6e157bf"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/128x128/apps/utilities-terminal.png",
+      "bytes": 1300,
+      "sha256": "39d0fd5ca156d53763857b08eb10a1450540ab951963cc9cd4052a222d68e8e2"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/128x128/apps/web-browser.png",
+      "bytes": 2317,
+      "sha256": "3bc10498329d331cdb302f94f1ed6722f3f10f9ab7379cc52b3d48a1b30b12dc"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/128x128/mimetypes/application-pdf.png",
+      "bytes": 2861,
+      "sha256": "213ab47346d865b39b4e8da5019a79abe90e17de34c0577f009df5a24b2a8b3e"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/128x128/mimetypes/audio-x-generic.png",
+      "bytes": 1590,
+      "sha256": "1503debae5106996ad6464a89388ac053f781518f788e515d2d31d92d43b2c13"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/128x128/mimetypes/image-x-generic.png",
+      "bytes": 2806,
+      "sha256": "b42bfe512c92da7493124bd44c12d11396134e99c3161b90e2d3c7f4c30b6430"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/128x128/mimetypes/package-x-generic.png",
+      "bytes": 3772,
+      "sha256": "ebb2faeb64d09eacc28b4b3a8876fe11e75b8ebb84fcb32285d56d72afc8bb20"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/128x128/mimetypes/text-x-generic.png",
+      "bytes": 2093,
+      "sha256": "af508b1622d2e6b867db9cad16391e99947d04b8795406a4326e40e4cfd1c930"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/128x128/mimetypes/video-x-generic.png",
+      "bytes": 1914,
+      "sha256": "7f2fedc00b70d43168911b123c90ced95bcde7b6c521157c63c9287c41f99187"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/128x128/places/computer.png",
+      "bytes": 1524,
+      "sha256": "3e85df6ead0146d3e8ce014ca2499bce34c31f78fc5951fac9b5adc1acb2b280"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/128x128/places/drive-harddisk.png",
+      "bytes": 3814,
+      "sha256": "fa95328b8bfea4a0177752eef330311fe6a78359d7a9bf95e11019d0958b2d11"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/128x128/places/folder.png",
+      "bytes": 1813,
+      "sha256": "ff70953490e91b2d67d2d5fe466bc6b0b918fef4407068c7bbef94a59281b81c"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/128x128/places/user-home.png",
+      "bytes": 2401,
+      "sha256": "c9d0fc5c648a618458dbaa41d3c0f49a67fb4d8ed38fe1e3ccae11234260c994"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/128x128/status/audio-volume-high.png",
+      "bytes": 3294,
+      "sha256": "3c48899505a2eb943baafce69b9d933cfaf1f25fa6dcce2f2d86dc5f25f8245e"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/128x128/status/battery.png",
+      "bytes": 1837,
+      "sha256": "0ff311304b6f6cb3ef8aae1c3f287b9efae76e1b9994030a87c68a02af3d3a8e"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/128x128/status/bluetooth-active.png",
+      "bytes": 2023,
+      "sha256": "f776a1d79d2e35b9f89929a7be824d3e3d7ff1eefc5a8c53740c1fdb7967ee00"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/128x128/status/network-wired.png",
+      "bytes": 1593,
+      "sha256": "b8499ad6a257776422a773cde85fd4cdc50b8600cb9a7e54cf7ce375a8cd8306"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/128x128/status/network-wireless.png",
+      "bytes": 2595,
+      "sha256": "e66654ce4bb7638da78dca5ac93f3cd9379d89ec483bbd9af10a84d3fc4ecca0"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/128x128/status/security-high.png",
+      "bytes": 3859,
+      "sha256": "85d304ba0a16cab34884caa5d8c434bb41d19af63e71642f6c4a306703c630f0"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/16x16/actions/document-save.png",
+      "bytes": 417,
+      "sha256": "2b08f7f6a3895eb7ad4f69cd7947713429339839155cdb5fe7e5c1e8592c211b"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/16x16/actions/edit-copy.png",
+      "bytes": 385,
+      "sha256": "19588e19f957765760dac4821b5f5e93a80dc269714f37cb5fc16654feead11c"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/16x16/actions/edit-delete.png",
+      "bytes": 438,
+      "sha256": "ae6eb9117499ff97bd09b57584e6a845b5b70b624f57009f09b63235d0bbcf59"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/16x16/actions/edit-paste.png",
+      "bytes": 389,
+      "sha256": "a54505b357c897c089fa29fd7086c015e1914ab212065a4e7f332721f1abcf56"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/16x16/actions/go-next.png",
+      "bytes": 179,
+      "sha256": "c1087afb06f735853f7ec1077c71f5babe81e3ca3faf3c9a5775d555813b8fba"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/16x16/actions/go-previous.png",
+      "bytes": 189,
+      "sha256": "d1cf5c8a5840260eeca19743c9e81f995722b3d17cf5afe30b5badf8ec4585a9"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/16x16/actions/go-up.png",
+      "bytes": 207,
+      "sha256": "36b3f71856cc93043ca7ad5b29045542942b5fff96e9e88fca9e995f2bd909f2"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/16x16/actions/system-log-out.png",
+      "bytes": 292,
+      "sha256": "0e45b0a35950464c14c7e12cb70fce42c74f57cb46fd12fa85149f3def80429b"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/16x16/actions/system-shutdown.png",
+      "bytes": 412,
+      "sha256": "bdcdceebadcb7dc2194cf8fd5d5be705654864ce774be6f6902c0f061930618b"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/16x16/actions/view-refresh.png",
+      "bytes": 366,
+      "sha256": "85538dc2b93b5c16dfd6bdf64829f01c14789f7e520fb181c5192cc7a9a372c1"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/16x16/actions/window-close.png",
+      "bytes": 260,
+      "sha256": "aad6ca5e82d40e726749fe5a6079941e6c9bdeac6a3a3ce7cb833d71d6eb5ff1"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/16x16/actions/window-maximize.png",
+      "bytes": 264,
+      "sha256": "233dd64abc6971418d12fba93e94731d2963f1573e047218e8cb9a5621c6e938"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/16x16/actions/window-minimize.png",
+      "bytes": 130,
+      "sha256": "d663e347cc5f10754ffcd62d590ff6797db2423a4d85ce3f3d86c21b0e8f2326"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/16x16/apps/accessories-calculator.png",
+      "bytes": 449,
+      "sha256": "002c4e6326b63280b90ff047584e3e19efb9f24eb3dcdad0a6dd93ef8eb8a41c"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/16x16/apps/accessories-text-editor.png",
+      "bytes": 311,
+      "sha256": "6394693ac55a7d5a2a5ec597781b97c846a10c7b36d11339c7a7ac562c106203"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/16x16/apps/applets-screenshooter.png",
+      "bytes": 372,
+      "sha256": "5cf7190ac66bffaf794d008494887b7b2131b3386f82a4a44c033827c2386881"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/16x16/apps/lambdaos-menu.png",
+      "bytes": 355,
+      "sha256": "369a9feb520f64fd81c10ea0d70f8db445522841295022239f060d548629b489"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/16x16/apps/system-file-manager.png",
+      "bytes": 359,
+      "sha256": "e603a2cee7f5ba75ab4dd89e160f77463fc361ca9c14ba994b1ee138b35600e9"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/16x16/apps/system-search.png",
+      "bytes": 352,
+      "sha256": "08d5a89f5fb32eb2a29fb8a88ac1a0adc4c4606cd8047ac7622ac9dbd8714cc6"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/16x16/apps/utilities-terminal.png",
+      "bytes": 325,
+      "sha256": "3aa24b94c28b57aa12270a0f1374b2d72cf1b0e959d02adeb9720171c3a90700"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/16x16/apps/web-browser.png",
+      "bytes": 571,
+      "sha256": "b4f8d5bd180354b0bf5eb9076376a82d6943a1994555bb6e7b13a8a9a884ac90"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/16x16/categories/preferences-system.png",
+      "bytes": 416,
+      "sha256": "118bc7629f6bc34dba20bbabf56e556ad657481c4260473cdddc24ffde627f37"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/16x16/mimetypes/application-pdf.png",
+      "bytes": 385,
+      "sha256": "9deab96da871587bafbab29b88e0058d1f5cac27b831ec58bc81847ef9587f8a"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/16x16/mimetypes/audio-x-generic.png",
+      "bytes": 309,
+      "sha256": "d565dd6503ae6ac6dbf3e3c00cac183e8533170b29796db4633680acbbeb22fa"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/16x16/mimetypes/image-x-generic.png",
+      "bytes": 433,
+      "sha256": "1f1361d6c34081f0b7912982e002a930d5784e16269da3233c77984bcca4d2b8"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/16x16/mimetypes/package-x-generic.png",
+      "bytes": 441,
+      "sha256": "430b9ccc801151e733b78fc5c01c5c7c6a8883d8a4dccefc8a7719aea1606010"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/16x16/mimetypes/text-x-generic.png",
+      "bytes": 383,
+      "sha256": "da16d49e9f1e67aea4795ab599c7f13bd5b5877907812ba787da89b24f9d8537"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/16x16/mimetypes/video-x-generic.png",
+      "bytes": 286,
+      "sha256": "c2e5a3d3ac605a0e631491c3c6d474323db8d1ac6167c2d6eb9210b4e8a6c3f7"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/16x16/panel/audio-volume-high.png",
+      "bytes": 374,
+      "sha256": "b389914990639d75a256bd756846c13cc41d3068ba2d635ae6220afcc8eb2c03"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/16x16/panel/battery.png",
+      "bytes": 288,
+      "sha256": "0dca36e026b7bbcdfa6e170d8522d160e41087159789bb5336b8ea83b949be17"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/16x16/panel/bluetooth-active.png",
+      "bytes": 319,
+      "sha256": "df0ed29e6010fad6a7cf8dcb723dbf1c541e0313b71df7a24275e0308c8c80dd"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/16x16/panel/network-wired.png",
+      "bytes": 325,
+      "sha256": "5ac8e788d13a2c0f6536f92d39bf99626a9eaea4635042651d2b0e21eba48fd7"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/16x16/panel/network-wireless.png",
+      "bytes": 321,
+      "sha256": "d66595503a00d09561a549c994786525d115eb8b40b751f6ed15ad589bec163c"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/16x16/places/computer.png",
+      "bytes": 316,
+      "sha256": "90c56127dc76077a646387346e8c6d4a23c97187d9b10dcd8dde2a7846102d86"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/16x16/places/drive-harddisk.png",
+      "bytes": 450,
+      "sha256": "d574bd0f9bd9b7dbbccaed13cc9ade3a4ece7b1512f678449bc9b0361300d619"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/16x16/places/folder.png",
+      "bytes": 334,
+      "sha256": "d4a8e37009c2bb47cf20dd938325c8d81d12c8af0e1f9d3a5eae576d640e0faa"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/16x16/places/user-home.png",
+      "bytes": 415,
+      "sha256": "ede1c4150cacfd365b9ee19642f74c3cdbeda82bef8d76f0e5033abde8bf0c56"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/16x16/status/audio-volume-high.png",
+      "bytes": 374,
+      "sha256": "b389914990639d75a256bd756846c13cc41d3068ba2d635ae6220afcc8eb2c03"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/16x16/status/battery.png",
+      "bytes": 288,
+      "sha256": "0dca36e026b7bbcdfa6e170d8522d160e41087159789bb5336b8ea83b949be17"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/16x16/status/bluetooth-active.png",
+      "bytes": 319,
+      "sha256": "df0ed29e6010fad6a7cf8dcb723dbf1c541e0313b71df7a24275e0308c8c80dd"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/16x16/status/network-wired.png",
+      "bytes": 325,
+      "sha256": "5ac8e788d13a2c0f6536f92d39bf99626a9eaea4635042651d2b0e21eba48fd7"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/16x16/status/network-wireless.png",
+      "bytes": 321,
+      "sha256": "d66595503a00d09561a549c994786525d115eb8b40b751f6ed15ad589bec163c"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/16x16/status/security-high.png",
+      "bytes": 485,
+      "sha256": "c4fb1265bd968ae60604460e7b776c3c1c6025fee584a0fb68a763b8c52612ba"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/22x22/actions/document-save.png",
+      "bytes": 548,
+      "sha256": "e97d32fa2273bc0cca6a04f52bddd0280c3f0f6ed7b6460839d8545908bb92d0"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/22x22/actions/edit-copy.png",
+      "bytes": 450,
+      "sha256": "1026e0df73f64c83802b89a16d9931cd8cf455a35a392001f9d4b20a52553375"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/22x22/actions/edit-delete.png",
+      "bytes": 561,
+      "sha256": "7603cee2e5c5ff01bbdabfd560443ce41b64fe955f6b13c1c556f4d29e0dea95"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/22x22/actions/edit-paste.png",
+      "bytes": 522,
+      "sha256": "885b20f0db9f051c1a31afda927b0334e0739a96b780b64d58c97b47ce2a4a7f"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/22x22/actions/go-next.png",
+      "bytes": 187,
+      "sha256": "b6dc2dc56f31cab12e0564acb0ca65fdd87d6cf4695a9c62f0c83bb31b348c1c"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/22x22/actions/go-previous.png",
+      "bytes": 202,
+      "sha256": "619565aaf081c4eeeb2836dc8dca0cd55d920da4314faaba62af882a2e36f602"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/22x22/actions/go-up.png",
+      "bytes": 241,
+      "sha256": "7384ece0dcd0537d613b56a052463e0a69025992d383f84896c20eeca220ddfa"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/22x22/actions/system-log-out.png",
+      "bytes": 396,
+      "sha256": "a7f4721296b0a936500c71240d557bcf0ce32d65cad143a9d6bbcbb941d6c2d1"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/22x22/actions/system-shutdown.png",
+      "bytes": 515,
+      "sha256": "ea1d47ef4b95b362201c22a51d0bcc41a37f8302695c03f8247dd5cc9f275c51"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/22x22/actions/view-refresh.png",
+      "bytes": 499,
+      "sha256": "bc6d9ee13a419cc0f0978dd0287aeef6ee7527555760455716af3b0f0b34416b"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/22x22/actions/window-close.png",
+      "bytes": 259,
+      "sha256": "904f7c3b88ba1be33b24115993c7f4332425d34d32d89135aff4129e66b23075"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/22x22/actions/window-maximize.png",
+      "bytes": 272,
+      "sha256": "713f532db5ab25a61501d3995b2b306810036fd0da14b0afc60d533f42b3b853"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/22x22/actions/window-minimize.png",
+      "bytes": 132,
+      "sha256": "77c12eff7e2f14473bd5354160e4683bab6ffc3dab289bf1dbc10a659c6e015f"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/22x22/apps/accessories-calculator.png",
+      "bytes": 630,
+      "sha256": "4379038e8d01d139edef423e2bdc6e5df1355dd5a812374a02e614a0cb119c23"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/22x22/apps/accessories-text-editor.png",
+      "bytes": 461,
+      "sha256": "95636f0b5cc562f26c4ffd4e2a27b8cffd2db2fa5cd845a783a41ad7798f70f7"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/22x22/apps/applets-screenshooter.png",
+      "bytes": 620,
+      "sha256": "d3255c8b95a28fc67feb0b4f332e5d07bf7eaf353f861ff9486d8515ab7e5c4b"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/22x22/apps/lambdaos-menu.png",
+      "bytes": 460,
+      "sha256": "1ce0a330d24d41421447b9f94f80a164744946f59c15efe0b991a3b9915ee55e"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/22x22/apps/system-file-manager.png",
+      "bytes": 463,
+      "sha256": "bec65e29eb4de125986120cee9532f86a8a34924b09963927d13fc3eed1ad026"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/22x22/apps/system-search.png",
+      "bytes": 533,
+      "sha256": "4a0394fe7c1ef67aef99d20bd8b6c2f2de822a5af239cc3b6e4ff7b12cd8efc2"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/22x22/apps/utilities-terminal.png",
+      "bytes": 410,
+      "sha256": "2071e91eb186d8c805f2051c9844e14bf8540330dfe3b07316a764f19d05adac"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/22x22/apps/web-browser.png",
+      "bytes": 771,
+      "sha256": "c38fd09ef5862a2a01424a67ef44db52db94d33ca190fb6ee2353865ee0a0583"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/22x22/categories/preferences-system.png",
+      "bytes": 545,
+      "sha256": "91487661aae40d1d27ae05c7db0ecea36eedcf6ea6a51bfe11f809b49b290525"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/22x22/mimetypes/application-pdf.png",
+      "bytes": 533,
+      "sha256": "0fa3f2e59ef0d9091152aa756cc9e7ec19427a0fa00f0bf33ef8d40b416fc565"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/22x22/mimetypes/audio-x-generic.png",
+      "bytes": 405,
+      "sha256": "c8b65f703bb599955805ea0cd8e43f2c2b0c94d283d39f7b23266d52b0c15358"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/22x22/mimetypes/image-x-generic.png",
+      "bytes": 571,
+      "sha256": "2e1888c7c9488f4939315bcf6c4a146b2a234f51f14c1f23c790eb80df222131"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/22x22/mimetypes/package-x-generic.png",
+      "bytes": 603,
+      "sha256": "45c2a4b7d7122243aaf99f9fbd8c75fe92220b5b1f19c70d536baeb3d1c03742"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/22x22/mimetypes/text-x-generic.png",
+      "bytes": 536,
+      "sha256": "13ecfeed0b414ab9572537d73e20e57a0c2b13c6d28ec1315744ddb9a9a2f8e3"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/22x22/mimetypes/video-x-generic.png",
+      "bytes": 391,
+      "sha256": "36770a0912bb47da97005ad55458695f3b6e60585e9f47dc57b183bc684a1e2b"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/22x22/panel/audio-volume-high.png",
+      "bytes": 531,
+      "sha256": "445b9f5886e83367dba14acc1c4c31c1cc3c6318b1bafce29a77c7c2bef78350"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/22x22/panel/battery.png",
+      "bytes": 443,
+      "sha256": "53f03582b9b0ea85ad1120d5ac7fb8a71d25fdbff312a021cf53390caf93d885"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/22x22/panel/bluetooth-active.png",
+      "bytes": 464,
+      "sha256": "9f6c4891aefca13a89ad36c35d682a385538987fd4c5bd7fc10eff4e61b95322"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/22x22/panel/network-wired.png",
+      "bytes": 398,
+      "sha256": "3d78cbc80e66efe1abffbc1999583014182e91365c2146b8b71301301909da31"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/22x22/panel/network-wireless.png",
+      "bytes": 483,
+      "sha256": "99c29baf743b775437698488b72233d6431cefa1634e26e25cead3f339b0cdeb"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/22x22/places/computer.png",
+      "bytes": 366,
+      "sha256": "7fec433bc6f6c198c53fbab378b43d4ab3d8291167b3a7ec39185bf6b45d7197"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/22x22/places/drive-harddisk.png",
+      "bytes": 658,
+      "sha256": "0ddde4341743c871c2ddeb431c12f211f52931479a67dc52273bdc45a20559bf"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/22x22/places/folder.png",
+      "bytes": 384,
+      "sha256": "4a922db502f02ba78839d52fe8bc77ff8d27b87e4fe499d1dc2d3d1402580c61"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/22x22/places/user-home.png",
+      "bytes": 572,
+      "sha256": "d64098fcfebc35ffbab26e3e0278ee6bf039165404657ee664a8f976ea3666df"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/22x22/status/audio-volume-high.png",
+      "bytes": 531,
+      "sha256": "445b9f5886e83367dba14acc1c4c31c1cc3c6318b1bafce29a77c7c2bef78350"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/22x22/status/battery.png",
+      "bytes": 443,
+      "sha256": "53f03582b9b0ea85ad1120d5ac7fb8a71d25fdbff312a021cf53390caf93d885"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/22x22/status/bluetooth-active.png",
+      "bytes": 464,
+      "sha256": "9f6c4891aefca13a89ad36c35d682a385538987fd4c5bd7fc10eff4e61b95322"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/22x22/status/network-wired.png",
+      "bytes": 398,
+      "sha256": "3d78cbc80e66efe1abffbc1999583014182e91365c2146b8b71301301909da31"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/22x22/status/network-wireless.png",
+      "bytes": 483,
+      "sha256": "99c29baf743b775437698488b72233d6431cefa1634e26e25cead3f339b0cdeb"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/22x22/status/security-high.png",
+      "bytes": 661,
+      "sha256": "0c4f24234651fc8b40a4974b15a85cbd465adbcd009adce74aeff7c3823c212f"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/24x24/actions/document-save.png",
+      "bytes": 517,
+      "sha256": "6fcf91508dce3eed9c8b570ce19cec2e6c6414fc00760b148c2443e49ff085b0"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/24x24/actions/edit-copy.png",
+      "bytes": 492,
+      "sha256": "fda8a415e6cf73ff6ad743db3f3cbc6988a860b3470b265c35445020240e2a40"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/24x24/actions/edit-delete.png",
+      "bytes": 568,
+      "sha256": "f895b2d45f9672b09cf07f5bcb8512c1dd43b23079da3fbf39258aaacd21cf61"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/24x24/actions/edit-paste.png",
+      "bytes": 490,
+      "sha256": "3660fdcdc449a0e0a4347c19235e769a0b99eb8a1914c657a7a3fc65914d6c5f"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/24x24/actions/go-next.png",
+      "bytes": 309,
+      "sha256": "bff69aa7c91638b9cdfbc9d42abf512fe98de201dcadc50edb083b1edc159db4"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/24x24/actions/go-previous.png",
+      "bytes": 296,
+      "sha256": "287d2e028a9d10ad14c8487ee256c1f55e284cde734ddc8c5429fbee5f4f7aad"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/24x24/actions/go-up.png",
+      "bytes": 278,
+      "sha256": "bb18ba535c65c4dbffc9ea5e0a70b1f56bfeee0286c7c3b438c22e4edae1591d"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/24x24/actions/system-log-out.png",
+      "bytes": 400,
+      "sha256": "88cecb3bc71f2db98724d3d30db81008333aceb85ad7f47c8b6f7d2d0345e2b1"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/24x24/actions/system-shutdown.png",
+      "bytes": 614,
+      "sha256": "31b054532fb1655cd18ed23c8c1fd30df861924e8e54927d4d267d6bfe44e25f"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/24x24/actions/view-refresh.png",
+      "bytes": 528,
+      "sha256": "95a6cc4f54b29386cadaa9b6441e1aeec48dba064c1825d3efbb304cd9593571"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/24x24/actions/window-close.png",
+      "bytes": 327,
+      "sha256": "650907e9f207af2682f131871d0680f0c7c65d027105e09cb4c34965bc2a67bc"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/24x24/actions/window-maximize.png",
+      "bytes": 270,
+      "sha256": "637efb5354c3a9c844fa6ec31684fcce3486011ce70deb86bd80be1e7dcdcc8f"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/24x24/actions/window-minimize.png",
+      "bytes": 126,
+      "sha256": "60efd614409dd2f4b104deddcbb74aa3af1639235fd34a2d8fe249d5afde51ce"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/24x24/apps/accessories-calculator.png",
+      "bytes": 668,
+      "sha256": "7464ffc8ebb19e79106f39f618b9f133958e7e87301335e1d073e376bc9da47d"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/24x24/apps/accessories-text-editor.png",
+      "bytes": 397,
+      "sha256": "85f382f1d729ffbb95d25bda1deff7f95b8637ef689a27ff82fd4f9dc4178fe5"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/24x24/apps/applets-screenshooter.png",
+      "bytes": 536,
+      "sha256": "d4fe78a6f1126a87662ae134c5714436c41e6fcd661ae812fb0611b3d597bcbb"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/24x24/apps/lambdaos-menu.png",
+      "bytes": 463,
+      "sha256": "c23df8c251bd7f367cf9950519588dcebba47cb7faf15bcd7a150ba727dfb639"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/24x24/apps/system-file-manager.png",
+      "bytes": 401,
+      "sha256": "4414e60fdc341f26877ebfda634129254045b10ac22beadc60f0a5cac4288da5"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/24x24/apps/system-search.png",
+      "bytes": 535,
+      "sha256": "4ddb21d0ccb2476f90ad2399b38476bbd36fb3bc4e0efc63de40ccd113a556a9"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/24x24/apps/utilities-terminal.png",
+      "bytes": 486,
+      "sha256": "9c03b7eda0f24c6a334e00b12f613225d21c7142a7cfca6f635f418f4032d968"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/24x24/apps/web-browser.png",
+      "bytes": 872,
+      "sha256": "b6536045a4e5546ed3161400287853889630d9d21315e45d62a68b6708e841b0"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/24x24/categories/preferences-system.png",
+      "bytes": 538,
+      "sha256": "aab7884cd4964d4e0539c2c79224456d14f59d8c5085e76ae62160b57882cb85"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/24x24/mimetypes/application-pdf.png",
+      "bytes": 574,
+      "sha256": "805c26cfe7e746d82da3518a311edbcbce0f360aa144c1a8eafb82e6aa55dfc3"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/24x24/mimetypes/audio-x-generic.png",
+      "bytes": 423,
+      "sha256": "c0d0c7a4e13bad521af781667bf33be3832b4d65f40df1cf7e60500b25b51c24"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/24x24/mimetypes/image-x-generic.png",
+      "bytes": 606,
+      "sha256": "17ddfb28a4a687da833f2cfff53f26480dc2a5e46a27e33eb24fec27ffa45ace"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/24x24/mimetypes/package-x-generic.png",
+      "bytes": 680,
+      "sha256": "7e30d1f7342f2ef6224f9c4a5c7ce21ac0c09eb9abc292706eb2ca2981cebb32"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/24x24/mimetypes/text-x-generic.png",
+      "bytes": 502,
+      "sha256": "48067e23243aa57c5307d743d79abca644c9ce24d8f3d331f5af96e25e7e687a"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/24x24/mimetypes/video-x-generic.png",
+      "bytes": 415,
+      "sha256": "04c2cf32102f0f2f0dc778c0805177b2105f41f6fdbfad7b5743b8396d24188a"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/24x24/panel/audio-volume-high.png",
+      "bytes": 607,
+      "sha256": "a99c41e56197340b9da9e216e49a32e5a13de8bfea3de43e6a974d16f9d5e4e8"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/24x24/panel/battery.png",
+      "bytes": 449,
+      "sha256": "621ec139fb87451cc5ea43d52a2dd3a23cf924ed3ae9b206bfc9b9d069535a7e"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/24x24/panel/bluetooth-active.png",
+      "bytes": 512,
+      "sha256": "c85d44871e75f029a032f9d282561c5b49e7ce2828295323314009567d2b37b8"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/24x24/panel/network-wired.png",
+      "bytes": 379,
+      "sha256": "8644e04032b2aca8a023fd87b66a9f2c054ea7fe6407bc05c4cf695e1353f2c2"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/24x24/panel/network-wireless.png",
+      "bytes": 464,
+      "sha256": "3598cfec7ba0763472df402cc4383b6fe17226646dcbbc7c09cee5e94f5e8f20"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/24x24/places/computer.png",
+      "bytes": 394,
+      "sha256": "399483b2898cc18e292584162d3a8f1be15a570350811874ffcb32b40d6004f2"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/24x24/places/drive-harddisk.png",
+      "bytes": 725,
+      "sha256": "704b5f255fdce51bfb7b94fe50b820e5ad74c693596fb56220a5592f45ef60cf"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/24x24/places/folder.png",
+      "bytes": 427,
+      "sha256": "285b143321f73ee6e007e685d452ff78a43b3d6f51890abb26962bbe0b087568"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/24x24/places/user-home.png",
+      "bytes": 542,
+      "sha256": "60d1d43bdde1bb01d21851dffe6297e99b65784019470b7ef2fdb4cff8aee5e4"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/24x24/status/audio-volume-high.png",
+      "bytes": 607,
+      "sha256": "a99c41e56197340b9da9e216e49a32e5a13de8bfea3de43e6a974d16f9d5e4e8"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/24x24/status/battery.png",
+      "bytes": 449,
+      "sha256": "621ec139fb87451cc5ea43d52a2dd3a23cf924ed3ae9b206bfc9b9d069535a7e"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/24x24/status/bluetooth-active.png",
+      "bytes": 512,
+      "sha256": "c85d44871e75f029a032f9d282561c5b49e7ce2828295323314009567d2b37b8"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/24x24/status/network-wired.png",
+      "bytes": 379,
+      "sha256": "8644e04032b2aca8a023fd87b66a9f2c054ea7fe6407bc05c4cf695e1353f2c2"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/24x24/status/network-wireless.png",
+      "bytes": 464,
+      "sha256": "3598cfec7ba0763472df402cc4383b6fe17226646dcbbc7c09cee5e94f5e8f20"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/24x24/status/security-high.png",
+      "bytes": 661,
+      "sha256": "9277567a8b145fb43ae70e2ea38ef2ad1525d03b8c6d90b33a1fb4ee64d06782"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/256x256/actions/document-save.png",
+      "bytes": 3789,
+      "sha256": "f953b8a6676159c7ba33e48b9707b2b86dc49f118699916fbfc00c83f2edd88d"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/256x256/actions/edit-copy.png",
+      "bytes": 4034,
+      "sha256": "547f9f50eb6ab157ce359bf8aaaa09f87dce382b32e91a56ddab30710e494248"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/256x256/actions/edit-delete.png",
+      "bytes": 5335,
+      "sha256": "c41f428c0dd6fa134980723aff22dd937ef2b1aa9ebdd11bdada51302d7961ed"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/256x256/actions/edit-paste.png",
+      "bytes": 4362,
+      "sha256": "5ea5c5d705780c7df19aec69bf5201045568c3e375f2e67d497c1ab43c9ccadc"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/256x256/actions/go-next.png",
+      "bytes": 1780,
+      "sha256": "caddddd274a4c3cd9ebada22d7bca61ae695946ec175c8e928c64aa6e8f74456"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/256x256/actions/go-previous.png",
+      "bytes": 1802,
+      "sha256": "4fe9ea3fb03fc9aa4a8e06a5b6bdbfb4b65ccf51ea288740d470a9f7b859547c"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/256x256/actions/go-up.png",
+      "bytes": 1610,
+      "sha256": "f039436f709780b7bdf70521d78bfd534cc770ca0d1825c7a0b5f25644c6d941"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/256x256/actions/system-log-out.png",
+      "bytes": 3035,
+      "sha256": "818b90268773db77a9153d011f03b9a0ba4f14ea21a9890c0c45500bb75c33b7"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/256x256/actions/system-shutdown.png",
+      "bytes": 7127,
+      "sha256": "82d6ff17dc995efab62332c4d0b80c8f3ac05569b756e39e402f2d6e3dd94cb6"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/256x256/actions/view-refresh.png",
+      "bytes": 6883,
+      "sha256": "f49bf89f8c5f0f678bc2830f1f519049c3fd404416ddbaf6fdc7eda36af9ddf4"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/256x256/actions/window-close.png",
+      "bytes": 2186,
+      "sha256": "ace4a8e47205c5ba76b9d08584bdf070ede195dbed48517dfa7e2a3ea6d8cb3d"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/256x256/actions/window-maximize.png",
+      "bytes": 2365,
+      "sha256": "c354832c95a26e769cafd05cf476407c15bfe7460df31e8e5b6a3552e60d8a84"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/256x256/actions/window-minimize.png",
+      "bytes": 780,
+      "sha256": "aa1377c0bfb6672dd15325ba9870c3057cbf08a8abd4610c1eb32990df2634ff"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/256x256/apps/accessories-calculator.png",
+      "bytes": 3649,
+      "sha256": "52d446345ccbf2d54996a09f1ffba77da3cba36c329ee19c09dcd92ff5e0a762"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/256x256/apps/accessories-text-editor.png",
+      "bytes": 2725,
+      "sha256": "3b6f1b9f76e740594e99cd8cf6fa7cf484a59ca6f0f082d4bcee40016edd4909"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/256x256/apps/applets-screenshooter.png",
+      "bytes": 3221,
+      "sha256": "d30b2613750fa2034cfd08592d45e0a292365f915ca6fc66b07c49bfdebe5bb8"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/256x256/apps/lambdaos-menu.png",
+      "bytes": 4098,
+      "sha256": "954f97a9f59ab269b29a3b18b1eeb991b7eff05a268d3138ff73d44f70de93b6"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/256x256/apps/preferences-system.png",
+      "bytes": 3461,
+      "sha256": "dde11ad123635165f8189139aca53757fa24b7b94f1b68d6e1fb3743d15c2c8c"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/256x256/apps/system-file-manager.png",
+      "bytes": 2529,
+      "sha256": "406ad05a655d89ae93b22977dd5a71c9686d3be62212daeef572508218e88539"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/256x256/apps/system-search.png",
+      "bytes": 3381,
+      "sha256": "35eec8385d86b2d0ac1e923986d7f0badeef8f44980d5031c9dee82523fca475"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/256x256/apps/utilities-terminal.png",
+      "bytes": 2714,
+      "sha256": "f88878e7389e75c98e80671208209e3e5b847794615ab61cd0c4bf1f8353f6aa"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/256x256/apps/web-browser.png",
+      "bytes": 9057,
+      "sha256": "edd922531689d578a2d6252cc2f09d425e32dda2c0856762d589b7092f5508e4"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/256x256/mimetypes/application-pdf.png",
+      "bytes": 5756,
+      "sha256": "54d1c264fb6ddae364ff3d2c8d75dc03f8a0b775e8044ec1845cf50e5eaae1cc"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/256x256/mimetypes/audio-x-generic.png",
+      "bytes": 3201,
+      "sha256": "7e360174d1d6fe3f5d3c60431879c16d6bbca06a9072c0278ecdea5b4f742e76"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/256x256/mimetypes/image-x-generic.png",
+      "bytes": 5440,
+      "sha256": "bd98184718565b6fb909e6895674441530656050a6030a6433cc0ee429a9c14f"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/256x256/mimetypes/package-x-generic.png",
+      "bytes": 7376,
+      "sha256": "9c8aabef7e272b97e5fb7a8c00c88c6d6ac07671f03c9469505e2551942ccf81"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/256x256/mimetypes/text-x-generic.png",
+      "bytes": 3995,
+      "sha256": "2b6ea66df9316d28a7efbdb94fa353a89d14754cc25a139a75da5e7559925bf4"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/256x256/mimetypes/video-x-generic.png",
+      "bytes": 3766,
+      "sha256": "a56a5153fd84344488650cd71cebfd50fdaad4691f56eee1adddca3c37fbc983"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/256x256/places/computer.png",
+      "bytes": 3057,
+      "sha256": "47059e44e3def6c8c6e1e7ffd497accef1bbbdb44f969dfa9e41090a99c9f162"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/256x256/places/drive-harddisk.png",
+      "bytes": 7851,
+      "sha256": "9c167800efc029e303cd484a1987c93909b1eec50dc2d89b00716774fa5d130f"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/256x256/places/folder.png",
+      "bytes": 3634,
+      "sha256": "8090e5d8b1fe64f3ad4269c368da25b9da991dbb29a385bb08de2e67cbe20dea"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/256x256/places/user-home.png",
+      "bytes": 4245,
+      "sha256": "882ebd1c2bd535bf28dbc49cffb4a3ff42ab386bb5a5d8b0a71dd101cdcf2ad9"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/256x256/status/audio-volume-high.png",
+      "bytes": 6504,
+      "sha256": "3a99cec11049f6f9cda09a723644b3608f7e78a5998d3b4f3f169f84cffa17a4"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/256x256/status/battery.png",
+      "bytes": 3768,
+      "sha256": "0d2d46fe761935108b85f56e100059de13acb64220846eaff3f6a0b9f608af02"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/256x256/status/bluetooth-active.png",
+      "bytes": 3430,
+      "sha256": "a626886112a91fe0f888558c320e29494e95a84bac7f3ef57d11e14eb75ca6d3"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/256x256/status/network-wired.png",
+      "bytes": 3130,
+      "sha256": "87a32a22d2ff8c3216ebb335db6747306e2ebfa1d56a24b13155a97cec3cc524"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/256x256/status/network-wireless.png",
+      "bytes": 5269,
+      "sha256": "1452e523748f14cd446ffe316e94a9a31b4c4c0224e45d6230bd6df3fa10ae78"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/256x256/status/security-high.png",
+      "bytes": 7544,
+      "sha256": "0a4bfd120cf79353d6fa711bacf75a2d559048e37e9083ed2083b209fb5c22e5"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/32x32/actions/document-save.png",
+      "bytes": 651,
+      "sha256": "a28718ba160f8c9aafb79dc79f1794563eea749c2780fbeac0b42ec370d081f2"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/32x32/actions/edit-copy.png",
+      "bytes": 641,
+      "sha256": "7c4e03aa4cdc71d8e5dc778002ab5713006178e3bea3e3d8d6035aece8d1c4eb"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/32x32/actions/edit-delete.png",
+      "bytes": 764,
+      "sha256": "8f3c03586f627a4f25963998b32e067480f867723466828ef9b3de6da87f2294"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/32x32/actions/edit-paste.png",
+      "bytes": 673,
+      "sha256": "ba93974fb50cffcf08c3dde0b5340c8f25806b08bcd9371893d97f0b1a9db89a"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/32x32/actions/go-next.png",
+      "bytes": 332,
+      "sha256": "3e160f61262b272266740a0c2d0d923c5fee364ada22e86f1f2986d7c244ecc2"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/32x32/actions/go-previous.png",
+      "bytes": 334,
+      "sha256": "9200b72dfde8d2286b84223cfb628e30844f1142f033148ddd15e1c16f99fada"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/32x32/actions/go-up.png",
+      "bytes": 320,
+      "sha256": "e92b9a6fbecdc1d1914af2b0efec4e34e807d98a9d9b7617af96e28965d40cdb"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/32x32/actions/system-log-out.png",
+      "bytes": 536,
+      "sha256": "7dd4de70c36f014c9962c5a3ce723fcc633b0a455e81b965a3dd080637afba62"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/32x32/actions/system-shutdown.png",
+      "bytes": 850,
+      "sha256": "61540d46fcf6746f6a255e69cc60746813b39dd61c0881c76556d8349d999a3c"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/32x32/actions/view-refresh.png",
+      "bytes": 745,
+      "sha256": "79c57d30c38826185e0949ba97065e1f4510ec1c1508cb93f739b53e11198fd0"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/32x32/actions/window-close.png",
+      "bytes": 425,
+      "sha256": "a11ab9d110f30dd67a84da0f5ccd0649947d6ea25d47c8b7eea79fd7049e3760"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/32x32/actions/window-maximize.png",
+      "bytes": 328,
+      "sha256": "090c3701fcc8aa8949c7711b94d98a11768eba3be2d827c461b581edf1cf9aa8"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/32x32/actions/window-minimize.png",
+      "bytes": 168,
+      "sha256": "1f0eabb3b395b9f458289a61190808a786213e0f62c3cab70eeaf803517798be"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/32x32/apps/accessories-calculator.png",
+      "bytes": 951,
+      "sha256": "d20f713180f0d7e4fa9f218c2ad1249015b4a6416b2ac5cfa775bcf83e5c58a6"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/32x32/apps/accessories-text-editor.png",
+      "bytes": 618,
+      "sha256": "1d7b51e3e373c7f32fdefc1aa989189334afd489f5cb3556e4d85612586b3ac3"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/32x32/apps/applets-screenshooter.png",
+      "bytes": 812,
+      "sha256": "a4a942c8da31928152d4053fc23d5217982fc93970061962c41c36b559c44e03"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/32x32/apps/lambdaos-menu.png",
+      "bytes": 598,
+      "sha256": "eafee74ec983bfc5d50bfb4b2159997c3e2f0d4e98729d242f85474384b52e0e"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/32x32/apps/system-file-manager.png",
+      "bytes": 595,
+      "sha256": "68a260705fb5e128b31ba994b31ac2f16294b937dcc3272a614ed505c38cfc49"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/32x32/apps/system-search.png",
+      "bytes": 757,
+      "sha256": "092faee0a4bdc4743f4fea7d50bfa598f64b0e5a32c6ca28c6637446166d8480"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/32x32/apps/utilities-terminal.png",
+      "bytes": 608,
+      "sha256": "ab5ec789972cc0d609f8534ea3111bf425129b1a8d25185dcc8189af8e0d6ad0"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/32x32/apps/web-browser.png",
+      "bytes": 1262,
+      "sha256": "190f926d682ece7192d83867819d9d3d8bfea8bb14918c151a4229920df53037"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/32x32/categories/preferences-system.png",
+      "bytes": 797,
+      "sha256": "605d3c799a7963d7fec92a0ec6628d75ca8c76b68d36de63fc4755529aca059d"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/32x32/mimetypes/application-pdf.png",
+      "bytes": 810,
+      "sha256": "5e9aabf51bae7fdaf65d5e84a2d1be70fe4197e7a5317e8494ec9ebf762bec52"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/32x32/mimetypes/audio-x-generic.png",
+      "bytes": 491,
+      "sha256": "30779f2d135596201abba9bd0966ee8e110e0df4cc64f91397bc79cb71bb9dae"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/32x32/mimetypes/image-x-generic.png",
+      "bytes": 760,
+      "sha256": "ed54c0a85ee0879ac3f801ef1799c43722123e6b85fed5f8630add00dd379bbf"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/32x32/mimetypes/package-x-generic.png",
+      "bytes": 914,
+      "sha256": "14def3182e3f30fba7404f25b1353329ccbce2e434fa86a1e881b4b66e335bc4"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/32x32/mimetypes/text-x-generic.png",
+      "bytes": 713,
+      "sha256": "735f2bcddb0c3203adec2a8608f5b65ea243df84f13063b4283966f182d11473"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/32x32/mimetypes/video-x-generic.png",
+      "bytes": 492,
+      "sha256": "bf7e203f718b53daacf271cba0e8242fc3d81faaed7c8ad3382fb9f3d121eacc"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/32x32/places/computer.png",
+      "bytes": 542,
+      "sha256": "d743d2d7b82eb56b7448a4dcf5e206ff716002423a81ef0ef7bbc5429ff25c2b"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/32x32/places/drive-harddisk.png",
+      "bytes": 948,
+      "sha256": "d3a653cf2a7ac22bfcef3e0a48b7efb53e2eddb00801eb8da53468496892bfe8"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/32x32/places/folder.png",
+      "bytes": 563,
+      "sha256": "f41afa3c7d7f47fd5ee8acccfd4ced5a51b33d1187b0113bedaa5dc1dd3fb5aa"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/32x32/places/user-home.png",
+      "bytes": 817,
+      "sha256": "c33ebab79facac5f53a55d3ab0cf79b851224ab33ebcc4e8a4729c049b6cd8ef"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/32x32/status/audio-volume-high.png",
+      "bytes": 843,
+      "sha256": "a036ef121729948493d18abbc754375782cffe28fe26162087fdb01ce67805bc"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/32x32/status/battery.png",
+      "bytes": 575,
+      "sha256": "071e5d8983c6c38a839b25f45126f91455e033395cbcfd415620ee6993d4c464"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/32x32/status/bluetooth-active.png",
+      "bytes": 696,
+      "sha256": "aa794546d0db6e6607d35e1e50aeaa2e9c1082c97d482fc6586af24d8e6879dd"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/32x32/status/network-wired.png",
+      "bytes": 510,
+      "sha256": "3a7b462126b7596649f0ac65b0d15f9cf06f472677c8fb4e970f2a273e23f376"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/32x32/status/network-wireless.png",
+      "bytes": 670,
+      "sha256": "d320ae01886a5abb618aa3e22e6107ad660b6068ca32bbaddfd74b5d88f2e896"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/32x32/status/security-high.png",
+      "bytes": 1010,
+      "sha256": "0097e9963c4f6ed8ba585db25a4482e498aedb0315753674e9a5702326f09ccd"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/48x48/actions/document-save.png",
+      "bytes": 917,
+      "sha256": "61ada574d629e13dd99e5c257054c75a4cbd46b23c2897e2a85dfb2920f5b889"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/48x48/actions/edit-copy.png",
+      "bytes": 748,
+      "sha256": "0ea727f11cf4fe2a0ddf9a7939ac71568ec0bfb8be4cfa09c17886aceb2631ef"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/48x48/actions/edit-delete.png",
+      "bytes": 1030,
+      "sha256": "ae6c51d17beaab2f47ff816e1af83eb084ff4f5d96861cf393a085532cf24745"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/48x48/actions/edit-paste.png",
+      "bytes": 793,
+      "sha256": "b0aa5643d0657a794e767120235a34754fcf6851e840a67561bde35a52420f31"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/48x48/actions/go-next.png",
+      "bytes": 471,
+      "sha256": "0aaf15c5d9fccd07c07e2b7c4060a059cdbdc7a1c41453fc2b3eb12259829b4a"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/48x48/actions/go-previous.png",
+      "bytes": 444,
+      "sha256": "82979d9e9df42adcac805fa595621f32b1178be4fc64cc1e2048963f0e5147d0"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/48x48/actions/go-up.png",
+      "bytes": 435,
+      "sha256": "83d5b0cc3959a19c902081f3fb96d00c6041f804fbe4735d977c6d87c2eb0749"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/48x48/actions/system-log-out.png",
+      "bytes": 674,
+      "sha256": "edfbded653907259e9f71caf462c467af1cd6e27cae63111025a1ce7e79c2fd6"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/48x48/actions/system-shutdown.png",
+      "bytes": 1305,
+      "sha256": "1272de879b74617a89be224f7af96275ce2e7500a229247c6cd5d44ba3a01021"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/48x48/actions/view-refresh.png",
+      "bytes": 1230,
+      "sha256": "823ddc46e01fa3c2e528f446bc337b6eaa0adb9ca045f5cf6622b75efd0fc676"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/48x48/actions/window-close.png",
+      "bytes": 593,
+      "sha256": "561f9f4ad8c4b31ebbf2918ea008e5dc52acf629abb3a25a9066de774b1cf9d0"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/48x48/actions/window-maximize.png",
+      "bytes": 419,
+      "sha256": "88816c9d35cab3215ab01b7f80a0094a7ab0d65a633593897339a55d002f1cc6"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/48x48/actions/window-minimize.png",
+      "bytes": 202,
+      "sha256": "f1a2dc4a5b065267a65a4ebd2a8400b0ec51dceaf7963826f0424e5347454dd5"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/48x48/apps/accessories-calculator.png",
+      "bytes": 882,
+      "sha256": "18ec02fa8a9c9bb44910839645a2c9ae2dc6995ce438d6067ecc1f1bc90d565a"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/48x48/apps/accessories-text-editor.png",
+      "bytes": 674,
+      "sha256": "9478488c517a5fe30df26df1b7eae3ddaa2fda6049aba6ea15ecc9a6301a351e"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/48x48/apps/applets-screenshooter.png",
+      "bytes": 717,
+      "sha256": "8658bcc9677d273750421322b8df19d3d1af455753384dba160e9ea5fbdc3853"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/48x48/apps/lambdaos-menu.png",
+      "bytes": 907,
+      "sha256": "ea7a86a67d22a5e9d3d2f0414c6b3ebaa9c4ad31ca3cde5941e2f51d63bbd543"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/48x48/apps/preferences-system.png",
+      "bytes": 771,
+      "sha256": "1a5f2eeb764fadc7fca4644f91d4c75449f049a47b85b159c7b08d1e91f5b7a6"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/48x48/apps/system-file-manager.png",
+      "bytes": 655,
+      "sha256": "d4c5c4194fbbc0692b8ed63806f494532dc595eac845744b1ad463c8767e03b8"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/48x48/apps/system-search.png",
+      "bytes": 793,
+      "sha256": "6a1112d6ad6af8fbadcf150d2e09d72cf46d1d8e129276dc9b57fc58be4aa86c"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/48x48/apps/utilities-terminal.png",
+      "bytes": 679,
+      "sha256": "24e691850f702b814011a5a1338b659e77ab5332fcd8363b3c9d5ccc74cc315e"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/48x48/apps/web-browser.png",
+      "bytes": 1033,
+      "sha256": "dea6d818f39c34eb923045352c11d3493622f494307175cb22145bd94eaab2bd"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/48x48/mimetypes/application-pdf.png",
+      "bytes": 1125,
+      "sha256": "051853db2fa4b89ee4fe0cec917444d1eaeaba79b20c5c84ded6ab9f8debb191"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/48x48/mimetypes/audio-x-generic.png",
+      "bytes": 686,
+      "sha256": "f3d209c25b81289ce28ccc6a032ac1c1f7da013866d3f8f7251b8a317158a4cf"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/48x48/mimetypes/image-x-generic.png",
+      "bytes": 1057,
+      "sha256": "e22eadf949640e3fd6f75774eaf2e09e114de95e0c4136942d6fea71a4139fc4"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/48x48/mimetypes/package-x-generic.png",
+      "bytes": 1424,
+      "sha256": "c848cb6d0e76d23e30d2dddbc7e5f3605274e79ab7e7c4eeb7e6ecba0ea9ed75"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/48x48/mimetypes/text-x-generic.png",
+      "bytes": 851,
+      "sha256": "1e7dd067dfabd902f68fc5c80b4637529be08063098f3122097d6cb1cf345f6b"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/48x48/mimetypes/video-x-generic.png",
+      "bytes": 674,
+      "sha256": "161541738fcf6cd3bfa183882c354cd02a58b55b031c281b70d96515faeae3b9"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/48x48/places/computer.png",
+      "bytes": 648,
+      "sha256": "e6a5c3934dee683949ec5c7711a54a25c27689cb4e7885d1d6e84982bce480dd"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/48x48/places/drive-harddisk.png",
+      "bytes": 1279,
+      "sha256": "106c3704993e6c93fb10b1ae0756ae1544b11b526f6cae9f501477e3230f253f"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/48x48/places/folder.png",
+      "bytes": 730,
+      "sha256": "67a708e1141e1b0c25fae64b75f2a4defd65fabbc61848df30631e51f0832fb8"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/48x48/places/user-home.png",
+      "bytes": 1042,
+      "sha256": "b12c0541f15e11010c5f7f6bf3a4af6187a5f8f8c1f0b44181d9746bc142319a"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/48x48/status/audio-volume-high.png",
+      "bytes": 1254,
+      "sha256": "02642e2bb3466a7f1502444026b53168fdffc4dc7e607f8704ce6bf844eacf59"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/48x48/status/battery.png",
+      "bytes": 752,
+      "sha256": "eb8248758290c0733cb0751e6b34a7ca86da8d36bcdaeb14d543dcfec4ba6578"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/48x48/status/bluetooth-active.png",
+      "bytes": 942,
+      "sha256": "f24744112dedaf488cad4c8d329dea2d810c09bdbc819dbd713b98fbcecbc748"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/48x48/status/network-wired.png",
+      "bytes": 595,
+      "sha256": "321c4e531c40f503cc520288ff16d2585b591cab1f56bb04ab7ee555e5b7523f"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/48x48/status/network-wireless.png",
+      "bytes": 940,
+      "sha256": "9dc1ef06ed84ce1d9c34abe21185e228b2120a51196119c0c75909850f22beeb"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/48x48/status/security-high.png",
+      "bytes": 1409,
+      "sha256": "0b64fc3edf4c965bf0ebbb93395f853352cafedeec608e0efe5585575ac0e861"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/64x64/actions/document-save.png",
+      "bytes": 1210,
+      "sha256": "dbe7b911db1cb6729b92427eebca9a40f7e8cd9352d7ab5838b3684d1f29fed2"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/64x64/actions/edit-copy.png",
+      "bytes": 1114,
+      "sha256": "0fa6b802afbdaaf5eabb56afbdfe919199cf606421bfa16dcd3f26f19dda6290"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/64x64/actions/edit-delete.png",
+      "bytes": 1385,
+      "sha256": "bff467433eeae29fc612dc45b93a505fff6f96e495a2af75c7bc1c25f9faffb8"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/64x64/actions/edit-paste.png",
+      "bytes": 1153,
+      "sha256": "968993278715e2b0a50eb60fab2296c78ddf8692609d92d24cd81cb26e554a40"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/64x64/actions/go-next.png",
+      "bytes": 514,
+      "sha256": "c64c874a6638de3714473a3be85f610b1967cb6d3a875fff8c01156882119778"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/64x64/actions/go-previous.png",
+      "bytes": 515,
+      "sha256": "fc44baeb80eb9a2f8e68eb951f0e5f39ca4c9d99dfc79dd53bc225f990101d94"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/64x64/actions/go-up.png",
+      "bytes": 500,
+      "sha256": "519763613f0393162622edeb9e1f84c8702552985e89cb8b126d6784bb63a605"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/64x64/actions/system-log-out.png",
+      "bytes": 855,
+      "sha256": "df987a62f2a6b0630f20ef9aa72d4b42a6a6d6347ca895a26d2190fc25fdbb23"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/64x64/actions/system-shutdown.png",
+      "bytes": 1801,
+      "sha256": "955dd1cc16ff73c535e381fbd0e33fd806cc774d3c9317d0a09772b34b6cdf1d"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/64x64/actions/view-refresh.png",
+      "bytes": 1610,
+      "sha256": "acd51f9a07e93ed6af112acdac8c5230860ef9f34dd40cb1ee3f383a8be029c3"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/64x64/actions/window-close.png",
+      "bytes": 629,
+      "sha256": "b933edddd75c99f7f8755ad7fd08def0c02ac2b87bd45b9a9745a292e2bb8bd4"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/64x64/actions/window-maximize.png",
+      "bytes": 585,
+      "sha256": "688dc783df1a559f0ba4b8f224b043f35bac1e13d31f8ac49b7a74e388e27f18"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/64x64/actions/window-minimize.png",
+      "bytes": 222,
+      "sha256": "042d62cde5823bbb2a5ffc50587d501813227c0daa38762fdede71da2a9dc3e4"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/64x64/apps/accessories-calculator.png",
+      "bytes": 1039,
+      "sha256": "311c811d1e0ccf21c37f19dccf5ac92e9e800d398288c8436cfe3ae31a2d3978"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/64x64/apps/accessories-text-editor.png",
+      "bytes": 869,
+      "sha256": "72b27516aa695b9c409879ac38e38ffd9b0a2a3938ab1025db49edde4bf2c200"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/64x64/apps/applets-screenshooter.png",
+      "bytes": 906,
+      "sha256": "2af952bbc7331bd26144257a596a34cd6db3a84685b08b22f687729830bbb3d2"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/64x64/apps/lambdaos-menu.png",
+      "bytes": 1093,
+      "sha256": "ad074df3ecf08aa99227cbc8e1293b636a4ba55d5f60778415677e93ce50fb99"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/64x64/apps/preferences-system.png",
+      "bytes": 1056,
+      "sha256": "e983122b3c7c003fec7658af0b5690294ed145f06d70a402d3911e4f7c55441d"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/64x64/apps/system-file-manager.png",
+      "bytes": 778,
+      "sha256": "66884827436ca97520e5c304bc2da74121e14ec114c11d36b666592d89967476"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/64x64/apps/system-search.png",
+      "bytes": 976,
+      "sha256": "6ef061c7f16c66791f6b6f0c5e2c5b9f3b3561f1675e82e933f2ea0678b0fbf0"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/64x64/apps/utilities-terminal.png",
+      "bytes": 762,
+      "sha256": "2e77a7aa3fdebc82805cd242e74149ab8b196dc480b48c14d4ef5bce968e3509"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/64x64/apps/web-browser.png",
+      "bytes": 1278,
+      "sha256": "6a43192d8fd523cd7f989732112e47a3526dc5a6fc0856935dbfe31bbc17102e"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/64x64/mimetypes/application-pdf.png",
+      "bytes": 1484,
+      "sha256": "15164ebe221de545ae0f910e6a63ab7052fc37963e1628b2af228372871ed272"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/64x64/mimetypes/audio-x-generic.png",
+      "bytes": 917,
+      "sha256": "a82392ac195c8f45e779965d82e4cf81f453b9b17337d0148a9856a1c7299dbd"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/64x64/mimetypes/image-x-generic.png",
+      "bytes": 1517,
+      "sha256": "4e52c23414f158f99b247dd26eb92b004c7ba26a01cbd939e62cd46bf684085d"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/64x64/mimetypes/package-x-generic.png",
+      "bytes": 1824,
+      "sha256": "e67e841e00a0226658ed8baebcb5c7c0eb9f2c9f4bc00e1726e2dc778c873b9c"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/64x64/mimetypes/text-x-generic.png",
+      "bytes": 1157,
+      "sha256": "1f761e977ed838b7d7fb1bc46da7b4a6b1001e1734255eb0a76d231f2ee5e882"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/64x64/mimetypes/video-x-generic.png",
+      "bytes": 917,
+      "sha256": "e61c009334b77827253cd55b1c54df3075ba42bc3211eb72a743e91f0c11bd24"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/64x64/places/computer.png",
+      "bytes": 900,
+      "sha256": "e5bc08b69b44e15e8514ec2a7196ade90359fcc6763874d5fa74aefb08e24a0d"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/64x64/places/drive-harddisk.png",
+      "bytes": 1910,
+      "sha256": "e095511824c1637d92ef6ffaabb7a99aed174c22db5fe39e56afc9e0a8eac8b7"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/64x64/places/folder.png",
+      "bytes": 959,
+      "sha256": "c27488936b45baca59576e8fcc51d3db422a692779b37c3ae9b9652d1af859c1"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/64x64/places/user-home.png",
+      "bytes": 1433,
+      "sha256": "6dc3f5a5070de5e7259ef92e2ddff3d4918740abbd24c8681a15c77b607a7e48"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/64x64/status/audio-volume-high.png",
+      "bytes": 1665,
+      "sha256": "3acf5e4f34e5937d2dda242baa4d9a4f8ac5d34452a413a1739e05aa742be126"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/64x64/status/battery.png",
+      "bytes": 1017,
+      "sha256": "793b8fc0ca6609471208da1a33cf9d291331a553855fe8fb72d1704471d876ec"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/64x64/status/bluetooth-active.png",
+      "bytes": 1128,
+      "sha256": "544bf22a38e5a2f01d73c3742030bdb4ef0eed1eb894157a5d3fe5af84ba7a8a"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/64x64/status/network-wired.png",
+      "bytes": 887,
+      "sha256": "1bfa6ba3162514f55248c46d93e1a8bc8e1392135c7dee38b57582b2a0fdaee9"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/64x64/status/network-wireless.png",
+      "bytes": 1292,
+      "sha256": "b4d248ec94379127f94b031df610482a621626032a6020dcb6c78c896f8577ee"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/64x64/status/security-high.png",
+      "bytes": 1916,
+      "sha256": "b4898a625b92649efb4e74df5a2814a3d3cb810f9b10750306020c11abd390a1"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/index.theme",
+      "bytes": 3867,
+      "sha256": "c489c7b8c1266e34ca4864498264b3180fb7088c64be0f9bd628e1ccadc3bc0f"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/scalable/actions/document-save.svg",
+      "bytes": 362,
+      "sha256": "b75691217809b3a1235dbdaba0c5a499c24eb3b34a564103d281f1a4c7e41833"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/scalable/actions/edit-copy.svg",
+      "bytes": 350,
+      "sha256": "d963883ff3e5153afc2974f203a860d9e48402ea3cb18e73b1ca748ab6049d19"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/scalable/actions/edit-delete.svg",
+      "bytes": 402,
+      "sha256": "ae641a2164069c05090aba3a9899298cc5f55a3b1ea0c1c890610b82162a1956"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/scalable/actions/edit-paste.svg",
+      "bytes": 348,
+      "sha256": "22bdbe2fa2bed26a58c7f2caa330498df6af6345e6a9fdc76a4472f812f6f161"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/scalable/actions/go-next.svg",
+      "bytes": 222,
+      "sha256": "934b7f3e5ee29eb9238275c1e6f34e979e6c1f00de47eb0ca6c319faf90ce768"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/scalable/actions/go-previous.svg",
+      "bytes": 223,
+      "sha256": "c754c91db06e55fe86208cd5c53f4274addd482c8e04a49fa904af0f67ce22c9"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/scalable/actions/go-up.svg",
+      "bytes": 223,
+      "sha256": "63d37fcc714488aa584cf9190a5467ccf106b2573dce6b01d6b853f8e6dc3ee5"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/scalable/actions/system-log-out.svg",
+      "bytes": 322,
+      "sha256": "fdc8fd8e95501c565fedeb99830f7c02fbf21a17f12157fa25485a7af175482c"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/scalable/actions/system-shutdown.svg",
+      "bytes": 254,
+      "sha256": "28ac53c95fe164985e89f289b41be7e66eb7a0699abdf3b20b7003d2de9f898e"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/scalable/actions/view-refresh.svg",
+      "bytes": 259,
+      "sha256": "cf0734e4601d2f8439eae4768ac2533d87f2755d0fff270448cd0c97c057e10d"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/scalable/actions/window-close.svg",
+      "bytes": 236,
+      "sha256": "55f481daae1e976c30b84f57b152f56156eebcacf808f62b2d8a12e68291a057"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/scalable/actions/window-maximize.svg",
+      "bytes": 240,
+      "sha256": "e2db34315dbf20562ebfbe2ebb2090c44a480faf7b3c0ec9009d5800805173d1"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/scalable/actions/window-minimize.svg",
+      "bytes": 209,
+      "sha256": "97eb75f7d8475309d0e6ae188912b36556f59e9144611b1a8e257acc53eb5484"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/scalable/apps/accessories-calculator.svg",
+      "bytes": 910,
+      "sha256": "99a96b9a207756985d0348bcdff36f5af49414fe0ff2f6b4e4190c12924ebedd"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/scalable/apps/accessories-text-editor.svg",
+      "bytes": 307,
+      "sha256": "e0b7158c6bc4e2b040d088ef8283aadc345cb8e39ac04df928cad4f377be4370"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/scalable/apps/applets-screenshooter.svg",
+      "bytes": 428,
+      "sha256": "eb6ccfcf0b7758df3ac84f378741befc2c2f13e3cda2c3fb08bf9f6f4294d217"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/scalable/apps/lambdaos-menu.svg",
+      "bytes": 286,
+      "sha256": "5dec86a9d608539f5786b5934332dddbd099cb33d5dd6f0c403542eb7e1d5243"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/scalable/apps/system-file-manager.svg",
+      "bytes": 312,
+      "sha256": "c2e5cbc10966dc0fa20f0ec7dd93f1f66cbcd5c7ae9d207876b03f97f96039f8"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/scalable/apps/system-search.svg",
+      "bytes": 261,
+      "sha256": "5bc27a6c490d0484eaa405766438694043858b1ed6f4f1c114629bdfd5f75e93"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/scalable/apps/utilities-terminal.svg",
+      "bytes": 304,
+      "sha256": "c926f38f4d6dd199bee92f36513d0f24b5c5242d6b2c9966d40a951e16cd96c5"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/scalable/apps/web-browser.svg",
+      "bytes": 351,
+      "sha256": "0975a9b39653770b162e188bba139513ab0045efcca6e9148b9869c454bd93cf"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/scalable/categories/preferences-system.svg",
+      "bytes": 476,
+      "sha256": "674f45fea3d7276b2f3d728135c9a1e52dab98e98be2cba8db3d63ca50250726"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/scalable/mimetypes/application-pdf.svg",
+      "bytes": 406,
+      "sha256": "2b4005d39bb8496a496cabb2bb69b66626a931522b5886fca91b4bbde3c06488"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/scalable/mimetypes/audio-x-generic.svg",
+      "bytes": 380,
+      "sha256": "def7b758d3fccaf3b2fa8bb6d8cc2b823f7c8ee573b15df3d9cb5d0c4e214d14"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/scalable/mimetypes/image-x-generic.svg",
+      "bytes": 333,
+      "sha256": "824497a617da76c007bd07c82344580586c5ca3870ee45815a0ce9a3be5a4310"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/scalable/mimetypes/package-x-generic.svg",
+      "bytes": 297,
+      "sha256": "3441759a271b7c966498dedf00a146deb277c39a39f9c59fd3fdb506ac36aa87"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/scalable/mimetypes/text-x-generic.svg",
+      "bytes": 382,
+      "sha256": "54350d7cb938a43d87b4c82b1cc9f3b9bcab462c7afd83ab2c9b6184edb8417c"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/scalable/mimetypes/video-x-generic.svg",
+      "bytes": 313,
+      "sha256": "3ac1d250f3fc4869e66cd849fd9c04e68f29c93d4026a8629c675ad68e4ec8b5"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/scalable/places/computer.svg",
+      "bytes": 293,
+      "sha256": "e88757240599d4a404d5ad75d0e177c6f580e59dcfa6b64c1c0c9f9265420a02"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/scalable/places/drive-harddisk.svg",
+      "bytes": 402,
+      "sha256": "865dfdfdf0bf2926519a10d70f42b6e80b646702d7161359a0124635788cadc4"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/scalable/places/folder.svg",
+      "bytes": 318,
+      "sha256": "4bb06f3252a96c9df4b0c9c19de5c9b4610fb263a8541984dd7aeb4dbd9a49de"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/scalable/places/user-home.svg",
+      "bytes": 335,
+      "sha256": "071642fa96697b3aaa75c3a76b5c998e5b13a556416a425c8b7996045ad3ca1d"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/scalable/status/audio-volume-high.svg",
+      "bytes": 320,
+      "sha256": "2997f63c7c62338d4d85f25ac7c994aba0aef85da71357abff3bf58221d3a44e"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/scalable/status/battery.svg",
+      "bytes": 417,
+      "sha256": "86091d8f7a6dd8c87ee4424cba9f9847f8b7187f84bfc7bbd307b1b3a0d03c84"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/scalable/status/bluetooth-active.svg",
+      "bytes": 227,
+      "sha256": "83fb733ad77b263eeaf3066469e71c7747e1f6e24ba29b94f52a19585447f70a"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/scalable/status/network-wired.svg",
+      "bytes": 322,
+      "sha256": "08d10238ed67742fb4fe04d51122e968580718f56a7f247423e617ba5b0e3cf4"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/scalable/status/network-wireless.svg",
+      "bytes": 345,
+      "sha256": "d2c886f8e1efdfbf2b18e391d33af4f7a56bd7ae795f600995e04e21f3b4bcba"
+    },
+    {
+      "path": "alpha/lex/theme/icons/LambdaOS/scalable/status/security-high.svg",
+      "bytes": 304,
+      "sha256": "8c68b55c6dcedcf7228f980c02077c60553712c9e0d89a4478d04cbe7fa833a2"
+    },
+    {
+      "path": "alpha/lex/theme/icons/preview.sh",
+      "bytes": 1393,
+      "sha256": "0e401ebd8a2f7fcb855de8900f62d11ee3a298c24be51b9dfd6c1c386509d31e"
+    },
+    {
+      "path": "alpha/lex/theme/panel/apply.sh",
+      "bytes": 12030,
+      "sha256": "2fbc96e2addd9eaf5dfa24c755468ea7a7263796e5d3be2a74759297d5a41855"
+    },
+    {
+      "path": "alpha/lex/theme/panel/dock-bg.png",
+      "bytes": 1881,
+      "sha256": "4379572478e31fa3b91007c29dbeba6b0b61a9925b07bf316d68c93b2d75a02d"
+    },
+    {
+      "path": "alpha/lex/theme/panel/status.sh",
+      "bytes": 1031,
+      "sha256": "043df7e536b69ecad589fa80cedb885453521c5811ccdc3268dedc3344c458b0"
+    },
+    {
+      "path": "alpha/lex/theme/preview/bar-dock-1280.png",
+      "bytes": 75683,
+      "sha256": "a48c8193fdf97dd574955c073702b1e5063088b213537764077259e0eba3b19d"
+    },
+    {
+      "path": "alpha/lex/theme/preview/bar-dock-2280.png",
+      "bytes": 60172,
+      "sha256": "d46fd4954d8ee3735b1ec9d2f6841ca5bc443457bb59ee983a5b85560a7e8b6f"
+    },
+    {
+      "path": "alpha/lex/theme/preview/dock.png",
+      "bytes": 56794,
+      "sha256": "3de9362049392d193419155fbc7488fbd67663ac2547ad7593826aee8ef026f5"
+    },
+    {
+      "path": "alpha/lex/theme/preview/icons.png",
+      "bytes": 159764,
+      "sha256": "708509030e7ffb72009e89a99c1f50c2f1b5bbf31ca6027061e9c6f9b48ca0b2"
+    },
+    {
+      "path": "alpha/lex/theme/preview/terminal.png",
+      "bytes": 61452,
+      "sha256": "6e4106ec4dbceecf4e2e44508a402d05b6d273bb91d3217e01df880127753598"
+    },
+    {
+      "path": "alpha/lex/theme/preview/wallpaper.png",
+      "bytes": 58307,
+      "sha256": "62eaac0c4d95d97df9861ac3b3e987b4de34d9b1ca088647b024a03f050c00e9"
+    },
+    {
+      "path": "alpha/lex/theme/preview/windows.png",
+      "bytes": 66908,
+      "sha256": "2158cc1da4e079d560e7fd7429b1b4fc7cd4f2a11967c6e1b7ba0441551b68ad"
+    },
+    {
+      "path": "alpha/lex/theme/wallpaper/apply.sh",
+      "bytes": 1496,
+      "sha256": "5fe8f8217f0937b06e60887a4afbccbbefbae47633c46ecbaacfca3c3dc6a4b0"
+    },
+    {
+      "path": "alpha/lex/theme/wallpaper/lambdaos-1280x720-light.png",
+      "bytes": 199959,
+      "sha256": "1ec5e511a8520d0e9c0b3adb03fa4935129b16170af933349d37770565c2fca0"
+    },
+    {
+      "path": "alpha/lex/theme/wallpaper/lambdaos-1280x720.png",
+      "bytes": 828057,
+      "sha256": "a34120d05506cf0ea781199bb48d5c7e26bebb4527878e12d9279df4dcf7a0b3"
+    },
+    {
+      "path": "alpha/lex/theme/wallpaper/lambdaos-2280x1080-light.png",
+      "bytes": 354111,
+      "sha256": "6ac77347f23304bd289c441908e81095be2e327600d2be89c9e1eb29fab43038"
+    },
+    {
+      "path": "alpha/lex/theme/wallpaper/lambdaos-2280x1080.png",
+      "bytes": 1353138,
+      "sha256": "161f99fbda7e3900f9fc4fc1ff850641e62274820d99c8b03de06e2ba0c13d20"
+    },
+    {
+      "path": "alpha/lex/theme/wallpaper/lambdaos-3040x1440-light.png",
+      "bytes": 636942,
+      "sha256": "d2953469d53186cd65ca131f2a13e310cc7f84f46d7ff70fe227da5e47fe7536"
+    },
+    {
+      "path": "alpha/lex/theme/wallpaper/lambdaos-3040x1440.png",
+      "bytes": 3066057,
+      "sha256": "ef9fbb0fbb5e9d667ea66b367d41b65a3cd37796458618e5c34b3e4e41ae264e"
+    },
+    {
+      "path": "alpha/lex/theme/wallpaper/source/background-dark.png",
+      "bytes": 1274170,
+      "sha256": "16a8ad7ae83084308d76a88c125d7e8b8bedd613f433c8620756a81aab287200"
+    },
+    {
+      "path": "alpha/lex/theme/wallpaper/source/background-light.png",
+      "bytes": 1207120,
+      "sha256": "ca3e7ee6e3b3f99d94f12cb065391fedf7a38b480c6f24df8012dce2cc07771f"
+    },
+    {
+      "path": "alpha/lex/theme/wallpaper/source/mark.png",
+      "bytes": 20511,
+      "sha256": "0c04afd62ceb6fdb1b3163dcda66911fd1d63d152a2c6649634a3a306b0d3e76"
+    },
+    {
+      "path": "alpha/lex/theme/wallpaper/source/mark.svg",
+      "bytes": 176,
+      "sha256": "4d6eaa1b2b17f17f024098730510463ae37defe3759d47c1738599d3f7a7b021"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/apply.sh",
+      "bytes": 963,
+      "sha256": "2abccd01c9765393e755b5af64241868c88ada625e60fb743d77755e4da6f9af"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/bottom-active.png",
+      "bytes": 90,
+      "sha256": "94208e11e63c3a2c5a85d368c5100fc60dc88405947959cf91418c3ff475dca5"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/bottom-inactive.png",
+      "bytes": 90,
+      "sha256": "94208e11e63c3a2c5a85d368c5100fc60dc88405947959cf91418c3ff475dca5"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/bottom-left-active.png",
+      "bytes": 87,
+      "sha256": "c4f1416c19e0f97a70a467a22bd31ca9b8168bd56ba5ae65a978dc1e33b9508e"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/bottom-left-inactive.png",
+      "bytes": 87,
+      "sha256": "c4f1416c19e0f97a70a467a22bd31ca9b8168bd56ba5ae65a978dc1e33b9508e"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/bottom-right-active.png",
+      "bytes": 87,
+      "sha256": "c4f1416c19e0f97a70a467a22bd31ca9b8168bd56ba5ae65a978dc1e33b9508e"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/bottom-right-inactive.png",
+      "bytes": 87,
+      "sha256": "c4f1416c19e0f97a70a467a22bd31ca9b8168bd56ba5ae65a978dc1e33b9508e"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/close-active.png",
+      "bytes": 594,
+      "sha256": "26e4c7c14e9644aa37640c3c98700067be11bc1865e6ec0af800c2f3df77f09d"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/close-inactive.png",
+      "bytes": 599,
+      "sha256": "0b618cc7aefb75b51573769f9684de1e650e263f7913a5fa2622991cfc2d08fe"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/close-prelight.png",
+      "bytes": 530,
+      "sha256": "72aefac5ae0f08e73b0e4230d8a632dc5287de08055386c58985a322d7899765"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/close-pressed.png",
+      "bytes": 530,
+      "sha256": "72aefac5ae0f08e73b0e4230d8a632dc5287de08055386c58985a322d7899765"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/hide-active.png",
+      "bytes": 343,
+      "sha256": "501ea73392c9bcddfee6d976685521d813bfc79d9945a52f72b8e986667db76a"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/hide-inactive.png",
+      "bytes": 355,
+      "sha256": "04dab6926986519fa426c75f99fcd4fab8d2de1e967e532c5a0df901696b9862"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/hide-prelight.png",
+      "bytes": 353,
+      "sha256": "4803d5054d3fbbcd81e62889135c7ab1d1a0549ead208f522efe1d681a50aad1"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/hide-pressed.png",
+      "bytes": 356,
+      "sha256": "1e8f10258697da80ca6d8d5a159c9a573de9598df062ec88065db97fc699ede0"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/left-active.png",
+      "bytes": 93,
+      "sha256": "3a50b6aab9d86f96030155eaea671386c50e6549e31cb53941356ad0668f2b78"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/left-inactive.png",
+      "bytes": 93,
+      "sha256": "3a50b6aab9d86f96030155eaea671386c50e6549e31cb53941356ad0668f2b78"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/maximize-active.png",
+      "bytes": 471,
+      "sha256": "22171756521a35f395b0e2ac3eec6d0cbc3ffaa95281260cfc5b77c2857ef1ce"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/maximize-inactive.png",
+      "bytes": 484,
+      "sha256": "909ca1f6b9af31460a181ff744d62de6d5d309953433c1cd1d88c297ba64691b"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/maximize-prelight.png",
+      "bytes": 501,
+      "sha256": "7f7f7d65daace376d7aa1915dcc3a53047af2e82704b002246bfe911c2aaca95"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/maximize-pressed.png",
+      "bytes": 503,
+      "sha256": "8e018b72ad93b986b47559657ca358ea5e40450b254afb4d240d08ea78e6b12e"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/maximize-toggled-active.png",
+      "bytes": 471,
+      "sha256": "22171756521a35f395b0e2ac3eec6d0cbc3ffaa95281260cfc5b77c2857ef1ce"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/maximize-toggled-inactive.png",
+      "bytes": 484,
+      "sha256": "909ca1f6b9af31460a181ff744d62de6d5d309953433c1cd1d88c297ba64691b"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/maximize-toggled-prelight.png",
+      "bytes": 501,
+      "sha256": "7f7f7d65daace376d7aa1915dcc3a53047af2e82704b002246bfe911c2aaca95"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/maximize-toggled-pressed.png",
+      "bytes": 503,
+      "sha256": "8e018b72ad93b986b47559657ca358ea5e40450b254afb4d240d08ea78e6b12e"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/right-active.png",
+      "bytes": 93,
+      "sha256": "3a50b6aab9d86f96030155eaea671386c50e6549e31cb53941356ad0668f2b78"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/right-inactive.png",
+      "bytes": 93,
+      "sha256": "3a50b6aab9d86f96030155eaea671386c50e6549e31cb53941356ad0668f2b78"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/src/bottom-active.svg",
+      "bytes": 136,
+      "sha256": "4c4133b4e947f6577d70594f2ad95e7476a2885636fd8f22847c036cac8e752b"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/src/bottom-inactive.svg",
+      "bytes": 136,
+      "sha256": "4c4133b4e947f6577d70594f2ad95e7476a2885636fd8f22847c036cac8e752b"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/src/bottom-left-active.svg",
+      "bytes": 133,
+      "sha256": "73be1494a74283e025014993af08324fb7acf4afdb2aa7f6b4dc14d2aa68c8e5"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/src/bottom-left-inactive.svg",
+      "bytes": 133,
+      "sha256": "73be1494a74283e025014993af08324fb7acf4afdb2aa7f6b4dc14d2aa68c8e5"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/src/bottom-right-active.svg",
+      "bytes": 133,
+      "sha256": "73be1494a74283e025014993af08324fb7acf4afdb2aa7f6b4dc14d2aa68c8e5"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/src/bottom-right-inactive.svg",
+      "bytes": 133,
+      "sha256": "73be1494a74283e025014993af08324fb7acf4afdb2aa7f6b4dc14d2aa68c8e5"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/src/close-active.svg",
+      "bytes": 294,
+      "sha256": "62ee4218e5545948c23496bbad6944f6ed5132c77bd556c1abc6de67a4b35fe6"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/src/close-inactive.svg",
+      "bytes": 294,
+      "sha256": "df1478938d97c53af7ed79a347077b50a5417d1e5975ec91e4b21dfd190a54a3"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/src/close-prelight.svg",
+      "bytes": 294,
+      "sha256": "5b3389c061cfef250bd0d24893f5fb456a8a4993d77752a203536e214f939a7c"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/src/close-pressed.svg",
+      "bytes": 294,
+      "sha256": "5b3389c061cfef250bd0d24893f5fb456a8a4993d77752a203536e214f939a7c"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/src/hide-active.svg",
+      "bytes": 282,
+      "sha256": "e56231916671202b1e0ea9f6c82346a35618cad05d38a12ae14c57457a4ee5a0"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/src/hide-inactive.svg",
+      "bytes": 282,
+      "sha256": "3198d6541777853cfd9fab8dafcf50e27f533e0d8f988488fd23a01d79b4cc97"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/src/hide-prelight.svg",
+      "bytes": 282,
+      "sha256": "c602d0a37bbffdc4eab381efa3124273772bad0e1fb0de8bc5429a27074a098d"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/src/hide-pressed.svg",
+      "bytes": 282,
+      "sha256": "1efcd3a803bb09d93613cc61f615717f45cb8edfb9fcdc145b5a32765f244a03"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/src/left-active.svg",
+      "bytes": 136,
+      "sha256": "264a25cde47ef08648c7e5fe18243d185c79943046baa3b7c17a7707048c8f48"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/src/left-inactive.svg",
+      "bytes": 136,
+      "sha256": "264a25cde47ef08648c7e5fe18243d185c79943046baa3b7c17a7707048c8f48"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/src/maximize-active.svg",
+      "bytes": 318,
+      "sha256": "322ac59158e674da7346ba9d4afeb17e24b823f91da2d7ac1223cea282a1e70f"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/src/maximize-inactive.svg",
+      "bytes": 318,
+      "sha256": "8c51c9c8f254f42af9342c57e3d9c51bcdc8943e9e7a14123abca0d981c4c120"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/src/maximize-prelight.svg",
+      "bytes": 318,
+      "sha256": "271098c23497170a0a14a7c6f882ccd355391b0275e7321112abe0ba4c46f196"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/src/maximize-pressed.svg",
+      "bytes": 318,
+      "sha256": "607f3db6de588e082176036775b7d96c685c62e86a2375a3735be68a045fa4bd"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/src/maximize-toggled-active.svg",
+      "bytes": 318,
+      "sha256": "322ac59158e674da7346ba9d4afeb17e24b823f91da2d7ac1223cea282a1e70f"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/src/maximize-toggled-inactive.svg",
+      "bytes": 318,
+      "sha256": "8c51c9c8f254f42af9342c57e3d9c51bcdc8943e9e7a14123abca0d981c4c120"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/src/maximize-toggled-prelight.svg",
+      "bytes": 318,
+      "sha256": "271098c23497170a0a14a7c6f882ccd355391b0275e7321112abe0ba4c46f196"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/src/maximize-toggled-pressed.svg",
+      "bytes": 318,
+      "sha256": "607f3db6de588e082176036775b7d96c685c62e86a2375a3735be68a045fa4bd"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/src/render.sh",
+      "bytes": 414,
+      "sha256": "b6504a170802098f817bbe25109f534b4af4befacad0a7d60c168d5069807346"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/src/right-active.svg",
+      "bytes": 136,
+      "sha256": "264a25cde47ef08648c7e5fe18243d185c79943046baa3b7c17a7707048c8f48"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/src/right-inactive.svg",
+      "bytes": 136,
+      "sha256": "264a25cde47ef08648c7e5fe18243d185c79943046baa3b7c17a7707048c8f48"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/src/title-1-active.svg",
+      "bytes": 188,
+      "sha256": "fe22a9f146d18907ef8c2c44ef8f822dd9353b0d82e938f48e9e131b3c200f39"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/src/title-1-inactive.svg",
+      "bytes": 188,
+      "sha256": "095185b2e3da55bcf213ca3117bc6c304ebc56d0b32910bcb23a4bdd89f67ca1"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/src/title-2-active.svg",
+      "bytes": 188,
+      "sha256": "fe22a9f146d18907ef8c2c44ef8f822dd9353b0d82e938f48e9e131b3c200f39"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/src/title-2-inactive.svg",
+      "bytes": 188,
+      "sha256": "095185b2e3da55bcf213ca3117bc6c304ebc56d0b32910bcb23a4bdd89f67ca1"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/src/title-3-active.svg",
+      "bytes": 188,
+      "sha256": "fe22a9f146d18907ef8c2c44ef8f822dd9353b0d82e938f48e9e131b3c200f39"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/src/title-3-inactive.svg",
+      "bytes": 188,
+      "sha256": "095185b2e3da55bcf213ca3117bc6c304ebc56d0b32910bcb23a4bdd89f67ca1"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/src/title-4-active.svg",
+      "bytes": 188,
+      "sha256": "fe22a9f146d18907ef8c2c44ef8f822dd9353b0d82e938f48e9e131b3c200f39"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/src/title-4-inactive.svg",
+      "bytes": 188,
+      "sha256": "095185b2e3da55bcf213ca3117bc6c304ebc56d0b32910bcb23a4bdd89f67ca1"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/src/title-5-active.svg",
+      "bytes": 188,
+      "sha256": "fe22a9f146d18907ef8c2c44ef8f822dd9353b0d82e938f48e9e131b3c200f39"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/src/title-5-inactive.svg",
+      "bytes": 188,
+      "sha256": "095185b2e3da55bcf213ca3117bc6c304ebc56d0b32910bcb23a4bdd89f67ca1"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/src/top-left-active.svg",
+      "bytes": 215,
+      "sha256": "afd1b49fcdaff57d01482e4ec0507ebe007a4081addab465c4f697587ee77792"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/src/top-left-inactive.svg",
+      "bytes": 215,
+      "sha256": "343df2c8bb3ef016332dcf306388d3dff7e24d28059edeec67d45c943f48e2e0"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/src/top-right-active.svg",
+      "bytes": 215,
+      "sha256": "8acc7884c8b2b8d101028e5d1742ea445c13dff2018a8c2a830ac7f150c7d464"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/src/top-right-inactive.svg",
+      "bytes": 215,
+      "sha256": "ea2dc70a2b409e8b7186347abd37404573fa5945aa475353c60cf934f1b5edd6"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/themerc",
+      "bytes": 477,
+      "sha256": "689516603160b7e988f9953b42ab1c3407ef340bc2c7aba5e9e5ad185a0be5c5"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/title-1-active.png",
+      "bytes": 104,
+      "sha256": "5bc7efa547cee6a8c262b421a360c3596ae533d512a9d5fd4aea8ff55e44a11a"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/title-1-inactive.png",
+      "bytes": 103,
+      "sha256": "91ae3d1c555365f8c15cef685d9eff7c2ba92201c8dd5b06c89f1ddf372ebdbf"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/title-2-active.png",
+      "bytes": 104,
+      "sha256": "5bc7efa547cee6a8c262b421a360c3596ae533d512a9d5fd4aea8ff55e44a11a"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/title-2-inactive.png",
+      "bytes": 103,
+      "sha256": "91ae3d1c555365f8c15cef685d9eff7c2ba92201c8dd5b06c89f1ddf372ebdbf"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/title-3-active.png",
+      "bytes": 104,
+      "sha256": "5bc7efa547cee6a8c262b421a360c3596ae533d512a9d5fd4aea8ff55e44a11a"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/title-3-inactive.png",
+      "bytes": 103,
+      "sha256": "91ae3d1c555365f8c15cef685d9eff7c2ba92201c8dd5b06c89f1ddf372ebdbf"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/title-4-active.png",
+      "bytes": 104,
+      "sha256": "5bc7efa547cee6a8c262b421a360c3596ae533d512a9d5fd4aea8ff55e44a11a"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/title-4-inactive.png",
+      "bytes": 103,
+      "sha256": "91ae3d1c555365f8c15cef685d9eff7c2ba92201c8dd5b06c89f1ddf372ebdbf"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/title-5-active.png",
+      "bytes": 104,
+      "sha256": "5bc7efa547cee6a8c262b421a360c3596ae533d512a9d5fd4aea8ff55e44a11a"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/title-5-inactive.png",
+      "bytes": 103,
+      "sha256": "91ae3d1c555365f8c15cef685d9eff7c2ba92201c8dd5b06c89f1ddf372ebdbf"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/top-left-active.png",
+      "bytes": 224,
+      "sha256": "cf0e466c04d526e08af0b2d65616958ce8877b4c553e735c4a89306cc85c6cf2"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/top-left-inactive.png",
+      "bytes": 228,
+      "sha256": "fd5d609e93ae0e1751c85137a886875b2427c04040e1f825acbbf2718b01e3db"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/top-right-active.png",
+      "bytes": 244,
+      "sha256": "13795a42997ff234ef75b68ae49ea46e5045c606a396c787287b15304c313e6c"
+    },
+    {
+      "path": "alpha/lex/theme/xfwm4/LambdaOS/top-right-inactive.png",
+      "bytes": 246,
+      "sha256": "b4b643b799966c0e70201ec369eba045e78228abad1d44a5e720673e05a97e8a"
+    },
+    {
       "path": "alpha/manifests/beyond1lte.xml",
       "bytes": 1773,
       "sha256": "de70c673440d092a7349bdb324ce616f5e2368db3bc4db5b17cf2358c3d0d4cd"
+    },
+    {
+      "path": "alpha/OPERATOR-V1-VALIDATION.md",
+      "bytes": 8600,
+      "sha256": "e05fe635ec5511527daca35b473eab4ca19611f00a46a764bfde01f847e15079"
     },
     {
       "path": "alpha/patches/exynos9820-lambda-touch-vintf.patch",
@@ -1768,6 +4518,11 @@
       "sha256": "d3de826b988382a4d35e4d4c574a012abfa8c0602ae669db6a354bbfcfe995ec"
     },
     {
+      "path": "alpha/scripts/build_accessibility_overlays.mjs",
+      "bytes": 2372,
+      "sha256": "10b3604d4d686de8b2b33916b4d4f5bbcd89925212d312311572416a46116062"
+    },
+    {
       "path": "alpha/scripts/build_cracking_bench.py",
       "bytes": 3904,
       "sha256": "fd5e6bc44155c5bdd1b4af5b17df8dc8c222e2eaa681c7f3fc83e79ac63d5029"
@@ -1783,6 +4538,11 @@
       "sha256": "b3f346f3291b3803f959520fe610098c319a5d5d5fc82b683eb54f270f6e3659"
     },
     {
+      "path": "alpha/scripts/build_hashcat_bench.py",
+      "bytes": 3255,
+      "sha256": "b76c1aa783dcfddf5bf0154ec6a3415b3d85ef8694db73b5a4082894300859f9"
+    },
+    {
       "path": "alpha/scripts/build_lambda.py",
       "bytes": 4160,
       "sha256": "0d18bc2d7e4a58bafa35b18984648ace3690e2907e5cc2cefd41a00330d4cb01"
@@ -1793,9 +4553,79 @@
       "sha256": "4addc770c208584a18d923f5edfd0187176ac0bf321d4a2cffa438c9d4b8e5c3"
     },
     {
+      "path": "alpha/scripts/build_rom.sh",
+      "bytes": 2179,
+      "sha256": "e63e0f117326d2bf41de5d156f49ddf1aaa4daee14ad4eb6cb313195426ea3fd"
+    },
+    {
+      "path": "alpha/scripts/build_setup_preview.py",
+      "bytes": 2401,
+      "sha256": "475f6f594a6eb8871c124a4389076cbfb39cc1e210bf1c3155644b84e455e06c"
+    },
+    {
+      "path": "alpha/scripts/build_target_files.sh",
+      "bytes": 1324,
+      "sha256": "2b36caa0b70bc1c1d5458c113e5acb50ce8f1dc9a2c06ddeb749d16797fcb229"
+    },
+    {
+      "path": "alpha/scripts/build_wps.py",
+      "bytes": 2766,
+      "sha256": "ed1b64021cfa5753ac100344d2381244b98d633e7994fe1f403a00a8ea2fb742"
+    },
+    {
+      "path": "alpha/scripts/builder_exec.mjs",
+      "bytes": 1111,
+      "sha256": "480e94778dfea7e900f7a99e7a7f1bd8adf16c765a6976c95eb7a2f9c62681ff"
+    },
+    {
+      "path": "alpha/scripts/builder_modules.mjs",
+      "bytes": 2248,
+      "sha256": "df5a788d3724b3af7d495c17746584986506f0412b0a153ef4799be11a1fd501"
+    },
+    {
       "path": "alpha/scripts/compare_apk_payload.py",
       "bytes": 1255,
       "sha256": "7b931e13eb0574230168c1f2030f7f7aa4c36919c18c9f1fea5b6e42b949cb75"
+    },
+    {
+      "path": "alpha/scripts/download_builder_artifact.mjs",
+      "bytes": 2458,
+      "sha256": "6e754f400c89fbf6799d6be2263eea3d976b121b8b7227d5a2afe98c872a5525"
+    },
+    {
+      "path": "alpha/scripts/init_release_keys.mjs",
+      "bytes": 6611,
+      "sha256": "97f933e299635c406e9db333584574b1a3d6f61388caa2e9b252ee9ecd13b0bf"
+    },
+    {
+      "path": "alpha/scripts/install_cracking_bench_dev.sh",
+      "bytes": 3998,
+      "sha256": "4eb39b721b650f09004dbb740125c0323c62955e131bfaac846c4714ac1383c5"
+    },
+    {
+      "path": "alpha/scripts/install_lex_dev.sh",
+      "bytes": 3153,
+      "sha256": "ba6f227728550b7660a3cdb206216ae8456449bbf79e2b25fb351710cd80ff64"
+    },
+    {
+      "path": "alpha/scripts/install_operator_radio_dev.sh",
+      "bytes": 3191,
+      "sha256": "e8893d081e4a9d399ee172ba15c44693bcb72df2437bb5161fd138f0cee7b834"
+    },
+    {
+      "path": "alpha/scripts/install_proprietary.sh",
+      "bytes": 2687,
+      "sha256": "bbab08ef56474a6a50ce70f8233adb9579e4f753884144f8ab9b9011e3aede9c"
+    },
+    {
+      "path": "alpha/scripts/install_wps_dev.py",
+      "bytes": 5095,
+      "sha256": "2ede62dfefd97ef3197f4f9d291c1ce272a2595aaec588af2ec27861829aa488"
+    },
+    {
+      "path": "alpha/scripts/make_clean_install_ota.sh",
+      "bytes": 3345,
+      "sha256": "0e38bc9f399d953a53234710c463bc1e288764ede9ea90d0906cf63a55a5118e"
     },
     {
       "path": "alpha/scripts/prepare_cracking_fixtures.py",
@@ -1808,9 +4638,69 @@
       "sha256": "9f9311802644332f1193e3f4c502f1c09eef01b08943d83afd4642538aaa74a7"
     },
     {
+      "path": "alpha/scripts/prepare_native_assets.mjs",
+      "bytes": 2167,
+      "sha256": "e5abd6b76003b64f6e10d6a545d0a7a80b2a81fd1a0c26664cce33b9a88922f9"
+    },
+    {
+      "path": "alpha/scripts/prepare_setup_assets.mjs",
+      "bytes": 4868,
+      "sha256": "4c6adbe9eece93091796830c81edeca809e383f96123fb6150a19edbc9e1df5c"
+    },
+    {
+      "path": "alpha/scripts/prepare_source_tree.sh",
+      "bytes": 1060,
+      "sha256": "2c9a0204acdc93d94077fca8c636e502f78de2b8d79d1430f47f78f2850e3e81"
+    },
+    {
       "path": "alpha/scripts/prepare_wps_runtime.py",
       "bytes": 3718,
       "sha256": "3f40c8818806e37eda522d2537c7bb633bc0fbf1011f706773b02230fe164a56"
+    },
+    {
+      "path": "alpha/scripts/release_checks.py",
+      "bytes": 4541,
+      "sha256": "d46a5afb3b608670247ead44ba077cfd6fbb8339d5cd8b36ce1504a2c9446211"
+    },
+    {
+      "path": "alpha/scripts/release_pipeline.mjs",
+      "bytes": 2499,
+      "sha256": "8a062957ca971b4261c82fc1dc819a122c840d101d7fc0f0d4498fe5fcfdb8ea"
+    },
+    {
+      "path": "alpha/scripts/repair_samsung_manifest_cache.sh",
+      "bytes": 2249,
+      "sha256": "1f77cf917f98b0d38e97820c76fdef54174fe1c2d3acf0d1887cc6891159c294"
+    },
+    {
+      "path": "alpha/scripts/run_builder_pipeline.sh",
+      "bytes": 1584,
+      "sha256": "05528dd7c94eeaacc2fbcb3ae39bb3c0e39dda0a302beb905bb7b7705d84150c"
+    },
+    {
+      "path": "alpha/scripts/sign_operator.mjs",
+      "bytes": 2579,
+      "sha256": "19d8015497d4067c4010dde580e4e336c8958c0c14bcc6cb9f70252438d9ffba"
+    },
+    {
+      "path": "alpha/scripts/sign_release.py",
+      "bytes": 10633,
+      "sha256": "471865164f6b8004ae4653ce1f5b8620a9a267290357a5280dd74c6e04cb37b7"
+    },
+    {
+      "path": "alpha/scripts/sign_setup_candidate.mjs",
+      "bytes": 4682,
+      "sha256": "4cb69c947cd00dca1ce95f8b589718af5a08a8b2ecb9b1c046bc1b4daaae9c10"
+    },
+    {
+      "path": "alpha/scripts/stage_release_keys.mjs",
+      "bytes": 2904,
+      "sha256": "75887c59993b0214203c732dbef6332aa6ae7d7973d6a96429376e50917860c1"
+    },
+    {
+      "path": "alpha/scripts/stage_source_tree.sh",
+      "bytes": 16622,
+      "sha256": "e5de624ab28f750e1949bfe87ad1da00336800e752a84839760bbddd3911e2e8"
     },
     {
       "path": "alpha/scripts/stage_systemui.sh",
@@ -1823,14 +4713,39 @@
       "sha256": "4cf1acfa6df698a02c844eb6532335e84ea7e458e82d90292eb9bd344deaab0d"
     },
     {
+      "path": "alpha/scripts/sync_lineage_source.sh",
+      "bytes": 2279,
+      "sha256": "b526f534d8eb883aca44c9ae9704f21460093bf941239ffd4b4410809bd9590d"
+    },
+    {
       "path": "alpha/scripts/test_wps_adapter.py",
       "bytes": 8740,
       "sha256": "777520ec0209e34402ef2a1527519a4a1e9b977a038921e64988fcad7e21bf1b"
     },
     {
+      "path": "alpha/scripts/verify_lockscreen_apk.py",
+      "bytes": 3935,
+      "sha256": "40885d5314d268e47ec58bd7041da2ecce1c0c99a4c161c6ecb6340d7e6051d4"
+    },
+    {
+      "path": "alpha/scripts/verify_release.py",
+      "bytes": 22361,
+      "sha256": "81df345c4ef7ef7c1e44cb98df0b0f8527f7148d86b3370b4c49b1d9516ccfa1"
+    },
+    {
+      "path": "alpha/scripts/verify_shade_apk.py",
+      "bytes": 2686,
+      "sha256": "bfbe08044d30adac79d8e11c8337f6e0d9ff7906e510f20d17d6f72e0b1c3f92"
+    },
+    {
       "path": "alpha/scripts/verify_touch_manifest.py",
       "bytes": 1509,
       "sha256": "7b6c5cb7e7bcfe22f5dc776a2adfe8e05eb19e4de0e42ed74a3b1e3486325742"
+    },
+    {
+      "path": "alpha/scripts/verify_wps_install.py",
+      "bytes": 1913,
+      "sha256": "f102dee2544b77038f18e55479db6976c7675dc59541402de89bf223aeb020bf"
     },
     {
       "path": "alpha/tests/wps_guard_device.py",
@@ -1916,6 +4831,346 @@
       "path": "alpha/vendor/lambda/products/lineage_lambda_beyond1lte.mk",
       "bytes": 708,
       "sha256": "b7dd092620448d4468f9445fa3b280421b6bdfa5d5ebf2891a6011d10195c08c"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/adb-webusb.js",
+      "bytes": 33086,
+      "sha256": "9426f81049031c385e5c93650ee25a721471f44d7e56b742092ead552ef24507"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/app.js",
+      "bytes": 15619,
+      "sha256": "1f5f4596fd8f219bac3b4eca9fdc4dcd5b4c50eac994922dd3d4b7c80bf660a9"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/index.html",
+      "bytes": 6284,
+      "sha256": "f9c43368fbc6b82fa78c11eaddfaef7bbcd09552bc093187835a49341694cc91"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/inter.OFL.txt",
+      "bytes": 4321,
+      "sha256": "f89548a0f834a003767712a9dc37d8607dcf3ea369fab120cc97ce1a6566fdd5"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/inter.woff2",
+      "bytes": 48256,
+      "sha256": "3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/lex-desktop.js",
+      "bytes": 623,
+      "sha256": "1940c5f814a1492fb3b18ebc712cceaa0c075ba814105aa1da2d48b29c910805"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/mark.svg",
+      "bytes": 229,
+      "sha256": "0485eb433c5307bf48b46e79b63af40f6aac4b090f374bb73de8b39e2e911c99"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/novnc/core/base64.js",
+      "bytes": 4182,
+      "sha256": "76d6b7ec73aed8cbc72b49b8b865bcb334acc59a6b0e96b19bc39c9e8e053ae3"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/novnc/core/crypto/aes.js",
+      "bytes": 5965,
+      "sha256": "00b9a69185f913b882270c4cc7a076b4dd3a083981edb91c1e55db22f8ffcef3"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/novnc/core/crypto/bigint.js",
+      "bytes": 825,
+      "sha256": "e7880d27af8bf439579f6fc40d7b81fd379a9babb1d13c83999effd8c64823ab"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/novnc/core/crypto/crypto.js",
+      "bytes": 3042,
+      "sha256": "e6006697ce1d195c951ef1e986172d17174e533909df19e07be583ac75dd344b"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/novnc/core/crypto/des.js",
+      "bytes": 12723,
+      "sha256": "91d8c8ed596d2beda7da9dd68c9ae1d325c673822e3ccfc8a4091e121c99a316"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/novnc/core/crypto/dh.js",
+      "bytes": 1612,
+      "sha256": "9102454282ba646ee4a4ce34c5db5d2a9979179f9d4606737fc6bb7a669e5ebe"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/novnc/core/crypto/md5.js",
+      "bytes": 4686,
+      "sha256": "364c0f0d44d3f8fd608c18a0e1253e5a77e9b8e4c48e3c6503a0f45c9bb2ff8d"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/novnc/core/crypto/rsa.js",
+      "bytes": 4493,
+      "sha256": "83875db9e5d978ea0eb2a1e2af8afbb7dedfb0f18eca2bab75c2756285037476"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/novnc/core/decoders/copyrect.js",
+      "bytes": 616,
+      "sha256": "da3b571e10984438ea49559738e11034b5d0c85154a68eac1a6bf9ef10e5aa02"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/novnc/core/decoders/h264.js",
+      "bytes": 9322,
+      "sha256": "96d47901c5e26dc02256b152aa642490d936bbcc395f59ffd580356118edff84"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/novnc/core/decoders/hextile.js",
+      "bytes": 6060,
+      "sha256": "63eb86247bea83119af75f3d145a4515a2411ff28a72492d2d7b925268d50163"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/novnc/core/decoders/jpeg.js",
+      "bytes": 4183,
+      "sha256": "0644c6a81007bdeddcf08e2ac0015f9d683a342da167f6f3dd0598956e16c5bf"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/novnc/core/decoders/raw.js",
+      "bytes": 1622,
+      "sha256": "bc7d4517213dc1df8626e8198eadf32b2c1946f75228b31387d3916963af0727"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/novnc/core/decoders/rre.js",
+      "bytes": 1114,
+      "sha256": "b3380dbc75310769ef24e956e1fa1f13d8217f8b1d7d6f5c9d08db9a336a4c0d"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/novnc/core/decoders/tight.js",
+      "bytes": 11982,
+      "sha256": "a7f01df99922be812ea21c5e46597b76379a5d8267f99ec8bea9a202bec34130"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/novnc/core/decoders/tightpng.js",
+      "bytes": 687,
+      "sha256": "38bd2fd200f5c8e9b0905eca2389fb8e6ad2151de886e4fa9a9c59cc1c7696f0"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/novnc/core/decoders/zlib.js",
+      "bytes": 1211,
+      "sha256": "1d1c05cdca4840ff46082103ab35aa7696b41504bec91ebd74fae9e0e5f61380"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/novnc/core/decoders/zrle.js",
+      "bytes": 6484,
+      "sha256": "6853c115f97a1d4de39ca71ab8b519a05916bb8c173aa8112ce4881cbb612cbd"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/novnc/core/deflator.js",
+      "bytes": 2589,
+      "sha256": "ceb6763eb3fcc53f34d08534a8d1df9b63af3a95c58f8d96d238ef5ce639ad1f"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/novnc/core/display.js",
+      "bytes": 18218,
+      "sha256": "257694ea2ad5634fcf0528cdb91eb5a76b3e4b3820ec55c7fa691d89fe4fa277"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/novnc/core/encodings.js",
+      "bytes": 1819,
+      "sha256": "4975904fe1da6dc22b53ecb8462ec7c9a43e99db72dba4aab9f625c4177e355d"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/novnc/core/inflator.js",
+      "bytes": 1913,
+      "sha256": "b1955cbd1608619911b8dfd451fae07f38c5767098f6f47e4a2a1682c11feb65"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/novnc/core/input/domkeytable.js",
+      "bytes": 11478,
+      "sha256": "5eb985e1a412d1be6b606ba0d7e912fc0842d873d252bd7ec8a363670dfc800c"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/novnc/core/input/fixedkeys.js",
+      "bytes": 3804,
+      "sha256": "6bb21b0a2d5f5d7ad73e75b80ddc1d844ac770c4426b312d5740f2443455f0c0"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/novnc/core/input/gesturehandler.js",
+      "bytes": 18260,
+      "sha256": "c04b67fdae6ac061c7d51cb5ee8ca296ee9c7c80aa246cee5751e74eefe61758"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/novnc/core/input/keyboard.js",
+      "bytes": 10849,
+      "sha256": "46f82adef772b726ae3db144fb9c12b3d03374b7c803b8a5106e422a10ddcdba"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/novnc/core/input/keysym.js",
+      "bytes": 34609,
+      "sha256": "4ddf0e21f07328358974d91aa2d7f839ba2116688b28e43d3f6f4e2eae8c45cf"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/novnc/core/input/keysymdef.js",
+      "bytes": 25374,
+      "sha256": "76f338d45fb73b7decb7d8b4ef6e95edf7ce9583722c5220642a9be85fc2cc89"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/novnc/core/input/util.js",
+      "bytes": 6069,
+      "sha256": "2e156ea656404afcb6cc54dd85cbe5dd2dd0ba209ae9a6fb1b78ec5db17d01ce"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/novnc/core/input/vkeys.js",
+      "bytes": 2509,
+      "sha256": "9a1ce4393e1aa4ace5dcdcf7e032f4a1c03a9cb964b4e0e7b7fcffd3a982eb84"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/novnc/core/input/xtscancodes.js",
+      "bytes": 14400,
+      "sha256": "f0fc982627e1c02feaac1bd50d7fdd3bcbb05f0062b910d8002f47d1b08967a6"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/novnc/core/ra2.js",
+      "bytes": 12474,
+      "sha256": "4aeffb60af9c163365170e2af392acb6f0a7c21a0cb6827f85dd776d33277bee"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/novnc/core/rfb.js",
+      "bytes": 122518,
+      "sha256": "563a8c8469dfb55d1deee05262a311637d0e6fe8f65ae34c8222ee22e34e8a93"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/novnc/core/util/browser.js",
+      "bytes": 7805,
+      "sha256": "e45d2a95c9b4388042e52e19f280edd791cc2be9749d93f851afb7d0a2d055bc"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/novnc/core/util/cursor.js",
+      "bytes": 8347,
+      "sha256": "adabe605d73f38e5f29abd302489d4b9e98a9e495823a06a2edbe7f6744856fa"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/novnc/core/util/element.js",
+      "bytes": 729,
+      "sha256": "13845321fc5abccc1de25594082d8db15405af56c5f4fc32b3bdd0878bd891e3"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/novnc/core/util/events.js",
+      "bytes": 4327,
+      "sha256": "ec7f4da0407ea67f5d6f5ce53bd9b3342155feb9407707de3992c5261e460ead"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/novnc/core/util/eventtarget.js",
+      "bytes": 896,
+      "sha256": "9481965aa6cee36ae2decdccc6ca5203c9371a8afc33346ad4170e471766e0da"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/novnc/core/util/int.js",
+      "bytes": 326,
+      "sha256": "b1c4b7dec2e7767322b3464f3c186b13138cdf341c621db44ddd06ce78180c01"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/novnc/core/util/logging.js",
+      "bytes": 1351,
+      "sha256": "c3a49715c9f908d5bb385de5787e99b824faf34d26036d993eea4740bac9d482"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/novnc/core/util/strings.js",
+      "bytes": 745,
+      "sha256": "77d0604c7bf9e95de780f8cb9764d918ae24c86811a0a1c5b08cd30e50ad2a3a"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/novnc/core/websock.js",
+      "bytes": 11197,
+      "sha256": "6abe99c285e775ee43dfdbfb73c0a24052e633491232ee90446f20ffea743f16"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/novnc/LICENSE.txt",
+      "bytes": 2946,
+      "sha256": "41c858caf425f429f123f0a55f50793fcd52bcdcf6467f03c6fdc891b1a7c829"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/novnc/vendor/pako/lib/utils/common.js",
+      "bytes": 1062,
+      "sha256": "0749bc4661ed186714b90e7f2321c9625a8ce7c680563bfe3ac6df7aa332bf28"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/novnc/vendor/pako/lib/zlib/adler32.js",
+      "bytes": 666,
+      "sha256": "7412dd3ecc015888b99292f45e4d4ba69abc77f208508c9a1c93e8dfe54ba6cd"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/novnc/vendor/pako/lib/zlib/constants.js",
+      "bytes": 1334,
+      "sha256": "9d2c0dd36349e6eec9d41a37f965b2ff7e7374fbf00fb139e3116d428b551898"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/novnc/vendor/pako/lib/zlib/crc32.js",
+      "bytes": 764,
+      "sha256": "897fa9eabd2bb239ec632326dbff85bc72cc81d4da80265cde59520db339f405"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/novnc/vendor/pako/lib/zlib/deflate.js",
+      "bytes": 60286,
+      "sha256": "d2a498ad04bb5d1f67ba01696c31a2e88e8b88e4fc6c36c635294d1c445b22c1"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/novnc/vendor/pako/lib/zlib/gzheader.js",
+      "bytes": 1251,
+      "sha256": "9f9b2da72593769fcc97d397ceb771bb11d5b96f202759e2ed014c2be24d40d7"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/novnc/vendor/pako/lib/zlib/inffast.js",
+      "bytes": 11690,
+      "sha256": "ec1e0f7abeec681a0d5e3da46d06f499969cbf265eaaa5e21a135d2a9b878c16"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/novnc/vendor/pako/lib/zlib/inflate.js",
+      "bytes": 47281,
+      "sha256": "321582ddc4023e47aa981a71caed0e1dad8b58f0d9e93a0b0a34fe7e3c45e05f"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/novnc/vendor/pako/lib/zlib/inftrees.js",
+      "bytes": 11527,
+      "sha256": "94780cbdef562bcd0434c7e6f4faca1ff6be6980bf7305a200809d98d419d9c7"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/novnc/vendor/pako/lib/zlib/messages.js",
+      "bytes": 560,
+      "sha256": "7860a8d3c873c28e4f5f92db9ca3e45006e21b084210d87b8b7775cddccf05ed"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/novnc/vendor/pako/lib/zlib/trees.js",
+      "bytes": 38767,
+      "sha256": "ad9cb5245b9e39edd164234d6ca19febb9dba683f1f99a67af48d62931d91426"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/novnc/vendor/pako/lib/zlib/zstream.js",
+      "bytes": 823,
+      "sha256": "240917347c379b1ad33b8bf07cc6981557173bc3408f35e9875866a14b9967b2"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/novnc/vendor/pako/README.md",
+      "bytes": 301,
+      "sha256": "f78ded7db9ffa4be474ce75020659f165d97adc4276ef5c7fcd698a3aa03e6ce"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/public/styles.css",
+      "bytes": 8166,
+      "sha256": "6d29761069331619c922d3584e2736a8ce6dbbe6ae4cbfcb3b99cc3f418db2dc"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/README.md",
+      "bytes": 6440,
+      "sha256": "f1fc1e7f3a5df17181eb8f8e5c0a284d2d85e3bdcede1a33b6ccf2960cf69f57"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/server.mjs",
+      "bytes": 4463,
+      "sha256": "3b04cc0fe8e93a7e04123ff630d4ef0cb14a737dfa45579fe856ce869c344df1"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/test-adb-claim.cjs",
+      "bytes": 1764,
+      "sha256": "20a7264369ee872af71221049623823c2d6133021f1feeb2761178c65de3e7e9"
+    },
+    {
+      "path": "alpha/web/lex-dashboard/test-adb-mock.mjs",
+      "bytes": 9819,
+      "sha256": "f9385c4421eb1ffb329226668d64fc6d87e0422705db033a2cd644d788690e4b"
     },
     {
       "path": "kernel/CAPABILITY-MATRIX.md",
